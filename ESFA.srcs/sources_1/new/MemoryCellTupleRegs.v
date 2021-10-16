@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+//Implement latch for this! this will lock itself out
 
 module MemoryCellTupleRegs(
         inout[0:0] setBit,
@@ -67,7 +68,7 @@ module MemoryCellTupleRegs(
     assign out_index = r_index;
     assign out_value = r_value;
     assign out_mark = r_mark;
-    assign setBit = ! r_didWrite && setBitt;
+    assign setBit = ! r_didWrite && setBit;
     
     always @ (posedge clk)
         if (willSet) begin
