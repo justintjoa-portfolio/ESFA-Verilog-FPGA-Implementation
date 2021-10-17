@@ -36,6 +36,7 @@ module deleteDesign(
         input queried_handle,
         input isHandle,
         input metadata,
+        input isMetadata,
         output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
@@ -47,7 +48,8 @@ module deleteDesign(
         output out_index,
         output out_value,
         output[0:0] out_mark,
-        output out_metadata
+        output out_metadata,
+        output out_isMetadata
     );
     
     wire  arrayDefined;
@@ -55,7 +57,7 @@ module deleteDesign(
     
     wire isTargetedArray = (queried_handle == handle);
     
-    assign resultBool = arrayDefined && isTargetedArray;
+    assign resultBool = (arrayDefined && isTargetedArray && ! isMetadata);
     assign resultValue = array_code;
     assign out_arrDef = 1'b0;   
     assign out_array_code = array_code;
@@ -66,5 +68,6 @@ module deleteDesign(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;
-    assign out_metadata = metadata;
+    assign out_metadata = array_code;
+    assign out_isMetadata = isMetadata || resultBool;
 endmodule

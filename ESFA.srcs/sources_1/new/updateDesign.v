@@ -35,7 +35,9 @@ module updateDesign(
         input new_value,
         input queried_handle,
         input isHandle,
+        input isMetadata,
         input metadata,
+        input preceding_result,
         output resultBool,
         output resultValue,
         output[0:0] out_arrDef,
@@ -47,7 +49,8 @@ module updateDesign(
         output out_index,
         output out_value,
         output[0:0] out_mark,
-        output out_metadata
+        output out_metadata,
+        output out_isMetadata
     );
     
     wire noElementDefined;
@@ -62,8 +65,8 @@ module updateDesign(
     wire code_inc;
     assign code_inc = array_code + 1;
     
-    assign resultBool = noElementDefined;
-    assign resultValue = out_array_code;  
+    assign resultBool = (noElementDefined && ! isMetadata);
+    assign resultValue = handle; 
     assign out_arrDef = resultBool;    
     assign out_array_code = isHandle ? code_inc : handle;
     assign out_eltDef = 1'b1;
@@ -73,7 +76,8 @@ module updateDesign(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b1;
-    assign out_metadata = metadata;
+    assign out_metadata = out_array_code;
+    assign out_isMetadata = resultBool || isMetadata;
     
     
 endmodule

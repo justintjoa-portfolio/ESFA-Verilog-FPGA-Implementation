@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module lookupDesign(
+module lookup(
         input[0:0] arrDef,
         input handle,
         input array_code,
@@ -51,6 +51,10 @@ module lookupDesign(
         output out_metadata,
         output[0:0] out_isMetadata
     );
+    
+    wire isCandidate;
+    assign isCandidate = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata)
+    
     
     assign resultBool = isMetadata;
     assign resultValue = array_code;  

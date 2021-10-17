@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module lookupDesign(
+module lookUpScan(
         input[0:0] arrDef,
         input handle,
         input array_code,
@@ -52,17 +52,21 @@ module lookupDesign(
         output[0:0] out_isMetadata
     );
     
-    assign resultBool = isMetadata;
-    assign resultValue = array_code;  
+    wire isCandidate;
+    assign isCandidate = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata);
+    
+    
+    assign resultBool = 1'b1;
     assign out_arrDef = arrDef; 
-    assign out_array_code = array_cde;
+    assign out_array_code = array_code;
     assign out_eltDef = eltDef;
     assign out_rank = rank;
     assign out_low = low;
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = mark;
+    assign out_mark = isCandidate;
     assign out_metadata = metadata;
     assign out_isMetadata = isMetadata;
 endmodule
+
