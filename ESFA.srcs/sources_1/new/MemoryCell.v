@@ -31,7 +31,9 @@ module MemoryCell(
         input preceding_result,
         input selector,
         output resultBool,
-        output resultValue
+        output resultValue,
+        output out_isMetadata,
+        output out_metadata
     );
 
      wire in_clk;
@@ -54,6 +56,10 @@ module MemoryCell(
      reg new_index;
      reg new_value;
      reg new_mark;
+     reg new_bool;
+     reg new_value;
+     reg new_isMetadata;
+     reg new_metadata;
      
      // Output of MemoryCellTupleRegs
      wire out_arrDef;
@@ -67,7 +73,10 @@ module MemoryCell(
      wire out_value;
      wire out_mark;
      
-   
+    assign resultBool = new_bool;
+    assign resultValue = new_value;
+    assign out_isMetadata = new_isMetadata;
+    assign out_metadata = new_metadata;
    
     
     MemoryCellTupleRegs regs(in_clk, in_arrDef, in_handle, in_array_code, in_eltDef, in_rank, in_low, in_high, in_index, in_value, in_Mark, out_arrDef, out_handle,
@@ -136,6 +145,11 @@ module MemoryCell(
                 new_index = a_index;
                 new_value = a_value;
                 new_mark = a_mark;
+                
+                resultBool = a_resultBool;
+                resultValue = a_resultValue;
+                out_isMetadata = a_isMetadataMtadata;
+                out_metadata  = a_metadata;
             if (selector == 1)
                 new_arrDef = b_arrDef;
                 new_array_code = b_array_code;
@@ -146,6 +160,11 @@ module MemoryCell(
                 new_index = b_index;
                 new_value = b_value;
                 new_mark = b_mark;
+                
+                resultBool = b_resultBool;
+                resultValue = b_resultValue;
+                out_isMetadata = b_isMetadataMtadata;
+                out_metadata  = b_metadata;
             if (selector == 2)
                 new_arrDef = c_arrDef;
                 new_array_code = c_array_code;
@@ -156,6 +175,11 @@ module MemoryCell(
                 new_index = c_index;
                 new_value = c_value;
                 new_mark = c_mark;
+                
+                resultBool = c_resultBool;
+                resultValue = c_resultValue;
+                out_isMetadata = c_isMetadataMtadata;
+                out_metadata  = c_metadata;
             if (selector == 3)
                 new_arrDef = d_arrDef;
                 new_array_code = d_array_code;
@@ -166,6 +190,11 @@ module MemoryCell(
                 new_index = d_index;
                 new_value = d_value;
                 new_mark = d_mark;
+                
+                resultBool = d_resultBool;
+                resultValue = d_resultValue;
+                out_isMetadata = d_isMetadataMtadata;
+                out_metadata  = d_metadata;
             if (selector == 4)
                 new_arrDef = e_arrDef;
                 new_array_code = e_array_code;
@@ -176,6 +205,11 @@ module MemoryCell(
                 new_index = e_index;
                 new_value = e_value;
                 new_mark = e_mark;
+                
+                resultBool = e_resultBool;
+                resultValue = e_resultValue;
+                out_isMetadata = e_isMetadataMtadata;
+                out_metadata  = e_metadata;
             if (selector == 5)
                 new_arrDef = f_arrDef;
                 new_array_code = f_array_code;
@@ -186,6 +220,11 @@ module MemoryCell(
                 new_index = f_index;
                 new_value = f_value;
                 new_mark = f_mark;
+                
+                resultBool = f_resultBool;
+                resultValue = f_resultValue;
+                out_isMetadata = f_isMetadataMtadata;
+                out_metadata  = f_metadata;
             if (selector == 6)   
                 new_arrDef = g_arrDef;
                 new_array_code = g_array_code;
@@ -195,7 +234,12 @@ module MemoryCell(
                 new_high = g_high;
                 new_index = g_index;
                 new_value = g_value;
-                new_mark = g_mark;         
+                new_mark = g_mark;  
+                
+                resultBool = g_resultBool;
+                resultValue = g_resultValue;
+                out_isMetadata = g_isMetadataMtadata;
+                out_metadata  = g_metadata;       
         end
 endmodule
 
