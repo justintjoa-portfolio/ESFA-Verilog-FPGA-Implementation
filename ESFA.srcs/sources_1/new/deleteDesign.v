@@ -37,6 +37,7 @@ module deleteDesign(
         input isHandle,
         input metadata,
         input isMetadata,
+        input preceding_result,
         output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
@@ -49,7 +50,7 @@ module deleteDesign(
         output out_value,
         output[0:0] out_mark,
         output out_metadata,
-        output out_isMetadata
+        output[0:0] out_isMetadata
     );
     
     wire  arrayDefined;

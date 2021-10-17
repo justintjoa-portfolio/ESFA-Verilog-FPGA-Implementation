@@ -37,7 +37,8 @@ module congrueDownDesign(
         input isHandle,
         input metadata,
         input isMetadata,
-        output resultBool,
+        input preceding_result,
+        output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
         output out_array_code,
@@ -48,7 +49,8 @@ module congrueDownDesign(
         output out_index,
         output out_value,
         output[0:0] out_mark,
-        output out_metadata
+        output out_metadata,
+        output[0:0] out_isMetadata
     );
     
     wire code_dec;

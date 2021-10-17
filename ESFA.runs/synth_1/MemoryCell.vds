@@ -2,40 +2,56 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Sat Oct 16 22:55:02 2021
-# Process ID: 21188
+# Start of session at: Sun Oct 17 00:43:22 2021
+# Process ID: 18352
 # Current directory: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1
-# Command line: vivado.exe -log congrueDownDesign.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source congrueDownDesign.tcl
-# Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/congrueDownDesign.vds
+# Command line: vivado.exe -log MemoryCell.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MemoryCell.tcl
+# Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/MemoryCell.vds
 # Journal file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source congrueDownDesign.tcl -notrace
-Command: synth_design -top congrueDownDesign -part xcku5p-ffvb676-2-e
+source MemoryCell.tcl -notrace
+Command: synth_design -top MemoryCell -part xcku5p-ffvb676-2-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcku5p'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku5p'
 INFO: [Device 21-403] Loading part xcku5p-ffvb676-2-e
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18088
+INFO: [Synth 8-7075] Helper process launched with PID 3104
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1567.082 ; gain = 162.699
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1567.387 ; gain = 162.691
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:23]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellTupleRegs' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellTupleRegs' (1#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v:24]
+INFO: [Synth 8-6157] synthesizing module 'updateDesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'updateDesign' (2#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v:23]
+INFO: [Synth 8-6157] synthesizing module 'lookUpScan' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'lookUpScan' (3#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v:23]
+INFO: [Synth 8-6157] synthesizing module 'lookUpFinalizer' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpFinalizer.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'lookUpFinalizer' (4#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpFinalizer.v:23]
+INFO: [Synth 8-6157] synthesizing module 'encode' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/encode.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'encode' (5#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/encode.v:23]
+INFO: [Synth 8-6157] synthesizing module 'deleteDesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'deleteDesign' (6#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v:23]
+INFO: [Synth 8-6157] synthesizing module 'congrueUpDesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'congrueUpDesign' (7#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v:23]
 INFO: [Synth 8-6157] synthesizing module 'congrueDownDesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'congrueDownDesign' (1#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'congrueDownDesign' (8#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCell' (9#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1614.793 ; gain = 210.410
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1615.664 ; gain = 210.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1632.711 ; gain = 228.328
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1634.551 ; gain = 229.855
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1632.711 ; gain = 228.328
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1634.551 ; gain = 229.855
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1632.711 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1634.551 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -47,8 +63,35 @@ Resolution: If [get_<value>] was used to populate the object, check to make sure
 WARNING: [Vivado 12-584] No ports matched 'CLK100MHZ'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:10]
 CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports CLK100MHZ]'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:10]
 Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'out_arrDef'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:15]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 WARNING: [Vivado 12-584] No ports matched 'out_handle'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:16]
 CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:16]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_array_code'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_eltDef'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_rank'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:21]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_low'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_high'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_index'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_value'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'out_mark'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:28]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:28]
 Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 CRITICAL WARNING: [Netlist 29-154] Cannot set property 'BITSTREAM.CONFIG.CONFIGRATE' because incorrect value '50' specified. Expecting type 'enum' with possible values of '2.7,5.3,8.0,10.6,21.3,31.9,36.4,51.0,56.7,63.8,72.9,85.0,102.0,127.5'. [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:183]
 Resolution: Please check the value of the property and set to a correct value.
@@ -58,17 +101,17 @@ CRITICAL WARNING: [Netlist 29-154] Cannot set property 'CFGBVS' because incorrec
 Resolution: Please check the value of the property and set to a correct value.
 WARNING: [Common 17-346] No IO Banks matched '34' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc:195]
 Finished Parsing XDC File [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/congrueDownDesign_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/congrueDownDesign_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/MemoryCell_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/MemoryCell_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1752.789 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1760.641 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1752.789 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1760.641 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1752.789 ; gain = 348.406
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1760.641 ; gain = 355.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -76,23 +119,27 @@ Start Loading Part and Timing Information
 Loading part: xcku5p-ffvb676-2-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1752.789 ; gain = 348.406
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1760.641 ; gain = 355.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1752.789 ; gain = 348.406
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1760.641 ; gain = 355.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1752.789 ; gain = 348.406
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1760.641 ; gain = 355.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input    1 Bit       Adders := 3     
+	   2 Input    1 Bit       Adders := 8     
++---Registers : 
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input    1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -109,25 +156,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1752.789 ; gain = 348.406
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1760.641 ; gain = 355.945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2162.598 ; gain = 758.215
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2161.754 ; gain = 757.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2162.598 ; gain = 758.215
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2161.754 ; gain = 757.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 2181.711 ; gain = 777.328
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2180.875 ; gain = 776.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -145,37 +192,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -191,35 +238,28 @@ Report Cell Usage:
 +------+------+------+
 |      |Cell  |Count |
 +------+------+------+
-|1     |LUT3  |     2|
-|2     |LUT4  |     1|
-|3     |IBUF  |     9|
-|4     |OBUF  |    11|
-|5     |OBUFT |     1|
+|1     |OBUFT |     2|
 +------+------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 2187.496 ; gain = 663.035
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2187.496 ; gain = 783.113
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 2186.613 ; gain = 655.828
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2186.613 ; gain = 781.918
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2199.551 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2198.707 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2228.020 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2230.066 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 9 instances were transformed.
-  IBUF => IBUF (IBUFCTRL, INBUF): 9 instances
+No Unisim elements were transformed.
 
-Synth Design complete, checksum: b8ea3409
+Synth Design complete, checksum: 639e7a08
 INFO: [Common 17-83] Releasing license: Synthesis
-18 Infos, 4 Warnings, 6 Critical Warnings and 0 Errors encountered.
+32 Infos, 13 Warnings, 15 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2228.020 ; gain = 1092.309
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2230.066 ; gain = 1093.910
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-INFO: [Common 17-1381] The checkpoint 'C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/congrueDownDesign.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file congrueDownDesign_utilization_synth.rpt -pb congrueDownDesign_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Oct 16 22:55:34 2021...
+INFO: [Common 17-1381] The checkpoint 'C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/MemoryCell.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file MemoryCell_utilization_synth.rpt -pb MemoryCell_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Oct 17 00:43:53 2021...

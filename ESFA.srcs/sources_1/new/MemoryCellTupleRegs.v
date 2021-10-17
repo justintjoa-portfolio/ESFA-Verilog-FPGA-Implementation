@@ -48,7 +48,7 @@ module MemoryCellTupleRegs(
         
     always @ (posedge clk)
         begin
-            out_arrDef <= arr_def;    
+            out_arrDef <= arrDef;    
             out_handle <= handle;        
             out_array_code <= array_code;
             out_eltDef <= eltDef;

@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log congrueDownDesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source congrueDownDesign.tcl" );
+         "-log MemoryCell.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MemoryCell.tcl" );
 
 
 

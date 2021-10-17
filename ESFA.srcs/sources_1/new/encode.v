@@ -37,6 +37,7 @@ module encode(
         input isHandle,
         input metadata,
         input isMetadata,
+        input preceding_result,
         output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,

@@ -37,6 +37,7 @@ module congrueUpDesign(
         input isHandle,
         input metadata,
         input isMetadata,
+        input preceding_result,
         output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
@@ -48,7 +49,8 @@ module congrueUpDesign(
         output out_index,
         output out_value,
         output[0:0] out_mark,
-        output out_metadata
+        output out_metadata,
+        output[0:0] out_isMetadata
     );
     
     wire noOp;
