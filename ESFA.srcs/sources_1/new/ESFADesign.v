@@ -23,14 +23,20 @@
 module ESFADesign(
     input new_index,
     input new_value,
-    input new_handle,
+    input queried_handle,
     input isHandle,
     output resultBool,
     output resultValue,
     input selector
     );
     
+    MemoryCell c0;
     MemoryCell c1;
+    MemoryCell c2;
+    MemoryCell c3;
+    MemoryCell c4;
+    MemoryCell c5;
+    MemoryCell c6;
     reg metadata;
     reg isMetadata;
     

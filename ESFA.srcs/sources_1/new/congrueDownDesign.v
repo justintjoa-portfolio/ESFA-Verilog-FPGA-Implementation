@@ -38,6 +38,7 @@ module congrueDownDesign(
         input metadata,
         input isMetadata,
         input preceding_result,
+        input[0:0] has_result,
         output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
