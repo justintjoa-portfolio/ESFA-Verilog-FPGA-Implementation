@@ -72,8 +72,7 @@ module congrueUpDesign(
     wire high_high;
     assign high_high = (eltDef) && (high >= metadata);
   
-    
-    assign resultBool = mark || isHandle; 
+   
     assign out_arrDef = arrDef;   
     assign out_array_code = noOp ? array_code :
         willIncrementCode ? code_inc : array_code;

@@ -21,6 +21,67 @@
 
 
 module congrueDownDesign(
-
+        input[0:0] arrDef,
+        input handle,
+        input array_code,
+        input[0:0] eltDef,
+        input rank,
+        input low,
+        input high,
+        input index,
+        input value,
+        input[0:0] mark,
+        input new_index,
+        input new_value,
+        input queried_handle,
+        input isHandle,
+        input metadata,
+        input isMetadata,
+        output resultBool,
+        output resultValue,
+        output[0:0] out_arrDef,
+        output out_array_code,
+        output[0:0] out_eltDef,
+        output out_rank,
+        output out_low,
+        output out_high,
+        output out_index,
+        output out_value,
+        output[0:0] out_mark,
+        output out_metadata
     );
+    
+    wire code_dec;
+    assign code_dec = array_code - 1;
+    
+    wire low_dec;
+    assign low_dec = low - 1;
+    
+    wire high_dec;
+    assign high_dec = high - 1;
+   
+   wire willDecrementCode;
+   assign willDecrementCode = (arrDef) && (array_code > metadata);
+   
+   wire willDecrementLow;
+   assign willDecrementLow  = (eltDef) && (metadata < low);
+   
+   wire willDecrementHigh;
+   assign willDecrementHigh = ((eltDef) && (metadata < low)) || (low <= metadata && metadata <= high);
+  
+   wire negativeSet;
+   assign negativeSet = (out_high - out_low < 0);
+    
+    assign out_arrDef = arrDef;   
+    assign out_array_code = willDecrementCode ? code_dec : array_code;
+    assign out_eltDef = eltDef;
+    assign out_rank = rank;
+    assign out_low = noOp ? low :
+        low_high ? low_inc : low;
+    assign out_high = noOp ? high :
+        high_high ? high_inc : high;
+    assign out_index = index;
+    assign out_value = value;
+    assign out_mark = 1'b0;
+    assign out_metadata = metadata;
 endmodule
