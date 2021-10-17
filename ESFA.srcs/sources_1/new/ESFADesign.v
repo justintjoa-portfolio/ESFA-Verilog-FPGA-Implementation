@@ -25,8 +25,6 @@ module ESFADesign(
     input new_value,
     input new_handle,
     input isHandle,
-    inout metadata,
-    inout isMetadata,
     output resultBool,
     output resultValue,
     input selectorBit1,
@@ -34,5 +32,8 @@ module ESFADesign(
     input selectorBit3
     );
     
+    
+    reg metadata;
+    reg isMetadata;
     
 endmodule

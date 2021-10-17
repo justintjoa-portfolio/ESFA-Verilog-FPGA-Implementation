@@ -36,7 +36,7 @@ module deleteDesign(
         input queried_handle,
         input isHandle,
         input metadata,
-        output resultBool,
+        output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
         output out_array_code,

@@ -37,7 +37,7 @@ module congrueUpDesign(
         input isHandle,
         input metadata,
         input isMetadata,
-        output resultBool,
+        output[0:0] resultBool,
         output resultValue,
         output[0:0] out_arrDef,
         output out_array_code,
@@ -73,6 +73,7 @@ module congrueUpDesign(
     assign high_high = (eltDef) && (high >= metadata);
   
    
+    assign resultBool = 1'b1;
     assign out_arrDef = arrDef;   
     assign out_array_code = noOp ? array_code :
         willIncrementCode ? code_inc : array_code;

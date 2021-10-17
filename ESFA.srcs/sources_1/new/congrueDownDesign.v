@@ -72,14 +72,13 @@ module congrueDownDesign(
    wire negativeSet;
    assign negativeSet = (out_high - out_low < 0);
     
-    assign out_arrDef = arrDef;   
+    assign resultBool = 1'b1;
+    assign out_arrDef = negativeSet ? 1'b0 : arrDef;   
     assign out_array_code = willDecrementCode ? code_dec : array_code;
-    assign out_eltDef = eltDef;
+    assign out_eltDef = negativeSet ? 1'b0 : eltDef;
     assign out_rank = rank;
-    assign out_low = noOp ? low :
-        low_high ? low_inc : low;
-    assign out_high = noOp ? high :
-        high_high ? high_inc : high;
+    assign out_low = willDecrementLow ? low_dec : low;
+    assign out_high = willDecrementHigh ? high_dec : high;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;
