@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/14/2021 08:53:11 PM
+// Create Date: 10/16/2021 07:52:08 PM
 // Design Name: 
-// Module Name: ESFADesign
+// Module Name: encode
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ESFADesign(
-    input new_index,
-    input new_value,
-    input new_handle,
-    input isHandle,
-    inout metadata,
-    output resultBool,
-    output resultValue,
-    input selectorBit1,
-    input selectorBit2,
-    input selectorBit3
+module encode(
+
     );
-    
-    
 endmodule
