@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/14/2021 08:53:11 PM
+// Create Date: 10/16/2021 11:28:35 PM
 // Design Name: 
-// Module Name: ESFADesign
+// Module Name: baseCombinator
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ESFADesign(
-    input new_index,
-    input new_value,
-    input new_handle,
-    input isHandle,
-    output resultBool,
-    output resultValue,
-    input selector
+class baseCombinator(
+
     );
-    
-    MemoryCell c1;
-    reg metadata;
-    reg isMetadata;
-    
-endmodule
+endclass
