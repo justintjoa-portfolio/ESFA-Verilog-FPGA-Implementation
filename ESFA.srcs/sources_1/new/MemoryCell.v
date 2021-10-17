@@ -29,7 +29,7 @@ module MemoryCell(
         input isMetadata,
         input selector,
         output resultBool,
-        output resultValue,
+        output resultValue
     );
     
     MemoryCellTupleRegs regs;

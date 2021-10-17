@@ -22,7 +22,7 @@
 //Implement latch for this! this will lock itself out
 
 module MemoryCellTupleRegs(
-        clk,
+        input clk,
         input arrDef,
         input handle,
         input array_code,

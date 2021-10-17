@@ -29,7 +29,7 @@ module ESFADesign(
     output resultValue,
     input selectorBit1,
     input selectorBit2,
-    input selectorBit3,
+    input selectorBit3
     );
     
     MemoryCell c1;
