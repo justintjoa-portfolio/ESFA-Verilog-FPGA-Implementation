@@ -54,13 +54,13 @@ module updateDesign(
     assign noElementDefined = ! arrDef;
     
     wire low_inc;
-    assign low_inc = code + 1;
+    assign low_inc = array_code + 1;
     wire high_inc;
-    assign high_inc = code + 1;
+    assign high_inc = array_code + 1;
     wire rank_inc;
     assign rank_inc = rank + 1;
     wire code_inc;
-    assign code_inc = code + 1;
+    assign code_inc = array_code + 1;
     
     assign resultBool = noElementDefined;
     assign resultValue = out_array_code;  
@@ -68,8 +68,8 @@ module updateDesign(
     assign out_array_code = isHandle ? code_inc : handle;
     assign out_eltDef = 1'b1;
     assign out_rank = isHandle ? rank_inc : 1;
-    assign out_low = isHandle ? low_inc : low;
-    assign out_high = isHandle ? high_inc : high;
+    assign out_low = isHandle ? low_inc : handle;
+    assign out_high = isHandle ? high_inc : handle;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b1;

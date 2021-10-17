@@ -26,6 +26,7 @@ module MemoryCell(
         input new_handle,
         input a_isHandle,
         input metadata,
+        input isMetadata,
         input selectorBit1,
         input selectorBit2,
         input selectorBit3,
