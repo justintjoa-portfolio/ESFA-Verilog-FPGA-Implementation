@@ -59,7 +59,7 @@ module lookUpFinalizer(
     wire isSuperior;
     assign isSuperior = (mark) && (metadata > rank);
     
-    assign resultBool = 1'b1;
+    assign resultBool = out_isMetadata;
     assign resultValue = isSuperior ? value : preceding_result;
     assign out_arrDef = arrDef;   
     assign out_array_code = array_code;
@@ -71,5 +71,5 @@ module lookUpFinalizer(
     assign out_value = value;
     assign out_mark = 1'b0;
     assign out_metadata = isSuperior ? rank : metadata;
-    assign out_isMetadata = 1'b1;
+    assign out_isMetadata = isMetadata || mark;
 endmodule
