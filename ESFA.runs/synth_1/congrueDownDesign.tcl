@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/ESFADesign.tcl"
+  variable script "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/congrueDownDesign.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,13 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param power.BramSDPPropagationFix 1
-set_param chipscope.maxJobs 4
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
-set_param xicom.use_bs_reader 1
-set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcku5p-ffvb676-2-e
 
@@ -92,7 +85,7 @@ set_property ip_output_repo c:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.c
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v
+read_verilog -library xil_defaultlib C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -109,7 +102,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top ESFADesign -part xcku5p-ffvb676-2-e
+synth_design -top congrueDownDesign -part xcku5p-ffvb676-2-e
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -119,10 +112,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef ESFADesign.dcp
+write_checkpoint -force -noxdef congrueDownDesign.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file ESFADesign_utilization_synth.rpt -pb ESFADesign_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file congrueDownDesign_utilization_synth.rpt -pb congrueDownDesign_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

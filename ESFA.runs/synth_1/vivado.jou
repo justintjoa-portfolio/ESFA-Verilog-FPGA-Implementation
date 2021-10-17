@@ -2,11 +2,11 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Fri Oct 15 00:00:51 2021
-# Process ID: 20724
+# Start of session at: Sat Oct 16 22:53:13 2021
+# Process ID: 9696
 # Current directory: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1
-# Command line: vivado.exe -log ESFADesign.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ESFADesign.tcl
-# Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/ESFADesign.vds
+# Command line: vivado.exe -log congrueDownDesign.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source congrueDownDesign.tcl
+# Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/congrueDownDesign.vds
 # Journal file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source ESFADesign.tcl -notrace
+source congrueDownDesign.tcl -notrace

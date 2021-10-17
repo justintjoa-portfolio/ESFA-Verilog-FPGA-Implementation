@@ -1,13 +1,13 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Fri Oct 15 00:01:23 2021
+| Date         : Sat Oct 16 22:53:44 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
-| Command      : report_utilization -file ESFADesign_utilization_synth.rpt -pb ESFADesign_utilization_synth.pb
-| Design       : ESFADesign
+| Command      : report_utilization -file congrueDownDesign_utilization_synth.rpt -pb congrueDownDesign_utilization_synth.pb
+| Design       : congrueDownDesign
 | Device       : xcku5pffvb676-2
 | Design State : Synthesized
----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
 
 Utilization Design Information
 
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*               |    0 |     0 |          0 |    216960 |  0.00 |
-|   LUT as Logic          |    0 |     0 |          0 |    216960 |  0.00 |
+| CLB LUTs*               |    2 |     0 |          0 |    216960 | <0.01 |
+|   LUT as Logic          |    2 |     0 |          0 |    216960 | <0.01 |
 |   LUT as Memory         |    0 |     0 |          0 |     99840 |  0.00 |
 | CLB Registers           |    0 |     0 |          0 |    433920 |  0.00 |
 |   Register as Flip Flop |    0 |     0 |          0 |    433920 |  0.00 |
@@ -94,7 +94,7 @@ Table of Contents
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| Bonded IOB |   12 |     0 |          0 |       280 |  4.29 |
+| Bonded IOB |   21 |     0 |          0 |       280 |  7.50 |
 +------------+------+-------+------------+-----------+-------+
 
 
@@ -153,7 +153,12 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUFT    |   12 |                 I/O |
+| OBUF     |   11 |                 I/O |
+| INBUF    |    9 |                 I/O |
+| IBUFCTRL |    9 |              Others |
+| LUT3     |    2 |                 CLB |
+| OBUFT    |    1 |                 I/O |
+| LUT4     |    1 |                 CLB |
 +----------+------+---------------------+
 
 

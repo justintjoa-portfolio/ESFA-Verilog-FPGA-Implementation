@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log ESFADesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ESFADesign.tcl
+EAStep vivado -log congrueDownDesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source congrueDownDesign.tcl

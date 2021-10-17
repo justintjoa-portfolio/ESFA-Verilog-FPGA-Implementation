@@ -27,12 +27,17 @@ module MemoryCell(
         input a_isHandle,
         input metadata,
         input isMetadata,
-        input selectorBit1,
-        input selectorBit2,
-        input selectorBit3,
+        input selector,
         output resultBool,
-        output resultValue
-        
-        
+        output resultValue,
     );
+    
+    MemoryCellTupleRegs regs;
+    updateDesign updater;
+   lookUpScan lookScan;
+   lookupFinalizer lookFinalizer;
+   encode encoder;
+   deleteDesign deleter;
+   congrueUpDesign upEqualizer;
+    congrueDownDesign downEqualizer;  
 endmodule

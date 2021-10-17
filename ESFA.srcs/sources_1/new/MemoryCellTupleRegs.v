@@ -22,7 +22,7 @@
 //Implement latch for this! this will lock itself out
 
 module MemoryCellTupleRegs(
-        input[0:0] setBit,
+        clk,
         input arrDef,
         input handle,
         input array_code,
@@ -47,7 +47,7 @@ module MemoryCellTupleRegs(
     );
         
     always @ (posedge clk)
-        if (setBit) begin
+        begin
             out_arrDef <= arr_def;    
             out_handle <= handle;        
             out_array_code <= array_code;

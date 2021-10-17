@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log ESFADesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ESFADesign.tcl" );
+         "-log congrueDownDesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source congrueDownDesign.tcl" );
 
 
 
