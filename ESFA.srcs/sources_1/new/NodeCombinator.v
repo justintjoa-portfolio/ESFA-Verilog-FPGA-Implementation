@@ -78,5 +78,18 @@ module NodeCombinator(
                     r_resultContext = resultContext2; 
                 end
              end
+             if (selector == 7)
+                if (resultBool1 && resultBool2) begin
+                   if (resultContext1 < resultContext2) begin
+                        r_resultContext = resultContext1;
+                   end else begin
+                        r_resultContext = resultContext2;
+                   end
+                end else begin 
+                    if (resultBool1)
+                        r_resultContext = resultContext1;
+                    if (resultBool2)
+                        r_resultContext = resultContext2;
+                end
         end
 endmodule

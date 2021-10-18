@@ -130,7 +130,8 @@ module MemoryCell(
     // 3: encode      
     // 4: delete   
     // 5: congrueUp  
-    // 6: congruedown     
+    // 6: congruedown 
+    // 7: markAvailableCell    
     
     always @ (posedge clk)
         begin
