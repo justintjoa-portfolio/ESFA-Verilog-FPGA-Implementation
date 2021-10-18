@@ -58,7 +58,6 @@ module MemoryCell(
      reg new_value;
      reg new_mark;
      reg new_bool;
-     reg new_value;
      reg new_context;
      
      // Output of MemoryCellTupleRegs
