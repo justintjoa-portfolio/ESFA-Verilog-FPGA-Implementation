@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xcku5p-ffvb676-2-e" LaunchTime="1634510898">
-  <File Type="PA-TCL" Name="MemoryCell.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="MemoryCell_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="MemoryCell_reports.tcl"/>
-  <File Type="RDS-RDS" Name="MemoryCell.vds"/>
-  <File Type="RDS-UTIL" Name="MemoryCell_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="MemoryCell_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="MemoryCell.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="MemoryCell_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="MemoryCell_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xcku5p-ffvb676-2-e" LaunchTime="1634531660">
+  <File Type="PA-TCL" Name="ESFADesign.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="ESFADesign_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="ESFADesign_reports.tcl"/>
+  <File Type="RDS-RDS" Name="ESFADesign.vds"/>
+  <File Type="RDS-UTIL" Name="ESFADesign_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="ESFADesign_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="ESFADesign.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="ESFADesign_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="ESFADesign_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/MemoryCell.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/MemoryCellTupleRegs.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/NodeCombinator.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -67,14 +81,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/MemoryCell.v">
+    <File Path="$PSRCDIR/sources_1/new/ESFADesign.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/ESFADesign.v">
+    <File Path="$PSRCDIR/sources_1/new/markAvailableCell.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -84,7 +98,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="MemoryCell"/>
+      <Option Name="TopModule" Val="ESFADesign"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>

@@ -38,9 +38,11 @@ module lookUpScan(
         input metadata,
         input isMetadata,
         input preceding_result,
+        input preceding_context,
         input[0:0] has_result,
         output[0:0] resultBool,
         output resultValue,
+        output resultContext, 
         output[0:0] out_arrDef,
         output out_array_code,
         output[0:0] out_eltDef,
@@ -49,9 +51,7 @@ module lookUpScan(
         output out_high,
         output out_index,
         output out_value,
-        output[0:0] out_mark,
-        output out_metadata,
-        output[0:0] out_isMetadata
+        output[0:0] out_mark
     );
     
     wire isCandidate;
@@ -68,7 +68,5 @@ module lookUpScan(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = isCandidate;
-    assign out_metadata = metadata;
-    assign out_isMetadata = isMetadata;
 endmodule
 

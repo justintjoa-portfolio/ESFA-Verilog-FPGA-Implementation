@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MemoryCell(
+module LeafMemoryCell(
         input clk,
         input inserted_index,
         input inserted_value,
@@ -29,12 +29,12 @@ module MemoryCell(
         input metadata,
         input isMetadata,
         input preceding_result,
-        input preceding_context,
         input[0:0] has_result,
         input selector,
         output resultBool,
         output resultValue,
-        output resultContext
+        output out_isMetadata,
+        output out_metadata
     );
 
      wire in_clk;
@@ -59,7 +59,8 @@ module MemoryCell(
      reg new_mark;
      reg new_bool;
      reg new_value;
-     reg new_context;
+     reg new_isMetadata;
+     reg new_metadata;
      
      // Output of MemoryCellTupleRegs
      wire out_arrDef;
@@ -75,41 +76,42 @@ module MemoryCell(
      
     assign resultBool = new_bool;
     assign resultValue = new_value;
-    assign resultContext = new_context;
+    assign out_isMetadata = new_isMetadata;
+    assign out_metadata = new_metadata;
    
     
     MemoryCellTupleRegs regs(in_clk, in_arrDef, in_handle, in_array_code, in_eltDef, in_rank, in_low, in_high, in_index, in_value, in_Mark, out_arrDef, out_handle,
     out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark);
     
     // output wires for each combinator block
-    wire a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark;
-    wire b_resultBool, b_resultValue, b_resultContext, b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark;
-    wire c_resultBool, c_resultValue, c_resultContext, c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark;
-    wire d_resultBool, d_resultValue, d_resultContext, d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark;
-    wire e_resultBool, e_resultValue, e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark;
-    wire f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark;
-    wire g_resultBool, g_resultValue, g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark;
+    wire a_resultBool, a_resultValue,  a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark, a_metadata, a_isMetadata;
+    wire b_resultBool, b_resultValue,  b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark, b_metadata, b_isMetadata;
+    wire c_resultBool, c_resultValue,  c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark, c_metadata, c_isMetadata;
+    wire d_resultBool, d_resultValue,  d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark, d_metadata, d_isMetadata;
+    wire e_resultBool, e_resultValue,  e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark, e_metadata, e_isMetadata;
+    wire f_resultBool, f_resultValue,  f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark, f_metadata, f_isMetadata;
+    wire g_resultBool, g_resultValue,  g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark, g_metadata, g_isMetadata;
     
    updateDesign updater(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark);
+   metadata, isMetadata, preceding_result, has_result, a_resultBool, a_resultValue,  a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark, a_metadata, a_isMetadata);
    
    lookUpScan lookScan(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, b_resultBool, b_resultValue,  b_resultContext, b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark);
+   metadata, isMetadata, preceding_result, has_result, b_resultBool, b_resultValue,  b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark, b_metadata, b_isMetadata);
    
    lookUpFinalizer lookFinalizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, c_resultBool, c_resultValue, c_resultContext, c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark);
+   metadata, isMetadata, preceding_result, has_result, c_resultBool, c_resultValue,  c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark, c_metadata, c_isMetadata);
    
    encode encoder(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, d_resultBool, d_resultValue,  d_resultContext, d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark);
+   metadata, isMetadata, preceding_result, has_result, d_resultBool, d_resultValue,  d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark, d_metadata, d_isMetadata);
    
    deleteDesign deleter(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context,has_result, e_resultBool, e_resultValue,  e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark);
+   metadata, isMetadata, preceding_result, has_result, e_resultBool, e_resultValue,  e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark, e_metadata, e_isMetadata);
    
    congrueUpDesign upEqualizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark);
+   metadata, isMetadata, preceding_result, has_result, f_resultBool, f_resultValue,  f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark, f_metadata, f_isMetadata);
    
     congrueDownDesign downEqualizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, preceding_result, preceding_context, has_result, g_resultBool, g_resultValue,  g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark); 
+   metadata, isMetadata, preceding_result, has_result, g_resultBool, g_resultValue,  g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark, g_metadata, g_isMetadata); 
     
     
     assign in_arrDef = new_arrDef;
@@ -147,7 +149,8 @@ module MemoryCell(
                 
                 new_bool = a_resultBool;
                 new_value = a_resultValue;
-                new_context = a_resultContext;
+                new_isMetadata = a_isMetadata;
+                new_metadata  = a_metadata;
             if (selector == 1)
                 new_arrDef = b_arrDef;
                 new_array_code = b_array_code;
@@ -161,7 +164,8 @@ module MemoryCell(
                 
                 new_bool = b_resultBool;
                 new_value = b_resultValue;
-                new_context = b_resultContext;
+                new_isMetadata  = b_isMetadata;
+                new_metadata  = b_metadata;
             if (selector == 2)
                 new_arrDef = c_arrDef;
                 new_array_code = c_array_code;
@@ -175,7 +179,8 @@ module MemoryCell(
                 
                 new_bool = c_resultBool;
                 new_value = c_resultValue;
-                new_context = c_resultContext;
+                new_isMetadata = c_isMetadata;
+                new_metadata  = c_metadata;
             if (selector == 3)
                 new_arrDef = d_arrDef;
                 new_array_code = d_array_code;
@@ -189,7 +194,8 @@ module MemoryCell(
                 
                 new_bool = d_resultBool;
                 new_value = d_resultValue;
-                new_context = d_resultContext;
+                new_isMetadata = d_isMetadata;
+                new_metadata  = d_metadata;
             if (selector == 4)
                 new_arrDef = e_arrDef;
                 new_array_code = e_array_code;
@@ -203,7 +209,8 @@ module MemoryCell(
                 
                 new_bool = e_resultBool;
                 new_value = e_resultValue;
-                new_context = e_resultContext;
+                new_isMetadata = e_isMetadata;
+                new_metadata  = e_metadata;
             if (selector == 5)
                 new_arrDef = f_arrDef;
                 new_array_code = f_array_code;
@@ -217,7 +224,8 @@ module MemoryCell(
                 
                 new_bool = f_resultBool;
                 new_value = f_resultValue;
-                new_context = f_resultContext;
+                new_isMetadata = f_isMetadata;
+                new_metadata  = f_metadata;
             if (selector == 6)   
                 new_arrDef = g_arrDef;
                 new_array_code = g_array_code;
@@ -230,9 +238,9 @@ module MemoryCell(
                 new_mark = g_mark;  
                 
                 new_bool = g_resultBool;
-                new_value = g_resultValue; 
-                new_context = g_resultContext;     
+                new_value = g_resultValue;
+                new_isMetadata = g_isMetadata;
+                new_metadata  = g_metadata;       
         end
 endmodule
-
 

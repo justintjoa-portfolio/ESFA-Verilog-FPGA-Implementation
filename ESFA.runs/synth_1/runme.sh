@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log MemoryCell.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MemoryCell.tcl
+EAStep vivado -log ESFADesign.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ESFADesign.tcl
