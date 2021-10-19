@@ -69,10 +69,10 @@ module NodeCombinator(
                 end else begin 
                     if (resultBool1)
                         r_resultContext = resultContext1;
-                        r_resultValue = r_resultValue1;
+                        r_resultValue = resultValue1;
                     if (resultBool2)
                         r_resultContext = resultContext2;
-                        r_resultValue = r_resultValue2;
+                        r_resultValue = resultValue2;
                 end
              end else if (selector == 7) begin
                 if (resultBool1 && resultBool2) begin
@@ -86,11 +86,11 @@ module NodeCombinator(
                 end else begin 
                     if (resultBool1) begin
                         r_resultContext = resultContext1;
-                        r_resultValue = r_resultValue1;
+                        r_resultValue = resultValue1;
                     end
                     if (resultBool2) begin
                         r_resultContext = resultContext2;
-                        r_resultValue = r_resultValue2;
+                        r_resultValue = resultValue2;
                     end
                 end
              end else begin

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Mon Oct 18 19:40:36 2021
+| Date         : Mon Oct 18 21:13:53 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ESFADesign_utilization_synth.rpt -pb ESFADesign_utilization_synth.pb
 | Design       : ESFADesign
@@ -153,8 +153,7 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUFT    |    1 |                 I/O |
-| OBUF     |    1 |                 I/O |
+| OBUF     |    2 |                 I/O |
 +----------+------+---------------------+
 
 
