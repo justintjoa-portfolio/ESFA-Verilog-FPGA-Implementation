@@ -22,6 +22,7 @@
 
 module MemoryCell(
         input clk,
+        input handle, 
         input inserted_index,
         input inserted_value,
         input queried_handle,
@@ -72,9 +73,8 @@ module MemoryCell(
     assign resultBool = new_bool;
     assign resultValue = new_value;
     assign resultContext = new_context;
-   
     
-    MemoryCellTupleRegs regs(in_clk, in_arrDef, in_handle, in_array_code, in_eltDef, in_rank, in_low, in_high, in_index, in_value, in_Mark, out_arrDef, out_handle,
+    MemoryCellTupleRegs regs(in_clk, in_arrDef, handle, in_array_code, in_eltDef, in_rank, in_low, in_high, in_index, in_value, in_Mark, out_arrDef, out_handle,
     out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark);
     
     // output wires for each combinator block

@@ -32,41 +32,49 @@ module ESFADesign(
     );
     
     wire c0Handle;
+    assign c0Handle = 0;
     wire c0Result;
     wire c0Context;
     wire c0Bool;
     
     wire c1Handle;
+    assign c1Handle = 1;
     wire c1Result;
     wire c1Context;
     wire c1Bool;
     
     wire c2Handle;
+    assign c2Handle = 2;
     wire c2Result;
     wire c2Context;
     wire c2Bool;
     
     wire c3Handle;
+    assign c3Handle = 3;
     wire c3Result;
     wire c3Context;
     wire c3Bool;
     
     wire c4Handle;
+    assign c4Handle = 4;
     wire c4Result;
     wire c4Context;
     wire c4Bool;
     
     wire c5Handle;
+    assign c5Handle = 5;
     wire c5Result;
     wire c5Context;
     wire c5Bool;
     
     wire c6Handle;
+    assign c6handle = 6;
     wire c6Result;
     wire c6Context;
     wire c6Bool;
     
     wire c7Handle;
+    assign c7Handle = 7;
     wire c7Result;
     wire c7Context;
     wire c7Bool;
@@ -106,13 +114,13 @@ module ESFADesign(
     assign in_isMetadata = isMetadata;
    
     
-    MemoryCell c0(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c0Bool, c0Result, c0Context);
-    MemoryCell c1(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata,  selector, c1Bool, c1Result, c1Context);
-    MemoryCell c2(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c2Bool, c2Result, c2Context);
-    MemoryCell c3(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c3Bool, c3Result, c3Context);
-    MemoryCell c4(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c4Bool, c4Result, c4Context);
-    MemoryCell c5(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c5Bool, c5Result, c5Context);
-    MemoryCell c6(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c6Bool, c6Result, c6Context);
+    MemoryCell c0(clk, c0Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c0Bool, c0Result, c0Context);
+    MemoryCell c1(clk, c1Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata,  selector, c1Bool, c1Result, c1Context);
+    MemoryCell c2(clk, c2Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c2Bool, c2Result, c2Context);
+    MemoryCell c3(clk, c3Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c3Bool, c3Result, c3Context);
+    MemoryCell c4(clk, c4Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c4Bool, c4Result, c4Context);
+    MemoryCell c5(clk, c5Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c5Bool, c5Result, c5Context);
+    MemoryCell c6(clk, c6Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c6Bool, c6Result, c6Context);
     
     NodeCombinator combinator1(clk, selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
     NodeCombinator combinator2(clk, selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
