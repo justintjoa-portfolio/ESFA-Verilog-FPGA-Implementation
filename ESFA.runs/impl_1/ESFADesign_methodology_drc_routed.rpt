@@ -1,0 +1,84 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Mon Oct 18 22:52:24 2021
+| Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file ESFADesign_methodology_drc_routed.rpt -pb ESFADesign_methodology_drc_routed.pb -rpx ESFADesign_methodology_drc_routed.rpx
+| Design       : ESFADesign
+| Device       : xc7s25csga324-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 7
++--------+----------+------------------------------------------+------------+
+| Rule   | Severity | Description                              | Violations |
++--------+----------+------------------------------------------+------------+
+| XDCH-2 | Warning  | Same min and max delay values on IO port | 7          |
++--------+----------+------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+XDCH-2#1 Warning
+Same min and max delay values on IO port  
+The same input delay of 5.000 ns has been defined on port 'isHandle' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 216)
+Related violations: <none>
+
+XDCH-2#2 Warning
+Same min and max delay values on IO port  
+The same input delay of 5.000 ns has been defined on port 'new_index' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 216)
+Related violations: <none>
+
+XDCH-2#3 Warning
+Same min and max delay values on IO port  
+The same input delay of 5.000 ns has been defined on port 'new_value' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 216)
+Related violations: <none>
+
+XDCH-2#4 Warning
+Same min and max delay values on IO port  
+The same input delay of 5.000 ns has been defined on port 'queried_handle' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 216)
+Related violations: <none>
+
+XDCH-2#5 Warning
+Same min and max delay values on IO port  
+The same input delay of 5.000 ns has been defined on port 'selector' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 216)
+Related violations: <none>
+
+XDCH-2#6 Warning
+Same min and max delay values on IO port  
+The same output delay of 5.000 ns has been defined on port 'resultBool' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks *] 5.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 217)
+Related violations: <none>
+
+XDCH-2#7 Warning
+Same min and max delay values on IO port  
+The same output delay of 5.000 ns has been defined on port 'resultValue' relative to clock main_clock for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock [get_clocks *] 5.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/constrs_1/new/esfa_constraint.xdc (Line: 217)
+Related violations: <none>
+
+
