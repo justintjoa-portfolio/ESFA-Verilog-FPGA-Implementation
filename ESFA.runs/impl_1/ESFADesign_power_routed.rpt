@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date             : Mon Oct 18 00:30:40 2021
+| Date             : Mon Oct 18 19:22:15 2021
 | Host             : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command          : report_power -file ESFADesign_power_routed.rpt -pb ESFADesign_power_summary_routed.pb -rpx ESFADesign_power_routed.rpx
 | Design           : ESFADesign
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.473        |
+| Total On-Chip Power (W)  | 0.450        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.000        |
-| Device Static (W)        | 0.473        |
+| Device Static (W)        | 0.450        |
 | Effective TJA (C/W)      | 1.7          |
 | Max Ambient (C)          | 99.2         |
 | Junction Temperature (C) | 25.8         |
@@ -56,8 +56,8 @@ Table of Contents
 | CLB Logic    |     0.000 |        2 |       --- |             --- |
 |   Others     |     0.000 |        2 |       --- |             --- |
 | I/O          |    <0.001 |        2 |       280 |            0.71 |
-| Static Power |     0.473 |          |           |                 |
-| Total        |     0.473 |          |           |                 |
+| Static Power |     0.450 |          |           |                 |
+| Total        |     0.450 |          |           |                 |
 +--------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,7 +72,7 @@ Table of Contents
 | Vccbram    |       0.850 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux     |       1.800 |     0.129 |       0.000 |      0.129 |       NA    | Unspecified | NA         |
 | Vccaux_io  |       1.800 |     0.031 |       0.000 |      0.031 |       NA    | Unspecified | NA         |
-| Vcco33     |       3.300 |     0.007 |       0.000 |      0.007 |       NA    | Unspecified | NA         |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |

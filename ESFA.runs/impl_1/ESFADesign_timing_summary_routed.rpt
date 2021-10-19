@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date              : Mon Oct 18 00:30:40 2021
+| Date              : Mon Oct 18 19:22:15 2021
 | Host              : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command           : report_timing_summary -max_paths 10 -file ESFADesign_timing_summary_routed.rpt -pb ESFADesign_timing_summary_routed.pb -rpx ESFADesign_timing_summary_routed.rpx -warn_on_violation
 | Design            : ESFADesign

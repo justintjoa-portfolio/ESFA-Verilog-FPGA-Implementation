@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date                      : Mon Oct 18 00:30:32 2021
+| Date                      : Mon Oct 18 19:22:07 2021
 | Host                      : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command                   : report_io -file ESFADesign_io_placed.rpt
 | Design                    : ESFADesign
@@ -333,7 +333,7 @@ Table of Contents
 | F10        |             | High Density     | IO_L6P_HDGC_AD6P_86                | GCLK          |             |      86 |            |                         |      |                   |                      |           |            |           |          |      |                  |              |                   |              |
 | F11        |             |                  | GND                                | GND           |             |         |            |                         |      |                   |                      |       0.0 |            |           |          |      |                  |              |                   |              |
 | F12        |             | High Density     | IO_L5N_HDGC_87                     | GCLK          |             |      87 |            |                         |      |                   |                      |           |            |           |          |      |                  |              |                   |              |
-| F13        | resultValue | High Density     | IO_L6N_HDGC_87                     | OUTPUT        | LVCMOS33    |      87 |         12 |                         | SLOW |                   |            FP_VTT_50 |           | FIXED      |           |          |      | NONE             |              |                   |              |
+| F13        | resultValue | High Density     | IO_L6N_HDGC_87                     | TRISTATE      | LVCMOS33    |      87 |         12 |                         | SLOW |                   |            FP_VTT_50 |           | FIXED      |           |          |      | NONE             |              |                   |              |
 | F14        |             | High Density     | IO_L6P_HDGC_87                     | GCLK          |             |      87 |            |                         |      |                   |                      |           |            |           |          |      |                  |              |                   |              |
 | F15        |             | High Performance | IO_L1N_T0L_N1_DBC_67               | User IO       |             |      67 |            |                         |      |                   |                      |           |            |           |          |      |                  |              |                   |              |
 | F16        |             |                  | GND                                | GND           |             |         |            |                         |      |                   |                      |       0.0 |            |           |          |      |                  |              |                   |              |

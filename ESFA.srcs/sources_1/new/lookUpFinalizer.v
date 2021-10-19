@@ -37,9 +37,6 @@ module lookUpFinalizer(
         input isHandle,
         input metadata,
         input isMetadata,
-        input preceding_result,
-        input preceding_context,
-        input[0:0] has_result,
         output[0:0] resultBool,
         output resultValue,
         output resultContext,
@@ -60,8 +57,8 @@ module lookUpFinalizer(
     wire isSuperior;
     assign isSuperior = (mark) && (metadata > rank);
     
-    assign resultBool = preceding_result || mark;
-    assign resultValue = isSuperior ? value : preceding_result;
+    assign resultBool = mark;
+    assign resultValue = value;
     assign out_arrDef = arrDef;   
     assign out_array_code = array_code;
     assign out_eltDef = eltDef;

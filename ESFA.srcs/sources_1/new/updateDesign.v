@@ -37,9 +37,6 @@ module updateDesign(
         input isHandle,
         input metadata,
         input isMetadata,
-        input preceding_result,
-        input preceding_context,
-        input[0:0] has_result,
         output[0:0] resultBool,
         output resultValue,
         output resultContext, 
@@ -63,7 +60,7 @@ module updateDesign(
     wire code_inc;
     assign code_inc = array_code + 1;
     
-    assign resultBool = mark || has_result;
+    assign resultBool = mark;
     assign resultValue = handle; 
     assign resultContext = out_array_code;
     assign out_arrDef = mark ? 1'b1 : arrDef;   

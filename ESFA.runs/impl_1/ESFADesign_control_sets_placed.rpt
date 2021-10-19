@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Mon Oct 18 00:30:32 2021
+| Date         : Mon Oct 18 19:22:07 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file ESFADesign_control_sets_placed.rpt
 | Design       : ESFADesign

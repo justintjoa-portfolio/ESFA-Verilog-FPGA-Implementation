@@ -31,35 +31,45 @@ module ESFADesign(
     input selector
     );
     
-    wire none;
-    assign none = 1'b0;
+    wire c0Handle;
+    wire c0Result;
+    wire c0Context;
+    wire c0Bool;
     
-    wire root1Result;
-    wire root1Context;
-    wire root1Bool;
-    wire root2Result;
-    wire root2Context;
-    wire root2Bool;
-    wire root3Result;
-    wire root3Context;
-    wire root3Bool;
-    wire root4Result;
-    wire root4Context;
-    wire root4Bool;
+    wire c1Handle;
+    wire c1Result;
+    wire c1Context;
+    wire c1Bool;
     
-    wire internal1Result;
-    wire internal1Context;
-    wire internal1Bool;
-    wire internal2Result;
-    wire internal2Context;
-    wire internal2Bool;
+    wire c2Handle;
+    wire c2Result;
+    wire c2Context;
+    wire c2Bool;
     
-    wire leaf1Result;
-    wire leaf1Bool;
-    wire leaf1Context;
+    wire c3Handle;
+    wire c3Result;
+    wire c3Context;
+    wire c3Bool;
     
-    assign resultValue = leaf1Result;
-    assign resultBool = leaf1Bool;
+    wire c4Handle;
+    wire c4Result;
+    wire c4Context;
+    wire c4Bool;
+    
+    wire c5Handle;
+    wire c5Result;
+    wire c5Context;
+    wire c5Bool;
+    
+    wire c6Handle;
+    wire c6Result;
+    wire c6Context;
+    wire c6Bool;
+    
+    wire c7Handle;
+    wire c7Result;
+    wire c7Context;
+    wire c7Bool;
     
     wire combinator1Result;
     wire combinator1Context;
@@ -73,17 +83,19 @@ module ESFADesign(
     wire combinator3Context;
     wire combinator3Bool;
     
-    MemoryCell root1(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, none, none, none, selector, root1Bool, root1Result, root1Context);
-    MemoryCell root2(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, none, none, none, selector, root2Bool, root2Result, root2Context);
-    MemoryCell root3(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, none, none, none, selector, root3Bool, root3Result, root3Context);
-    MemoryCell root4(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, none, none, none, selector, root4Bool, root4Result, root4Context);
-    NodeCombinator combinator1(clk, selector, root1Result, root1Context, root1Bool, root2Result, root2Context, root2Bool, combinator1Result, combinator1Context, combinator1Bool);
-    NodeCombinator combinator2(clk, selector, root3Result, root3Context, root3Bool, root4Result, root4Context, root4Bool, combinator2Result, combinator2Context, combinator2Bool);
-    MemoryCell internal1(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, combinator1Result, combinator1Context, combinator1Bool, selector, internal1Bool, internal1Result, internal1Context);
-    MemoryCell internal2(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, combinator2Result, combinator2Context, combinator2Bool, selector, internal2Bool, internal2Result, internal2Context);
-    NodeCombinator combinator3(clk, selector, interal1Result, internal1Context, internal1Bool, internal2Result, internal2Context, interal2Bool, combinator3Result, combinator3Context, combinator3Bool);
-    MemoryCell leaf1(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, combinator3Result, combinator3Context, combinator3Bool, selector, leaf1Bool, leaf1Result, leaf1Context);
+    wire combinator4Result;
+    wire combinator4Context;
+    wire combinator4Bool;
     
+    wire combinator5Result;
+    wire combinator5Context;
+    wire combinator5Bool;
+    
+    wire combinator6Result;
+    wire combinator6Context;
+    wire combinator6Bool;
+    
+    wire combinator7Context;
     
     reg metadata;
     reg[0:0] isMetadata;
@@ -94,9 +106,28 @@ module ESFADesign(
     assign in_isMetadata = isMetadata;
    
     
+    MemoryCell c0(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c0Bool, c0Result, c0Context);
+    MemoryCell c1(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata,  selector, c1Bool, c1Result, c1Context);
+    MemoryCell c2(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c2Bool, c2Result, c2Context);
+    MemoryCell c3(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c3Bool, c3Result, c3Context);
+    MemoryCell c4(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c4Bool, c4Result, c4Context);
+    MemoryCell c5(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c5Bool, c5Result, c5Context);
+    MemoryCell c6(clk, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c6Bool, c6Result, c6Context);
+    
+    NodeCombinator combinator1(clk, selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
+    NodeCombinator combinator2(clk, selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
+    NodeCombinator combinator3(clk, selector, c4Result, c4Context, c4Bool, c5Result, c5Context, c5Bool, combinator3Result, combinator3Context, combinator3Bool);
+    NodeCombinator combinator4(clk, selector, c6Result, c6Context, c6Bool, c7Result, c7Context, c7Bool, combinator4Result, combinator4Context, combinator4Bool);
+    NodeCombinator combinator5(clk, selector, combinator1Result, combinator1Context, combinator1Bool, combinator2Result, combinator2Context, combinator2Bool, combinator5Result, combinator5Context, combinator5Bool);
+    NodeCombinator combinator6(clk, selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
+    NodeCombinator combinator7(clk, selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
+    
+    
+    
+    
     always @ (posedge clk)
         begin
-            metadata = leaf1Context;
+            metadata = combinator7Context;
             isMetadata = resultBool;
         end
     
