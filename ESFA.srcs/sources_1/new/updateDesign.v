@@ -51,35 +51,31 @@ module updateDesign(
         output[0:0] out_mark
     );
         
-    wire low_inc;
-    assign low_inc = array_code + 1;
-    wire high_inc;
-    assign high_inc = array_code + 1;
     wire rank_inc;
     assign rank_inc = rank + 1;
     wire code_inc;
     assign code_inc = array_code + 1;
     
-    assign resultBool = mark;
+    assign resultBool = (metadata == handle) && isMetadata;
     assign resultValue = handle; 
     assign resultContext = out_array_code;
-    assign out_arrDef = mark ? 1'b1 : arrDef;   
-    assign out_array_code = mark ?
+    assign out_arrDef = resultBool ? 1'b1 : arrDef; 
+    assign out_array_code = resultBool ?
                             isHandle ? code_inc : handle
                             : array_code;
-    assign out_eltDef = mark ? 1'b1 : eltDef;
-    assign out_rank = mark ?
+    assign out_eltDef = resultBool ? 1'b1 : eltDef;
+    assign out_rank = resultBool ?
                       isHandle ? rank_inc : 1
                       : rank;
-    assign out_low = mark ?
-                        isHandle ? low_inc : handle
+    assign out_low = resultBool ?
+                        isHandle ? code_inc : handle
                         : low;
-    assign out_high = mark ?        
-                        isHandle ? high_inc : handle 
+    assign out_high = resultBool ?        
+                        isHandle ? code_inc : handle 
                         : high;
-    assign out_index = mark ? new_index : index;
-    assign out_value = mark ? new_value : value;
-    assign out_mark = 1'b0;
+    assign out_index = resultBool ? new_index : index;
+    assign out_value = resultBool ? new_value : value;
+    assign out_mark = resultBool;
     
     
 endmodule

@@ -52,7 +52,7 @@ module encode(
     );
     
     wire outOfScope;
-    assign outOfScope = (queried_handle > 10);
+    assign outOfScope = (queried_handle > 7);
     
     assign resultBool = (!outOfScope) && (arrDef) && (queried_handle  == handle);
     assign resultValue = array_code;  
@@ -64,6 +64,6 @@ module encode(
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = mark;
+    assign out_mark = 1'b0;
     
 endmodule

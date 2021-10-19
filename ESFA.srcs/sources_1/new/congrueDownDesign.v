@@ -61,16 +61,16 @@ module congrueDownDesign(
     assign high_dec = high - 1;
    
    wire willDecrementCode;
-   assign willDecrementCode = (arrDef) && (array_code > metadata);
+   assign willDecrementCode = (arrDef) && isMetadata && (array_code > metadata);
    
    wire willDecrementLow;
-   assign willDecrementLow  = (eltDef) && (metadata < low);
+   assign willDecrementLow  = (eltDef) && isMetadata && (metadata < low);
    
    wire willDecrementHigh;
-   assign willDecrementHigh = ((eltDef) && (metadata < low)) || (low <= metadata && metadata <= high);
+   assign willDecrementHigh = eltDef && ((metadata < low) || (low <= metadata && metadata <= high)) && isMetadata;
   
    wire negativeSet;
-   assign negativeSet = (out_high - out_low < 0);
+   assign negativeSet = ((out_high - out_low < 0) && eltDef);
     
     assign resultBool = 1'b1;
     assign out_arrDef = negativeSet ? 1'b0 : arrDef;   

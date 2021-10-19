@@ -51,14 +51,10 @@ module lookUpFinalizer(
         output[0:0] out_mark
     );
     
-    wire isCandidate;
-    assign isCandidate = mark;
-    
-    wire isSuperior;
-    assign isSuperior = (mark) && (metadata > rank);
     
     assign resultBool = mark;
     assign resultValue = value;
+    assign resultContext = rank;
     assign out_arrDef = arrDef;   
     assign out_array_code = array_code;
     assign out_eltDef = eltDef;

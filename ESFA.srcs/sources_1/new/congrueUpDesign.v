@@ -58,7 +58,7 @@ module congrueUpDesign(
     assign code_inc = array_code + 1;
     
     wire willIncrementCode;
-    assign willIncrementCode = (array_code > metadata) && (arrDef);
+    assign willIncrementCode = (array_code > metadata) && (isMetadata) && (arrDef);
     
     wire low_inc;
     assign low_inc = low + 1;
@@ -67,10 +67,10 @@ module congrueUpDesign(
     assign high_inc = high + 1;
     
     wire low_high;
-    assign low_high = (eltDef) && (low > metadata);
+    assign low_high = (eltDef) && isMetadata && (low > metadata);
     
     wire high_high;
-    assign high_high = (eltDef) && (high >= metadata);
+    assign high_high = (eltDef) && isMetadata && (high >= metadata);
   
    
     assign resultBool = 1'b1;

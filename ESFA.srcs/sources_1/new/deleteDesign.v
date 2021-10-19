@@ -51,14 +51,11 @@ module deleteDesign(
         output[0:0] out_mark
     );
     
-    wire  arrayDefined;
-    assign arrayDefined = arrDef;
-    
     wire isTargetedArray = (queried_handle == handle);
     
-    assign resultBool = (arrayDefined && isTargetedArray && ! isMetadata);
-    assign resultValue = array_code;
-    assign out_arrDef = 1'b0;   
+    assign resultBool = (arrDef && isTargetedArray);
+    assign resultContext = array_code;
+    assign out_arrDef = resultBool ? 1'b0 : arrDef;   
     assign out_array_code = array_code;
     assign out_eltDef = eltDef; 
     assign out_rank = 1'b0;

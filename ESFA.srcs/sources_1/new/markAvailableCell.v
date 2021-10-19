@@ -55,6 +55,7 @@ module markAvailableCell(
     assign noElementDefined = ! arrDef;
     
     assign resultBool = (noElementDefined);
+    assign resultContext = handle;
     assign out_arrDef = arrDef;  
     assign out_array_code = array_code;
     assign out_eltDef = eltDef;

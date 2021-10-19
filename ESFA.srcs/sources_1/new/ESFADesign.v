@@ -121,6 +121,7 @@ module ESFADesign(
     MemoryCell c4(clk, c4Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c4Bool, c4Result, c4Context);
     MemoryCell c5(clk, c5Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c5Bool, c5Result, c5Context);
     MemoryCell c6(clk, c6Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c6Bool, c6Result, c6Context);
+    MemoryCell c6(clk, c7Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c7Bool, c7Result, c7Context);
     
     NodeCombinator combinator1(clk, selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
     NodeCombinator combinator2(clk, selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
