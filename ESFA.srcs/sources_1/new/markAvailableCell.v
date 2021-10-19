@@ -54,14 +54,14 @@ module markAvailableCell(
     wire noElementDefined;
     assign noElementDefined = ! arrDef;
     
-    assign resultBool = (noElementDefined || has_result);
+    assign resultBool = (noElementDefined);
     assign out_arrDef = arrDef;  
-    assign out_array_code = code;
+    assign out_array_code = array_code;
     assign out_eltDef = eltDef;
     assign out_rank = rank;
     assign out_low = low;
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = (noElementDefined && ! has_result) ? 1'b1 : 1'b0;
+    assign out_mark = mark;
 endmodule

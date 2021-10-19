@@ -85,6 +85,7 @@ module MemoryCell(
     wire e_resultBool, e_resultValue, e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark;
     wire f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark;
     wire g_resultBool, g_resultValue, g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark;
+    wire h_resultBool, h_resultValue, h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark;
     
    updateDesign updater(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark);
@@ -104,8 +105,11 @@ module MemoryCell(
    congrueUpDesign upEqualizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
    metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark);
    
-    congrueDownDesign downEqualizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
-   metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark); 
+   congrueDownDesign downEqualizer(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
+   metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark);
+   
+   markAvailableCell vacantCellMarker(out_arrDef, out_handle, out_array_code, out_eltDef, out_rank, out_low, out_high, out_index, out_value, out_mark, inserted_index, inserted_value, queried_handle, isHandle,
+   metadata, isMetadata, h_resultBool, h_resultValue, h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark);
     
     
     assign in_arrDef = new_arrDef;
@@ -229,6 +233,20 @@ module MemoryCell(
                 new_bool = g_resultBool;
                 new_value = g_resultValue; 
                 new_context = g_resultContext;     
+            if (selector == 7)
+                new_arrDef = h_arrDef;
+                new_array_code = h_array_code;
+                new_eltDef = h_eltDef;
+                new_rank = h_rank;
+                new_low = h_low;
+                new_high = h_high;
+                new_index = h_index;
+                new_value = h_value;
+                new_mark = h_mark;  
+                
+                new_bool = h_resultBool;
+                new_value = h_resultValue; 
+                new_context = h_resultContext;   
         end
 endmodule
 
