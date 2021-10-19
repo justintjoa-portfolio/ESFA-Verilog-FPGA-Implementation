@@ -70,13 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param power.BramSDPPropagationFix 1
-set_param chipscope.maxJobs 4
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xcku5p-ffvb676-2-e
+create_project -in_memory -part xc7s25csga324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -85,7 +80,7 @@ set_property webtalk.parent_dir C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ES
 set_property parent.project_path C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part xilinx.com:kcu116:part0:1.5 [current_project]
+set_property board_part digilentinc.com:arty-s7-25:part0:1.0 [current_project]
 set_property ip_output_repo c:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
@@ -120,7 +115,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top ESFADesign -part xcku5p-ffvb676-2-e
+synth_design -top ESFADesign -part xc7s25csga324-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
