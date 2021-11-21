@@ -31,13 +31,13 @@ output UART_TXD
 wire isrx;   // Uart sees something!
 wire [7:0] rx_byte;  // Uart data
  
-always @(posedge CLK12M) begin
+always @(posedge clk) begin
    if (isrx)    // if you got something
         begin
             // data is rx_byte
             if (r_willWrite == 1)
                 r_willWrite = 0;
-            r_op_selector <= rx_byte[2:0];
+            r_var_selector <= rx_byte[2:0];
             r_data <= rx_byte[7:3];
             if (r_var_selector == 0)
                 r_new_index = r_data;
@@ -60,7 +60,6 @@ end
 reg r_willWrite = 0;
 reg r_var_selector;
 reg r_data;
-reg r_willWrite;
 reg r_new_index;
 reg r_new_value;
 reg r_queried_handle;
@@ -88,16 +87,16 @@ assign selector = r_selector;
 assign resultBool = r_resultBool;
 assign resultValue = r_resultValue;
 
-assign willWrite = r_willWRite;
+assign willWrite = r_willWrite;
 
 ESFADesign(clk, willWrite, new_index, new_value, queried_handle, isHandle, resultBool, resultValue, selector);
 
-uart #(
+UART #(
 .baud_rate(9600), // default is 9600
 .sys_clk_freq(12000000) // default is 100000000
 )
-uart0(
-.clk(CLK12M), // The master clock for this module
+UART0(
+.clk(clk), // The master clock for this module
 .rst(~nrst), // Synchronous reset
 .rx(UART_RXD), // Incoming serial line
 .tx(UART_TXD), // Outgoing serial line
