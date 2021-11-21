@@ -22,6 +22,7 @@
 
 module MemoryCell(
         input clk,
+        input willWrite,
         input handle, 
         input inserted_index,
         input inserted_value,
@@ -135,118 +136,119 @@ module MemoryCell(
     
     always @ (posedge clk)
         begin
-            if (selector == 0)
-                new_arrDef = a_arrDef;
-                new_array_code = a_array_code;
-                new_eltDef = a_eltDef;
-                new_rank = a_rank;
-                new_low = a_low;
-                new_high = a_high;
-                new_index = a_index;
-                new_value = a_value;
-                new_mark = a_mark;
+            if (willWrite == 1) 
+                if (selector == 0)
+                    new_arrDef = a_arrDef;
+                    new_array_code = a_array_code;
+                    new_eltDef = a_eltDef;
+                    new_rank = a_rank;
+                    new_low = a_low;
+                    new_high = a_high;
+                    new_index = a_index;
+                    new_value = a_value;
+                    new_mark = a_mark;
                 
-                new_bool = a_resultBool;
-                new_value = a_resultValue;
-                new_context = a_resultContext;
-            if (selector == 1)
-                new_arrDef = b_arrDef;
-                new_array_code = b_array_code;
-                new_eltDef = b_eltDef;
-                new_rank = b_rank;
-                new_low = b_low;
-                new_high = b_high;
-                new_index = b_index;
-                new_value = b_value;
-                new_mark = b_mark;
+                    new_bool = a_resultBool;
+                    new_value = a_resultValue;
+                    new_context = a_resultContext;
+                if (selector == 1)
+                    new_arrDef = b_arrDef;
+                    new_array_code = b_array_code;
+                    new_eltDef = b_eltDef;
+                    new_rank = b_rank;
+                    new_low = b_low;
+                    new_high = b_high;
+                    new_index = b_index;
+                    new_value = b_value;
+                    new_mark = b_mark;
                 
-                new_bool = b_resultBool;
-                new_value = b_resultValue;
-                new_context = b_resultContext;
-            if (selector == 2)
-                new_arrDef = c_arrDef;
-                new_array_code = c_array_code;
-                new_eltDef = c_eltDef;
-                new_rank = c_rank;
-                new_low = c_low;
-                new_high = c_high;
-                new_index = c_index;
-                new_value = c_value;
-                new_mark = c_mark;
+                    new_bool = b_resultBool;
+                    new_value = b_resultValue;
+                    new_context = b_resultContext;
+                if (selector == 2)
+                    new_arrDef = c_arrDef;
+                    new_array_code = c_array_code;
+                    new_eltDef = c_eltDef;
+                    new_rank = c_rank;
+                    new_low = c_low;
+                    new_high = c_high;
+                    new_index = c_index;
+                    new_value = c_value;
+                    new_mark = c_mark;
                 
-                new_bool = c_resultBool;
-                new_value = c_resultValue;
-                new_context = c_resultContext;
-            if (selector == 3)
-                new_arrDef = d_arrDef;
-                new_array_code = d_array_code;
-                new_eltDef = d_eltDef;
-                new_rank = d_rank;
-                new_low = d_low;
-                new_high = d_high;
-                new_index = d_index;
-                new_value = d_value;
-                new_mark = d_mark;
+                    new_bool = c_resultBool;
+                    new_value = c_resultValue;
+                    new_context = c_resultContext;
+                if (selector == 3)
+                    new_arrDef = d_arrDef;
+                    new_array_code = d_array_code;
+                    new_eltDef = d_eltDef;
+                    new_rank = d_rank;
+                    new_low = d_low;
+                    new_high = d_high;
+                    new_index = d_index;
+                    new_value = d_value;
+                    new_mark = d_mark;
                 
-                new_bool = d_resultBool;
-                new_value = d_resultValue;
-                new_context = d_resultContext;
-            if (selector == 4)
-                new_arrDef = e_arrDef;
-                new_array_code = e_array_code;
-                new_eltDef = e_eltDef;
-                new_rank = e_rank;
-                new_low = e_low;
-                new_high = e_high;
-                new_index = e_index;
-                new_value = e_value;
-                new_mark = e_mark;
+                    new_bool = d_resultBool;
+                    new_value = d_resultValue;
+                    new_context = d_resultContext;
+                if (selector == 4)
+                    new_arrDef = e_arrDef;
+                    new_array_code = e_array_code;
+                    new_eltDef = e_eltDef;
+                    new_rank = e_rank;
+                    new_low = e_low;
+                    new_high = e_high;
+                    new_index = e_index;
+                    new_value = e_value;
+                    new_mark = e_mark;
                 
-                new_bool = e_resultBool;
-                new_value = e_resultValue;
-                new_context = e_resultContext;
-            if (selector == 5)
-                new_arrDef = f_arrDef;
-                new_array_code = f_array_code;
-                new_eltDef = f_eltDef;
-                new_rank = f_rank;
-                new_low = f_low;
-                new_high = f_high;
-                new_index = f_index;
-                new_value = f_value;
-                new_mark = f_mark;
+                    new_bool = e_resultBool;
+                    new_value = e_resultValue;
+                    new_context = e_resultContext;
+                if (selector == 5)
+                    new_arrDef = f_arrDef;
+                    new_array_code = f_array_code;
+                    new_eltDef = f_eltDef;
+                    new_rank = f_rank;
+                    new_low = f_low;
+                    new_high = f_high;
+                    new_index = f_index;
+                    new_value = f_value;
+                    new_mark = f_mark;
                 
-                new_bool = f_resultBool;
-                new_value = f_resultValue;
-                new_context = f_resultContext;
-            if (selector == 6)   
-                new_arrDef = g_arrDef;
-                new_array_code = g_array_code;
-                new_eltDef = g_eltDef;
-                new_rank = g_rank;
-                new_low = g_low;
-                new_high = g_high;
-                new_index = g_index;
-                new_value = g_value;
-                new_mark = g_mark;  
+                    new_bool = f_resultBool;
+                    new_value = f_resultValue;
+                    new_context = f_resultContext;
+                if (selector == 6)   
+                    new_arrDef = g_arrDef;
+                    new_array_code = g_array_code;
+                    new_eltDef = g_eltDef;
+                    new_rank = g_rank;
+                    new_low = g_low;
+                    new_high = g_high;
+                    new_index = g_index;
+                    new_value = g_value;
+                    new_mark = g_mark;  
                 
-                new_bool = g_resultBool;
-                new_value = g_resultValue; 
-                new_context = g_resultContext;     
-            if (selector == 7)
-                new_arrDef = h_arrDef;
-                new_array_code = h_array_code;
-                new_eltDef = h_eltDef;
-                new_rank = h_rank;
-                new_low = h_low;
-                new_high = h_high;
-                new_index = h_index;
-                new_value = h_value;
-                new_mark = h_mark;  
+                    new_bool = g_resultBool;
+                    new_value = g_resultValue; 
+                    new_context = g_resultContext;     
+                if (selector == 7)
+                    new_arrDef = h_arrDef;
+                    new_array_code = h_array_code;
+                    new_eltDef = h_eltDef;
+                    new_rank = h_rank;
+                    new_low = h_low;
+                    new_high = h_high;
+                    new_index = h_index;
+                    new_value = h_value;
+                    new_mark = h_mark;  
                 
-                new_bool = h_resultBool;
-                new_value = h_resultValue; 
-                new_context = h_resultContext;   
+                    new_bool = h_resultBool;
+                    new_value = h_resultValue; 
+                    new_context = h_resultContext;   
         end
 endmodule
 
