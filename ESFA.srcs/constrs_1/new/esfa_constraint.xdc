@@ -194,27 +194,17 @@
 ## this property must be set even if SW3 is not used in the design.
 #set_property INTERNAL_VREF 0.675 [get_iobanks 34]
 
+
+
+set_property PACKAGE_PIN R12 [get_ports UART_TXD]
+
 set_property PACKAGE_PIN P1 [get_ports clk]
-set_property PACKAGE_PIN P2 [get_ports isHandle]
-set_property PACKAGE_PIN R1 [get_ports new_index]
-set_property PACKAGE_PIN R2 [get_ports new_value]
-set_property PACKAGE_PIN R3 [get_ports queried_handle]
-set_property PACKAGE_PIN T1 [get_ports resultBool]
-set_property PACKAGE_PIN T2 [get_ports resultValue]
-set_property PACKAGE_PIN U1 [get_ports selector]
+set_property PACKAGE_PIN V12 [get_ports UART_RXD]
 
-set_property IOSTANDARD LVCMOS33 [get_ports clk]
-set_property IOSTANDARD LVCMOS33 [get_ports isHandle]
-set_property IOSTANDARD LVCMOS33 [get_ports new_index]
-set_property IOSTANDARD LVCMOS33 [get_ports new_value]
-set_property IOSTANDARD LVCMOS33 [get_ports queried_handle]
-set_property IOSTANDARD LVCMOS33 [get_ports resultBool]
-set_property IOSTANDARD LVCMOS33 [get_ports resultValue]
-set_property IOSTANDARD LVCMOS33 [get_ports selector]
-
-create_clock -period 10.000 -name main_clock -waveform {0.000 5.000} [get_ports clk]
-set_input_delay -clock [get_clocks *] 5.000 [get_ports {isHandle new_index new_value queried_handle selector}]
+create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]
+set_input_delay -clock [get_clocks *] 5.000 [get_ports UART_RXD]
 set_output_delay -clock [get_clocks *] 5.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
 
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
+
