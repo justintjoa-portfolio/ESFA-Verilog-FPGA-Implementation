@@ -30,6 +30,7 @@ output UART_TXD
 
 wire isrx;   // Uart sees something!
 wire [7:0] rx_byte;  // Uart data
+reg [7:0] tx_byte; // byte to transmit
  
 always @(posedge clk) begin
    if (isrx)    // if you got something
@@ -50,10 +51,8 @@ always @(posedge clk) begin
             if (r_var_selector == 4)
                 r_selector = r_data;
                 r_willWrite = 1;
-            if (r_var_selector == 5)
-                r_resultBool = r_data;
-            if (r_var_selector == 6)
-                r_resultValue = r_data;
+                tx_byte[0:0] <= resultBool;
+                tx_byte[7:1] <= resultValue; 
         end
 end
 
@@ -65,8 +64,6 @@ reg r_new_value;
 reg r_queried_handle;
 reg r_isHandle;
 reg r_selector;
-reg r_resultBool;
-reg r_resultValue;
 
 wire willWrite;
 
@@ -84,8 +81,6 @@ assign new_value = r_new_value;
 assign queried_handle = r_queried_handle;
 assign isHandle = r_isHandle;
 assign selector = r_selector;
-assign resultBool = r_resultBool;
-assign resultValue = r_resultValue;
 
 assign willWrite = r_willWrite;
 

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Sun Nov 21 18:21:44 2021
+| Date         : Sun Nov 21 20:17:51 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file ESFATop_utilization_synth.rpt -pb ESFATop_utilization_synth.pb
 | Design       : ESFATop
