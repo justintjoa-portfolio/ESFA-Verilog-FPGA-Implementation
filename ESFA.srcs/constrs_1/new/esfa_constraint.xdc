@@ -208,3 +208,7 @@ set_output_delay -clock [get_clocks *] 5.000 [get_ports -filter { NAME =~  "*" &
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 
+
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports UART_RXD]
+set_property IOSTANDARD LVCMOS33 [get_ports UART_TXD]
