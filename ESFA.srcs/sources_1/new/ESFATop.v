@@ -31,11 +31,15 @@ output UART_TXD
 wire isrx;   // Uart sees something!
 wire [7:0] rx_byte;  // Uart data
 reg [7:0] tx_byte; // byte to transmit
+reg xmitnow=1'b0; // transmit signal
  
 always @(posedge clk) begin
    if (isrx)    // if you got something
         begin
             // data is rx_byte
+            tx_byte <= rx_byte;
+            xmitnow<=1'b1;
+            /*
             if (r_willWrite == 1)
                 r_willWrite = 0;
             r_var_selector <= rx_byte[2:0];
@@ -53,7 +57,10 @@ always @(posedge clk) begin
                 r_willWrite = 1;
                 tx_byte[0:0] <= resultBool;
                 tx_byte[7:1] <= resultValue; 
+            */
         end
+    else
+         xmitnow<=1'b0;
 end
 
 reg r_willWrite = 0;
@@ -95,8 +102,8 @@ UART0(
 .rst(~nrst), // Synchronous reset
 .rx(UART_RXD), // Incoming serial line
 .tx(UART_TXD), // Outgoing serial line
-.transmit(), // Signal to transmit
-.tx_byte(), // Byte to transmit
+.transmit(xmitnow), // Signal to transmit
+.tx_byte(tx_byte), // Byte to transmit
 .received(isrx), // Indicated that a byte has been received
 .rx_byte(rx_byte), // Byte received
 .is_receiving(), // Low when receive line is idle
