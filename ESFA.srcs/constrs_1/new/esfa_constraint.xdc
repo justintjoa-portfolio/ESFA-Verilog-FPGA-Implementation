@@ -198,12 +198,12 @@
 
 set_property PACKAGE_PIN R12 [get_ports UART_TXD]
 
-set_property PACKAGE_PIN P1 [get_ports clk]
+set_property PACKAGE_PIN P14 [get_ports clk]
 set_property PACKAGE_PIN V12 [get_ports UART_RXD]
 
-create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]
-set_input_delay -clock [get_clocks *] 5.000 [get_ports UART_RXD]
-set_output_delay -clock [get_clocks *] 5.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
+create_clock -period 28.000 -name clk -waveform {0.000 14.000} [get_ports clk]
+set_input_delay -clock [get_clocks *] 14.000 [get_ports UART_RXD]
+set_output_delay -clock [get_clocks *] 14.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
 
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
@@ -212,3 +212,10 @@ set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports UART_RXD]
 set_property IOSTANDARD LVCMOS33 [get_ports UART_TXD]
+
+
+
+
+
+
+

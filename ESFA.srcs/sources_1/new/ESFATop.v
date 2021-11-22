@@ -99,7 +99,7 @@ UART #(
 )
 UART0(
 .clk(clk), // The master clock for this module
-.rst(~nrst), // Synchronous reset
+.rst(), // Synchronous reset
 .rx(UART_RXD), // Incoming serial line
 .tx(UART_TXD), // Outgoing serial line
 .transmit(xmitnow), // Signal to transmit

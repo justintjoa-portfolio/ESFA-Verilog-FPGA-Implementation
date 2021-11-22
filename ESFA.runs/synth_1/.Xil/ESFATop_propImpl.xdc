@@ -2,6 +2,6 @@ set_property SRC_FILE_INFO {cfile:C:/Users/justi/OneDrive/Documents/Vivado/ESFA/
 set_property src_info {type:XDC file:1 line:199 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN R12 [get_ports UART_TXD]
 set_property src_info {type:XDC file:1 line:201 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN P1 [get_ports clk]
+set_property PACKAGE_PIN P14 [get_ports clk]
 set_property src_info {type:XDC file:1 line:202 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN V12 [get_ports UART_RXD]
