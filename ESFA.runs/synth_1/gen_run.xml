@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637637259">
+<GenRun Id="synth_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637648105">
   <File Type="PA-TCL" Name="ESFATop.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="ESFATop_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ESFATop_reports.tcl"/>
   <File Type="RDS-RDS" Name="ESFATop.vds"/>
   <File Type="RDS-UTIL" Name="ESFATop_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="ESFATop_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="ESFATop.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="ESFATop_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="ESFATop_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ESFADesign.v">
@@ -30,6 +33,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/NodeCombinator.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/UART.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -94,14 +104,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/ESFATop.v">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/UART.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

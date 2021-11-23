@@ -21,6 +21,36 @@
 
 
 module esfa_test(
-
+        
     );
+    
+    reg clk;
+    reg willWrite;
+    reg new_index;
+    reg new_value;
+    reg queried_handle;
+    reg isHandle;
+    wire resultBool;
+    wire resultValue;
+    reg selector;
+    
+    always begin
+        clk = 1; #14;
+        clk = 0; #14;
+    end
+    
+    ESFADesign design(
+        .clk(clk),
+        .willWrite(willWrite),
+        .new_index(new_index),
+        .new_value(new_value),
+        .queried_handle(queried_handle),
+        .isHandle(isHandle),
+        .resultBool(resultBool),
+        .resultValue(resultValue),
+        .selector(selector)
+        
+    );
+    
+    
 endmodule
