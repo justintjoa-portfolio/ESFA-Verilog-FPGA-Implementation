@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Sun Nov 21 23:39:25 2021
+| Date         : Mon Nov 22 19:15:31 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file ESFATop_methodology_drc_routed.rpt -pb ESFATop_methodology_drc_routed.pb -rpx ESFATop_methodology_drc_routed.rpx
 | Design       : ESFATop
@@ -23,15 +23,21 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 2
-+--------+----------+------------------------------------------+------------+
-| Rule   | Severity | Description                              | Violations |
-+--------+----------+------------------------------------------+------------+
-| XDCH-2 | Warning  | Same min and max delay values on IO port | 2          |
-+--------+----------+------------------------------------------+------------+
+             Violations found: 3
++-----------+----------+------------------------------------------+------------+
+| Rule      | Severity | Description                              | Violations |
++-----------+----------+------------------------------------------+------------+
+| TIMING-16 | Warning  | Large setup violation                    | 1          |
+| XDCH-2    | Warning  | Same min and max delay values on IO port | 2          |
++-----------+----------+------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -6.915 ns between UART_RXD (clocked by clk) and UART_TXD (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
 XDCH-2#1 Warning
 Same min and max delay values on IO port  
 The same input delay of 14.000 ns has been defined on port 'UART_RXD' relative to clock clk for both max and min. Make sure this reflects the design intent.

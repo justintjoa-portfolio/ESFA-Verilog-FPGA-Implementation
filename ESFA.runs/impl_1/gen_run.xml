@@ -1,80 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637566695">
+<GenRun Id="impl_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637637295">
   <File Type="ROUTE-PWR" Name="ESFATop_power_routed.rpt"/>
   <File Type="PA-TCL" Name="ESFATop.tcl"/>
-  <File Type="BITSTR-MMI" Name="ESFATop.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="ESFATop_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="ESFATop_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR-SUM" Name="ESFATop_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="ESFATop_reports.tcl"/>
-  <File Type="OPT-TIMING" Name="ESFATop_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="ESFATop_opt.dcp"/>
+  <File Type="BITSTR-MSK" Name="ESFATop.msk"/>
+  <File Type="ROUTE-CLK" Name="ESFATop_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="ESFATop.vdi"/>
+  <File Type="BG-BIT" Name="ESFATop.bit"/>
+  <File Type="BG-DRC" Name="ESFATop.drc"/>
+  <File Type="BG-BGN" Name="ESFATop.bgn"/>
+  <File Type="BG-BIN" Name="ESFATop.bin"/>
+  <File Type="BITSTR-RBT" Name="ESFATop.rbt"/>
+  <File Type="BITSTR-NKY" Name="ESFATop.nky"/>
+  <File Type="BITSTR-BMM" Name="ESFATop_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="ESFATop.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="ESFATop_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-SYSDEF" Name="ESFATop.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="ESFATop_methodology_drc_routed.pb"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="ESFATop.ltx"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="ESFATop_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="ESFATop.hwdef"/>
-  <File Type="PWROPT-DCP" Name="ESFATop_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="ESFATop_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="ESFATop_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="ESFATop_placed.dcp"/>
   <File Type="PLACE-IO" Name="ESFATop_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="ESFATop_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="ESFATop_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="ESFATop_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="ESFATop_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="ESFATop_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="ESFATop_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="ESFATop.bin"/>
-  <File Type="PLACE-TIMING" Name="ESFATop_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="ESFATop_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="ESFATop.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="ESFATop_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="ESFATop_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="ESFATop_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="ESFATop.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="ESFATop_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="ESFATop_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="ESFATop_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="ESFATop_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="ESFATop_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="ESFATop_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="ESFATop_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="ESFATop_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="ESFATop_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="ESFATop_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="ESFATop_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="ESFATop_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="ESFATop_route_status.pb"/>
+  <File Type="ROUTE-DCP" Name="ESFATop_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="ESFATop_routed_error.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="ESFATop_routed_bb.dcp"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="ESFATop_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="ESFATop_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="ESFATop_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="ESFATop_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="ESFATop_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="ESFATop_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="ESFATop_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="ESFATop_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="ESFATop_opt.dcp"/>
+  <File Type="PLACE-DCP" Name="ESFATop_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="ESFATop_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="ESFATop_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="ESFATop_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="ESFATop_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="ESFATop_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="ESFATop_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="ESFATop_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="ESFATop_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="ESFATop_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="ESFATop.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="ESFATop_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="ESFATop_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="ESFATop.nky"/>
-  <File Type="BITSTR-BMM" Name="ESFATop_bd.bmm"/>
+  <File Type="ROUTE-DRC-RPX" Name="ESFATop_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="ESFATop_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="ESFATop.pdi"/>
   <File Type="RCFI_FILE" Name="ESFATop.rcfi"/>
   <File Type="CFI_FILE" Name="ESFATop.cfi"/>
   <File Type="RNPI_FILE" Name="ESFATop.rnpi"/>
   <File Type="NPI_FILE" Name="ESFATop.npi"/>
   <File Type="RBD_FILE" Name="ESFATop.rbd"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="ESFATop.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="ESFATop.sysdef"/>
-  <File Type="BG-BGN" Name="ESFATop.bgn"/>
-  <File Type="BG-DRC" Name="ESFATop.drc"/>
-  <File Type="RDI-RDI" Name="ESFATop.vdi"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ESFADesign.v">
@@ -99,13 +81,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/NodeCombinator.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/UART.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -175,6 +150,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/UART.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/component.xml">
       <FileInfo SFType="IPXACT"/>
     </File>
@@ -214,5 +197,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

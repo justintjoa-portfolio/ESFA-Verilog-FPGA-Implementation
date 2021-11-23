@@ -70,11 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s25csga324-1
 
@@ -100,7 +96,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v
-  C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/UART.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v

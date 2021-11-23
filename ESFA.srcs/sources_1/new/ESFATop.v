@@ -37,9 +37,7 @@ always @(posedge clk) begin
    if (isrx)    // if you got something
         begin
             // data is rx_byte
-            tx_byte <= rx_byte;
             xmitnow<=1'b1;
-            /*
             if (r_willWrite == 1)
                 r_willWrite = 0;
             r_var_selector <= rx_byte[2:0];
@@ -57,11 +55,11 @@ always @(posedge clk) begin
                 r_willWrite = 1;
                 tx_byte[0:0] <= resultBool;
                 tx_byte[7:1] <= resultValue; 
-            */
         end
     else
          xmitnow<=1'b0;
 end
+
 
 reg r_willWrite = 0;
 reg r_var_selector;
@@ -91,7 +89,9 @@ assign selector = r_selector;
 
 assign willWrite = r_willWrite;
 
+
 ESFADesign(clk, willWrite, new_index, new_value, queried_handle, isHandle, resultBool, resultValue, selector);
+
 
 UART #(
 .baud_rate(9600), // default is 9600
@@ -110,5 +110,6 @@ UART0(
 .is_transmitting(),// Low when transmit line is idle
 .recv_error() // Indicates error in receiving packet.
 );
+
 
 endmodule
