@@ -38,23 +38,26 @@ always @(posedge clk) begin
         begin
             // data is rx_byte
             xmitnow<=1'b1;
-            if (r_willWrite == 1)
-                r_willWrite = 0;
             r_var_selector <= rx_byte[2:0];
             r_data <= rx_byte[7:3];
             if (r_var_selector == 0)
-                r_new_index = r_data;
+                r_new_index <= r_data;
+                tx_byte <= 1;
             if (r_var_selector == 1)
-                r_new_value = r_data;
+                r_new_value <= r_data;
+                tx_byte <= 1;
             if (r_var_selector == 2)
-                r_queried_handle = r_data;
+                r_queried_handle <= r_data;
+                tx_byte <= 1;
             if (r_var_selector == 3)
-                r_isHandle = r_data;
+                r_isHandle <= r_data;
+                tx_byte <= 1;
             if (r_var_selector == 4)
                 r_selector = r_data;
-                r_willWrite = 1;
+                r_willWrite <= 1;
                 tx_byte[0:0] <= resultBool;
                 tx_byte[7:1] <= resultValue; 
+            r_willWrite <= 0;
         end
     else
          xmitnow<=1'b0;
