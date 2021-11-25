@@ -1,0 +1,23 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module assert
+INFO: [VRFC 10-311] analyzing module esfa_test
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:58]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:74]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:90]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:91]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:92]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:93]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:94]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:95]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:96]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:97]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:116]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:117]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:118]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:119]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:120]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:121]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:122]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:123]
+ERROR: [VRFC 10-4982] syntax error near 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:125]
+INFO: [#UNDEF] Sorry, too many errors..

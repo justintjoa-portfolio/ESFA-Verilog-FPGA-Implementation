@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Nov 24 01:27:14 2021
+| Date         : Wed Nov 24 16:01:55 2021
 | Host         : DESKTOP-JCIFBS1 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file ESFATop_control_sets_placed.rpt
 | Design       : ESFATop
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     5 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    17 |
+| Unused register locations in slices containing registers |    18 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,9 +58,9 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              22 |            9 |
+| No           | No                    | No                     |              21 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              15 |            7 |
+| No           | Yes                   | No                     |              15 |            8 |
 | Yes          | No                    | No                     |              10 |            3 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
@@ -76,8 +76,8 @@ Table of Contents
 |  clk_IBUF_BUFG | UART0/tx_out_i_1_n_0               |                          |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | UART0/rx_bits_remaining[3]_i_1_n_0 |                          |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG | UART0/tx_bits_remaining            |                          |                1 |              5 |         5.00 |
-|  clk_IBUF_BUFG |                                    | UART0/rx_clk[14]_i_1_n_0 |                7 |             15 |         2.14 |
-|  clk_IBUF_BUFG |                                    |                          |                9 |             22 |         2.44 |
+|  clk_IBUF_BUFG |                                    | UART0/rx_clk[14]_i_1_n_0 |                8 |             15 |         1.88 |
+|  clk_IBUF_BUFG |                                    |                          |                8 |             21 |         2.62 |
 +----------------+------------------------------------+--------------------------+------------------+----------------+--------------+
 
 

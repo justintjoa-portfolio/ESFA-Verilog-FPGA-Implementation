@@ -31,9 +31,7 @@ module assert(input clk, input test);
 endmodule
 
 
-module esfa_test(
-        
-    );
+module esfa_test;
     
     reg clk;
     reg willWrite = 0;
@@ -66,8 +64,7 @@ module esfa_test(
         .isHandle(isHandle),
         .resultBool(resultBool),
         .resultValue(resultValue),
-        .selector(selector)
-        
+        .selector(selector)  
     );
     
     
