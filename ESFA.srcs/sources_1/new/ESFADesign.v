@@ -21,15 +21,15 @@
 
 
 module ESFADesign(
-    input clk, 
-    input willWrite,
-    input new_index,
-    input new_value,
-    input queried_handle,
-    input isHandle,
-    output resultBool,
-    output resultValue,
-    input selector
+    input[0:0] clk, 
+    input[0:0] willWrite,
+    input[7:0] new_index,
+    input[7:0] new_value,
+    input[7:0] queried_handle,
+    input[0:0] isHandle,
+    output[0:0] resultBool,
+    output[7:0] resultValue,
+    input[7:0] selector
     );
     
     wire c0Handle;
@@ -106,13 +106,14 @@ module ESFADesign(
     
     wire combinator7Context;
     
-    reg[7:0] metadata = 0;
-    reg[0:0] isMetadata = 0;
-    
     wire in_metadata;
-    assign in_metadata = metadata;
-    wire[0:0] in_isMetadata;
-    assign in_isMetadata = isMetadata;
+    wire in_isMetadata;
+    
+    assign in_metadata = combinator7Context;
+    assign in_isMetadata = resultBool;
+    
+    reg[0:0] reset = 1;
+
    
     
     MemoryCell c0(clk, willWrite, c0Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c0Bool, c0Result, c0Context);
@@ -137,8 +138,9 @@ module ESFADesign(
     
     always @ (posedge clk)
         begin
-            metadata = combinator7Context;
-            isMetadata = resultBool;
+            if (reset == 1) begin
+                if (resultBool == 0 && resultValue == 0)
+                    reset = 0;
+            end
         end
-    
 endmodule

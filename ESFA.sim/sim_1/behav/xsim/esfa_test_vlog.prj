@@ -2,7 +2,6 @@
 verilog xil_defaultlib  \
 "../../../../ESFA.srcs/sources_1/new/ESFADesign.v" \
 "../../../../ESFA.srcs/sources_1/new/MemoryCell.v" \
-"../../../../ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v" \
 "../../../../ESFA.srcs/sources_1/new/NodeCombinator.v" \
 "../../../../ESFA.srcs/sim_1/new/assert.v" \
 "../../../../ESFA.srcs/sources_1/new/congrueDownDesign.v" \

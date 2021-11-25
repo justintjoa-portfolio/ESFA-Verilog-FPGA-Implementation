@@ -22,17 +22,17 @@
 
 module esfa_test;
     
-    reg clk;
-    reg willWrite = 0;
-    reg[7:0] new_index;
-    reg[7:0] new_value;
-    reg[7:0] queried_handle;
-    reg isHandle;
+    reg[0:0] clk = 0;
+    reg[0:0] willWrite = 0;
+    reg[7:0] new_index = 0;
+    reg[7:0] new_value = 0;
+    reg[7:0] queried_handle = 0;
+    reg[0:0] isHandle = 0;
     wire resultBool;
-    wire[7:0] resultValue;
-    reg[7:0] selector;
+    wire resultValue;
+    reg[7:0] selector = 0;
     
-    reg r_true = 1;
+    reg[0:0] r_true = 1;
     wire is_true;
     assign is_true = r_true;
     
@@ -61,6 +61,8 @@ module esfa_test;
     begin
         // update Basic test
         $display("update basic test, begin");
+        #280 //wait for reset to complete
+        r_true = (l1.reset == 0);
         r_true = (l1.c0.new_rank == 0);
         $display("assertions working correctly");
         
