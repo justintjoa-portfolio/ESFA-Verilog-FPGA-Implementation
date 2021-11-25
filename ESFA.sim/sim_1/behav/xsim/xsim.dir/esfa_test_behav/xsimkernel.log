@@ -1,4 +1,4 @@
-Running: xsim.dir/esfa_test_behav/xsimk.exe -simmode gui -wdb esfa_test_behav.wdb -simrunnum 0 -socket 63492
+Running: xsim.dir/esfa_test_behav/xsimk.exe -simmode gui -wdb esfa_test_behav.wdb -simrunnum 0 -socket 49739
 Design successfully loaded
-Design Loading Memory Usage: 7880 KB (Peak: 7880 KB)
+Design Loading Memory Usage: 7940 KB (Peak: 7940 KB)
 Design Loading CPU Usage: 15 ms

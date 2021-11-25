@@ -32,7 +32,7 @@ module MemoryCell(
         input[0:0] isMetadata,
         input[7:0] selector,
         output reg[0:0] new_bool = 0,
-        output reg[7:0] new_value = 0,
+        output reg[7:0] new_result_value = 0,
         output reg[7:0] new_context = 0
     );
      
@@ -44,6 +44,7 @@ module MemoryCell(
      reg[7:0] new_high = 0;
      reg[7:0] new_index = 0;
      reg[0:0] new_mark = 0;
+     reg[7:0] new_value = 0;
     
 
    
@@ -109,7 +110,7 @@ module MemoryCell(
                     new_mark = a_mark;
                 
                     new_bool = a_resultBool;
-                    new_value = a_resultValue;
+                    new_result_value = a_resultValue;
                     new_context = a_resultContext;
                 end
                 if (selector == 1) begin
@@ -124,7 +125,7 @@ module MemoryCell(
                     new_mark = b_mark;
                 
                     new_bool = b_resultBool;
-                    new_value = b_resultValue;
+                    new_result_value = b_resultValue;
                     new_context = b_resultContext;
                 end
                 if (selector == 2) begin
@@ -139,7 +140,7 @@ module MemoryCell(
                     new_mark = c_mark;
                 
                     new_bool = c_resultBool;
-                    new_value = c_resultValue;
+                    new_result_value = c_resultValue;
                     new_context = c_resultContext;
                 end
                 if (selector == 3) begin
@@ -154,7 +155,7 @@ module MemoryCell(
                     new_mark = d_mark;
                 
                     new_bool = d_resultBool;
-                    new_value = d_resultValue;
+                    new_result_value = d_resultValue;
                     new_context = d_resultContext;
                 end
                 if (selector == 4) begin
@@ -169,7 +170,7 @@ module MemoryCell(
                     new_mark = e_mark;
                 
                     new_bool = e_resultBool;
-                    new_value = e_resultValue;
+                    new_result_value = e_resultValue;
                     new_context = e_resultContext;
                 end
                 if (selector == 5) begin
@@ -184,7 +185,7 @@ module MemoryCell(
                     new_mark = f_mark;
                 
                     new_bool = f_resultBool;
-                    new_value = f_resultValue;
+                    new_result_value = f_resultValue;
                     new_context = f_resultContext;
                 end
                 if (selector == 6) begin
@@ -199,7 +200,7 @@ module MemoryCell(
                     new_mark = g_mark;  
                 
                     new_bool = g_resultBool;
-                    new_value = g_resultValue; 
+                    new_result_value = g_resultValue; 
                     new_context = g_resultContext;   
                 end  
                 if (selector == 7) begin
@@ -214,7 +215,7 @@ module MemoryCell(
                     new_mark = h_mark;  
                 
                     new_bool = h_resultBool;
-                    new_value = h_resultValue; 
+                    new_result_value = h_resultValue; 
                     new_context = h_resultContext;  
                 end
             end

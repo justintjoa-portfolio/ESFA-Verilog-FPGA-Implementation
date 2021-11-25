@@ -61,9 +61,9 @@ module esfa_test;
     begin
         // update Basic test
         $display("update basic test, begin");
-        #420; //wait for reset to complete
-        r_true = (l1.reset == 0);
-        r_true = (l1.c0.new_rank == 0);
+        #420 //wait for reset to complete
+        r_true = (l1.reset == 0); #28
+        r_true = (l1.c0.new_rank == 0); #28
         $display("assertions working correctly");
         
         //ESFAArrayOp().update(emptyArrayState, None, 0, 5)
@@ -71,25 +71,30 @@ module esfa_test;
         new_value = 5;
         isHandle = 1'b0;
         selector = 3;
-        willWrite = 1;
         #28;
+        r_true = (l1.in_isMetadata == 0); #28
+        r_true = (l1.in_metadata == 0); #28
+        r_true = 1;
         selector = 7;
         #28;
+        r_true = (l1.in_isMetadata == 1); #28   
+        r_true = (l1.in_metadata == 0); #28  
+        willWrite = 1;
         selector = 0;
         #28;
         selector = 5;
         #28;
         willWrite = 0;
-        r_true = (l1.c0.new_arrDef == 1'b1);
-        r_true = (l1.c0.new_eltDef == 1'b1);
-        r_true = (l1.c0.new_mark == 1'b0);
-        r_true = (l1.c0.new_index == 0);
-        r_true = (l1.c0.new_value == 5);
-        r_true = (l1.c0.new_rank == 1);
-        r_true = (l1.c0.new_low == 0);
-        r_true = (l1.c0.new_high == 0);
-        r_true = resultBool;
-        r_true = (resultValue == 0);
+        r_true = (l1.c0.new_arrDef == 1'b1); #28
+        r_true = (l1.c0.new_eltDef == 1'b1); #28
+        r_true = (l1.c0.new_mark == 1'b0); #28
+        r_true = (l1.c0.new_index == 0); #28
+        r_true = (l1.c0.new_value == 5); #28
+        r_true = (l1.c0.new_rank == 1); #28
+        r_true = (l1.c0.new_low == 0); #28
+        r_true = (l1.c0.new_high == 0); #28
+        r_true = resultBool; #28
+        r_true = (resultValue == 0); #28
         
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
         new_index = 2;
