@@ -21,7 +21,10 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+// commented out for ease of testbench testing 
+//comment back in for functional hardware test
 
+/*
 module ESFATop(
 input clk,
 input UART_RXD,
@@ -116,3 +119,4 @@ UART0(
 
 
 endmodule
+*/
