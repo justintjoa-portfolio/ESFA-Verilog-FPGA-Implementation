@@ -5,20 +5,4 @@ Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.MemoryCellTupleRegs
-Compiling module xil_defaultlib.updateDesign
-Compiling module xil_defaultlib.lookUpScan
-Compiling module xil_defaultlib.lookUpFinalizer
-Compiling module xil_defaultlib.encode
-Compiling module xil_defaultlib.deleteDesign
-Compiling module xil_defaultlib.congrueUpDesign
-Compiling module xil_defaultlib.congrueDownDesign
-Compiling module xil_defaultlib.markAvailableCell
-Compiling module xil_defaultlib.MemoryCell
-Compiling module xil_defaultlib.NodeCombinator
-Compiling module xil_defaultlib.ESFADesign
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot ESFADesign_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
