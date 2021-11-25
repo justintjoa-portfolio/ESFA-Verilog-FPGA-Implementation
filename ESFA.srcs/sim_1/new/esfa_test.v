@@ -61,7 +61,7 @@ module esfa_test;
     begin
         // update Basic test
         $display("update basic test, begin");
-        #280 //wait for reset to complete
+        #420; //wait for reset to complete
         r_true = (l1.reset == 0);
         r_true = (l1.c0.new_rank == 0);
         $display("assertions working correctly");

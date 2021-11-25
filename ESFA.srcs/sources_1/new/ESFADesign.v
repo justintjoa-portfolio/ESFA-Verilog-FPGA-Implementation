@@ -37,51 +37,51 @@ module ESFADesign(
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
-    wire c0Result;
-    wire c0Context;
-    wire c0Bool;
+    wire[7:0] c0Result;
+    wire[7:0] c0Context;
+    wire[0:0] c0Bool;
     
     wire[7:0] c1Handle;
     assign c1Handle = 1;
-    wire c1Result;
-    wire c1Context;
-    wire c1Bool;
+    wire[7:0] c1Result;
+    wire[7:0] c1Context;
+    wire[0:0] c1Bool;
     
     wire[7:0] c2Handle;
     assign c2Handle = 2;
-    wire c2Result;
-    wire c2Context;
-    wire c2Bool;
+    wire[7:0] c2Result;
+    wire[7:0] c2Context;
+    wire[0:0] c2Bool;
     
     wire[7:0] c3Handle;
     assign c3Handle = 3;
-    wire c3Result;
-    wire c3Context;
-    wire c3Bool;
+    wire[7:0] c3Result;
+    wire[7:0] c3Context;
+    wire[0:0] c3Bool;
     
     wire[7:0] c4Handle;
     assign c4Handle = 4;
-    wire c4Result;
-    wire c4Context;
-    wire c4Bool;
+    wire[7:0] c4Result;
+    wire[7:0] c4Context;
+    wire[0:0] c4Bool;
     
     wire[7:0] c5Handle;
     assign c5Handle = 5;
-    wire c5Result;
-    wire c5Context;
-    wire c5Bool;
+    wire[7:0] c5Result;
+    wire[7:0] c5Context;
+    wire[0:0] c5Bool;
     
     wire[7:0] c6Handle;
     assign c6Handle = 6;
-    wire c6Result;
-    wire c6Context;
-    wire c6Bool;
+    wire[7:0] c6Result;
+    wire[7:0] c6Context;
+    wire[0:0] c6Bool;
     
     wire[7:0] c7Handle;
     assign c7Handle = 7;
-    wire c7Result;
-    wire c7Context;
-    wire c7Bool;
+    wire[7:0] c7Result;
+    wire[7:0] c7Context;
+    wire[0:0] c7Bool;
     
     wire combinator1Result;
     wire combinator1Context;
