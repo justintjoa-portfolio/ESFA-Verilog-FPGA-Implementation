@@ -46,7 +46,7 @@ module esfa_test;
     
     ESFADesign l1(
         .clk(clk),
-        .willWrite(willWrite),
+        .in_willWrite(willWrite),
         .new_index(new_index),
         .new_value(new_value),
         .queried_handle(queried_handle),

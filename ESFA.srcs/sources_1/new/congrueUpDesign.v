@@ -86,4 +86,6 @@ module congrueUpDesign(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;
+    assign resultValue = 0;
+    assign resultContext = 0;
 endmodule

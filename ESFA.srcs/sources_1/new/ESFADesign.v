@@ -22,7 +22,7 @@
 
 module ESFADesign(
     input[0:0] clk, 
-    input[0:0] willWrite,
+    input[0:0] in_willWrite,
     input[7:0] new_index,
     input[7:0] new_value,
     input[7:0] queried_handle,
@@ -31,6 +31,9 @@ module ESFADesign(
     output[7:0] resultValue,
     input[7:0] selector
     );
+    
+    wire[0:0] willWrite;
+    assign willWrite = in_willWrite && !reset;
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
@@ -69,7 +72,7 @@ module ESFADesign(
     wire c5Bool;
     
     wire[7:0] c6Handle;
-    assign c6handle = 6;
+    assign c6Handle = 6;
     wire c6Result;
     wire c6Context;
     wire c6Bool;

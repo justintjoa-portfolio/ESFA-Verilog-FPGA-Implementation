@@ -56,6 +56,7 @@ module encode(
     
     assign resultBool = (!outOfScope) && (arrDef) && (queried_handle  == handle);
     assign resultValue = array_code;  
+    assign resultContext = array_code;
     assign out_arrDef = arrDef; 
     assign out_array_code = array_code;
     assign out_eltDef = eltDef;
