@@ -26,8 +26,8 @@ module esfa_test;
     reg[0:0] willWrite = 0;
     reg[7:0] new_index = 0;
     reg[7:0] new_value = 0;
-    reg[7:0] queried_handle = 0;
-    reg[0:0] isHandle = 0;
+    reg[7:0] metadata = 0;
+    reg[0:0] isMetadata = 0;
     wire resultBool;
     wire resultValue;
     reg[7:0] selector = 0;
@@ -49,8 +49,8 @@ module esfa_test;
         .in_willWrite(willWrite),
         .new_index(new_index),
         .new_value(new_value),
-        .queried_handle(queried_handle),
-        .isHandle(isHandle),
+        .metadata(metadata),
+        .isMetadata(isMetadata),
         .resultBool(resultBool),
         .resultValue(resultValue),
         .selector(selector)  
@@ -69,17 +69,15 @@ module esfa_test;
         //ESFAArrayOp().update(emptyArrayState, None, 0, 5)
         new_index = 0;
         new_value = 5;
-        isHandle = 1'b0;
-        selector = 3;
-        #28;
-        r_true = (l1.in_isMetadata == 0); #28
-        r_true = (l1.in_metadata == 0); #28
-        r_true = 1;
+        isMetadata = 1'b0;
         selector = 7;
         #28;
-        r_true = (l1.in_isMetadata == 1); #28   
-        r_true = (l1.in_metadata == 0); #28  
+        r_true = (resultBool == 1); #28;
+        r_true = (resultValue == 0); #28;
+        r_true = 1;
         willWrite = 1;
+        metadata = resultValue;
+        isMetadata = resultBool;
         selector = 0;
         #28;
         selector = 5;
@@ -99,8 +97,8 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
         new_index = 2;
         new_value = 10;
-        isHandle = 1'b1;
-        queried_handle = 0;
+        isMetadata = 1'b1;
+        metadata = 0;
         selector = 3;
         willWrite = 1;
         #28;
@@ -135,7 +133,7 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
         new_index = 4;
         new_value = 10;
-        isHandle = 1'b0;
+        isMetadata = 1'b0;
         selector = 3;
         willWrite = 1;
         #28;
@@ -182,8 +180,8 @@ module esfa_test;
         //state_and_handle = ESFAArrayOp().update(state_and_handle._1, Some(2), 10, 21)
         new_index = 10;
         new_value = 21;
-        isHandle = 1'b1;
-        queried_handle = 2;
+        isMetadata = 1'b1;
+        metadata = 2;
         selector = 3;
         willWrite = 1;
         #28;
@@ -240,8 +238,8 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 9, 5)
         new_index = 9;
         new_value = 5;
-        isHandle = 1'b1;
-        queried_handle = 1;
+        isMetadata = 1'b1;
+        metadata = 1;
         selector = 3;
         willWrite = 1;
         #28;
@@ -313,8 +311,8 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 11, 14)
         new_index = 11;
         new_value = 14;
-        isHandle = 1'b1;
-        queried_handle = 1;
+        isMetadata = 1'b1;
+        metadata = 1;
         selector = 3;
         willWrite = 1;
         #28;
@@ -396,8 +394,8 @@ module esfa_test;
         
         // ESFAArrayOp().lookUp(state_and_handle._1, 0, 0)
         new_index = 0;
-        isHandle = 1'b1;
-        queried_handle = 0;
+        isMetadata = 1'b1;
+        metadata = 0;
         selector = 3;
         #28;
         selector = 1;
@@ -410,8 +408,8 @@ module esfa_test;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 1, 0)
         new_index = 0;
-        isHandle = 1'b1;
-        queried_handle = 1;
+        isMetadata = 1'b1;
+        metadata = 1;
         selector = 3;
         #28;
         selector = 1;
@@ -424,8 +422,8 @@ module esfa_test;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 1, 2) 
         new_index = 2;
-        isHandle = 1'b1;
-        queried_handle = 1;
+        isMetadata = 1'b1;
+        metadata = 1;
         selector = 3;
         #28;
         selector = 1;
@@ -438,8 +436,8 @@ module esfa_test;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 3, 4)
         new_index = 4;
-        isHandle = 1'b1;
-        queried_handle = 3;
+        isMetadata = 1'b1;
+        metadata = 3;
         selector = 3;
         #28;
         selector = 1;
@@ -452,8 +450,8 @@ module esfa_test;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 5, 2)
         new_index = 2;
-        isHandle = 1'b1;
-        queried_handle = 5;
+        isMetadata = 1'b1;
+        metadata = 5;
         selector = 3;
         #28;
         selector = 1;
@@ -466,8 +464,8 @@ module esfa_test;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 5, 1)
         new_index = 1;
-        isHandle = 1'b1;
-        queried_handle = 5;
+        isMetadata = 1'b1;
+        metadata = 5;
         selector = 3;
         #28;
         selector = 1;
@@ -478,8 +476,8 @@ module esfa_test;
         r_true = (resultBool == 0); //there is no value with index 1 in sixth array
         
         //ESFAArrayOp().delete(state_and_handle._1, 1)
-        isHandle = 1'b1;
-        queried_handle = 1;
+        isMetadata = 1'b1;
+        metadata = 1;
         selector = 4;
         willWrite = 1;
         #28;
@@ -553,8 +551,8 @@ module esfa_test;
         r_true = (l1.c5.new_array_code == 1);
         
         //ESFAArrayOp().delete(post_deletion_state, 4)
-        isHandle = 1'b1;
-        queried_handle = 4;
+        isMetadata = 1'b1;
+        metadata = 4;
         selector = 4;
         willWrite = 1;
         #28;
@@ -563,8 +561,8 @@ module esfa_test;
         willWrite = 0;
         
         //ESFAArrayOp().delete(post_deletion_state, 5)
-        isHandle = 1'b1;
-        queried_handle = 5;
+        isMetadata = 1'b1;
+        metadata = 5;
         selector = 4;
         willWrite = 1;
         #28;
@@ -619,8 +617,8 @@ module esfa_test;
 
         //ESFAArrayOp().lookUp(post_deletion_state, 0, 0) 
         new_index = 0;
-        isHandle = 1'b1;
-        queried_handle = 0;
+        isMetadata = 1'b1;
+        metadata = 0;
         selector = 3;
         #28;
         selector = 1;
