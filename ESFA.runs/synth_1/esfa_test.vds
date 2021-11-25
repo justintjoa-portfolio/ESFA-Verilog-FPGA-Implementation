@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Nov 24 21:29:59 2021
+# Process ID: 24120
+# Current directory: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1
+# Command line: vivado.exe -log esfa_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source esfa_test.tcl
+# Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/esfa_test.vds
+# Journal file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source esfa_test.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/justi/OneDrive/Documents/Vivado/ip_repo/AXI_IP_ESFA_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'.
+Command: synth_design -top esfa_test -part xc7s25csga324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s25'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s25'
+INFO: [Device 21-403] Loading part xc7s25csga324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 24984
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1136.012 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'esfa_test' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:22]
+INFO: [Synth 8-251] Beginning basic update test [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:53]
+ERROR: [Synth 8-6038] cannot resolve hierarchical name for the item 'design' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:56]
+ERROR: [Synth 8-6156] failed synthesizing module 'esfa_test' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:22]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1136.012 ; gain = 0.000
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+12 Infos, 0 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 24 21:30:11 2021...
