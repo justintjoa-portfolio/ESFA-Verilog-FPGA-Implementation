@@ -33,8 +33,6 @@ module deleteDesign(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -51,7 +49,7 @@ module deleteDesign(
         output[0:0] out_mark
     );
     
-    wire isTargetedArray = (queried_handle == handle);
+    wire isTargetedArray = (isMetadata && metadata == handle);
     
     assign resultBool = (arrDef && isTargetedArray);
     assign resultContext = array_code;

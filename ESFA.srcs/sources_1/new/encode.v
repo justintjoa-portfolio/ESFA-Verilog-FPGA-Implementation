@@ -33,8 +33,6 @@ module encode(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -52,9 +50,9 @@ module encode(
     );
     
     wire outOfScope;
-    assign outOfScope = (queried_handle > 7);
+    assign outOfScope = (!isMetadata || metadata > 7);
     
-    assign resultBool = (!outOfScope) && (arrDef) && (queried_handle  == handle);
+    assign resultBool = (!outOfScope) && (arrDef) && (isMetadata) && (metadata  == handle);
     assign resultValue = array_code;  
     assign resultContext = array_code;
     assign out_arrDef = arrDef; 

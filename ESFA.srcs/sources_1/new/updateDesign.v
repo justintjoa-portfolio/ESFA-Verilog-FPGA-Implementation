@@ -33,8 +33,6 @@ module updateDesign(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -61,17 +59,17 @@ module updateDesign(
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
     assign out_array_code = resultBool ?
-                            isHandle ? code_inc : handle
+                            isMetadata ? code_inc : handle
                             : array_code;
     assign out_eltDef = resultBool ? 1'b1 : eltDef;
     assign out_rank = resultBool ?
-                      isHandle ? rank_inc : 1
+                      isMetadata ? rank_inc : 1
                       : rank;
     assign out_low = resultBool ?
-                        isHandle ? code_inc : handle
+                        isMetadata ? code_inc : handle
                         : low;
     assign out_high = resultBool ?        
-                        isHandle ? code_inc : handle 
+                        isMetadata ? code_inc : handle 
                         : high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
