@@ -60,5 +60,5 @@ module markAvailableCell(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = mark;
-    assign resultValue = 0;
+    assign resultValue = handle;
 endmodule

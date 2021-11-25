@@ -54,8 +54,8 @@ module updateDesign(
     wire code_inc;
     assign code_inc = array_code + 1;
     
-    assign resultBool = (metadata == handle) && isMetadata;
-    assign resultValue = handle; 
+    assign resultBool = (metadata == handle) && isMetadata && (!arrDef) && (!eltDef);
+    assign resultValue = out_array_code;
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
     assign out_array_code = resultBool ?

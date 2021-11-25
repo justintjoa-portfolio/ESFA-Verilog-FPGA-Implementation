@@ -61,6 +61,6 @@ module deleteDesign(
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign resultValue = 0;
+    assign resultValue = array_code;
     assign out_mark = 1'b0;
 endmodule
