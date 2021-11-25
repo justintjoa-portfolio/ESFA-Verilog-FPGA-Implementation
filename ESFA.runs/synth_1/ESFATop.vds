@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Nov 25 01:09:45 2021
-# Process ID: 10956
+# Start of session at: Thu Nov 25 01:38:08 2021
+# Process ID: 22672
 # Current directory: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1
 # Command line: vivado.exe -log ESFATop.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ESFATop.tcl
 # Log file: C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/ESFATop.vds
@@ -21,7 +21,7 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s25'
 INFO: [Device 21-403] Loading part xc7s25csga324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 4908
+INFO: [Synth 8-7075] Helper process launched with PID 25488
 WARNING: [Synth 8-6901] identifier 'r_var_selector' is used before its declaration [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:41]
 WARNING: [Synth 8-6901] identifier 'r_data' is used before its declaration [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:42]
 WARNING: [Synth 8-6901] identifier 'r_var_selector' is used before its declaration [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:43]
@@ -44,7 +44,7 @@ WARNING: [Synth 8-6901] identifier 'resultBool' is used before its declaration [
 WARNING: [Synth 8-6901] identifier 'resultValue' is used before its declaration [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:59]
 WARNING: [Synth 8-6901] identifier 'r_willWrite' is used before its declaration [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:60]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1135.355 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'ESFATop' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:25]
 INFO: [Synth 8-6157] synthesizing module 'ESFADesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:23]
@@ -130,39 +130,46 @@ WARNING: [Synth 8-689] width (1) of port connection 'out_high' does not match po
 WARNING: [Synth 8-689] width (1) of port connection 'out_index' does not match port width (8) of module 'markAvailableCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:83]
 WARNING: [Synth 8-689] width (1) of port connection 'out_value' does not match port width (8) of module 'markAvailableCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:83]
 INFO: [Synth 8-6155] done synthesizing module 'MemoryCell' (9#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:23]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:116]
+WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:116]
+WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:116]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:117]
+WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:117]
+WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:117]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:118]
+WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:118]
+WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:118]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:119]
 WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:119]
 WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:119]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:120]
 WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:120]
 WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:120]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:121]
 WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:121]
 WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:121]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:122]
 WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:122]
 WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:122]
+WARNING: [Synth 8-689] width (8) of port connection 'isMetadata' does not match port width (1) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:123]
 WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:123]
 WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:123]
-WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:124]
-WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:124]
-WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:125]
-WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:125]
-WARNING: [Synth 8-689] width (1) of port connection 'new_value' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:126]
-WARNING: [Synth 8-689] width (1) of port connection 'new_context' does not match port width (8) of module 'MemoryCell' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:126]
 INFO: [Synth 8-6157] synthesizing module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'NodeCombinator' (10#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v:23]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:125]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:125]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:126]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:126]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:127]
+WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:127]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:128]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:128]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:129]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:129]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:130]
 WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:130]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:131]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:131]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:132]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:132]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultValue' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:133]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:133]
-WARNING: [Synth 8-689] width (1) of port connection 'r_resultContext' does not match port width (8) of module 'NodeCombinator' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:134]
+INFO: [Common 17-14] Message 'Synth 8-689' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-6155] done synthesizing module 'ESFADesign' (11#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:23]
-WARNING: [Synth 8-689] width (1) of port connection 'resultValue' does not match port width (8) of module 'ESFADesign' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:96]
 INFO: [Synth 8-6157] synthesizing module 'UART' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/UART.v:51]
 	Parameter baud_rate bound to: 9600 - type: integer 
 	Parameter sys_clk_freq bound to: 12000000 - type: integer 
@@ -172,18 +179,18 @@ WARNING: [Synth 8-7071] port 'rx_sample_countdown' of module 'UART' is unconnect
 WARNING: [Synth 8-7023] instance 'UART0' of module 'UART' has 13 connections declared, but only 11 given [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:103]
 INFO: [Synth 8-6155] done synthesizing module 'ESFATop' (13#1) [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFATop.v:25]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1135.355 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1135.355 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1135.355 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.072 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.101 . Memory (MB): peak = 1135.355 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -194,37 +201,30 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/ESFATop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1135.742 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1135.742 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s25csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/c0' (MemoryCell) to 'nolabel_line96/c2'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/c0' (MemoryCell) to 'nolabel_line96/c4'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/c1' (MemoryCell) to 'nolabel_line96/c3'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/c1' (MemoryCell) to 'nolabel_line96/c5'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/c1' (MemoryCell) to 'nolabel_line96/c7'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/combinator1' (NodeCombinator) to 'nolabel_line96/combinator2'
-INFO: [Synth 8-223] decloning instance 'nolabel_line96/combinator1' (NodeCombinator) to 'nolabel_line96/combinator3'
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -233,23 +233,23 @@ Detailed RTL Component Info :
 	   2 Input   15 Bit       Adders := 1     
 	   2 Input   11 Bit       Adders := 1     
 	   2 Input    4 Bit       Adders := 4     
-	   2 Input    1 Bit       Adders := 24    
+	   2 Input    1 Bit       Adders := 64    
 +---Registers : 
 	               15 Bit    Registers := 1     
 	               11 Bit    Registers := 1     
-	                8 Bit    Registers := 13    
+	                8 Bit    Registers := 17    
 	                4 Bit    Registers := 4     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 44    
+	                1 Bit    Registers := 104   
 +---Muxes : 
 	   2 Input   15 Bit        Muxes := 4     
 	   3 Input   11 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 2     
 	   4 Input   11 Bit        Muxes := 1     
 	   2 Input   10 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 109   
-	   3 Input    8 Bit        Muxes := 10    
+	   2 Input    8 Bit        Muxes := 213   
+	   3 Input    8 Bit        Muxes := 14    
 	   4 Input    8 Bit        Muxes := 1     
 	   4 Input    4 Bit        Muxes := 1     
 	   8 Input    4 Bit        Muxes := 3     
@@ -258,9 +258,10 @@ Detailed RTL Component Info :
 	   7 Input    2 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 1     
 	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 46    
-	   8 Input    1 Bit        Muxes := 7     
-	   4 Input    1 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 214   
+	   8 Input    1 Bit        Muxes := 20    
+	   4 Input    1 Bit        Muxes := 27    
+	   3 Input    1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -277,25 +278,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -313,51 +314,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Static Shift Register Report:
-+------------+------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name | RTL Name                                       | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+------------+------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|ESFATop     | nolabel_line96/combinator7/r_resultBool_reg[0] | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
-+------------+------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -376,38 +363,37 @@ Report Cell Usage:
 |1     |BUFG   |     1|
 |2     |CARRY4 |     7|
 |3     |LUT1   |    24|
-|4     |LUT2   |     3|
+|4     |LUT2   |     2|
 |5     |LUT3   |    10|
 |6     |LUT4   |    19|
-|7     |LUT5   |    16|
-|8     |LUT6   |    27|
-|9     |SRL16E |     1|
-|10    |FDRE   |    43|
-|11    |FDSE   |     5|
-|12    |IBUF   |     2|
-|13    |OBUF   |     1|
+|7     |LUT5   |    17|
+|8     |LUT6   |    25|
+|9     |FDRE   |    40|
+|10    |FDSE   |     5|
+|11    |IBUF   |     2|
+|12    |OBUF   |     1|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1136.188 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 1135.742 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1135.742 ; gain = 0.387
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1136.188 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1140.551 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1145.402 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1148.566 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: 2f49a264
+Synth Design complete, checksum: 7ed1f582
 INFO: [Common 17-83] Releasing license: Synthesis
-52 Infos, 118 Warnings, 0 Critical Warnings and 0 Errors encountered.
+46 Infos, 124 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1145.402 ; gain = 9.215
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1148.566 ; gain = 13.211
 INFO: [Common 17-1381] The checkpoint 'C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.runs/synth_1/ESFATop.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file ESFATop_utilization_synth.rpt -pb ESFATop_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 25 01:10:13 2021...
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 25 01:38:38 2021...
