@@ -2,11 +2,13 @@
 2020.2
 Jun 10 2021
 20:04:57
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v,1637742441,verilog,,,,ESFADesign,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.sim/sim_1/behav/xsim/glbl.v,1637808310,verilog,,,,glbl,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v,1637817917,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v,,assert,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v,1637820137,verilog,,,,esfa_test,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v,1637742441,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,,ESFADesign,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,1637569104,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v,,MemoryCell,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v,1634455370,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v,,MemoryCellTupleRegs,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v,1634616745,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v,,NodeCombinator,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v,1634616745,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v,,NodeCombinator,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v,1634614008,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v,,congrueDownDesign,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v,1634613602,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v,,congrueUpDesign,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v,1634613193,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/encode.v,,deleteDesign,,,,,,,,
@@ -14,4 +16,4 @@ C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/encode.v,1
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpFinalizer.v,1634613001,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v,,lookUpFinalizer,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v,1634612874,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/markAvailableCell.v,,lookUpScan,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/markAvailableCell.v,1634614215,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v,,markAvailableCell,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v,1634613478,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v,,updateDesign,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v,1634613478,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v,,updateDesign,,,,,,,,

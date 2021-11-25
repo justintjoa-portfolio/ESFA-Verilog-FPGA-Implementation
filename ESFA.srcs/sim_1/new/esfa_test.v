@@ -274,7 +274,7 @@ module esfa_test;
         r_true <= (l1.c3.new_low == 4);
         r_true <= (l1.c3.new_high == 4);
         r_true <= (l1.c3.handle == 3);
-        r_true <= (l1.c3.array_code == 4);
+        r_true <= (l1.c3.new_array_code == 4);
         
         r_true <= (l1.c2.new_arrDef == 1'b1);
         r_true <= (l1.c2.new_eltDef == 1'b1);
@@ -296,7 +296,7 @@ module esfa_test;
         r_true <= (l1.c4.new_low == 2);
         r_true <= (l1.c4.new_high == 2);
         r_true <= (l1.c4.handle == 4);
-        r_true <= (l1.c4.array_code == 2);
+        r_true <= (l1.c4.new_array_code == 2);
         
         r_true <= resultBool;
         r_true <= (resultValue == 4);
@@ -347,7 +347,7 @@ module esfa_test;
         r_true <= (l1.c3.new_low == 5);
         r_true <= (l1.c3.new_high == 5);
         r_true <= (l1.c3.handle == 3);
-        r_true <= (l1.c3.array_code == 5);
+        r_true <= (l1.c3.new_array_code == 5);
         
         r_true <= (l1.c2.new_arrDef == 1'b1);
         r_true <= (l1.c2.new_eltDef == 1'b1);
@@ -369,7 +369,7 @@ module esfa_test;
         r_true <= (l1.c4.new_low == 3);
         r_true <= (l1.c4.new_high == 3);
         r_true <= (l1.c4.handle == 4);
-        r_true <= (l1.c4.array_code == 3);
+        r_true <= (l1.c4.new_array_code == 3);
         
         r_true <= (l1.c5.new_arrDef == 1'b1);
         r_true <= (l1.c5.new_eltDef == 1'b1);
@@ -380,7 +380,7 @@ module esfa_test;
         r_true <= (l1.c5.new_low == 2);
         r_true <= (l1.c5.new_high == 2);
         r_true <= (l1.c5.handle == 5);
-        r_true <= (l1.c5.array_code == 2);
+        r_true <= (l1.c5.new_array_code == 2);
         
         r_true <= resultBool;
         r_true <= (resultValue == 5);
@@ -508,7 +508,7 @@ module esfa_test;
         r_true <= (l1.c3.new_low == 4);
         r_true <= (l1.c3.new_high == 4);
         r_true <= (l1.c3.handle == 3);
-        r_true <= (l1.c3.array_code == 4);
+        r_true <= (l1.c3.new_array_code == 4);
         
         r_true <= (l1.c2.new_arrDef == 1'b1);
         r_true <= (l1.c2.new_eltDef == 1'b1);
@@ -530,7 +530,7 @@ module esfa_test;
         r_true <= (l1.c4.new_low == 2);
         r_true <= (l1.c4.new_high == 2);
         r_true <= (l1.c4.handle == 4);
-        r_true <= (l1.c4.array_code == 2);
+        r_true <= (l1.c4.new_array_code == 2);
         
         r_true <= (l1.c5.new_arrDef == 1'b1);
         r_true <= (l1.c5.new_eltDef == 1'b1);
@@ -541,7 +541,7 @@ module esfa_test;
         r_true <= (l1.c5.new_low == 1);
         r_true <= (l1.c5.new_high == 1);
         r_true <= (l1.c5.handle == 5);
-        r_true <= (l1.c5.array_code == 1);
+        r_true <= (l1.c5.new_array_code == 1);
         
         //ESFAArrayOp().delete(post_deletion_state, 4)
         isHandle <= 1'b1;
@@ -587,7 +587,7 @@ module esfa_test;
         r_true <= (l1.c3.new_low == 2);
         r_true <= (l1.c3.new_high == 2);
         r_true <= (l1.c3.handle == 3);
-        r_true <= (l1.c3.array_code == 2);
+        r_true <= (l1.c3.new_array_code == 2);
         
         r_true <= (l1.c2.new_arrDef == 1'b1);
         r_true <= (l1.c2.new_eltDef == 1'b1);
