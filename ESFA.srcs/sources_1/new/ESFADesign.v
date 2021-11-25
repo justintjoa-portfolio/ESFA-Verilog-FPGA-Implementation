@@ -106,8 +106,8 @@ module ESFADesign(
     
     wire combinator7Context;
     
-    reg metadata;
-    reg[0:0] isMetadata;
+    reg[7:0] metadata = 0;
+    reg[0:0] isMetadata = 0;
     
     wire in_metadata;
     assign in_metadata = metadata;

@@ -4,9 +4,9 @@ Jun 10 2021
 20:04:57
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.sim/sim_1/behav/xsim/glbl.v,1637808310,verilog,,,,glbl,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v,1637817917,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v,,assert,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v,1637820137,verilog,,,,esfa_test,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v,1637742441,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,,ESFADesign,,,,,,,,
-C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,1637569104,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v,,MemoryCell,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v,1637821476,verilog,,,,esfa_test,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v,1637823110,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,,ESFADesign,,,,,,,,
+C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v,1637822844,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v,,MemoryCell,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCellTupleRegs.v,1634455370,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v,,MemoryCellTupleRegs,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/NodeCombinator.v,1634616745,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v,,NodeCombinator,,,,,,,,
 C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueDownDesign.v,1634614008,verilog,,C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v,,congrueDownDesign,,,,,,,,

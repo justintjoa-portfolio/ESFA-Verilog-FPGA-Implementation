@@ -47,17 +47,17 @@ module MemoryCell(
      wire in_value;
      wire in_mark;
      
-     reg new_arrDef;
-     reg new_array_code;
-     reg new_eltDef;
-     reg new_rank;
-     reg new_low;
-     reg new_high;
-     reg new_index;
-     reg new_value;
-     reg new_mark;
-     reg new_bool;
-     reg new_context;
+     reg new_arrDef = 0;
+     reg[7:0] new_array_code = 0;
+     reg new_eltDef = 0;
+     reg[7:0] new_rank = 0;
+     reg[7:0] new_low = 0;
+     reg[7:0] new_high = 0;
+     reg[7:0] new_index = 0;
+     reg[7:0] new_value = 0;
+     reg new_mark = 0;
+     reg new_bool = 0;
+     reg[7:0] new_context = 0;
      
      // Output of MemoryCellTupleRegs
      wire out_arrDef;
