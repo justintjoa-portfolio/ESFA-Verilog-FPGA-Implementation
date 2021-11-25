@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637637295">
+<GenRun Id="impl_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637798450">
   <File Type="ROUTE-PWR" Name="ESFATop_power_routed.rpt"/>
   <File Type="PA-TCL" Name="ESFATop.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="ESFATop_power_summary_routed.pb"/>
@@ -17,7 +17,6 @@
   <File Type="BITSTR-MMI" Name="ESFATop.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="ESFATop_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="ESFATop.sysdef"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="ESFATop_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="ESFATop.ltx"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
@@ -49,6 +48,7 @@
   <File Type="PHYSOPT-DCP" Name="ESFATop_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="ESFATop_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="ESFATop_postroute_physopt_bb.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="ESFATop_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="ESFATop_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="ESFATop_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="ESFATop.pdi"/>
@@ -81,6 +81,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/NodeCombinator.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/UART.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -145,14 +152,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/ESFATop.v">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/UART.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
