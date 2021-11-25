@@ -21,26 +21,19 @@
 
 
 module NodeCombinator(
-        input clk,
-        input selector,
-        input resultValue1,
-        input resultContext1,
-        input resultBool1,
-        input resultValue2,
-        input resultContext2,
-        input resultBool2,
-        output resultValue,
-        output resultContext,
-        output resultBool
+        input[0:0] clk,
+        input[7:0] selector,
+        input[7:0] resultValue1,
+        input[7:0] resultContext1,
+        input[0:0] resultBool1,
+        input[7:0] resultValue2,
+        input[7:0] resultContext2,
+        input[0:0] resultBool2,
+        output reg[7:0] r_resultValue = 0,
+        output reg[7:0]  r_resultContext = 0,
+        output reg[0:0] r_resultBool = 0
     );
-    
-    reg r_resultValue;
-    reg r_resultContext;
-    reg r_resultBool;
-    
-    assign resultValue = r_resultValue;
-    assign resultContext = r_resultContext;
-    assign resultBool = r_resultBool;
+
     
     //Map
     // 0 : update  

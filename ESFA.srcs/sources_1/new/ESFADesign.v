@@ -21,60 +21,60 @@
 
 
 module ESFADesign(
-    input clk, 
-    input willWrite,
-    input new_index,
-    input new_value,
-    input queried_handle,
-    input isHandle,
-    output resultBool,
-    output resultValue,
-    input selector
+    input[0:0] clk, 
+    input[0:0] willWrite,
+    input[7:0] new_index,
+    input[7:0] new_value,
+    input[7:0] queried_handle,
+    input[0:0] isHandle,
+    output[0:0] resultBool,
+    output[7:0] resultValue,
+    input[7:0] selector
     );
     
-    wire c0Handle;
+    wire[7:0] c0Handle;
     assign c0Handle = 0;
     wire c0Result;
     wire c0Context;
     wire c0Bool;
     
-    wire c1Handle;
+    wire[7:0] c1Handle;
     assign c1Handle = 1;
     wire c1Result;
     wire c1Context;
     wire c1Bool;
     
-    wire c2Handle;
+    wire[7:0] c2Handle;
     assign c2Handle = 2;
     wire c2Result;
     wire c2Context;
     wire c2Bool;
     
-    wire c3Handle;
+    wire[7:0] c3Handle;
     assign c3Handle = 3;
     wire c3Result;
     wire c3Context;
     wire c3Bool;
     
-    wire c4Handle;
+    wire[7:0] c4Handle;
     assign c4Handle = 4;
     wire c4Result;
     wire c4Context;
     wire c4Bool;
     
-    wire c5Handle;
+    wire[7:0] c5Handle;
     assign c5Handle = 5;
     wire c5Result;
     wire c5Context;
     wire c5Bool;
     
-    wire c6Handle;
+    wire[7:0] c6Handle;
     assign c6handle = 6;
     wire c6Result;
     wire c6Context;
     wire c6Bool;
     
-    wire c7Handle;
+    wire[7:0] c7Handle;
     assign c7Handle = 7;
     wire c7Result;
     wire c7Context;
@@ -106,13 +106,11 @@ module ESFADesign(
     
     wire combinator7Context;
     
-    reg metadata;
-    reg[0:0] isMetadata;
+    reg[7:0] in_metadata = 0;
+    reg[7:0] in_isMetadata = 0;
     
-    wire in_metadata;
-    assign in_metadata = metadata;
-    wire[0:0] in_isMetadata;
-    assign in_isMetadata = isMetadata;
+    reg[0:0] reset = 1;
+
    
     
     MemoryCell c0(clk, willWrite, c0Handle, new_index, new_value, queried_handle, isHandle, in_metadata, in_isMetadata, selector, c0Bool, c0Result, c0Context);
@@ -137,8 +135,12 @@ module ESFADesign(
     
     always @ (posedge clk)
         begin
-            metadata = combinator7Context;
-            isMetadata = resultBool;
+            if (reset == 1) begin
+                if (resultBool == 0 && resultValue == 0)
+                    reset = 0;
+            end else begin
+                in_metadata = combinator7Context;
+                in_isMetadata = resultBool;
+            end
         end
-    
 endmodule
