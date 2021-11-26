@@ -48,15 +48,32 @@ module MemoryCell(
    
     
     // output wires for each combinator block
-    wire[7:0] a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark;
-    wire[7:0] b_resultBool, b_resultValue, b_resultContext, b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark;
-    wire[7:0] c_resultBool, c_resultValue, c_resultContext, c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark;
-    wire[7:0] d_resultBool, d_resultValue, d_resultContext, d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark;
-    wire[7:0] e_resultBool, e_resultValue, e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark;
-    wire[7:0] f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark;
-    wire[7:0] g_resultBool, g_resultValue, g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark;
-    wire[7:0] h_resultBool, h_resultValue, h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark;
-    wire[7:0] i_resultBool, i_resultValue, i_resultContext, i_arrDef, i_array_code, i_eltDef, i_rank, i_low, i_high, i_index, i_value, i_mark;
+    wire[0:0] a_resultBool, a_arrDef, a_eltDef, a_mark;
+    wire [7:0] a_resultValue, a_resultContext, a_array_code, a_rank, a_low, a_high, a_index, a_value;
+
+    wire[0:0] b_resultBool, b_arrDef, b_eltDef, b_mark;
+    wire [7:0] b_resultValue, b_resultContext, b_array_code, b_rank, b_low, b_high, b_index, b_value;
+    
+    wire[0:0] c_resultBool, c_arrDef, c_eltDef, c_mark;
+    wire [7:0] c_resultValue, c_resultContext, c_array_code, c_rank, c_low, c_high, c_index, c_value;
+    
+    wire[0:0] d_resultBool, d_arrDef, d_eltDef, d_mark;
+    wire [7:0] d_resultValue, d_resultContext, d_array_code, d_rank, d_low, d_high, d_index, d_value;
+    
+    wire[0:0] e_resultBool, e_arrDef, e_eltDef, e_mark;
+    wire [7:0] e_resultValue, e_resultContext, e_array_code, e_rank, e_low, e_high, e_index, e_value;
+    
+    wire[0:0] f_resultBool, f_arrDef, f_eltDef, f_mark;
+    wire [7:0] f_resultValue, f_resultContext, f_array_code, f_rank, f_low, f_high, f_index, f_value;
+    
+    wire[0:0] g_resultBool, g_arrDef, g_eltDef, g_mark;
+    wire [7:0] g_resultValue, g_resultContext, g_array_code, g_rank, g_low, g_high, g_index, g_value;
+    
+    wire[0:0] h_resultBool, h_arrDef, h_eltDef, h_mark;
+    wire [7:0] h_resultValue, h_resultContext, h_array_code, h_rank, h_low, h_high, h_index, h_value;
+    
+    wire[0:0] i_resultBool, i_arrDef, i_eltDef, i_mark;
+    wire [7:0] i_resultValue, i_resultContext, i_array_code, i_rank, i_low, i_high, i_index, i_value;
     
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark);
