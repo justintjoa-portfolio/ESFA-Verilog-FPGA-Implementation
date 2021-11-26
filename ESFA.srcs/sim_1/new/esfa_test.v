@@ -62,8 +62,8 @@ module esfa_test;
         // update Basic test
         $display("update basic test, begin");
         #420 //wait for reset to complete
-        r_true = (l1.reset == 0); #28
-        r_true = (l1.c0.new_rank == 0); #28
+        r_true = (l1.reset == 0); #168
+        r_true = (l1.c0.new_rank == 0); #168
         $display("assertions working correctly");
         
         //ESFAArrayOp().update(emptyArrayState, None, 0, 5)
@@ -71,28 +71,28 @@ module esfa_test;
         new_value = 5;
         isMetadata = 1'b0;
         selector = 7;
-        #28;
-        r_true = (resultBool == 1); #28;
-        r_true = (resultValue == 0); #28;
+        #168;
+        r_true = (resultBool == 1); #168;
+        r_true = (resultValue == 0); #168;
         r_true = 1;
         willWrite = 1;
         metadata = resultValue;
         isMetadata = resultBool;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
-        r_true = (l1.c0.new_arrDef == 1'b1); #28
-        r_true = (l1.c0.new_eltDef == 1'b1); #28
-        r_true = (l1.c0.new_mark == 1'b0); #28
-        r_true = (l1.c0.new_index == 0); #28
-        r_true = (l1.c0.new_value == 5); #28
-        r_true = (l1.c0.new_rank == 1); #28
-        r_true = (l1.c0.new_low == 0); #28
-        r_true = (l1.c0.new_high == 0); #28
-        r_true = resultBool; #28
-        r_true = (resultValue == 0); #28
+        r_true = (l1.c0.new_arrDef == 1'b1); #168
+        r_true = (l1.c0.new_eltDef == 1'b1); #168
+        r_true = (l1.c0.new_mark == 1'b0); #168
+        r_true = (l1.c0.new_index == 0); #168
+        r_true = (l1.c0.new_value == 5); #168
+        r_true = (l1.c0.new_rank == 1); #168
+        r_true = (l1.c0.new_low == 0); #168
+        r_true = (l1.c0.new_high == 0); #168
+        r_true = resultBool; #168
+        r_true = (resultValue == 0); #168
         
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
         new_index = 2;
@@ -101,13 +101,13 @@ module esfa_test;
         metadata = 0;
         selector = 3;
         willWrite = 1;
-        #28;
+        #168;
         selector = 7;
-        #28;
+        #168;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -136,13 +136,13 @@ module esfa_test;
         isMetadata = 1'b0;
         selector = 3;
         willWrite = 1;
-        #28;
+        #168;
         selector = 7;
-        #28;
+        #168;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -184,13 +184,13 @@ module esfa_test;
         metadata = 2;
         selector = 3;
         willWrite = 1;
-        #28;
+        #168;
         selector = 7;
-        #28;
+        #168;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -242,13 +242,13 @@ module esfa_test;
         metadata = 1;
         selector = 3;
         willWrite = 1;
-        #28;
+        #168;
         selector = 7;
-        #28;
+        #168;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -315,13 +315,13 @@ module esfa_test;
         metadata = 1;
         selector = 3;
         willWrite = 1;
-        #28;
+        #168;
         selector = 7;
-        #28;
+        #168;
         selector = 0;
-        #28;
+        #168;
         selector = 5;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -397,11 +397,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 0;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 5);
@@ -411,11 +411,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 1;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 5);
@@ -425,11 +425,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 1;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 10);
@@ -439,11 +439,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 3;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 10);
@@ -453,11 +453,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 5;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 10);
@@ -467,11 +467,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 5;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = (resultBool == 0); //there is no value with index 1 in sixth array
         
@@ -480,9 +480,9 @@ module esfa_test;
         metadata = 1;
         selector = 4;
         willWrite = 1;
-        #28;
+        #168;
         selector = 6;
-        #28;
+        #168;
         willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
@@ -555,9 +555,9 @@ module esfa_test;
         metadata = 4;
         selector = 4;
         willWrite = 1;
-        #28;
+        #168;
         selector = 6;
-        #28;
+        #168;
         willWrite = 0;
         
         //ESFAArrayOp().delete(post_deletion_state, 5)
@@ -565,9 +565,9 @@ module esfa_test;
         metadata = 5;
         selector = 4;
         willWrite = 1;
-        #28;
+        #168;
         selector = 6;
-        #28;
+        #168;
         willWrite = 0;
         
         r_true = (l1.c0.new_arrDef == 1'b1);
@@ -620,11 +620,11 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 0;
         selector = 3;
-        #28;
+        #168;
         selector = 1;
-        #28;
+        #168;
         selector = 2;
-        #28;
+        #168;
         
         r_true = resultBool;
         r_true = (resultValue == 5);

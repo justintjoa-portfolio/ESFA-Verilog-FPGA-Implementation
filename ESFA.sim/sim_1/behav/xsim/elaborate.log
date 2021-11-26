@@ -5,7 +5,6 @@ Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:55]
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'new_result_value' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:116]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:61]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:64]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:67]
@@ -14,7 +13,6 @@ WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:76]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:79]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/MemoryCell.v:82]
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue1' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/ESFADesign.v:125]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis

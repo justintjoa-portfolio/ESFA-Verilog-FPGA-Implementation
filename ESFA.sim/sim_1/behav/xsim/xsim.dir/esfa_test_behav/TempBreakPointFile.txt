@@ -20,3 +20,5 @@ Breakpoint File Version 1.0
 78,true,"C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v"
 81,true,"C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v"
 82,true,"C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v"
+73,true,"C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v"
+74,true,"C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v"

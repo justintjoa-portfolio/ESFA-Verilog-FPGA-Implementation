@@ -37,8 +37,8 @@ module ESFADesign(
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
-    wire c0Result;
-    wire c0Context;
+    wire[7:0] c0Result;
+    wire[7:0] c0Context;
     wire[0:0] c0Bool;
     
     wire[7:0] c1Handle;
