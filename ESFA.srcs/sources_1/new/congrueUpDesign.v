@@ -48,25 +48,10 @@ module congrueUpDesign(
         output[7:0] out_value,
         output[0:0] out_mark
     );
-    
-    
-    wire rank_inc;
-    assign rank_inc = new_value + 1;
-    
-    wire prev_code_inc;
-    assign prev_code_inc = metadata + 1;
-    
-    wire code_inc;
-    assign code_inc = array_code + 1;
+  
     
     wire willIncrementOwnCode;
     assign willIncrementOwnCode = (array_code > metadata) && (isMetadata) && (arrDef);
-    
-    wire low_inc;
-    assign low_inc = low + 1;
-    
-    wire high_inc;
-    assign high_inc = high + 1;
     
     wire low_high;
     assign low_high = (eltDef) && isMetadata && (low > metadata);
@@ -77,20 +62,20 @@ module congrueUpDesign(
    
     assign resultBool = 1'b1;
     assign out_arrDef = arrDef;   
-    assign out_array_code = mark ? 
-                             isMetadata ? prev_code_inc : handle
-                            : willIncrementOwnCode ? code_inc : array_code;
+    assign out_array_code = (new_index == handle) ? 
+                             isMetadata ? (metadata + 1) : handle
+                            : willIncrementOwnCode ? (array_code + 1) : array_code;
                             
     assign out_eltDef = eltDef;
-    assign out_rank = mark ? 
-                        isMetadata ? rank_inc : 1 
+    assign out_rank = (new_index == handle) ? 
+                        isMetadata ? (new_value + 1) : 1 
                      : rank;
-    assign out_low = mark ? 
-                        isMetadata ? prev_code_inc : handle 
-                        : low_high ? low_inc : low;
-    assign out_high = mark ? 
-                        isMetadata ? prev_code_inc : handle
-                        : high_high ? high_inc : high;
+    assign out_low = (new_index == handle) ? 
+                        isMetadata ? (metadata + 1) : handle 
+                        : low_high ? (low + 1) : low;
+    assign out_high = (new_index == handle) ? 
+                        isMetadata ? (metadata + 1) : handle
+                        : high_high ? (high + 1) : high;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;

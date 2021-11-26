@@ -60,7 +60,7 @@ module updateDesign(
     assign out_high = high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
-    assign out_mark = (metadata == handle) && isMetadata;
+    assign out_mark = 1'b0;
     assign out_rank = 1;
     
     

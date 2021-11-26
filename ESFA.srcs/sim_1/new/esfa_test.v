@@ -82,9 +82,10 @@ module esfa_test;
         isMetadata = resultBool;
         selector = 0;
         #168;
+        willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1); #168
         r_true = (l1.c0.new_eltDef == 1'b1); #168
-        r_true = (l1.c0.new_mark == 1'b1); #168
+        r_true = (l1.c0.new_mark == 1'b0); #168
         r_true = (l1.c0.new_index == 0); #168
         r_true = (l1.c0.new_value == 5); #168
         r_true = (l1.c0.new_rank == 1); #168
@@ -92,12 +93,7 @@ module esfa_test;
         r_true = (l1.c0.new_high == 0); #168
         r_true = (resultValue == 0); #168
         r_true = 1;
-        
-        selector = 5;
-        isMetadata = 1'b0;
-        #168;
-        willWrite = 0;
-        
+       
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
         isMetadata = 1'b1;
         metadata = 0;
@@ -128,9 +124,12 @@ module esfa_test;
         selector = 0;
         willWrite = 1;
         #168;
+        willWrite = 0;
+        new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
         metadata = code;
         new_value = rank;
         selector = 5;
+        willWrite = 1;
         #168;
         willWrite = 0;
         r_true = (resultBool); #168;
