@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637888852">
+<GenRun Id="synth_1" LaunchPart="xc7s25csga324-1" LaunchTime="1637896360">
   <File Type="PA-TCL" Name="ESFATop.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="ESFATop_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ESFATop_reports.tcl"/>
@@ -11,13 +11,6 @@
   <File Type="VDS-TIMING-PB" Name="ESFATop_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/CongrueRankUp.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/ESFADesign.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -68,6 +61,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/encode.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/enrank.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

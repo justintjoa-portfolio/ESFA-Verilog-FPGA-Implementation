@@ -57,7 +57,6 @@ module MemoryCell(
     wire[7:0] g_resultBool, g_resultValue, g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark;
     wire[7:0] h_resultBool, h_resultValue, h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark;
     wire[7:0] i_resultBool, i_resultValue, i_resultContext, i_arrDef, i_array_code, i_eltDef, i_rank, i_low, i_high, i_index, i_value, i_mark;
-    wire[7:0] j_resultBool, j_resultValue, j_resultContext, j_arrDef, j_array_code, j_eltDef, j_rank, j_low, j_high, j_index, j_value, j_mark;
     
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark);
@@ -74,7 +73,7 @@ module MemoryCell(
    deleteDesign deleter(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
    metadata, isMetadata, e_resultBool, e_resultValue,  e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark);
    
-   congrueCodesUp upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
+   congrueUpDesign upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
    metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark);
    
    congrueDownDesign downEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
@@ -83,11 +82,8 @@ module MemoryCell(
    markAvailableCell vacantCellMarker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark);
     
-   CongrueRankUp rankIncrementer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
-   metadata, isMetadata, i_resultBool, i_resultValue,  i_resultContext, i_arrDef, i_array_code, i_eltDef, i_rank, i_low, i_high, i_index, i_value, i_mark);
-    
    enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
-   metadata, isMetadata, j_resultBool, j_resultValue,  j_resultContext, j_arrDef, j_array_code, j_eltDef, j_rank, j_low, j_high, j_index, j_value, j_mark); 
+   metadata, isMetadata, i_resultBool, i_resultValue,  i_resultContext, i_arrDef, i_array_code, i_eltDef, i_rank, i_low, i_high, i_index, i_value, i_mark); 
    
     //Map
     // 0 : update  
@@ -253,23 +249,6 @@ module MemoryCell(
                     new_bool = i_resultBool;
                     new_result_value = i_resultValue; 
                     new_context = i_resultContext;
-                end
-                if (selector == 10) begin
-                    if (willWrite) begin
-                        new_arrDef = j_arrDef;
-                        new_array_code = j_array_code;
-                        new_eltDef = j_eltDef;
-                        new_rank = j_rank;
-                        new_low = j_low;
-                        new_high = j_high;
-                        new_index = j_index;
-                        new_value = j_value;
-                        new_mark = j_mark;  
-                    end
-                
-                    new_bool = j_resultBool;
-                    new_result_value = j_resultValue; 
-                    new_context = j_resultContext;
                 end
             end
 endmodule

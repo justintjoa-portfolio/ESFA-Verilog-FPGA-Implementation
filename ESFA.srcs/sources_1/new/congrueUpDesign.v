@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module congrueCodesUp(
+module congrueUpDesign(
         input[0:0] arrDef,
         input[7:0] handle,
         input[7:0] array_code,
@@ -49,6 +49,9 @@ module congrueCodesUp(
         output[0:0] out_mark
     );
     
+    
+    wire rank_inc;
+    assign rank_inc = new_value + 1;
     
     wire prev_code_inc;
     assign prev_code_inc = metadata + 1;
@@ -79,7 +82,9 @@ module congrueCodesUp(
                             : willIncrementOwnCode ? code_inc : array_code;
                             
     assign out_eltDef = eltDef;
-    assign out_rank = rank;
+    assign out_rank = mark ? 
+                        isMetadata ? rank_inc : 1 
+                     : rank;
     assign out_low = mark ? 
                         isMetadata ? prev_code_inc : handle 
                         : low_high ? low_inc : low;
@@ -88,7 +93,7 @@ module congrueCodesUp(
                         : high_high ? high_inc : high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = mark;
+    assign out_mark = 1'b0;
     assign resultValue = 0;
     assign resultContext = 0;
 endmodule
