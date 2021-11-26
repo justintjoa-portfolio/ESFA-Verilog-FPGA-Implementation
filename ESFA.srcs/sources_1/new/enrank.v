@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/16/2021 01:41:59 PM
+// Create Date: 10/16/2021 07:52:08 PM
 // Design Name: 
-// Module Name: congrueUpDesign
+// Module Name: encode
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module congrueCodesUp(
+module enrank(
         input[0:0] arrDef,
         input[7:0] handle,
         input[7:0] array_code,
@@ -49,46 +49,20 @@ module congrueCodesUp(
         output[0:0] out_mark
     );
     
+    wire outOfScope;
+    assign outOfScope = (!isMetadata || metadata > 7);
     
-    wire prev_code_inc;
-    assign prev_code_inc = metadata + 1;
-    
-    wire code_inc;
-    assign code_inc = array_code + 1;
-    
-    wire willIncrementCode;
-    assign willIncrementCode = (array_code > metadata) && (isMetadata) && (arrDef);
-    
-    wire low_inc;
-    assign low_inc = low + 1;
-    
-    wire high_inc;
-    assign high_inc = high + 1;
-    
-    wire low_high;
-    assign low_high = (eltDef) && isMetadata && (low > metadata);
-    
-    wire high_high;
-    assign high_high = (eltDef) && isMetadata && (high >= metadata);
-  
-   
-    assign resultBool = 1'b1;
-    assign out_arrDef = arrDef;   
-    assign out_array_code = mark ? 
-                             isMetadata ? prev_code_inc : handle
-                            : willIncrementCode ? code_inc : array_code;
-                            
+    assign resultBool = (!outOfScope) && (arrDef) && (isMetadata) && (metadata  == handle);
+    assign resultValue = rank;
+    assign resultContext = rank;
+    assign out_arrDef = arrDef; 
+    assign out_array_code = array_code;
     assign out_eltDef = eltDef;
     assign out_rank = rank;
-    assign out_low = mark ? 
-                        isMetadata ? code_inc : handle 
-                        : low_high ? low_inc : low;
-    assign out_high = mark ? 
-                        isMetadata ? code_inc : handle
-                        : high_high ? high_inc : high;
+    assign out_low = low;
+    assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = mark;
-    assign resultValue = 0;
-    assign resultContext = 0;
+    assign out_mark = 1'b0;
+    
 endmodule

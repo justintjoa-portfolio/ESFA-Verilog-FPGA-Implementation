@@ -48,32 +48,20 @@ module updateDesign(
         output[7:0] out_value,
         output[0:0] out_mark
     );
-        
-    wire rank_inc;
-    assign rank_inc = rank + 1;
-    wire code_inc;
-    assign code_inc = array_code + 1;
+   
     
-    assign resultBool = (metadata == handle) && isMetadata && (!arrDef) && (!eltDef);
+    assign resultBool = (metadata == handle) && isMetadata && (!eltDef);
     assign resultValue = out_array_code;
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
-    assign out_array_code = resultBool ?
-                            isMetadata ? code_inc : handle
-                            : array_code;
+    assign out_array_code = array_code;
     assign out_eltDef = resultBool ? 1'b1 : eltDef;
-    assign out_rank = resultBool ?
-                      isMetadata ? rank_inc : 1
-                      : rank;
-    assign out_low = resultBool ?
-                        isMetadata ? code_inc : handle
-                        : low;
-    assign out_high = resultBool ?        
-                        isMetadata ? code_inc : handle 
-                        : high;
+    assign out_low = low;
+    assign out_high = high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
     assign out_mark = resultBool;
+    assign out_rank = 1;
     
     
 endmodule
