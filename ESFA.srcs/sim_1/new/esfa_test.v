@@ -85,7 +85,10 @@ module esfa_test;
         isMetadata = 0;
         new_index = 0; 
         selector = 5;
-        #420
+        // CRITICAL FOR FUNCTIONAL TESTING: WILL_WRITE SHOULD ONLY BE HIGH FOR ONE CYCLE  
+        #28;
+        willWrite = 0;
+        #392
         willWrite = 0;
         
         
@@ -137,7 +140,9 @@ module esfa_test;
         new_value = rank;
         selector = 5;
         willWrite = 1;
-        #420;
+        #28; // WILL Write should only be high for one cycle 
+        willWrite = 0;
+        #392;
         willWrite = 0;
         r_true = (resultBool); #168;
         r_true = 1;
@@ -178,9 +183,9 @@ module esfa_test;
         isMetadata = 0;
         new_index = 2; 
         selector = 5;
-        #420
-        
+        #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
+        #392;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -245,9 +250,10 @@ module esfa_test;
         new_value = rank;
         selector = 5;
         willWrite = 1;
-        #420;
+        #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
-       
+        #392;
+
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
         r_true = (l1.c0.new_mark == 1'b0); #168;
@@ -305,8 +311,9 @@ module esfa_test;
         selector = 0;
         #168;
         selector = 5;
-        #168;
+        #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
+        #392;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);
@@ -378,8 +385,9 @@ module esfa_test;
         selector = 0;
         #168;
         selector = 5;
-        #168;
+        #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
+        #392;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);

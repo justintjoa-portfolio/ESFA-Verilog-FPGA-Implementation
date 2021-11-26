@@ -49,13 +49,13 @@ module congrueUpDesign(
         output[0:0] out_mark
     );
     
-    wire present_code_inc;
+    wire[7:0] present_code_inc;
     assign present_code_inc = array_code + 1;
     
-    wire low_inc;
+    wire[7:0] low_inc;
     assign low_inc = low + 1;
     
-    wire high_inc;
+    wire[7:0] high_inc;
     assign high_inc = high + 1;
     
     wire willIncrementOwnCode;
