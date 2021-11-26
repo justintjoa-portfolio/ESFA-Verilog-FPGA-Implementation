@@ -49,6 +49,17 @@ module congrueUpDesign(
         output[0:0] out_mark
     );
   
+    wire prev_code_inc;
+    assign prev_code_inc = metadata + 1;
+    
+    wire present_code_inc;
+    assign present_code_inc = array_code + 1;
+    
+    wire low_inc;
+    assign low_inc = low + 1;
+    
+    wire high_inc;
+    assign high_inc = high + 1;
     
     wire willIncrementOwnCode;
     assign willIncrementOwnCode = (array_code > metadata) && (isMetadata) && (arrDef);
@@ -63,19 +74,19 @@ module congrueUpDesign(
     assign resultBool = 1'b1;
     assign out_arrDef = arrDef;   
     assign out_array_code = (new_index == handle) ? 
-                             isMetadata ? (metadata + 1) : handle
-                            : willIncrementOwnCode ? (array_code + 1) : array_code;
+                             isMetadata ? prev_code_inc : handle
+                            : willIncrementOwnCode ? present_code_inc : array_code;
                             
     assign out_eltDef = eltDef;
     assign out_rank = (new_index == handle) ? 
                         isMetadata ? (new_value + 1) : 1 
                      : rank;
     assign out_low = (new_index == handle) ? 
-                        isMetadata ? (metadata + 1) : handle 
-                        : low_high ? (low + 1) : low;
+                        isMetadata ? prev_code_inc : handle 
+                        : low_high ? low_inc : low;
     assign out_high = (new_index == handle) ? 
-                        isMetadata ? (metadata + 1) : handle
-                        : high_high ? (high + 1) : high;
+                        isMetadata ? prev_code_inc : handle
+                        : high_high ? high_inc : high;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;

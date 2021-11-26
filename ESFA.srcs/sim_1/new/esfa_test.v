@@ -130,7 +130,7 @@ module esfa_test;
         new_value = rank;
         selector = 5;
         willWrite = 1;
-        #168;
+        #420;
         willWrite = 0;
         r_true = (resultBool); #168;
         r_true = 1;
