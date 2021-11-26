@@ -50,7 +50,7 @@ module updateDesign(
     );
    
     
-    assign resultBool = (metadata == handle) && isMetadata && (!eltDef);
+    assign resultBool = (metadata == handle) && isMetadata && !eltDef;
     assign resultValue = out_array_code;
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
@@ -60,7 +60,7 @@ module updateDesign(
     assign out_high = high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
-    assign out_mark = resultBool;
+    assign out_mark = (metadata == handle) && isMetadata;
     assign out_rank = 1;
     
     

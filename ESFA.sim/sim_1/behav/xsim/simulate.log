@@ -1,0 +1,40 @@
+Time resolution is 1 ps
+update basic test, begin
+assertions working correctly
+Stopped at time : 4788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 129
+Stopped at time : 4788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 130
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 131
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 132
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+update basic test, begin
+assertions working correctly
+Stopped at time : 4788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 129
+Stopped at time : 4788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 130
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 131
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 132
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 5124 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 135
+Stopped at time : 5124 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 136
+Stopped at time : 5124 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 136
+Stopped at time : 5292 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 137
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 141
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 141
+Stopped at time : 5796 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 142
+Stopped at time : 5796 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 142
+Stopped at time : 6132 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 144
+Stopped at time : 6132 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 144
+Stopped at time : 6300 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 145
+Stopped at time : 6300 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 145
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 149
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 149
+Stopped at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 150
+Stopped at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 150
+Stopped at time : 7308 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 152
+Stopped at time : 7308 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 152
+ASSERTION FAILED in esfa_test.a0
+$finish called at time : 7476 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v" Line 29
+update basic test, begin
+assertions working correctly
+Stopped at time : 4956 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/si
