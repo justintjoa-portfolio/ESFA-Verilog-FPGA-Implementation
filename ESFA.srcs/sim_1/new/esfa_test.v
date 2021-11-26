@@ -227,12 +227,16 @@ module esfa_test;
         new_value = 8'b10101;
         selector = 0;
         #168
+        r_true = (l1.c2.new_high == 2); #168;
+        r_true = 1;
         new_index = 3;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
         selector = 5;
         #420;
+        r_true = (l1.c2.new_high >= 2); #168;
+        r_true = 1;
        
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;

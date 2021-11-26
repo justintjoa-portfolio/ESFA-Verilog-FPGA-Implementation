@@ -49,7 +49,7 @@ module deleteDesign(
         output[0:0] out_mark
     );
     
-    wire isTargetedArray = (isMetadata && metadata == handle);
+    wire[0:0] isTargetedArray = (isMetadata && metadata == handle);
     
     assign resultBool = (arrDef && isTargetedArray);
     assign resultContext = array_code;

@@ -40,7 +40,7 @@ module encode(
         output[7:0] resultContext 
     );
     
-    wire outOfScope;
+    wire[0:0] outOfScope;
     assign outOfScope = (!isMetadata || metadata > 7);
     
     assign resultBool = (!outOfScope) && (arrDef) && (isMetadata) && (metadata  == handle);
