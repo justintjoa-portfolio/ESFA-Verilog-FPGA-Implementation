@@ -295,7 +295,6 @@ module esfa_test;
         r_true = (l1.c2.handle == 2); #168;
         
         r_true = resultBool; #168;
-        r_true = (resultValue == 3); #168;
         r_true = 1;
         
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 9, 5)
