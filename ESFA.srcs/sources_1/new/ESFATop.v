@@ -65,23 +65,23 @@ end
 
 
 reg r_willWrite = 0;
-reg r_var_selector;
-reg r_data;
-reg r_new_index;
-reg r_new_value;
-reg r_queried_handle;
+reg[7:0] r_var_selector;
+reg[7:0] r_data;
+reg[7:0] r_new_index;
+reg[7:0] r_new_value;
+reg[7:0] r_queried_handle;
 reg r_isHandle;
-reg r_selector;
+reg[7:0] r_selector;
 
 wire willWrite;
 
-wire new_index;
-wire new_value;
-wire queried_handle;
+wire[7:0] new_index;
+wire[7:0] new_value;
+wire[7:0] queried_handle;
 wire isHandle;
-wire selector;
-wire resultBool;
-wire resultValue;
+wire[7:0] selector;
+wire[7:0] resultBool;
+wire[7:0] resultValue;
 
 assign willWrite = r_willWrite;
 assign new_index = r_new_index;

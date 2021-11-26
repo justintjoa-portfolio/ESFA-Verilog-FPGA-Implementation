@@ -49,13 +49,13 @@ module congrueDownDesign(
         output[0:0] out_mark
     );
     
-    wire code_dec;
+    wire[7:0] code_dec;
     assign code_dec = array_code - 1;
     
-    wire low_dec;
+    wire[7:0] low_dec;
     assign low_dec = low - 1;
     
-    wire high_dec;
+    wire[7:0] high_dec;
     assign high_dec = high - 1;
    
    wire willDecrementCode;
