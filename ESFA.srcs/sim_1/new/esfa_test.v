@@ -30,8 +30,8 @@ module esfa_test;
     reg[0:0] isMetadata = 0;
     reg[7:0] rank = 0;
     reg[7:0] code = 0;
-    wire resultBool;
-    wire resultValue;
+    wire[0:0] resultBool;
+    wire[7:0] resultValue;
     reg[7:0] selector = 0;
     
     reg[0:0] r_true = 1;
@@ -152,54 +152,54 @@ module esfa_test;
         r_true = (l1.c1.new_rank == 2); #168;
         r_true = (l1.c1.new_low == 1); #168;
         r_true = (l1.c1.new_high == 1); #168;
-       
+        r_true = 1; 
         
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
-        new_index = 4;
-        new_value = 10;
-        isMetadata = 1'b0;
-        selector = 3;
-        willWrite = 1;
-        #168;
         selector = 7;
         #168;
+        r_true = (resultBool == 1); #168
+        r_true = (resultValue == 2); #168
+        r_true = 1;
+        
         selector = 0;
-        #168;
-        selector = 5;
+        willWrite = 1;
+        new_index = 4;
+        new_value = 10;
+        isMetadata = 1'b1;
+        metadata = 2;
         #168;
         willWrite = 0;
-        r_true = (l1.c0.new_arrDef == 1'b1);
-        r_true = (l1.c0.new_eltDef == 1'b1);
-        r_true = (l1.c0.new_mark == 1'b0);
-        r_true = (l1.c0.new_index == 0);
-        r_true = (l1.c0.new_value == 5);
-        r_true = (l1.c0.new_rank == 1);
-        r_true = (l1.c0.new_low == 0);
-        r_true = (l1.c0.new_high == 1);
-        r_true = (l1.c0.handle == 0);
         
-        r_true = (l1.c1.new_arrDef == 1'b1);
-        r_true = (l1.c1.new_eltDef == 1'b1);
-        r_true = (l1.c1.new_mark == 1'b0);
-        r_true = (l1.c1.new_index == 2);
-        r_true = (l1.c1.new_value == 10);
-        r_true = (l1.c1.new_rank == 2);
-        r_true = (l1.c1.new_low == 1);
-        r_true = (l1.c1.new_high == 1);
-        r_true = (l1.c1.handle == 1);
+        r_true = (l1.c0.new_arrDef == 1'b1); #168;
+        r_true = (l1.c0.new_eltDef == 1'b1); #168;
+        r_true = (l1.c0.new_mark == 1'b0); #168;
+        r_true = (l1.c0.new_index == 0); #168;
+        r_true = (l1.c0.new_value == 5); #168;
+        r_true = (l1.c0.new_rank == 1); #168;
+        r_true = (l1.c0.new_low == 0); #168;
+        r_true = (l1.c0.new_high == 1); #168;
+        r_true = (l1.c0.handle == 0); #168;
         
-        r_true = (l1.c2.new_arrDef == 1'b1);
-        r_true = (l1.c2.new_eltDef == 1'b1);
-        r_true = (l1.c2.new_mark == 1'b0);
-        r_true = (l1.c2.new_index == 4);
-        r_true = (l1.c2.new_value == 10);
-        r_true = (l1.c2.new_rank == 1);
-        r_true = (l1.c2.new_low == 2);
-        r_true = (l1.c2.new_high == 2);
-        r_true = (l1.c2.handle == 2);
+        r_true = (l1.c1.new_arrDef == 1'b1); #168;
+        r_true = (l1.c1.new_eltDef == 1'b1); #168;
+        r_true = (l1.c1.new_mark == 1'b0); #168;
+        r_true = (l1.c1.new_index == 2); #168;
+        r_true = (l1.c1.new_value == 10); #168;
+        r_true = (l1.c1.new_rank == 2); #168;
+        r_true = (l1.c1.new_low == 1); #168;
+        r_true = (l1.c1.new_high == 1); #168;
+        r_true = (l1.c1.handle == 1); #168;
         
-        r_true = resultBool;
-        r_true = (resultValue == 2);
+        r_true = (l1.c2.new_arrDef == 1'b1); #168;
+        r_true = (l1.c2.new_eltDef == 1'b1); #168;
+        r_true = (l1.c2.new_mark == 1'b0); #168;
+        r_true = (l1.c2.new_index == 4); #168;
+        r_true = (l1.c2.new_value == 10); #168;
+        r_true = (l1.c2.new_rank == 1); #168;
+        r_true = (l1.c2.new_low == 2); #168;
+        r_true = (l1.c2.new_high == 2); #168;
+        r_true = (l1.c2.handle == 2); #168;
+ 
         
         //state_and_handle = ESFAArrayOp().update(state_and_handle._1, Some(2), 10, 21)
         new_index = 10;
