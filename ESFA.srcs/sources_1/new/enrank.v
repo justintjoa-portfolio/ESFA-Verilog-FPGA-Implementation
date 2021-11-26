@@ -37,16 +37,7 @@ module enrank(
         input[0:0] isMetadata,
         output[0:0] resultBool,
         output[7:0] resultValue,
-        output[7:0] resultContext, 
-        output[0:0] out_arrDef,
-        output[7:0] out_array_code,
-        output[0:0] out_eltDef,
-        output[7:0] out_rank,
-        output[7:0] out_low,
-        output[7:0] out_high,
-        output[7:0] out_index,
-        output[7:0] out_value,
-        output[0:0] out_mark
+        output[7:0] resultContext
     );
     
     wire outOfScope;
@@ -55,14 +46,6 @@ module enrank(
     assign resultBool = (!outOfScope) && (arrDef) && (isMetadata) && (metadata  == handle);
     assign resultValue = rank;
     assign resultContext = rank;
-    assign out_arrDef = arrDef; 
-    assign out_array_code = array_code;
-    assign out_eltDef = eltDef;
-    assign out_rank = rank;
-    assign out_low = low;
-    assign out_high = high;
-    assign out_index = index;
-    assign out_value = value;
-    assign out_mark = 1'b0;
+
     
 endmodule

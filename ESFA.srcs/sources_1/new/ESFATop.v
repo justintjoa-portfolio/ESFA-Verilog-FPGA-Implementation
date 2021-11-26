@@ -54,17 +54,14 @@ always @(posedge clk) begin
                 tx_byte <= 1;
             if (r_var_selector == 4)
                 r_selector = r_data;
-                r_willWrite <= 1;
                 tx_byte[0:0] <= resultBool;
                 tx_byte[7:1] <= resultValue; 
-            r_willWrite <= 0;
         end
     else
          xmitnow<=1'b0;
 end
 
 
-reg r_willWrite = 0;
 reg r_var_selector;
 reg r_data;
 reg r_new_index;
@@ -73,7 +70,6 @@ reg r_queried_handle;
 reg r_isHandle;
 reg r_selector;
 
-wire willWrite;
 
 wire new_index;
 wire new_value;
@@ -83,17 +79,15 @@ wire selector;
 wire resultBool;
 wire resultValue;
 
-assign willWrite = r_willWrite;
 assign new_index = r_new_index;
 assign new_value = r_new_value;
 assign queried_handle = r_queried_handle;
 assign isHandle = r_isHandle;
 assign selector = r_selector;
 
-assign willWrite = r_willWrite;
 
 
-ESFADesign(clk, willWrite, new_index, new_value, queried_handle, isHandle, resultBool, resultValue, selector);
+ESFADesign(clk, new_index, new_value, queried_handle, isHandle, resultBool, resultValue, selector);
 
 
 UART #(

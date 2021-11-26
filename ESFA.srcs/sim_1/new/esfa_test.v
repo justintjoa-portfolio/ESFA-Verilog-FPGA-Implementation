@@ -23,7 +23,6 @@
 module esfa_test;
     
     reg[0:0] clk = 0;
-    reg[0:0] willWrite = 0;
     reg[7:0] new_index = 0;
     reg[7:0] new_value = 0;
     reg[7:0] metadata = 0;
@@ -48,7 +47,6 @@ module esfa_test;
     
     ESFADesign l1(
         .clk(clk),
-        .in_willWrite(willWrite),
         .new_index(new_index),
         .new_value(new_value),
         .metadata(metadata),
@@ -77,7 +75,6 @@ module esfa_test;
         r_true = (resultBool == 1); #168;
         r_true = (resultValue == 0); #168;
         r_true = 1;
-        willWrite = 1;
         metadata = resultValue;
         isMetadata = resultBool;
         selector = 0;
@@ -86,7 +83,6 @@ module esfa_test;
         new_index = 0; 
         selector = 5;
         #420
-        willWrite = 0;
         
         
         
@@ -129,16 +125,12 @@ module esfa_test;
         new_index = 2;
         new_value = 8'b1010;
         selector = 0;
-        willWrite = 1;
         #168;
-        willWrite = 0;
         new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
         metadata = code;
         new_value = rank;
         selector = 5;
-        willWrite = 1;
         #420;
-        willWrite = 0;
         r_true = (resultBool); #168;
         r_true = 1;
       
@@ -169,7 +161,6 @@ module esfa_test;
         r_true = 1;
         
         selector = 0;
-        willWrite = 1;
         new_index = 4;
         new_value = 8'b1010;
         isMetadata = 1'b1;
@@ -180,7 +171,6 @@ module esfa_test;
         selector = 5;
         #420
         
-        willWrite = 0;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -236,17 +226,13 @@ module esfa_test;
         new_index = 8'b1010;
         new_value = 8'b10101;
         selector = 0;
-        willWrite = 1;
         #168
-        willWrite = 0;
         new_index = 3;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
         selector = 5;
-        willWrite = 1;
         #420;
-        willWrite = 0;
        
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -298,7 +284,6 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 1;
         selector = 3;
-        willWrite = 1;
         #168;
         selector = 7;
         #168;
@@ -306,7 +291,6 @@ module esfa_test;
         #168;
         selector = 5;
         #168;
-        willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);
@@ -371,7 +355,6 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 1;
         selector = 3;
-        willWrite = 1;
         #168;
         selector = 7;
         #168;
@@ -379,7 +362,6 @@ module esfa_test;
         #168;
         selector = 5;
         #168;
-        willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);
@@ -536,11 +518,9 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 1;
         selector = 4;
-        willWrite = 1;
         #168;
         selector = 6;
         #168;
-        willWrite = 0;
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);
@@ -611,21 +591,17 @@ module esfa_test;
         isMetadata = 1'b1;
         metadata = 4;
         selector = 4;
-        willWrite = 1;
         #168;
         selector = 6;
         #168;
-        willWrite = 0;
         
         //ESFAArrayOp().delete(post_deletion_state, 5)
         isMetadata = 1'b1;
         metadata = 5;
         selector = 4;
-        willWrite = 1;
         #168;
         selector = 6;
         #168;
-        willWrite = 0;
         
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
