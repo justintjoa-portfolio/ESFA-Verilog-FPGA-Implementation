@@ -48,35 +48,26 @@ module congrueDownDesign(
         output[7:0] out_value,
         output[0:0] out_mark
     );
-    
-    wire[7:0] code_dec;
-    assign code_dec = array_code - 1;
-    
-    wire[7:0] low_dec;
-    assign low_dec = low - 1;
-    
-    wire[7:0] high_dec;
-    assign high_dec = high - 1;
    
-   wire[0:0] willDecrementCode;
+   wire willDecrementCode;
    assign willDecrementCode = (arrDef) && isMetadata && (array_code > metadata);
    
-   wire[0:0] willDecrementLow;
+   wire willDecrementLow;
    assign willDecrementLow  = (eltDef) && isMetadata && (metadata < low);
    
-   wire[0:0] willDecrementHigh;
+   wire willDecrementHigh;
    assign willDecrementHigh = eltDef && ((metadata < low) || (low <= metadata && metadata <= high)) && isMetadata;
   
-   wire[0:0] negativeSet;
+   wire negativeSet;
    assign negativeSet = (((out_high - out_low) < 0) && eltDef);
     
     assign resultBool = 1'b1;
     assign out_arrDef = negativeSet ? 1'b0 : arrDef;   
-    assign out_array_code = willDecrementCode ? code_dec : array_code;
+    assign out_array_code = willDecrementCode ? (array_code - 1) : array_code;
     assign out_eltDef = negativeSet ? 1'b0 : eltDef;
     assign out_rank = rank;
-    assign out_low = willDecrementLow ? low_dec : low;
-    assign out_high = willDecrementHigh ? high_dec : high;
+    assign out_low = willDecrementLow ?  (low - 1) : low;
+    assign out_high = willDecrementHigh ? (high - 1) : high;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;

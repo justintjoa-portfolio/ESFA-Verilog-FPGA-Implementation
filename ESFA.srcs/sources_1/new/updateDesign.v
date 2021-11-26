@@ -61,7 +61,7 @@ module updateDesign(
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
     assign out_mark = 1'b0;
-    assign out_rank = resultBool ? 1 : rank;
+    assign out_rank = resultBool ? 1'b1 : rank;
     
     
 endmodule

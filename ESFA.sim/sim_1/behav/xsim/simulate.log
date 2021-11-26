@@ -1,3 +1,44 @@
 Time resolution is 1 ps
 update basic test, begin
 assertions working correctly
+Stopped at time : 3360 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 104
+Stopped at time : 5040 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 127
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 130
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 131
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 5964 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 138
+Stopped at time : 5964 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 138
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 143
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 143
+ASSERTION FAILED in esfa_test.a0
+$finish called at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v" Line 29
+update basic test, begin
+assertions working correctly
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 132
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+update basic test, begin
+assertions working correctly
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 132
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 6468 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 141
+Stopped at time : 6468 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 141
+Stopped at time : 6636 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 142
+Stopped at time : 6636 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 142
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 143
+Stopped at time : 6804 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 143
+Stopped at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 144
+Stopped at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 144
+ASSERTION FAILED in esfa_test.a0
+$finish called at time : 6972 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v" Line 29
+update basic test, begin
+assertions working correctly
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 132
+Stopped at time : 5208 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 133
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 5628 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 134
+Stopped at time : 6468 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 141
