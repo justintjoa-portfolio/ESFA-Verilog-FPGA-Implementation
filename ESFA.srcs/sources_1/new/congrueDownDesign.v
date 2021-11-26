@@ -33,8 +33,6 @@ module congrueDownDesign(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -82,4 +80,6 @@ module congrueDownDesign(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;
+    assign resultValue = 0;
+    assign resultContext = 0;
 endmodule

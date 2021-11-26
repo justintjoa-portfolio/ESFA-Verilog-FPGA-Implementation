@@ -33,8 +33,6 @@ module lookUpScan(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -51,9 +49,6 @@ module lookUpScan(
         output[0:0] out_mark
     );
     
-    wire isCandidate;
-    assign isCandidate = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata);
-    
     
     assign resultBool = 1'b1;
     assign out_arrDef = arrDef; 
@@ -64,6 +59,9 @@ module lookUpScan(
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = isCandidate;
+    assign out_mark = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata);
+    
+    assign resultValue = 0;
+    assign resultContext = 0;
 endmodule
 

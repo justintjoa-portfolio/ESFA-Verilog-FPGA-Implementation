@@ -99,6 +99,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/congrueUpDesign.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/deleteDesign.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/encode.v
+  C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/enrank.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpFinalizer.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v
   C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/markAvailableCell.v

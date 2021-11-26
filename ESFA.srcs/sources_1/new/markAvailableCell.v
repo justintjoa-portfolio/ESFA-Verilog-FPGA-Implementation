@@ -33,8 +33,6 @@ module markAvailableCell(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -51,10 +49,7 @@ module markAvailableCell(
         output[0:0] out_mark
     );
     
-    wire noElementDefined;
-    assign noElementDefined = ! arrDef;
-    
-    assign resultBool = (noElementDefined);
+    assign resultBool = ! arrDef;
     assign resultContext = handle;
     assign out_arrDef = arrDef;  
     assign out_array_code = array_code;
@@ -65,4 +60,5 @@ module markAvailableCell(
     assign out_index = index;
     assign out_value = value;
     assign out_mark = mark;
+    assign resultValue = handle;
 endmodule

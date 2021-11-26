@@ -31,11 +31,9 @@ module updateDesign(
         input[7:0] index,
         input[7:0] value,
         input[0:0] mark,
-        input[7:0] new_index,
+        input[7:0] new_index, 
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
-        input[7:0] metadata,
+        input[7:0] metadata, 
         input[0:0] isMetadata,
         output[0:0] resultBool,
         output[7:0] resultValue,
@@ -50,32 +48,20 @@ module updateDesign(
         output[7:0] out_value,
         output[0:0] out_mark
     );
-        
-    wire rank_inc;
-    assign rank_inc = rank + 1;
-    wire code_inc;
-    assign code_inc = array_code + 1;
+   
     
-    assign resultBool = (metadata == handle) && isMetadata;
-    assign resultValue = handle; 
+    assign resultBool = (metadata == handle) && isMetadata && !eltDef;
+    assign resultValue = out_array_code;
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
-    assign out_array_code = resultBool ?
-                            isHandle ? code_inc : handle
-                            : array_code;
+    assign out_array_code = array_code;
     assign out_eltDef = resultBool ? 1'b1 : eltDef;
-    assign out_rank = resultBool ?
-                      isHandle ? rank_inc : 1
-                      : rank;
-    assign out_low = resultBool ?
-                        isHandle ? code_inc : handle
-                        : low;
-    assign out_high = resultBool ?        
-                        isHandle ? code_inc : handle 
-                        : high;
+    assign out_low = low;
+    assign out_high = high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
-    assign out_mark = resultBool;
+    assign out_mark = 1'b0;
+    assign out_rank = resultBool ? 1 : rank;
     
     
 endmodule

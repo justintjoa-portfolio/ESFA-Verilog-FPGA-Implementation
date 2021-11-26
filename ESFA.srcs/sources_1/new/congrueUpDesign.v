@@ -33,8 +33,6 @@ module congrueUpDesign(
         input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
-        input[7:0] queried_handle,
-        input[0:0] isHandle,
         input[7:0] metadata,
         input[0:0] isMetadata,
         output[0:0] resultBool,
@@ -50,21 +48,21 @@ module congrueUpDesign(
         output[7:0] out_value,
         output[0:0] out_mark
     );
+  
+    wire prev_code_inc;
+    assign prev_code_inc = metadata + 1;
     
-    wire noOp;
-    assign noOp = mark;
-    
-    wire code_inc;
-    assign code_inc = array_code + 1;
-    
-    wire willIncrementCode;
-    assign willIncrementCode = (array_code > metadata) && (isMetadata) && (arrDef);
+    wire present_code_inc;
+    assign present_code_inc = array_code + 1;
     
     wire low_inc;
     assign low_inc = low + 1;
     
     wire high_inc;
     assign high_inc = high + 1;
+    
+    wire willIncrementOwnCode;
+    assign willIncrementOwnCode = (array_code > metadata) && (isMetadata) && (arrDef);
     
     wire low_high;
     assign low_high = (eltDef) && isMetadata && (low > metadata);
@@ -75,15 +73,23 @@ module congrueUpDesign(
    
     assign resultBool = 1'b1;
     assign out_arrDef = arrDef;   
-    assign out_array_code = noOp ? array_code :
-        willIncrementCode ? code_inc : array_code;
+    assign out_array_code = (new_index == handle) ? 
+                             isMetadata ? prev_code_inc : handle
+                            : willIncrementOwnCode ? present_code_inc : array_code;
+                            
     assign out_eltDef = eltDef;
-    assign out_rank = rank;
-    assign out_low = noOp ? low :
-        low_high ? low_inc : low;
-    assign out_high = noOp ? high :
-        high_high ? high_inc : high;
+    assign out_rank = (new_index == handle) ? 
+                        isMetadata ? (new_value + 1) : 1 
+                     : rank;
+    assign out_low = (new_index == handle) ? 
+                        isMetadata ? prev_code_inc : handle 
+                        : low_high ? low_inc : low;
+    assign out_high = (new_index == handle) ? 
+                        isMetadata ? prev_code_inc : handle
+                        : high_high ? high_inc : high;
     assign out_index = index;
     assign out_value = value;
     assign out_mark = 1'b0;
+    assign resultValue = 0;
+    assign resultContext = 0;
 endmodule
