@@ -80,9 +80,14 @@ module esfa_test;
         isMetadata = resultBool;
         selector = 0;
         #168;
+        r_true = (resultBool == 1); #168;
+        r_true = (resultValue == 0); #168;
+        metadata = resultValue;
+        isMetadata = resultBool;
         selector = 5;
         #168;
         willWrite = 0;
+        r_true = (resultBool == 1); #168;
         r_true = (l1.c0.new_arrDef == 1'b1); #168
         r_true = (l1.c0.new_eltDef == 1'b1); #168
         r_true = (l1.c0.new_mark == 1'b0); #168

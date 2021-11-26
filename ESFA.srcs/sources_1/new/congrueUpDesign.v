@@ -56,8 +56,8 @@ module congrueCodesUp(
     wire code_inc;
     assign code_inc = array_code + 1;
     
-    wire willIncrementCode;
-    assign willIncrementCode = (array_code > metadata) && (isMetadata) && (arrDef);
+    wire willIncrementOwnCode;
+    assign willIncrementOwnCode = (array_code > metadata) && (isMetadata) && (arrDef);
     
     wire low_inc;
     assign low_inc = low + 1;
@@ -76,15 +76,15 @@ module congrueCodesUp(
     assign out_arrDef = arrDef;   
     assign out_array_code = mark ? 
                              isMetadata ? prev_code_inc : handle
-                            : willIncrementCode ? code_inc : array_code;
+                            : willIncrementOwnCode ? code_inc : array_code;
                             
     assign out_eltDef = eltDef;
     assign out_rank = rank;
     assign out_low = mark ? 
-                        isMetadata ? code_inc : handle 
+                        isMetadata ? prev_code_inc : handle 
                         : low_high ? low_inc : low;
     assign out_high = mark ? 
-                        isMetadata ? code_inc : handle
+                        isMetadata ? prev_code_inc : handle
                         : high_high ? high_inc : high;
     assign out_index = index;
     assign out_value = value;
