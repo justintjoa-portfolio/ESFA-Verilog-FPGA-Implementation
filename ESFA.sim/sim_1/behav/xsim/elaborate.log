@@ -4,24 +4,6 @@ Running: C:/Xilinx/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto ae3d7a12ba
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:55]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'resultValue' [C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v:57]
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.assert
-Compiling module xil_defaultlib.updateDesign
-Compiling module xil_defaultlib.lookUpScan
-Compiling module xil_defaultlib.lookUpFinalizer
-Compiling module xil_defaultlib.encode
-Compiling module xil_defaultlib.deleteDesign
-Compiling module xil_defaultlib.congrueUpDesign
-Compiling module xil_defaultlib.congrueDownDesign
-Compiling module xil_defaultlib.markAvailableCell
-Compiling module xil_defaultlib.enrank
-Compiling module xil_defaultlib.MemoryCell
-Compiling module xil_defaultlib.NodeCombinator
-Compiling module xil_defaultlib.ESFADesign
-Compiling module xil_defaultlib.esfa_test
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot esfa_test_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
