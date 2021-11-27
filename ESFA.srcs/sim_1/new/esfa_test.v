@@ -580,12 +580,19 @@ module esfa_test;
         //ESFAArrayOp().delete(state_and_handle._1, 1)
         isMetadata = 1'b1;
         metadata = 1;
-        selector = 4;
+        selector = 3;
         willWrite = 1;
         #168;
-        selector = 6;
-        #168;
+        code = resultValue;
+        r_true = resultBool; #168;
+        r_true = 1;
+        isMetadata = 1'b1;
+        metadata = code;
+        selector = 5;
+        #28;
         willWrite = 0;
+        #392   
+        
         r_true = (l1.c0.new_arrDef == 1'b1);
         r_true = (l1.c0.new_eltDef == 1'b1);
         r_true = (l1.c0.new_mark == 1'b0);
