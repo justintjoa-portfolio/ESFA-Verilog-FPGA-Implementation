@@ -49,6 +49,8 @@ module congrueDownDesign(
         output[0:0] out_mark
     );
     
+    wire isTargetedArray = (isMetadata && new_index == handle);
+    
     wire[7:0] code_dec;
     assign code_dec = array_code - 1;
     
@@ -71,10 +73,17 @@ module congrueDownDesign(
    assign negativeSet = ((out_high - out_low < 0) && eltDef);
     
     assign resultBool = 1'b1;
-    assign out_arrDef = negativeSet ? 1'b0 : arrDef;   
+    assign out_arrDef = 
+    isTargetedArray ? 
+        1'b0
+        : negativeSet ? 
+            1'b0 
+            : arrDef;   
     assign out_array_code = willDecrementCode ? code_dec : array_code;
-    assign out_eltDef = negativeSet ? 1'b0 : eltDef;
-    assign out_rank = rank;
+    assign out_eltDef = negativeSet ? 
+            1'b0 
+            : eltDef; 
+    assign out_rank = isTargetedArray ? 1'b0 : rank;
     assign out_low = willDecrementLow ? low_dec : low;
     assign out_high = willDecrementHigh ? high_dec : high;
     assign out_index = index;
