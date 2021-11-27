@@ -17,10 +17,8 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/V
 INFO: [VRFC 10-311] analyzing module encode
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/enrank.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module enrank
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpFinalizer.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module lookUpFinalizer
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/lookUpScan.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module lookUpScan
+INFO: [VRFC 10-311] analyzing module lookUp
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/markAvailableCell.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module markAvailableCell
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sources_1/new/updateDesign.v" into library xil_defaultlib

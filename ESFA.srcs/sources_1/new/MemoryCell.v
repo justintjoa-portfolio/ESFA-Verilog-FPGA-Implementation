@@ -72,35 +72,30 @@ module MemoryCell(
     wire[0:0] h_resultBool, h_arrDef, h_eltDef, h_mark;
     wire [7:0] h_resultValue, h_resultContext, h_array_code, h_rank, h_low, h_high, h_index, h_value;
     
-    wire[0:0] i_resultBool, i_arrDef, i_eltDef, i_mark;
-    wire [7:0] i_resultValue, i_resultContext, i_array_code, i_rank, i_low, i_high, i_index, i_value;
     
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value, a_mark);
    
-   lookUpScan lookScan(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
+   lookUp lookScan(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, b_resultBool, b_resultValue, b_resultContext, b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value, b_mark);
    
-   lookUpFinalizer lookFinalizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
+   encode encoder(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, c_resultBool, c_resultValue, c_resultContext, c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value, c_mark);
    
-   encode encoder(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
+   deleteDesign deleter(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
    metadata, isMetadata, d_resultBool, d_resultValue, d_resultContext, d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value, d_mark);
    
-   deleteDesign deleter(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
+   congrueUpDesign upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
    metadata, isMetadata, e_resultBool, e_resultValue,  e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value, e_mark);
    
-   congrueUpDesign upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
+   congrueDownDesign downEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
    metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value, f_mark);
    
-   congrueDownDesign downEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
+   markAvailableCell vacantCellMarker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
    metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value, g_mark);
-   
-   markAvailableCell vacantCellMarker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
-   metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark);
     
-   enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value, 
-   metadata, isMetadata, i_resultBool, i_resultValue,  i_resultContext, i_arrDef, i_array_code, i_eltDef, i_rank, i_low, i_high, i_index, i_value, i_mark); 
+   enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, new_mark, inserted_index, inserted_value,
+   metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext, h_arrDef, h_array_code, h_eltDef, h_rank, h_low, h_high, h_index, h_value, h_mark); 
    
     //Map
     // 0 : update  
@@ -249,23 +244,6 @@ module MemoryCell(
                     new_bool = h_resultBool;
                     new_result_value = h_resultValue; 
                     new_context = h_resultContext;
-                end
-                if (selector == 8) begin
-                    if (willWrite) begin
-                        new_arrDef = i_arrDef;
-                        new_array_code = i_array_code;
-                        new_eltDef = i_eltDef;
-                        new_rank = i_rank;
-                        new_low = i_low;
-                        new_high = i_high;
-                        new_index = i_index;
-                        new_value = i_value;
-                        new_mark = i_mark;  
-                    end
-                
-                    new_bool = i_resultBool;
-                    new_result_value = i_resultValue; 
-                    new_context = i_resultContext;
                 end
             end
 endmodule
