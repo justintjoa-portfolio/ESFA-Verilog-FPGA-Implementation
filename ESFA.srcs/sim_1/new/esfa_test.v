@@ -87,7 +87,10 @@ module esfa_test;
         new_index = 0; 
         selector = 3;
         // CRITICAL FOR FUNCTIONAL TESTING: WILL_WRITE SHOULD ONLY BE HIGH FOR ONE CYCLE  
+        willWrite = 0;
         #28;
+        willWrite = 1;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 0;
         #392
         willWrite = 0;
@@ -140,8 +143,10 @@ module esfa_test;
         metadata = code;
         new_value = rank;
         selector = 3;
+        willWrite = 0;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 1;
-        #28; // WILL Write should only be high for one cycle 
+        #28; 
         willWrite = 0;
         #392;
         willWrite = 0;
@@ -184,7 +189,10 @@ module esfa_test;
         isMetadata = 0;
         new_index = 2; 
         selector = 3;
-        #28; // WILL Write should only be high for one cycle 
+        willWrite = 0;
+        #28; // allow a cycle for outputs to stabilize, then write 
+        willWrite = 1;
+        #28; 
         willWrite = 0;
         #392;
         
@@ -250,8 +258,10 @@ module esfa_test;
         metadata = code;
         new_value = rank;
         selector = 3;
+        willWrite = 0;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 1;
-        #28; // WILL Write should only be high for one cycle 
+        #28; 
         willWrite = 0;
         #392;
 
@@ -323,8 +333,11 @@ module esfa_test;
         metadata = code;
         new_value = rank;
         selector = 3;
+        willWrite = 0;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 1;
-        #28; // WILL Write should only be high for one cycle 
+        #28; 
+        willWrite = 0;
         willWrite = 0;
         #392;
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
@@ -410,8 +423,10 @@ module esfa_test;
         metadata = code;
         new_value = rank;
         selector = 3;
+        willWrite = 0;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 1;
-        #28; // WILL Write should only be high for one cycle 
+        #28; 
         willWrite = 0;
         #392;
         
@@ -588,8 +603,10 @@ module esfa_test;
         new_index = 1;
         metadata = code;
         
-        willWrite = 1;
+        willWrite = 0;
         #28;
+        willWrite = 1;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 0;
         #392;
         r_true = resultBool; #168;
@@ -674,10 +691,12 @@ module esfa_test;
         new_index = 4;
         metadata = code;
         
-        willWrite = 1;
-        #28;
         willWrite = 0;
-        #392;
+        #28;
+        willWrite = 1;
+        #28; // allow a cycle for outputs to stabilize, then write 
+        willWrite = 0;
+        #392
         r_true = resultBool; #168;
         r_true = 1;
         
@@ -692,8 +711,10 @@ module esfa_test;
         new_index = 5;
         metadata = code;
         
-        willWrite = 1;
+        willWrite = 0;
         #28;
+        willWrite = 1;
+        #28; // allow a cycle for outputs to stabilize, then write 
         willWrite = 0;
         #392;
         r_true = resultBool; #168;
@@ -745,18 +766,19 @@ module esfa_test;
         r_true = (l1.c5.new_mark == 1'b0); #168
 
         //ESFAArrayOp().lookUp(post_deletion_state, 0, 0) 
-        new_index = 0;
-        isMetadata = 1'b1;
-        metadata = 0;
-        selector = 3;
-        #168;
-        selector = 1;
-        #168;
+        isMetadata = 1;
+        metadata = 5;
         selector = 2;
         #168;
+        code = resultValue;
+        metadata = code;
+        isMetadata = 1;
+        new_index = 2;
+        selector = 1;
+        #168
         
-        r_true = resultBool;
-        r_true = (resultValue == 5);
+        r_true = resultBool; #168;
+        r_true = (resultValue == 5); #168;
         
         
     end
