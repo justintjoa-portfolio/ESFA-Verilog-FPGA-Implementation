@@ -6,7 +6,6 @@ verilog xil_defaultlib  \
 "../../../../ESFA.srcs/sim_1/new/assert.v" \
 "../../../../ESFA.srcs/sources_1/new/congrueDownDesign.v" \
 "../../../../ESFA.srcs/sources_1/new/congrueUpDesign.v" \
-"../../../../ESFA.srcs/sources_1/new/deleteDesign.v" \
 "../../../../ESFA.srcs/sources_1/new/encode.v" \
 "../../../../ESFA.srcs/sources_1/new/enrank.v" \
 "../../../../ESFA.srcs/sources_1/new/lookUpScan.v" \

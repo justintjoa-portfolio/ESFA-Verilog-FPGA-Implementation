@@ -1,10 +1,3 @@
 Time resolution is 1 ps
 update basic test, begin
 assertions working correctly
-Stopped at time : 46620 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 581
-ASSERTION FAILED in esfa_test.a0
-$finish called at time : 46788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/assert.v" Line 29
-update basic test, begin
-assertions working correctly
-Stopped at time : 46620 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 581
-Stopped at time : 46788 ns : File "C:/Users/justi/OneDrive/Documents/Vivado/ESFA/ESFA.srcs/sim_1/new/esfa_test.v" Line 586

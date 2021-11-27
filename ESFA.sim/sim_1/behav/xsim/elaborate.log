@@ -12,7 +12,6 @@ Compiling module xil_defaultlib.assert
 Compiling module xil_defaultlib.updateDesign
 Compiling module xil_defaultlib.lookUp
 Compiling module xil_defaultlib.encode
-Compiling module xil_defaultlib.deleteDesign
 Compiling module xil_defaultlib.congrueUpDesign
 Compiling module xil_defaultlib.congrueDownDesign
 Compiling module xil_defaultlib.markAvailableCell
