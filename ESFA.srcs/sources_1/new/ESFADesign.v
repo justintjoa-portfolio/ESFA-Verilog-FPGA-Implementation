@@ -122,13 +122,13 @@ module ESFADesign(
     MemoryCell c6(clk, willWrite, c6Handle, new_index, new_value, metadata, isMetadata, selector, c6Bool, c6Result, c6Context);
     MemoryCell c7(clk, willWrite, c7Handle, new_index, new_value, metadata, isMetadata, selector, c7Bool, c7Result, c7Context);
     
-    NodeCombinator combinator1(clk, selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
-    NodeCombinator combinator2(clk, selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
-    NodeCombinator combinator3(clk, selector, c4Result, c4Context, c4Bool, c5Result, c5Context, c5Bool, combinator3Result, combinator3Context, combinator3Bool);
-    NodeCombinator combinator4(clk, selector, c6Result, c6Context, c6Bool, c7Result, c7Context, c7Bool, combinator4Result, combinator4Context, combinator4Bool);
-    NodeCombinator combinator5(clk, selector, combinator1Result, combinator1Context, combinator1Bool, combinator2Result, combinator2Context, combinator2Bool, combinator5Result, combinator5Context, combinator5Bool);
-    NodeCombinator combinator6(clk, selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
-    NodeCombinator combinator7(clk, selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
+    NodeCombinator combinator1(selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
+    NodeCombinator combinator2(selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
+    NodeCombinator combinator3(selector, c4Result, c4Context, c4Bool, c5Result, c5Context, c5Bool, combinator3Result, combinator3Context, combinator3Bool);
+    NodeCombinator combinator4(selector, c6Result, c6Context, c6Bool, c7Result, c7Context, c7Bool, combinator4Result, combinator4Context, combinator4Bool);
+    NodeCombinator combinator5(selector, combinator1Result, combinator1Context, combinator1Bool, combinator2Result, combinator2Context, combinator2Bool, combinator5Result, combinator5Context, combinator5Bool);
+    NodeCombinator combinator6(selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
+    NodeCombinator combinator7(selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
     
     
    

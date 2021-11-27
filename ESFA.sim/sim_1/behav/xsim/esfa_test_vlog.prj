@@ -9,7 +9,6 @@ verilog xil_defaultlib  \
 "../../../../ESFA.srcs/sources_1/new/deleteDesign.v" \
 "../../../../ESFA.srcs/sources_1/new/encode.v" \
 "../../../../ESFA.srcs/sources_1/new/enrank.v" \
-"../../../../ESFA.srcs/sources_1/new/lookUpFinalizer.v" \
 "../../../../ESFA.srcs/sources_1/new/lookUpScan.v" \
 "../../../../ESFA.srcs/sources_1/new/markAvailableCell.v" \
 "../../../../ESFA.srcs/sources_1/new/updateDesign.v" \

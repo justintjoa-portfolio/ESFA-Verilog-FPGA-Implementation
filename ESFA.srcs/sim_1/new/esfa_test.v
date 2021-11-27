@@ -73,7 +73,7 @@ module esfa_test;
         new_index = 0;
         new_value = 5;
         isMetadata = 1'b0;
-        selector = 7;
+        selector = 6;
         #168;
         r_true = (resultBool == 1); #168;
         r_true = (resultValue == 0); #168;
@@ -85,7 +85,7 @@ module esfa_test;
         #168;
         isMetadata = 0;
         new_index = 0; 
-        selector = 5;
+        selector = 4;
         // CRITICAL FOR FUNCTIONAL TESTING: WILL_WRITE SHOULD ONLY BE HIGH FOR ONE CYCLE  
         #28;
         willWrite = 0;
@@ -108,14 +108,14 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
         isMetadata = 1'b1;
         metadata = 0;
-        selector = 3;
+        selector = 2;
         #168;
         r_true = (resultBool); #168;
         r_true = 1;
         code = resultValue;
         r_true = (code == 0); #168;
         r_true = 1;
-        selector = 8;
+        selector = 7;
         #168;
         r_true = (resultBool); #168;
         r_true = (resultValue == 1); #168;
@@ -123,7 +123,7 @@ module esfa_test;
         rank = resultValue;
         r_true = (rank == 1); #168;
         r_true = 1;
-        selector = 7;
+        selector = 6;
         #168;
         r_true = (resultBool); #168;
         r_true = (resultValue == 1); #168;
@@ -139,7 +139,7 @@ module esfa_test;
         new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
         metadata = code;
         new_value = rank;
-        selector = 5;
+        selector = 4;
         willWrite = 1;
         #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
@@ -168,7 +168,7 @@ module esfa_test;
         r_true = 1; 
         
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
-        selector = 7;
+        selector = 6;
         #168;
         r_true = (resultBool == 1); #168
         r_true = (resultValue == 2); #168
@@ -183,7 +183,7 @@ module esfa_test;
         #168;
         isMetadata = 0;
         new_index = 2; 
-        selector = 5;
+        selector = 4;
         #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
         #392;
@@ -223,17 +223,17 @@ module esfa_test;
         //state_and_handle = ESFAArrayOp().update(state_and_handle._1, Some(2), 10, 21)
         isMetadata = 1;
         metadata = 2;
-        selector = 3;
+        selector = 2;
         #168;
         code = resultValue;
         r_true = (code == 2); #168;
         r_true = 1;
-        selector = 8;
+        selector = 7;
         #168;
         rank = resultValue;
         r_true = (rank == 1); #168;
         r_true = 1;
-        selector = 7;
+        selector = 6;
         #168;
         r_true = (resultValue == 3); #168;
         r_true = 1;
@@ -249,7 +249,7 @@ module esfa_test;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
-        selector = 5;
+        selector = 4;
         willWrite = 1;
         #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
@@ -301,13 +301,13 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 9, 5)
         isMetadata = 1;
         metadata = 1;
-        selector = 3;
+        selector = 2;
         #168;
         code = resultValue;
-        selector = 8;
+        selector = 7;
         #168;
         rank = resultValue;
-        selector = 7;
+        selector = 6;
         #168;
         isMetadata = 1;
         handle = resultValue;
@@ -322,7 +322,7 @@ module esfa_test;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
-        selector = 5;
+        selector = 4;
         willWrite = 1;
         #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
@@ -388,13 +388,13 @@ module esfa_test;
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 11, 14)
         isMetadata = 1;
         metadata = 1;
-        selector = 3;
+        selector = 2;
         #168;
         code = resultValue;
-        selector = 8;
+        selector = 7;
         #168;
         rank = resultValue;
-        selector = 7;
+        selector = 6;
         #168;
         isMetadata = 1;
         handle = resultValue;
@@ -409,7 +409,7 @@ module esfa_test;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
-        selector = 5;
+        selector = 4;
         willWrite = 1;
         #28; // WILL Write should only be high for one cycle 
         willWrite = 0;
@@ -484,18 +484,20 @@ module esfa_test;
         r_true = resultBool;
         
         // ESFAArrayOp().lookUp(state_and_handle._1, 0, 0)
-        new_index = 0;
-        isMetadata = 1'b1;
+        isMetadata = 1;
         metadata = 0;
-        selector = 3;
-        #168;
-        selector = 1;
-        #168;
         selector = 2;
         #168;
+        code = resultValue;
+        metadata = code;
+        isMetadata = 1;
+        new_index = 0;
+        selector = 1;
+        #168
         
-        r_true = resultBool;
-        r_true = (resultValue == 5);
+        r_true = resultBool; #168;
+        r_true = (resultValue == 5); #168;
+        r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 1, 0)
         new_index = 0;

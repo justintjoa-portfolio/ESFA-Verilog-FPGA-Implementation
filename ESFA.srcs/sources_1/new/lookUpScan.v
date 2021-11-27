@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module lookUpScan(
+module lookUp(
         input[0:0] arrDef,
         input[7:0] handle,
         input[7:0] array_code,
@@ -50,7 +50,7 @@ module lookUpScan(
     );
     
     
-    assign resultBool = 1'b1;
+    assign resultBool = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata);
     assign out_arrDef = arrDef; 
     assign out_array_code = array_code;
     assign out_eltDef = eltDef;
@@ -59,9 +59,9 @@ module lookUpScan(
     assign out_high = high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = (index == new_index) && (metadata >= low) && (metadata <= high) && (isMetadata);
+    assign out_mark = 1'b0;
     
-    assign resultValue = 0;
-    assign resultContext = 0;
+    assign resultValue = value;
+    assign resultContext = rank;
 endmodule
 

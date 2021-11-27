@@ -10,8 +10,7 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.assert
 Compiling module xil_defaultlib.updateDesign
-Compiling module xil_defaultlib.lookUpScan
-Compiling module xil_defaultlib.lookUpFinalizer
+Compiling module xil_defaultlib.lookUp
 Compiling module xil_defaultlib.encode
 Compiling module xil_defaultlib.deleteDesign
 Compiling module xil_defaultlib.congrueUpDesign
