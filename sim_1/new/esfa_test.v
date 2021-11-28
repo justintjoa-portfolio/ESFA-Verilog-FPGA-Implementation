@@ -99,7 +99,6 @@ module esfa_test;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168
         r_true = (l1.c0.new_eltDef == 1'b1); #168
-        r_true = (l1.c0.new_mark == 1'b0); #168
         r_true = (l1.c0.new_index == 0); #168
         r_true = (l1.c0.new_value == 5); #168
         r_true = (l1.c0.new_rank == 1); #168
@@ -155,7 +154,6 @@ module esfa_test;
       
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -164,7 +162,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b1); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 8'b1010); #168;
         r_true = (l1.c1.new_rank == 2); #168;
@@ -198,7 +195,6 @@ module esfa_test;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -208,7 +204,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b1); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 8'b1010); #168;
         r_true = (l1.c1.new_rank == 2); #168;
@@ -218,7 +213,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168;
         r_true = (l1.c2.new_eltDef == 1'b1); #168;
-        r_true = (l1.c2.new_mark == 1'b0); #168;
         r_true = (l1.c2.new_index == 4); #168;
         r_true = (l1.c2.new_value == 8'b1010); #168;
         r_true = (l1.c2.new_rank == 1); #168;
@@ -267,7 +261,6 @@ module esfa_test;
 
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -277,7 +270,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b1); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 8'b1010); #168;
         r_true = (l1.c1.new_rank == 2); #168;
@@ -287,7 +279,6 @@ module esfa_test;
         
         r_true = (l1.c3.new_arrDef == 1'b1); #168;
         r_true = (l1.c3.new_eltDef == 1'b1); #168;
-        r_true = (l1.c3.new_mark == 1'b0); #168;
         r_true = (l1.c3.new_index == 8'b1010); #168;
         r_true = (l1.c3.new_value == 8'b10101); #168;
         r_true = (l1.c3.new_rank == 2); #168;
@@ -297,7 +288,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168;
         r_true = (l1.c2.new_eltDef == 1'b1); #168;
-        r_true = (l1.c2.new_mark == 1'b0); #168;
         r_true = (l1.c2.new_index == 4); #168;
         r_true = (l1.c2.new_value == 8'b1010); #168;
         r_true = (l1.c2.new_rank == 1); #168;
@@ -342,7 +332,6 @@ module esfa_test;
         #392;
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -353,7 +342,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b1); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 10); #168;
         r_true = (l1.c1.new_rank == 2); #168;
@@ -364,7 +352,6 @@ module esfa_test;
         
         r_true = (l1.c3.new_arrDef == 1'b1); #168;
         r_true = (l1.c3.new_eltDef == 1'b1); #168;
-        r_true = (l1.c3.new_mark == 1'b0); #168;
         r_true = (l1.c3.new_index == 10); #168;
         r_true = (l1.c3.new_value == 21); #168;
         r_true = (l1.c3.new_rank == 2); #168;
@@ -375,7 +362,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168;
         r_true = (l1.c2.new_eltDef == 1'b1); #168;
-        r_true = (l1.c2.new_mark == 1'b0); #168;
         r_true = (l1.c2.new_index == 4); #168;
         r_true = (l1.c2.new_value == 10); #168;
         r_true = (l1.c2.new_rank == 1); #168;
@@ -386,7 +372,6 @@ module esfa_test;
         
         r_true = (l1.c4.new_arrDef == 1'b1); #168;
         r_true = (l1.c4.new_eltDef == 1'b1); #168;
-        r_true = (l1.c4.new_mark == 1'b0); #168;
         r_true = (l1.c4.new_index == 9); #168;
         r_true = (l1.c4.new_value == 5); #168;
         r_true = (l1.c4.new_rank == 3); #168;
@@ -432,7 +417,6 @@ module esfa_test;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -443,7 +427,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b1); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 10); #168;
         r_true = (l1.c1.new_rank == 2); #168;
@@ -454,7 +437,6 @@ module esfa_test;
         
         r_true = (l1.c3.new_arrDef == 1'b1); #168;
         r_true = (l1.c3.new_eltDef == 1'b1); #168;
-        r_true = (l1.c3.new_mark == 1'b0); #168;
         r_true = (l1.c3.new_index == 10); #168;
         r_true = (l1.c3.new_value == 21); #168;
         r_true = (l1.c3.new_rank == 2); #168;
@@ -465,7 +447,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168;
         r_true = (l1.c2.new_eltDef == 1'b1); #168;
-        r_true = (l1.c2.new_mark == 1'b0); #168;
         r_true = (l1.c2.new_index == 4); #168;
         r_true = (l1.c2.new_value == 10); #168;
         r_true = (l1.c2.new_rank == 1); #168;
@@ -476,7 +457,6 @@ module esfa_test;
         
         r_true = (l1.c4.new_arrDef == 1'b1); #168;
         r_true = (l1.c4.new_eltDef == 1'b1); #168;
-        r_true = (l1.c4.new_mark == 1'b0); #168;
         r_true = (l1.c4.new_index == 9); #168;
         r_true = (l1.c4.new_value == 5); #168;
         r_true = (l1.c4.new_rank == 3); #168;
@@ -487,7 +467,6 @@ module esfa_test;
         
         r_true = (l1.c5.new_arrDef == 1'b1); #168;
         r_true = (l1.c5.new_eltDef == 1'b1); #168;
-        r_true = (l1.c5.new_mark == 1'b0); #168;
         r_true = (l1.c5.new_index == 11); #168;
         r_true = (l1.c5.new_value == 14); #168;
         r_true = (l1.c5.new_rank == 3); #168;
@@ -615,7 +594,6 @@ module esfa_test;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
-        r_true = (l1.c0.new_mark == 1'b0); #168;
         r_true = (l1.c0.new_index == 0); #168;
         r_true = (l1.c0.new_value == 5); #168;
         r_true = (l1.c0.new_rank == 1); #168;
@@ -626,7 +604,6 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b0); #168;
         r_true = (l1.c1.new_eltDef == 1'b1); #168;
-        r_true = (l1.c1.new_mark == 1'b0); #168;
         r_true = (l1.c1.new_index == 2); #168;
         r_true = (l1.c1.new_value == 10); #168;
         r_true = (l1.c1.new_rank == 0); #168;
@@ -637,7 +614,6 @@ module esfa_test;
         
         r_true = (l1.c3.new_arrDef == 1'b1); #168;
         r_true = (l1.c3.new_eltDef == 1'b1); #168;
-        r_true = (l1.c3.new_mark == 1'b0); #168;
         r_true = (l1.c3.new_index == 10); #168;
         r_true = (l1.c3.new_value == 21); #168;
         r_true = (l1.c3.new_rank == 2); #168;
@@ -648,7 +624,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168;
         r_true = (l1.c2.new_eltDef == 1'b1); #168;
-        r_true = (l1.c2.new_mark == 1'b0); #168;
         r_true = (l1.c2.new_index == 4); #168;
         r_true = (l1.c2.new_value == 10); #168;
         r_true = (l1.c2.new_rank == 1); #168;
@@ -659,7 +634,6 @@ module esfa_test;
         
         r_true = (l1.c4.new_arrDef == 1'b1); #168;
         r_true = (l1.c4.new_eltDef == 1'b1); #168;
-        r_true = (l1.c4.new_mark == 1'b0); #168;
         r_true = (l1.c4.new_index == 9); #168;
         r_true = (l1.c4.new_value == 5); #168;
         r_true = (l1.c4.new_rank == 3); #168;
@@ -670,7 +644,6 @@ module esfa_test;
         
         r_true = (l1.c5.new_arrDef == 1'b1); #168;
         r_true = (l1.c5.new_eltDef == 1'b1); #168;
-        r_true = (l1.c5.new_mark == 1'b0); #168;
         r_true = (l1.c5.new_index == 11); #168;
         r_true = (l1.c5.new_value == 14); #168;
         r_true = (l1.c5.new_rank == 3); #168;
@@ -722,7 +695,6 @@ module esfa_test;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168
         r_true = (l1.c0.new_eltDef == 1'b1); #168
-        r_true = (l1.c0.new_mark == 1'b0); #168
         r_true = (l1.c0.new_index == 0); #168
         r_true = (l1.c0.new_value == 5); #168
         r_true = (l1.c0.new_rank == 1); #168
@@ -733,11 +705,9 @@ module esfa_test;
         
         r_true = (l1.c1.new_arrDef == 1'b0); #168
         r_true = (l1.c1.new_eltDef == 1'b0); #168
-        r_true = (l1.c1.new_mark == 1'b0); #168
         
         r_true = (l1.c3.new_arrDef == 1'b1); #168
         r_true = (l1.c3.new_eltDef == 1'b1); #168
-        r_true = (l1.c3.new_mark == 1'b0); #168
         r_true = (l1.c3.new_index == 10); #168
         r_true = (l1.c3.new_value == 21); #168
         r_true = (l1.c3.new_rank == 2); #168
@@ -748,7 +718,6 @@ module esfa_test;
         
         r_true = (l1.c2.new_arrDef == 1'b1); #168
         r_true = (l1.c2.new_eltDef == 1'b1); #168
-        r_true = (l1.c2.new_mark == 1'b0); #168
         r_true = (l1.c2.new_index == 4); #168
         r_true = (l1.c2.new_value == 10); #168
         r_true = (l1.c2.new_rank == 1); #168
@@ -759,11 +728,9 @@ module esfa_test;
         
         r_true = (l1.c4.new_arrDef == 1'b0); #168
         r_true = (l1.c4.new_eltDef == 1'b0); #168
-        r_true = (l1.c4.new_mark == 1'b0); #168
         
         r_true = (l1.c5.new_arrDef == 1'b0); #168
         r_true = (l1.c5.new_eltDef == 1'b0); #168
-        r_true = (l1.c5.new_mark == 1'b0); #168
 
         //ESFAArrayOp().lookUp(post_deletion_state, 0, 0) 
         isMetadata = 1;

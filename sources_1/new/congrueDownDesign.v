@@ -30,7 +30,6 @@ module congrueDownDesign(
         input[7:0] high,
         input[7:0] index,
         input[7:0] value,
-        input[0:0] mark,
         input[7:0] new_index,
         input[7:0] new_value,
         input[7:0] metadata,
@@ -45,8 +44,7 @@ module congrueDownDesign(
         output[7:0] out_low,
         output[7:0] out_high,
         output[7:0] out_index,
-        output[7:0] out_value,
-        output[0:0] out_mark
+        output[7:0] out_value
     );
     
     wire isTargetedArray = (isMetadata && new_index == handle);
@@ -88,7 +86,6 @@ module congrueDownDesign(
     assign out_high = willDecrementHigh ? high_dec : high;
     assign out_index = index;
     assign out_value = value;
-    assign out_mark = 1'b0;
     assign resultValue = 0;
     assign resultContext = 0;
 endmodule
