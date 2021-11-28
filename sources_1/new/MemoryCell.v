@@ -50,11 +50,11 @@ module MemoryCell(
     wire[0:0] a_resultBool, a_arrDef, a_eltDef;
     wire [7:0] a_resultValue, a_resultContext, a_array_code, a_rank, a_low, a_high, a_index, a_value;
 
-    wire[0:0] b_resultBool, b_arrDef, b_eltDef;
-    wire [7:0] b_resultValue, b_resultContext, b_array_code, b_rank, b_low, b_high, b_index, b_value;
+    wire[0:0] b_resultBool;
+    wire [7:0] b_resultValue, b_resultContext;
     
-    wire[0:0] c_resultBool, c_arrDef, c_eltDef;
-    wire [7:0] c_resultValue, c_resultContext, c_array_code, c_rank, c_low, c_high, c_index, c_value;
+    wire[0:0] c_resultBool;
+    wire [7:0] c_resultValue, c_resultContext;
     
     wire[0:0] d_resultBool, d_arrDef, d_eltDef;
     wire [7:0] d_resultValue, d_resultContext, d_array_code, d_rank, d_low, d_high, d_index, d_value;
@@ -62,21 +62,21 @@ module MemoryCell(
     wire[0:0] e_resultBool, e_arrDef, e_eltDef;
     wire [7:0] e_resultValue, e_resultContext, e_array_code, e_rank, e_low, e_high, e_index, e_value;
     
-    wire[0:0] f_resultBool, f_arrDef, f_eltDef;
-    wire [7:0] f_resultValue, f_resultContext, f_array_code, f_rank, f_low, f_high, f_index, f_value;
+    wire[0:0] f_resultBool;
+    wire [7:0] f_resultValue, f_resultContext;
     
-    wire[0:0] g_resultBool, g_arrDef, g_eltDef;
-    wire [7:0] g_resultValue, g_resultContext, g_array_code, g_rank, g_low, g_high, g_index, g_value;
+    wire[0:0] g_resultBool;
+    wire [7:0] g_resultValue, g_resultContext;
     
     
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value);
    
    lookUp lookScan(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, b_resultBool, b_resultValue, b_resultContext, b_arrDef, b_array_code, b_eltDef, b_rank, b_low, b_high, b_index, b_value);
+   metadata, isMetadata, b_resultBool, b_resultValue, b_resultContext);
    
    encode encoder(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, c_resultBool, c_resultValue, c_resultContext, c_arrDef, c_array_code, c_eltDef, c_rank, c_low, c_high, c_index, c_value);
+   metadata, isMetadata, c_resultBool, c_resultValue, c_resultContext);
    
    
    congrueUpDesign upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
@@ -86,10 +86,10 @@ module MemoryCell(
    metadata, isMetadata, e_resultBool, e_resultValue,  e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value);
    
    markAvailableCell vacantCellMarker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext, f_arrDef, f_array_code, f_eltDef, f_rank, f_low, f_high, f_index, f_value);
+   metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext);
     
    enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext, g_arrDef, g_array_code, g_eltDef, g_rank, g_low, g_high, g_index, g_value); 
+   metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext); 
    
     //Map
     // 0 : update  
@@ -120,32 +120,12 @@ module MemoryCell(
                     new_context = a_resultContext;
                 end
                 if (selector == 1) begin
-                    if (willWrite) begin
-                        new_arrDef = b_arrDef;
-                        new_array_code = b_array_code;
-                        new_eltDef = b_eltDef;
-                        new_rank = b_rank;
-                        new_low = b_low;
-                        new_high = b_high;
-                        new_index = b_index;
-                        new_value = b_value;
-                    end
                 
                     new_bool = b_resultBool;
                     new_result_value = b_resultValue;
                     new_context = b_resultContext;
                 end
                 if (selector == 2) begin
-                    if (willWrite) begin
-                        new_arrDef = c_arrDef;
-                        new_array_code = c_array_code;
-                        new_eltDef = c_eltDef;
-                        new_rank = c_rank;
-                        new_low = c_low;
-                        new_high = c_high;
-                        new_index = c_index;
-                        new_value = c_value;
-                    end
                     
                     new_bool = c_resultBool;
                     new_result_value = c_resultValue;
@@ -184,32 +164,12 @@ module MemoryCell(
                     new_context = e_resultContext;
                 end
                 if (selector == 5) begin
-                    if (willWrite) begin
-                        new_arrDef = f_arrDef;
-                        new_array_code = f_array_code;
-                        new_eltDef = f_eltDef;
-                        new_rank = f_rank;
-                        new_low = f_low;
-                        new_high = f_high;
-                        new_index = f_index;
-                        new_value = f_value;
-                    end
                     
                     new_bool = f_resultBool;
                     new_result_value = f_resultValue;
                     new_context = f_resultContext;
                 end
                 if (selector == 6) begin
-                    if (willWrite) begin
-                        new_arrDef = g_arrDef;
-                        new_array_code = g_array_code;
-                        new_eltDef = g_eltDef;
-                        new_rank = g_rank;
-                        new_low = g_low;
-                        new_high = g_high;
-                        new_index = g_index;
-                        new_value = g_value;
-                    end
                 
                     new_bool = g_resultBool;
                     new_result_value = g_resultValue;  
