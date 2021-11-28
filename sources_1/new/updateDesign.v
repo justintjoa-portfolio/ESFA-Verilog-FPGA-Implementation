@@ -30,7 +30,6 @@ module updateDesign(
         input[7:0] high,
         input[7:0] index,
         input[7:0] value,
-        input[0:0] mark,
         input[7:0] new_index, 
         input[7:0] new_value,
         input[7:0] metadata, 
@@ -45,8 +44,7 @@ module updateDesign(
         output[7:0] out_low,
         output[7:0] out_high,
         output[7:0] out_index,
-        output[7:0] out_value,
-        output[0:0] out_mark
+        output[7:0] out_value
     );
    
     
@@ -60,7 +58,6 @@ module updateDesign(
     assign out_high = high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
-    assign out_mark = 1'b0;
     assign out_rank = resultBool ? 1 : rank;
     
     
