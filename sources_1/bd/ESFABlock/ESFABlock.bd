@@ -1,0 +1,395 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../ESFA.gen/sources_1/bd/ESFABlock",
+      "name": "ESFABlock",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2021.1"
+    },
+    "design_tree": {
+      "ESFADesign_0": ""
+    },
+    "ports": {
+      "a_isHandle_0": {
+        "direction": "I"
+      },
+      "arrDef_0": {
+        "direction": "I"
+      },
+      "array_code_0": {
+        "direction": "I"
+      },
+      "eltDef_0": {
+        "direction": "I"
+      },
+      "handle_0": {
+        "direction": "I"
+      },
+      "high_0": {
+        "direction": "I"
+      },
+      "index_0": {
+        "direction": "I"
+      },
+      "low_0": {
+        "direction": "I"
+      },
+      "mark_0": {
+        "direction": "I"
+      },
+      "metadata_0": {
+        "direction": "I"
+      },
+      "new_handle_0": {
+        "direction": "I"
+      },
+      "new_index_0": {
+        "direction": "I"
+      },
+      "new_value_0": {
+        "direction": "I"
+      },
+      "out_arrDef_0": {
+        "direction": "O"
+      },
+      "out_array_code_0": {
+        "direction": "O"
+      },
+      "out_eltDef_0": {
+        "direction": "O"
+      },
+      "out_handle_0": {
+        "direction": "O"
+      },
+      "out_high_0": {
+        "direction": "O"
+      },
+      "out_index_0": {
+        "direction": "O"
+      },
+      "out_low_0": {
+        "direction": "O"
+      },
+      "out_mark_0": {
+        "direction": "O"
+      },
+      "out_rank_0": {
+        "direction": "O"
+      },
+      "out_value_0": {
+        "direction": "O"
+      },
+      "rank_0": {
+        "direction": "I"
+      },
+      "resultBool_0": {
+        "direction": "O"
+      },
+      "resultValue_0": {
+        "direction": "O"
+      },
+      "selectorBit1_0": {
+        "direction": "I"
+      },
+      "selectorBit2_0": {
+        "direction": "I"
+      },
+      "selectorBit3_0": {
+        "direction": "I"
+      },
+      "value_0": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "ESFADesign_0": {
+        "vlnv": "xilinx.com:module_ref:ESFADesign:1.0",
+        "xci_name": "ESFABlock_ESFADesign_0_6",
+        "xci_path": "ip\\ESFABlock_ESFADesign_0_6\\ESFABlock_ESFADesign_0_6.xci",
+        "inst_hier_path": "ESFADesign_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ESFADesign",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "arrDef": {
+            "direction": "I"
+          },
+          "handle": {
+            "direction": "I"
+          },
+          "array_code": {
+            "direction": "I"
+          },
+          "eltDef": {
+            "direction": "I"
+          },
+          "rank": {
+            "direction": "I"
+          },
+          "low": {
+            "direction": "I"
+          },
+          "high": {
+            "direction": "I"
+          },
+          "index": {
+            "direction": "I"
+          },
+          "value": {
+            "direction": "I"
+          },
+          "mark": {
+            "direction": "I"
+          },
+          "new_index": {
+            "direction": "I"
+          },
+          "new_value": {
+            "direction": "I"
+          },
+          "new_handle": {
+            "direction": "I"
+          },
+          "a_isHandle": {
+            "direction": "I"
+          },
+          "metadata": {
+            "direction": "I"
+          },
+          "resultBool": {
+            "direction": "O"
+          },
+          "resultValue": {
+            "direction": "O"
+          },
+          "out_arrDef": {
+            "direction": "O"
+          },
+          "out_handle": {
+            "direction": "O"
+          },
+          "out_array_code": {
+            "direction": "O"
+          },
+          "out_eltDef": {
+            "direction": "O"
+          },
+          "out_rank": {
+            "direction": "O"
+          },
+          "out_low": {
+            "direction": "O"
+          },
+          "out_high": {
+            "direction": "O"
+          },
+          "out_index": {
+            "direction": "O"
+          },
+          "out_value": {
+            "direction": "O"
+          },
+          "out_mark": {
+            "direction": "O"
+          },
+          "selectorBit1": {
+            "direction": "I"
+          },
+          "selectorBit2": {
+            "direction": "I"
+          },
+          "selectorBit3": {
+            "direction": "I"
+          }
+        }
+      }
+    },
+    "nets": {
+      "ESFADesign_0_out_arrDef": {
+        "ports": [
+          "ESFADesign_0/out_arrDef",
+          "out_arrDef_0"
+        ]
+      },
+      "ESFADesign_0_out_array_code": {
+        "ports": [
+          "ESFADesign_0/out_array_code",
+          "out_array_code_0"
+        ]
+      },
+      "ESFADesign_0_out_eltDef": {
+        "ports": [
+          "ESFADesign_0/out_eltDef",
+          "out_eltDef_0"
+        ]
+      },
+      "ESFADesign_0_out_handle": {
+        "ports": [
+          "ESFADesign_0/out_handle",
+          "out_handle_0"
+        ]
+      },
+      "ESFADesign_0_out_high": {
+        "ports": [
+          "ESFADesign_0/out_high",
+          "out_high_0"
+        ]
+      },
+      "ESFADesign_0_out_index": {
+        "ports": [
+          "ESFADesign_0/out_index",
+          "out_index_0"
+        ]
+      },
+      "ESFADesign_0_out_low": {
+        "ports": [
+          "ESFADesign_0/out_low",
+          "out_low_0"
+        ]
+      },
+      "ESFADesign_0_out_mark": {
+        "ports": [
+          "ESFADesign_0/out_mark",
+          "out_mark_0"
+        ]
+      },
+      "ESFADesign_0_out_rank": {
+        "ports": [
+          "ESFADesign_0/out_rank",
+          "out_rank_0"
+        ]
+      },
+      "ESFADesign_0_out_value": {
+        "ports": [
+          "ESFADesign_0/out_value",
+          "out_value_0"
+        ]
+      },
+      "ESFADesign_0_resultBool": {
+        "ports": [
+          "ESFADesign_0/resultBool",
+          "resultBool_0"
+        ]
+      },
+      "ESFADesign_0_resultValue": {
+        "ports": [
+          "ESFADesign_0/resultValue",
+          "resultValue_0"
+        ]
+      },
+      "a_isHandle_0_1": {
+        "ports": [
+          "a_isHandle_0",
+          "ESFADesign_0/a_isHandle"
+        ]
+      },
+      "arrDef_0_1": {
+        "ports": [
+          "arrDef_0",
+          "ESFADesign_0/arrDef"
+        ]
+      },
+      "array_code_0_1": {
+        "ports": [
+          "array_code_0",
+          "ESFADesign_0/array_code"
+        ]
+      },
+      "eltDef_0_1": {
+        "ports": [
+          "eltDef_0",
+          "ESFADesign_0/eltDef"
+        ]
+      },
+      "handle_0_1": {
+        "ports": [
+          "handle_0",
+          "ESFADesign_0/handle"
+        ]
+      },
+      "high_0_1": {
+        "ports": [
+          "high_0",
+          "ESFADesign_0/high"
+        ]
+      },
+      "index_0_1": {
+        "ports": [
+          "index_0",
+          "ESFADesign_0/index"
+        ]
+      },
+      "low_0_1": {
+        "ports": [
+          "low_0",
+          "ESFADesign_0/low"
+        ]
+      },
+      "mark_0_1": {
+        "ports": [
+          "mark_0",
+          "ESFADesign_0/mark"
+        ]
+      },
+      "metadata_0_1": {
+        "ports": [
+          "metadata_0",
+          "ESFADesign_0/metadata"
+        ]
+      },
+      "new_handle_0_1": {
+        "ports": [
+          "new_handle_0",
+          "ESFADesign_0/new_handle"
+        ]
+      },
+      "new_index_0_1": {
+        "ports": [
+          "new_index_0",
+          "ESFADesign_0/new_index"
+        ]
+      },
+      "new_value_0_1": {
+        "ports": [
+          "new_value_0",
+          "ESFADesign_0/new_value"
+        ]
+      },
+      "rank_0_1": {
+        "ports": [
+          "rank_0",
+          "ESFADesign_0/rank"
+        ]
+      },
+      "selectorBit1_0_1": {
+        "ports": [
+          "selectorBit1_0",
+          "ESFADesign_0/selectorBit1"
+        ]
+      },
+      "selectorBit2_0_1": {
+        "ports": [
+          "selectorBit2_0",
+          "ESFADesign_0/selectorBit2"
+        ]
+      },
+      "selectorBit3_0_1": {
+        "ports": [
+          "selectorBit3_0",
+          "ESFADesign_0/selectorBit3"
+        ]
+      },
+      "value_0_1": {
+        "ports": [
+          "value_0",
+          "ESFADesign_0/value"
+        ]
+      }
+    }
+  }
+}

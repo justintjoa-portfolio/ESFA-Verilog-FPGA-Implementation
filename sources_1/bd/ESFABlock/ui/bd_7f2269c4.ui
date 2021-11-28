@@ -1,0 +1,74 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.02241",
+   "Default View_TopLeft":"-1140,-140",
+   "ExpandedHierarchyInLayout":"",
+   "PinnedBlocks":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_a_isHandle_0 -pg 1 -lvl 0 -x -120 -y 240 -defaultsOSRD
+preplace port port-id_arrDef_0 -pg 1 -lvl 0 -x -120 -y -120 -defaultsOSRD
+preplace port port-id_array_code_0 -pg 1 -lvl 0 -x -120 -y -60 -defaultsOSRD
+preplace port port-id_eltDef_0 -pg 1 -lvl 0 -x -120 -y -30 -defaultsOSRD
+preplace port port-id_handle_0 -pg 1 -lvl 0 -x -120 -y -90 -defaultsOSRD
+preplace port port-id_high_0 -pg 1 -lvl 0 -x -120 -y 60 -defaultsOSRD
+preplace port port-id_index_0 -pg 1 -lvl 0 -x -120 -y 90 -defaultsOSRD
+preplace port port-id_low_0 -pg 1 -lvl 0 -x -120 -y 0 -defaultsOSRD
+preplace port port-id_mark_0 -pg 1 -lvl 0 -x -120 -y 150 -defaultsOSRD
+preplace port port-id_metadata_0 -pg 1 -lvl 0 -x -120 -y 330 -defaultsOSRD
+preplace port port-id_new_handle_0 -pg 1 -lvl 0 -x -120 -y 270 -defaultsOSRD
+preplace port port-id_new_index_0 -pg 1 -lvl 0 -x -120 -y 180 -defaultsOSRD
+preplace port port-id_new_value_0 -pg 1 -lvl 0 -x -120 -y 420 -defaultsOSRD
+preplace port port-id_out_arrDef_0 -pg 1 -lvl 2 -x 400 -y 70 -defaultsOSRD
+preplace port port-id_out_array_code_0 -pg 1 -lvl 2 -x 400 -y 160 -defaultsOSRD
+preplace port port-id_out_eltDef_0 -pg 1 -lvl 2 -x 400 -y 220 -defaultsOSRD
+preplace port port-id_out_handle_0 -pg 1 -lvl 2 -x 400 -y 190 -defaultsOSRD
+preplace port port-id_out_high_0 -pg 1 -lvl 2 -x 400 -y 310 -defaultsOSRD
+preplace port port-id_out_index_0 -pg 1 -lvl 2 -x 400 -y 340 -defaultsOSRD
+preplace port port-id_out_low_0 -pg 1 -lvl 2 -x 400 -y 280 -defaultsOSRD
+preplace port port-id_out_mark_0 -pg 1 -lvl 2 -x 400 -y 400 -defaultsOSRD
+preplace port port-id_out_rank_0 -pg 1 -lvl 2 -x 400 -y 250 -defaultsOSRD
+preplace port port-id_out_value_0 -pg 1 -lvl 2 -x 400 -y 370 -defaultsOSRD
+preplace port port-id_rank_0 -pg 1 -lvl 0 -x -120 -y 30 -defaultsOSRD
+preplace port port-id_resultBool_0 -pg 1 -lvl 2 -x 400 -y 100 -defaultsOSRD
+preplace port port-id_resultValue_0 -pg 1 -lvl 2 -x 400 -y 130 -defaultsOSRD
+preplace port port-id_selectorBit1_0 -pg 1 -lvl 0 -x -120 -y 300 -defaultsOSRD
+preplace port port-id_selectorBit2_0 -pg 1 -lvl 0 -x -120 -y 360 -defaultsOSRD
+preplace port port-id_selectorBit3_0 -pg 1 -lvl 0 -x -120 -y 390 -defaultsOSRD
+preplace port port-id_value_0 -pg 1 -lvl 0 -x -120 -y 210 -defaultsOSRD
+preplace inst ESFADesign_0 -pg 1 -lvl 1 -x 170 -y 200 -defaultsOSRD
+preplace netloc ESFADesign_0_out_mark 1 1 1 310 310n
+preplace netloc ESFADesign_0_out_handle 1 1 1 380 150n
+preplace netloc ESFADesign_0_out_arrDef 1 1 1 370 70n
+preplace netloc a_isHandle_0_1 1 0 1 -70 240n
+preplace netloc new_value_0_1 1 0 1 -30 250n
+preplace netloc handle_0_1 1 0 1 -10 -90n
+preplace netloc arrDef_0_1 1 0 1 0 -120n
+preplace netloc selectorBit1_0_1 1 0 1 -70 300n
+preplace netloc ESFADesign_0_resultValue 1 1 1 380 110n
+preplace netloc ESFADesign_0_out_index 1 1 1 330 270n
+preplace netloc metadata_0_1 1 0 1 -90 310n
+preplace netloc mark_0_1 1 0 1 -80 150n
+preplace netloc high_0_1 1 0 1 -60 60n
+preplace netloc low_0_1 1 0 1 -40 0n
+preplace netloc eltDef_0_1 1 0 1 -30 -30n
+preplace netloc selectorBit2_0_1 1 0 1 0 350n
+preplace netloc value_0_1 1 0 1 -100 190n
+preplace netloc rank_0_1 1 0 1 -50 30n
+preplace netloc ESFADesign_0_out_high 1 1 1 340 250n
+preplace netloc ESFADesign_0_out_low 1 1 1 350 230n
+preplace netloc ESFADesign_0_resultBool 1 1 1 380 90n
+preplace netloc ESFADesign_0_out_value 1 1 1 320 290n
+preplace netloc ESFADesign_0_out_rank 1 1 1 360 210n
+preplace netloc ESFADesign_0_out_eltDef 1 1 1 370 190n
+preplace netloc ESFADesign_0_out_array_code 1 1 1 370 160n
+preplace netloc new_handle_0_1 1 0 1 N 270
+preplace netloc new_index_0_1 1 0 1 -90 180n
+preplace netloc index_0_1 1 0 1 -70 90n
+preplace netloc array_code_0_1 1 0 1 -20 -60n
+preplace netloc selectorBit3_0_1 1 0 1 0 370n
+levelinfo -pg 1 -120 170 400
+pagesize -pg 1 -db -bbox -sgen -260 -140 560 580
+"
+}
+
