@@ -62,7 +62,7 @@ ESFADesign l1(
 
 1) Update Op
 
-In this example, we attempt an update on arry with handle 0, and in the new array insert the pair (2, 10)
+In this example, we attempt an update on arary with handle 0, and in the new array insert the pair (2, 10)
 
 // Analogous to ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
 
