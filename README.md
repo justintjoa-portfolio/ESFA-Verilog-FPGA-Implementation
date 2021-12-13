@@ -156,7 +156,7 @@ selector = 2; // Encode's selector value
 
 #28
 
-// nNw we have code, feed it into lookUpScan
+// now that we have the code of the array, feed it into lookUpScan
 
 code = resultValue;
 
