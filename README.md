@@ -180,7 +180,7 @@ If element exists, resultBool == 1, and value will be in ResultValue
 
 // In other words, delete the array with handle 1
 
-// first, encode the array at handle 0.
+// first, encode the array at handle 1.
 
 isMetadata = 1;
 
