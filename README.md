@@ -98,7 +98,7 @@ selector = 5;
 
 // We do in fact have a cell available, so let's go write a new array!
 
-metadata = resultValue; // set metadata to the resultValue which is handle of handle we wish to write new array to. In this case, this equals 1.
+metadata = resultValue; // set metadata to the resultValue which is handle of cell we wish to write new array to. In this case, this equals 1.
 
 isMetadata = 1'b1; // we are not updating None, so set isMetadata to 1
 
