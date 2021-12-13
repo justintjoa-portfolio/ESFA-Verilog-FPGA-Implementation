@@ -200,7 +200,7 @@ metadata = code; // said array's code
 
 willWrite = 0;
 
-#28; // Critical - allow a cycle with willWrite = 0 for combinator outputs to settle, or unexpected inputs may be written
+#28; // Critical - allow a cycle with willWrite = 0 for combinator outputs to settle, or unexpected inputs may be written to regs
 
 willWrite = 1;
 
