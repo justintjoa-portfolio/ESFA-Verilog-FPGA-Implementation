@@ -108,7 +108,7 @@ new_value = 8'b1010; // value of inserted element
 
 selector = 0; // 0 is selector value for update
 
-willWrite = 0; //
+willWrite = 0; // Set willWrite to 0 to prevent mutations as outputs settle
 
 #28 // allow a clock cycle for outputs to settle
 
