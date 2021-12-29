@@ -24,14 +24,14 @@ module block_trial(
         input[0:0] clk
     );
     
-    
+    wire highestInstruction = 0;
     
     reg programIsRunning[0:0] = 1'b1;
     reg programIsCorrect[0:0] = 1'b1;
     
     reg counter[7:0] = 0;
     
-    wire[63:0] data_out;
+    wire[71:0] data_out;
     
     blk_mem_gen_0(
      .clka(clk),
@@ -39,14 +39,18 @@ module block_trial(
 	.douta(data_out)
     );
     
-    reg willWrite[0:0] = 1'b0;
-    reg new_index[7:0] = 0;
-    reg new_value[7:0] = 0;
-    reg metadata[7:0] = 0;
-    reg isMetadata[0:0] = 1'b0;
-    reg selector[7:0] = 0;
+    reg willWrite[0:0] = data_out[0:0];
+    reg new_index[7:0] = data_out[15:8];
+    reg new_value[7:0] = data_out[23:16];
+    reg metadata[7:0] = data_out[31:24];
+    reg isMetadata[0:0] = data_out[32:32];
+    reg selector[7:0] = data_out[47:40];
     wire resultBool[0:0];
     wire resultValue[7:0];
+    
+    wire assert[0:0] = data_out[48:48];
+    wire expectedBool = data_out[56:56];
+    wire expectedValue = data_out[71:64]; 
     
     ESFADesign(
     .clk(clk),
@@ -63,7 +67,8 @@ module block_trial(
     
     always @ (posedge clk)
         begin     
-            programIsRunning = data_out[0:0];
+            if (counter < highestInstruction) 
+                counter = counter + 1;
             if (programIsCorrect == 1'b0) begin
                 programIsRunning = 1'b0;
             end
