@@ -21,10 +21,14 @@
 
 
 module block_trial(
-        input[0:0] clk
+        input[0:0] clk,
+        input UART_RXD,
+        output UART_TXD
     );
     
     wire highestInstruction = 0;
+    reg[0:0] programIsCorrect = 1'b1;
+    reg[0:0] programIsRunning = 1'b1;
     
     reg counter[7:0] = 0;
     
@@ -58,6 +62,31 @@ module block_trial(
     .resultBool(resultBool),
     .resultValue(resultValue)
     );
+    
+    
+    
+    wire isrx;   // Uart sees something!
+    wire [7:0] rx_byte;  // Uart data
+    reg [7:0] tx_byte; // byte to transmit
+    reg xmitnow=1'b0; // transmit signal
+    
+    UART #(
+        .baud_rate(9600), // default is 9600
+        .sys_clk_freq(12000000) // default is 100000000
+    )
+    UART0(
+        .clk(clk), // The master clock for this module
+        .rst(), // Synchronous reset
+        .rx(UART_RXD), // Incoming serial line
+        .tx(UART_TXD), // Outgoing serial line
+        .transmit(xmitnow), // Signal to transmit
+        .tx_byte(tx_byte), // Byte to transmit
+        .received(isrx), // Indicated that a byte has been received
+        .rx_byte(rx_byte), // Byte received
+        .is_receiving(), // Low when receive line is idle
+        .is_transmitting(),// Low when transmit line is idle
+        .recv_error() // Indicates error in receiving packet.
+    );
    
     
     always @ (posedge clk)
@@ -66,13 +95,20 @@ module block_trial(
                 if (assert) begin
                     if ((resultBool != isMetadata) || (resultValue != metadata)) begin
                         // program is incorrect
-                        counter = highestInstruction;
+                        tx_byte = counter; //send over UART the offending instruction 
+                        programIsCorrect = 1'b0;
+                        programIsRunning = 1'b0;
                     end else begin
                         counter = counter + 1;
                     end
                 end else begin
                     willWrite = data_out[0:0];
                     counter = counter + 1;
+                end
+            end else begin
+                if (programIsRunning == 1'b1 && programIsCorrect == 1'b1 && counter >= highestInstruction) begin
+                    tx_byte = 0;
+                    programIsRunning = 1'b0;
                 end
             end
         end
