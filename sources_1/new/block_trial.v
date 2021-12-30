@@ -40,7 +40,7 @@ module block_trial(
 	.douta(data_out)
     );
     
-    reg willWrite[0:0] = 1'b0;
+    wire willWrite[0:0] = data_out[0:0];
     wire new_index[7:0] = data_out[15:8];
     wire new_value[7:0] = data_out[23:16];
     wire metadata[7:0] = data_out[31:24];
@@ -95,14 +95,13 @@ module block_trial(
                 if (assert) begin
                     if ((resultBool != isMetadata) || (resultValue != metadata)) begin
                         // program is incorrect
-                        tx_byte = counter; //send over UART the offending instruction 
+                        tx_byte = counter; // send over UART the offending instruction 
                         programIsCorrect = 1'b0;
                         programIsRunning = 1'b0;
                     end else begin
                         counter = counter + 1;
                     end
                 end else begin
-                    willWrite = data_out[0:0];
                     counter = counter + 1;
                 end
             end else begin
