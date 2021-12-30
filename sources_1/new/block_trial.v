@@ -26,12 +26,9 @@ module block_trial(
     
     wire highestInstruction = 0;
     
-    reg programIsRunning[0:0] = 1'b1;
-    reg programIsCorrect[0:0] = 1'b1;
-    
     reg counter[7:0] = 0;
     
-    wire[71:0] data_out;
+    wire[55:0] data_out;
     
     blk_mem_gen_0(
      .clka(clk),
@@ -39,18 +36,16 @@ module block_trial(
 	.douta(data_out)
     );
     
-    reg willWrite[0:0] = data_out[0:0];
-    reg new_index[7:0] = data_out[15:8];
-    reg new_value[7:0] = data_out[23:16];
-    reg metadata[7:0] = data_out[31:24];
-    reg isMetadata[0:0] = data_out[32:32];
-    reg selector[7:0] = data_out[47:40];
+    reg willWrite[0:0] = 1'b0;
+    wire new_index[7:0] = data_out[15:8];
+    wire new_value[7:0] = data_out[23:16];
+    wire metadata[7:0] = data_out[31:24];
+    wire isMetadata[0:0] = data_out[32:32];
+    wire selector[7:0] = data_out[47:40];
     wire resultBool[0:0];
     wire resultValue[7:0];
     
     wire assert[0:0] = data_out[48:48];
-    wire expectedBool = data_out[56:56];
-    wire expectedValue = data_out[71:64]; 
     
     ESFADesign(
     .clk(clk),
@@ -67,13 +62,18 @@ module block_trial(
     
     always @ (posedge clk)
         begin     
-            if (counter < highestInstruction) 
-                counter = counter + 1;
-            if (programIsCorrect == 1'b0) begin
-                programIsRunning = 1'b0;
-            end
-            if (programIsRunning == 1'b1) begin
-                counter = counter + 1;
+            if (counter < highestInstruction) begin
+                if (assert) begin
+                    if ((resultBool != isMetadata) || (resultValue != metadata)) begin
+                        // program is incorrect
+                        counter = highestInstruction;
+                    end else begin
+                        counter = counter + 1;
+                    end
+                end else begin
+                    willWrite = data_out[0:0];
+                    counter = counter + 1;
+                end
             end
         end
 endmodule
