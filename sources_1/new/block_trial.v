@@ -26,11 +26,11 @@ module block_trial(
         output UART_TXD
     );
     
-    wire highestInstruction = 0;
+    wire highestInstruction = 1;
     reg[0:0] programIsCorrect = 1'b1;
     reg[0:0] programIsRunning = 1'b1;
     
-    reg counter[7:0] = 0;
+    reg [7:0] counter = 8'b0;
     
     wire[55:0] data_out;
     
@@ -40,16 +40,16 @@ module block_trial(
 	.douta(data_out)
     );
     
-    wire willWrite[0:0] = data_out[0:0];
-    wire new_index[7:0] = data_out[15:8];
-    wire new_value[7:0] = data_out[23:16];
-    wire metadata[7:0] = data_out[31:24];
-    wire isMetadata[0:0] = data_out[32:32];
-    wire selector[7:0] = data_out[47:40];
-    wire resultBool[0:0];
-    wire resultValue[7:0];
+    wire[0:0] willWrite = data_out[0:0];
+    wire[7:0] new_index = data_out[15:8];
+    wire[7:0] new_value = data_out[23:16];
+    wire[7:0] metadata = data_out[31:24];
+    wire[0:0] isMetadata = data_out[32:32];
+    wire[7:0] selector = data_out[47:40];
+    wire[0:0] resultBool;
+    wire[7:0] resultValue;
     
-    wire assert[0:0] = data_out[48:48];
+    wire[0:0] assert = data_out[48:48];
     
     ESFADesign(
     .clk(clk),
@@ -66,8 +66,8 @@ module block_trial(
     
     
     wire isrx;   // Uart sees something!
-    wire [7:0] rx_byte;  // Uart data
-    reg [7:0] tx_byte; // byte to transmit
+    wire[7:0] rx_byte;  // Uart data
+    reg[7:0] tx_byte; // byte to transmit
     reg xmitnow=1'b0; // transmit signal
     
     UART #(
