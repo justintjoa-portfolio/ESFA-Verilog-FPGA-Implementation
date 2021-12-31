@@ -91,7 +91,7 @@ module block_trial(
     
     always @ (posedge clk)
         begin     
-            if (counter < highestInstruction) begin
+            if (counter < highestInstruction && programIsRunning == 1'b1) begin
                 if (assert) begin
                     if ((resultBool != isMetadata) || (resultValue != metadata)) begin
                         // program is incorrect
