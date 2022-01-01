@@ -35,6 +35,8 @@ module block_trial_top(
     
     reg[0:0] didTransmit = 1'b0;
     
+    reg[0:0] reset = 1'b1;
+    
     block_trial bt(
     .clk(clk),
     .returnValue(tx_byte),
@@ -46,7 +48,7 @@ module block_trial_top(
     )
     UART0(
         .clk(clk), // The master clock for this module
-        .rst(), // Synchronous reset
+        .rst(reset), // Synchronous reset
         .rx(UART_RXD), // Incoming serial line
         .tx(UART_TXD), // Outgoing serial line
         .transmit(xmitnow), // Signal to transmit
@@ -60,11 +62,14 @@ module block_trial_top(
 
     always @ (posedge clk)
         begin
-            if (!didTransmit && !programIsRunning) begin
+            if (reset) begin
+                reset = 1'b0;
+            end
+            if (!didTransmit && !programIsRunning && ! reset) begin
                 xmitnow = 1'b1;
                 didTransmit = 1'b1;
             end 
-            if (UART0.is_transmitting) begin 
+            if (UART0.is_transmitting && ! reset) begin 
                 xmitnow = 1'b0;
             end
         end  
