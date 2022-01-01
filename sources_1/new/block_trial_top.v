@@ -25,6 +25,7 @@ module block_trial_top(
         input UART_RXD,
         output UART_TXD
     );
+
     
     wire isrx;   // Uart sees something!
     wire [7:0] rx_byte;  // Uart data
@@ -56,7 +57,7 @@ module block_trial_top(
         .is_transmitting(),// Low when transmit line is idle
         .recv_error() // Indicates error in receiving packet.
     );
-    
+
     always @ (posedge clk)
         begin
             if (!didTransmit && !programIsRunning) begin
@@ -66,8 +67,7 @@ module block_trial_top(
             if (UART0.is_transmitting) begin 
                 xmitnow = 1'b0;
             end
-        end
-    
+        end  
     
     
 endmodule

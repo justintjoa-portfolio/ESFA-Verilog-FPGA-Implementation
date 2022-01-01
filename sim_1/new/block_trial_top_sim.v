@@ -46,6 +46,8 @@ module block_trial_top_sim;
         // update Basic test
         $display("block trial sim, begin");
         #900000;
+        r_true = (! bt_top.programIsRunning);
+        #28;
         r_true = (! bt_top.UART0.is_transmitting);
         #28;
     end

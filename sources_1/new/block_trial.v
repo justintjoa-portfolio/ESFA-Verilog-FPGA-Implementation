@@ -79,7 +79,7 @@ module block_trial(
                 end
             end else begin
                 if (programIsRunning == 1'b1 && programIsCorrect == 1'b1 && counter >= highestInstruction) begin
-                    returnValue = 'h3E;
+                    returnValue = 'h1E;
                     programIsRunning = 1'b0;
                 end
             end

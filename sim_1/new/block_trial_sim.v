@@ -42,7 +42,7 @@ module block_trial_sim;
     );
     
     wire[7:0] expectedReturn;
-    assign expectedReturn = 'h3E;
+    assign expectedReturn = 'h1E;
     
     initial
     begin
