@@ -29,7 +29,7 @@ module block_trial_top(
     
     wire isrx;   // Uart sees something!
     wire [7:0] rx_byte;  // Uart data
-    wire [7:0] tx_byte; // byte to transmit
+    reg [7:0] tx_byte = 8'b0; // byte to transmit
     reg xmitnow=1'b0; // transmit signal
     wire[0:0] programIsRunning;
     
@@ -37,10 +37,12 @@ module block_trial_top(
     
     reg[0:0] reset = 1'b1;
     
+    /*
     block_trial bt(
     .clk(clk),
     .returnValue(tx_byte),
     .programIsRunning(programIsRunning));
+    */
     
     UART #(
         .baud_rate(9600), // default is 9600
@@ -62,13 +64,22 @@ module block_trial_top(
 
     always @ (posedge clk)
         begin
-            if (reset && ! UART0.is_transmitting) begin
+            if (reset && ! UART0.is_transmitting && ! UART0.is_receiving) begin
                 reset = 1'b0;
             end
+            /*
             if (!didTransmit && !programIsRunning && ! reset) begin
                 xmitnow = 1'b1;
                 didTransmit = 1'b1;
             end 
+            if (UART0.is_transmitting && ! reset) begin 
+                xmitnow = 1'b0;
+            end
+            */
+            if (UART0.received && ! reset) begin
+                tx_byte = rx_byte;
+                xmitnow = 1'b1;
+            end
             if (UART0.is_transmitting && ! reset) begin 
                 xmitnow = 1'b0;
             end
