@@ -22,7 +22,7 @@
 
 module block_trial(
         input[0:0] clk,
-        output reg[7:0] returnValue,
+        output reg[7:0] returnValue = 1'b0,
         output reg[0:0] programIsRunning = 1'b1
     );
    
