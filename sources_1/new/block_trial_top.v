@@ -62,10 +62,9 @@ module block_trial_top(
             if (!didTransmit && !programIsRunning) begin
                 xmitnow = 1'b1;
                 didTransmit = 1'b1;
-            end else begin
-                if (didTransmit && !programIsRunning) begin
-                    xmitnow = 1'b0;
-                end
+            end 
+            if (UART0.is_transmitting) begin 
+                xmitnow = 1'b0;
             end
         end
     
