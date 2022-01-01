@@ -22,8 +22,8 @@
 
 module block_trial(
         input[0:0] clk,
-        input UART_RXD,
-        output UART_TXD
+        input[7:0] UART_RXD,
+        output[7:0] UART_TXD
     );
    
     
@@ -35,7 +35,7 @@ module block_trial(
     
     wire[55:0] data_out;
     
-    blk_mem_gen_0(
+    blk_mem_gen_0 blk_mem(
      .clka(clk),
 	.addra(counter), // Bus [15 : 0] 
 	.douta(data_out)
@@ -52,7 +52,7 @@ module block_trial(
     
     wire[0:0] assert = data_out[48:48];
     
-    ESFADesign(
+    ESFADesign l1(
     .clk(clk),
     .in_willWrite(willWrite),
     .new_index(new_index),
@@ -74,7 +74,7 @@ module block_trial(
                 if (assert) begin
                     if ((resultBool != isMetadata) || (resultValue != metadata)) begin
                         // program is incorrect
-                        returnValue <= counter; // send over UART the offending instruction 
+                        returnValue = counter; // send over UART the offending instruction 
                         programIsCorrect = 1'b0;
                         programIsRunning = 1'b0;
                     end else begin
@@ -85,7 +85,7 @@ module block_trial(
                 end
             end else begin
                 if (programIsRunning == 1'b1 && programIsCorrect == 1'b1 && counter >= highestInstruction) begin
-                    returnValue <= 'h3E;
+                    returnValue = 'h3E;
                     programIsRunning = 1'b0;
                 end
             end
