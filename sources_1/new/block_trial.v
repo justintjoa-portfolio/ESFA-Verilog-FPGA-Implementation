@@ -22,14 +22,13 @@
 
 module block_trial(
         input[0:0] clk,
-        input[7:0] UART_RXD,
-        output[7:0] UART_TXD
+        output reg[7:0] returnValue,
+        output reg[0:0] programIsRunning = 1'b1
     );
    
     
     wire highestInstruction = 1;
     reg[0:0] programIsCorrect = 1'b1;
-    reg[0:0] programIsRunning = 1'b1;
     
     reg [5:0] counter = 6'b0;
     
@@ -48,7 +47,6 @@ module block_trial(
     wire[0:0] isMetadata = data_out[32:32];
     wire[7:0] selector = data_out[47:40];
     wire[0:0] resultBool;
-    wire[7:0] resultValue;
     
     wire[0:0] assert = data_out[48:48];
     
@@ -63,10 +61,6 @@ module block_trial(
     .resultBool(resultBool),
     .resultValue(resultValue)
     );
-    
-    reg[7:0] returnValue = 0;
-    
-    assign UART_TXD = returnValue;
     
     always @ (posedge clk)
         begin
@@ -85,7 +79,7 @@ module block_trial(
                 end
             end else begin
                 if (programIsRunning == 1'b1 && programIsCorrect == 1'b1 && counter >= highestInstruction) begin
-                    returnValue = 'h3E;
+                    returnValue = 'h1E;
                     programIsRunning = 1'b0;
                 end
             end

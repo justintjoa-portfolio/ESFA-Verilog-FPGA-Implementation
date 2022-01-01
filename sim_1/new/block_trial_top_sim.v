@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11/22/2021 06:48:28 PM
+// Create Date: 12/31/2021 11:42:32 PM
 // Design Name: 
-// Module Name: esfa_test
+// Module Name: block_trial_top_sim
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module block_trial_sim;
+module block_trial_top_sim;
+
 
     reg[0:0] clk = 0;
     always begin
@@ -33,26 +34,22 @@ module block_trial_sim;
     assign is_true = r_true;
  
     assert a0(.clk(clk), .test(is_true));
+
     
-    wire[7:0] uart_result;
-    
-    block_trial bt(
-        .clk(clk),
-        .returnValue(uart_result)
+    block_trial_top bt_top(
+        .clk(clk)
     );
     
-    wire[7:0] expectedReturn;
-    assign expectedReturn = 'h1E;
     
     initial
     begin
         // update Basic test
         $display("block trial sim, begin");
-        #420;
-        r_true = (uart_result == expectedReturn);
-        #168;
-
+        #900000;
+        r_true = (! bt_top.programIsRunning);
+        #28;
+        r_true = (! bt_top.UART0.is_transmitting);
+        #28;
     end
-   
-    
+
 endmodule
