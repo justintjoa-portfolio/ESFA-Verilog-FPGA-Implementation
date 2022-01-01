@@ -32,6 +32,8 @@ module ESFADesign(
     input[7:0] selector
     );
     
+    reg[0:0] reset = 1;
+    
     wire[0:0] willWrite;
     assign willWrite = in_willWrite && !reset;
     
@@ -108,8 +110,6 @@ module ESFADesign(
     wire[0:0] combinator6Bool;
     
     wire[7:0] combinator7Context;
-    
-    reg[0:0] reset = 1;
 
    
     
