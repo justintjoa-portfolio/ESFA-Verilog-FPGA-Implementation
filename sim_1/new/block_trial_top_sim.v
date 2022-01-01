@@ -45,6 +45,9 @@ module block_trial_top_sim;
     begin
         // update Basic test
         $display("block trial sim, begin");
+        #28;
+        #28;
+        #28;
         #900000;
         r_true = (! bt_top.programIsRunning);
         #28;

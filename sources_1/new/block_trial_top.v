@@ -62,7 +62,7 @@ module block_trial_top(
 
     always @ (posedge clk)
         begin
-            if (reset) begin
+            if (reset && ! UART0.is_transmitting) begin
                 reset = 1'b0;
             end
             if (!didTransmit && !programIsRunning && ! reset) begin
