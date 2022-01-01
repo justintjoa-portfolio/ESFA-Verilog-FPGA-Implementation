@@ -30,10 +30,14 @@ module block_trial_top(
     wire [7:0] rx_byte;  // Uart data
     wire [7:0] tx_byte; // byte to transmit
     reg xmitnow=1'b0; // transmit signal
+    wire[0:0] programIsRunning;
+    
+    reg[0:0] didTransmit = 1'b0;
     
     block_trial bt(
     .clk(clk),
-    .returnValue(tx_byte));
+    .returnValue(tx_byte),
+    .programIsRunning(programIsRunning));
     
     UART #(
         .baud_rate(9600), // default is 9600
@@ -52,6 +56,18 @@ module block_trial_top(
         .is_transmitting(),// Low when transmit line is idle
         .recv_error() // Indicates error in receiving packet.
     );
+    
+    always @ (posedge clk)
+        begin
+            if (!didTransmit && !programIsRunning) begin
+                xmitnow = 1'b1;
+                didTransmit = 1'b1;
+            end else begin
+                if (didTransmit && !programIsRunning) begin
+                    xmitnow = 1'b0;
+                end
+            end
+        end
     
     
     
