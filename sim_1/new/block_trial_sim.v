@@ -38,7 +38,7 @@ module block_trial_sim;
     
     block_trial bt(
         .clk(clk),
-        .UART_TXD(uart_result)
+        .returnValue(uart_result)
     );
     
     wire[7:0] expectedReturn;

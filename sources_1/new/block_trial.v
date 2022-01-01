@@ -22,8 +22,7 @@
 
 module block_trial(
         input[0:0] clk,
-        input[7:0] UART_RXD,
-        output[7:0] UART_TXD
+        output reg[7:0] returnValue
     );
    
     
@@ -48,7 +47,6 @@ module block_trial(
     wire[0:0] isMetadata = data_out[32:32];
     wire[7:0] selector = data_out[47:40];
     wire[0:0] resultBool;
-    wire[7:0] resultValue;
     
     wire[0:0] assert = data_out[48:48];
     
@@ -63,10 +61,6 @@ module block_trial(
     .resultBool(resultBool),
     .resultValue(resultValue)
     );
-    
-    reg[7:0] returnValue = 0;
-    
-    assign UART_TXD = returnValue;
     
     always @ (posedge clk)
         begin
