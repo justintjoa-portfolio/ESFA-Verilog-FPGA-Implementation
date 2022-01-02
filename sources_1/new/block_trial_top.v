@@ -32,12 +32,12 @@ module block_trial_top(
     wire [7:0] rx_byte;
     reg xmitnow=1'b0; // transmit signal
     wire[0:0] programIsRunning;
+    wire[0:0] received;
+    wire[0:0] isTransmitting;
     
     reg[0:0] didTransmit = 1'b0;
     
     reg[0:0] reset = 1'b1;
-    reg[0:0] ackReceipt = 1'b0;
-    wire[0:0] dataReceived;
     /*
     block_trial bt(
     .clk(clk),
@@ -45,38 +45,31 @@ module block_trial_top(
     .programIsRunning(programIsRunning));
     */
     
-    UART #(.CLOCK_SCALE (26))
-
-    uart (.masterClock   (clk),
-          .reset         (reset),
-
-          // ---------------------------------------------
-          // Transmitter
-          // ---------------------------------------------
-          .txData        (tx_byte),
-          .txRequest     (xmitnow),
-          .tx            (UART_TXD),
-
-          // ---------------------------------------------
-          // Receiver
-          // ---------------------------------------------
-          .clearDR       (ackReceipt),
-          .dataReceived(dataReceived),
-          .rx            (UART_RXD),
-          .rxData        (rx_byte)
-          );
+    UART #(
+        .baud_rate(115200),            // default is 9600
+        .sys_clk_freq(35000000)       // default is 100000000
+     )
+    uart0(
+        .clk(clk),                        // The master clock for this module
+        .rst(reset),                        // Synchronous reset
+        .rx(UART_RXD),                          // Incoming serial line
+        .tx(UART_TXD),                          // Outgoing serial line
+        .transmit(xmitnow),              // Signal to transmit
+        .received(received),
+        .is_transmitting(isTransmitting),
+        .tx_byte(tx_byte),                // Byte to transmit       
+        .rx_byte(rx_byte));
 
     always @ (posedge clk)
         begin
             if (reset) begin
                 reset = 1'b0;
             end else begin  
-                if (dataReceived) begin
+                if (received && ! isTransmitting) begin
                     led = 1'b1;
                     tx_byte = rx_byte;
-                    ackReceipt = 1'b1;
                     xmitnow = 1'b1;
-                end else if (uart.txActive) begin
+                end else if (isTransmitting) begin
                     led = 1'b0;
                     xmitnow = 1'b0;
                 end

@@ -212,7 +212,7 @@ set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property IOSTANDARD LVCMOS33 [get_ports {clk[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports UART_RXD]
 set_property IOSTANDARD LVCMOS33 [get_ports UART_TXD]
-set_property IOSTANDARD LVCMOS33 [get_ports led[0]]
+set_property IOSTANDARD LVCMOS33 [get_ports {led[0]}]
 
 
 
@@ -222,4 +222,5 @@ set_property IOSTANDARD LVCMOS33 [get_ports led[0]]
 
 
 
-set_property PACKAGE_PIN E18 [get_ports {led[0]}]
+set_property PACKAGE_PIN E13 [get_ports {led[0]}]
+
