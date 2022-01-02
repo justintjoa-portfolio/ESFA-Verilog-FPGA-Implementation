@@ -23,7 +23,8 @@
 module block_trial_top(
         input[0:0] clk,
         input UART_RXD,
-        output UART_TXD
+        output UART_TXD,
+        output reg[0:0] led = 1'b0
     );
 
 
@@ -71,11 +72,12 @@ module block_trial_top(
                 reset = 1'b0;
             end else begin  
                 if (dataReceived) begin
+                    led = 1'b1;
                     tx_byte = rx_byte;
                     ackReceipt = 1'b1;
                     xmitnow = 1'b1;
-                end
-                if (uart.txActive) begin
+                end else if (uart.txActive) begin
+                    led = 1'b0;
                     xmitnow = 1'b0;
                 end
             end

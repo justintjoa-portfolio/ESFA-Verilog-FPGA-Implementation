@@ -50,9 +50,6 @@
  * @date    10/31/2021
  */ /*-----------------------------------------------------------------------*/
 
-`include  "ClockDivider.v"
-`include  "UARTTransmitter.v"
-`include  "UARTReceiver.v"
 
 module UART # (parameter CLOCK_SCALE = 10)        // Scale factor to use for baud rate generation from
                                                   // the master clock. This should be > 10.
