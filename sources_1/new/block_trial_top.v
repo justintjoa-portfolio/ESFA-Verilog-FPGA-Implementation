@@ -21,7 +21,7 @@
 
 
 module block_trial_top(
-        input[0:0] clk,
+        input clk,
         input UART_RXD,
         output UART_TXD,
         output reg[0:0] led = 1'b0
@@ -33,6 +33,7 @@ module block_trial_top(
     reg xmitnow=1'b0; // transmit signal
     wire[0:0] programIsRunning;
     wire[0:0] received;
+    wire[0:0] isReceiving;
     wire[0:0] isTransmitting;
     
     reg[0:0] didTransmit = 1'b0;
@@ -43,7 +44,7 @@ module block_trial_top(
     .clk(clk),
     .returnValue(tx_byte),
     .programIsRunning(programIsRunning));
-    */
+    
     
     UART #(
         .baud_rate(115200),            // default is 9600
@@ -56,15 +57,20 @@ module block_trial_top(
         .tx(UART_TXD),                          // Outgoing serial line
         .transmit(xmitnow),              // Signal to transmit
         .received(received),
+        .is_receiving(isReceiving),
         .is_transmitting(isTransmitting),
         .tx_byte(tx_byte),                // Byte to transmit       
         .rx_byte(rx_byte));
-
+    */
+    
+    
     always @ (posedge clk)
         begin
             if (reset) begin
                 reset = 1'b0;
-            end else begin  
+                led = 1'b1;
+            end 
+            /*else begin  
                 if (received && ! isTransmitting) begin
                     led = 1'b1;
                     tx_byte = rx_byte;
@@ -73,7 +79,7 @@ module block_trial_top(
                     led = 1'b0;
                     xmitnow = 1'b0;
                 end
-            end
+            end*/
         end  
     
     
