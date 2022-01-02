@@ -27,14 +27,16 @@ module block_trial_top(
     );
 
 
-    wire [7:0] tx_byte = 'h1e; // byte to transmit
+    reg [7:0] tx_byte = 8'b0; // byte to transmit
+    wire [7:0] rx_byte;
     reg xmitnow=1'b0; // transmit signal
     wire[0:0] programIsRunning;
     
     reg[0:0] didTransmit = 1'b0;
     
     reg[0:0] reset = 1'b1;
-    
+    reg[0:0] ackReceipt = 1'b0;
+    wire[0:0] dataReceived;
     /*
     block_trial bt(
     .clk(clk),
@@ -42,25 +44,40 @@ module block_trial_top(
     .programIsRunning(programIsRunning));
     */
     
-    UART uart(
-        .uart_tx(UART_TXD),     // UART transmit wire
-        .uart_wr_i(xmitnow),   // Raise to transmit byte
-        .uart_dat_i(tx_byte),  // 8-bit data
-        .sys_clk_i(clk),   // System clock, 68 MHz
-        .sys_rst_i(reset)    // System reset
-    );
+    UART #(.CLOCK_SCALE (26))
+
+    uart (.masterClock   (clk),
+          .reset         (reset),
+
+          // ---------------------------------------------
+          // Transmitter
+          // ---------------------------------------------
+          .txData        (tx_byte),
+          .txRequest     (xmitnow),
+          .tx            (UART_TXD),
+
+          // ---------------------------------------------
+          // Receiver
+          // ---------------------------------------------
+          .clearDR       (ackReceipt),
+          .dataReceived(dataReceived),
+          .rx            (UART_RXD),
+          .rxData        (rx_byte)
+          );
 
     always @ (posedge clk)
         begin
-            if (reset && ! uart.uart_busy) begin
+            if (reset) begin
                 reset = 1'b0;
-            end
-            if (! didTransmit && ! reset) begin
-                xmitnow = 1'b1;
-                didTransmit = 1'b1;
-            end
-            if (uart.uart_busy && ! reset) begin 
-                xmitnow = 1'b0;
+            end else begin  
+                if (dataReceived) begin
+                    tx_byte = rx_byte;
+                    ackReceipt = 1'b1;
+                    xmitnow = 1'b1;
+                end
+                if (uart.txActive) begin
+                    xmitnow = 1'b0;
+                end
             end
         end  
     
