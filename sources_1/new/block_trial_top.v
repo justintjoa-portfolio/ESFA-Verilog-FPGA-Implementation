@@ -44,6 +44,8 @@ module block_trial_top(
     .clk(clk),
     .returnValue(tx_byte),
     .programIsRunning(programIsRunning));
+    */
+    
     
     
     UART #(
@@ -61,16 +63,13 @@ module block_trial_top(
         .is_transmitting(isTransmitting),
         .tx_byte(tx_byte),                // Byte to transmit       
         .rx_byte(rx_byte));
-    */
     
     
     always @ (posedge clk)
         begin
             if (reset) begin
                 reset = 1'b0;
-                led = 1'b1;
-            end 
-            /*else begin  
+            end else begin  
                 if (received && ! isTransmitting) begin
                     led = 1'b1;
                     tx_byte = rx_byte;
@@ -79,7 +78,7 @@ module block_trial_top(
                     led = 1'b0;
                     xmitnow = 1'b0;
                 end
-            end*/
+            end
         end  
     
     
