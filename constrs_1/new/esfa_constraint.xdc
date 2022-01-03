@@ -198,7 +198,7 @@
 
 set_property PACKAGE_PIN R12 [get_ports UART_TXD]
 
-set_property PACKAGE_PIN P14 [get_ports clk]
+set_property PACKAGE_PIN F14 [get_ports clk]
 set_property PACKAGE_PIN V12 [get_ports UART_RXD]
 
 create_clock -period 28.000 -name clk -waveform {0.000 14.000} -add [get_ports clk]
@@ -223,6 +223,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {led[0]}]
 
 
 set_property PACKAGE_PIN E13 [get_ports {led[0]}]
+
 
 
 
