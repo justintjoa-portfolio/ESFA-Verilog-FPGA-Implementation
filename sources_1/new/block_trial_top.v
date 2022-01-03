@@ -39,6 +39,7 @@ module block_trial_top(
     reg[0:0] didTransmit = 1'b0;
     
     reg[0:0] reset = 1'b1;
+    reg[0:0] ackReceipt = 1'b0;
     /*
     block_trial bt(
     .clk(clk),
@@ -48,21 +49,28 @@ module block_trial_top(
     
     
     
-    UART #(
-        .baud_rate(9600),            // default is 9600
-        .sys_clk_freq(35000000)       // default is 100000000
-     )
-    uart0(
-        .clk(clk),                        // The master clock for this module
-        .rst(reset),                        // Synchronous reset
-        .rx(UART_RXD),                          // Incoming serial line
-        .tx(UART_TXD),                          // Outgoing serial line
-        .transmit(xmitnow),              // Signal to transmit
-        .received(received),
-        .is_receiving(isReceiving),
-        .is_transmitting(isTransmitting),
-        .tx_byte(tx_byte),                // Byte to transmit       
-        .rx_byte(rx_byte));
+      UART #(.CLOCK_SCALE (930))
+
+    uart (.masterClock   (clk),
+          .reset         (reset),
+
+          // ---------------------------------------------
+          // Transmitter
+          // ---------------------------------------------
+          .txData        (tx_byte),
+          .txRequest     (xmitnow),
+          .txActive      (isTransmitting),
+          .tx            (UART_TXD),
+
+          // ---------------------------------------------
+          // Receiver
+          // ---------------------------------------------
+          .clearDR       (ackReceipt),
+          .rx            (UART_RXD),
+          .rxData        (rx_byte),
+          .dataReceived  (received)
+//        .dataOverrun   ()           not monitoring data overrun
+          );
     
     
     always @ (posedge clk)
@@ -73,9 +81,11 @@ module block_trial_top(
                 if (received && ! isTransmitting) begin
                     led = 1'b1;
                     tx_byte = rx_byte;
+                    ackReceipt = 1'b1;
                     xmitnow = 1'b1;
                 end else if (isTransmitting) begin
                     xmitnow = 1'b0;
+                    ackReceipt = 1'b0;
                 end
             end
         end  
