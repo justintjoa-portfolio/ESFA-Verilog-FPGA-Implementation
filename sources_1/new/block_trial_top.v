@@ -49,7 +49,7 @@ module block_trial_top(
     
     
     UART #(
-        .baud_rate(115200),            // default is 9600
+        .baud_rate(9600),            // default is 9600
         .sys_clk_freq(35000000)       // default is 100000000
      )
     uart0(
@@ -75,7 +75,6 @@ module block_trial_top(
                     tx_byte = rx_byte;
                     xmitnow = 1'b1;
                 end else if (isTransmitting) begin
-                    led = 1'b0;
                     xmitnow = 1'b0;
                 end
             end
