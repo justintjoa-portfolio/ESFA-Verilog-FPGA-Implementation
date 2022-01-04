@@ -74,7 +74,6 @@ module block_trial_top(
                     led = 1'b1;
                     tx_byte = 'h78;
                     xmitnow = 1'b1;
-                    didTransmit = 1'b1;
                 end else if (isTransmitting) begin
                     xmitnow = 1'b0;
                 end
