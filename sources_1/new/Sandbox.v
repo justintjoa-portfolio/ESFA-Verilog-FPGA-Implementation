@@ -95,7 +95,7 @@ module Sandbox (input  wire  masterClock,
   // Data interface
   // --------------------------------------------------------
   WideUARTIO # (.CLOCK_SCALE (26),                     // -> 115200
-                .WIDTH       (7))
+                .WIDTH       (1))
 
     dataInterface (.masterClock   (masterClock),
                    .reset         (masterReset),
