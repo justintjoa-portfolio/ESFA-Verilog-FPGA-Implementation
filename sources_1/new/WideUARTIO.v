@@ -99,7 +99,6 @@ module WideUARTIO
   // --------------------------------------------------------
   // data to the host
   // --------------------------------------------------------
-   input  wire [7:0]                  status,         // the status to report
    input  wire [((WIDTH * 8) - 1):0]  outputData,     // the data to send to the host
 
   // --------------------------------------------------------
@@ -292,7 +291,7 @@ module WideUARTIO
           begin
             if (transmit == 1'b1)
             begin
-              txRegister        <= {status, outputData};                                // copy the output data to the transmit register
+              txRegister        <= outputData;                                // copy the output data to the transmit register
               transmittingReg   <= 1'b1;
               txState           <= 3'h1;
             end

@@ -50,10 +50,8 @@ module Sandbox (input  wire  masterClock,
   wire        masterReset;
   wire        txTrigger;
 
-  wire [7:0]  control;
-  wire [55:0] rxData;
-  wire [7:0]  status;
-  wire [55:0] txData;
+  wire [47:0] rxData;
+  wire [47:0] txData;
   wire        dataReceived;
   wire        transmitting;
   wire        clearDR;
@@ -104,10 +102,8 @@ module Sandbox (input  wire  masterClock,
                    .rx            (rx),
                    .tx            (tx),
 
-                   .status        (status),
                    .outputData    (txData),
 
-                   .control       (control),
                    .inputData     (rxData),
 
                    .clearDR       (clearDR),
@@ -125,12 +121,10 @@ module Sandbox (input  wire  masterClock,
              .slowClock     (_25Hz),
              .reset         (masterReset),
              .dataReceived  (dataReceived),
-             .control       (control),
              .inputData     (rxData),
 
              .clearDR       (clearDR),
              .transmitData  (txRequest),
-             .status        (status),
              .outputData    (txData),
              .rxIndicator   (led2));
              

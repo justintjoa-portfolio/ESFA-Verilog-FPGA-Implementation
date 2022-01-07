@@ -23,13 +23,11 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                        input  wire        reset,          // module reset
 
                        input  wire        dataReceived,   // 1 indicates that data has arrived for the process.
-                       input  wire [7:0]  control,        // the received control byte.
-                       input  wire [55:0] inputData,      // the received data word.
+                       input  wire [47:0] inputData,      // the received data word.
 
                        output wire        clearDR,        // clears the data received flag, thus inherently signals readiness to receive more data.
                        output wire        transmitData,   // signals that the output data is ready to be sent. Inherently requests sending that data.
-                       output wire [7:0]  status,         // the status byte to report to the host.
-                       output wire [55:0] outputData,     // the output data to send to the host.
+                       output wire [47:0] outputData,     // the output data to send to the host.
 
                        output wire        rxIndicator);   // indicates reception of data/start of process
 
@@ -38,12 +36,10 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   reg [2:0]   state;
   reg [2:0]   indicatorState;
-  reg [7:0]   statusReg;
-  reg [55:0]  outputReg;
+  reg [47:0]  inputReg;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  reg[55:0] ESFAInput = 56'b0;
 
   // --------------------------------------------------------------------------
   // Signals
@@ -52,8 +48,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Combinatorial logic / Wiring
   // --------------------------------------------------------------------------
-  assign  status        = statusReg;
-  assign  outputData    = outputReg;
   assign  transmitData  = transmitRequest;
   assign  clearDR       = processDone;
   assign  rxIndicator   = indicatorReg;
@@ -135,8 +129,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     if (reset == 1'b0)
     begin
       state                     <= 3'h0;
-      statusReg                 <= 8'h0;
-      outputReg                 <= 32'h0;
       transmitRequest           <= 1'b0;
       processDone               <= 1'b0;
     end
@@ -148,11 +140,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              statusReg         <= inputData [23:16];       // shuffle the received data
-              outputReg [31:24] <= inputData [15:8];
-              outputReg [23:16] <= inputData [31:24];
-              outputReg [15:8]  <= inputData [7:0];
-              outputReg [7:0]   <= control;
+              inputReg = inputData;
 
               state             <= 3'h1;
             end
@@ -197,12 +185,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Sub-modules
   // --------------------------------------------------------------------------
-  
-  block_trial(
-    .clk(masterClock),
-    .data_in(ESFAInput),
-    .data_out(outputData)
-  );
+
+    block_trial(
+        .clk(masterClock),
+        .data_in(inputReg),
+        .data_out(outputData)
+    );
 
 endmodule
 // ----------------------------------------------------------------------------

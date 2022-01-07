@@ -22,8 +22,8 @@
 
 module block_trial(
         input[0:0] clk,
-        input[55:0] data_in,
-        output wire[55:0] data_out
+        input[47:0] data_in,
+        output wire[47:0] data_out
     );
    
     wire[0:0] willWrite = data_in[0:0];
@@ -33,11 +33,9 @@ module block_trial(
     wire[0:0] isMetadata = data_in[32:32];
     wire[7:0] selector = data_in[47:40];
     
-    wire[0:0] assert = data_in[48:48];
-    
     assign data_out[7:0] = resultBool;
     assign data_out[15:8] = resultValue;
-    assign data_out[55:16] = 40'b0;
+    assign data_out[47:16] = 32'b0;
     
     ESFADesign l1(
     .clk(clk),
