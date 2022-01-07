@@ -26,6 +26,7 @@ module block_trial(
         output wire[47:0] data_out
     );
    
+   /*
     wire[0:0] willWrite = data_in[0:0];
     wire[7:0] new_index = data_in[15:8];
     wire[7:0] new_value = data_in[23:16];
@@ -48,5 +49,8 @@ module block_trial(
     .resultBool(resultBool),
     .resultValue(resultValue)
     );
+    */
+    
+    assign data_out = data_in;
     
 endmodule
