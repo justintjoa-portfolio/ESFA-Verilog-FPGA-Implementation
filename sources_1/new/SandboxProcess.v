@@ -24,12 +24,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
 
                        input  wire        dataReceived,   // 1 indicates that data has arrived for the process.
                        input  wire [7:0]  control,        // the received control byte.
-                       input  wire [31:0] inputData,      // the received data word.
+                       input  wire [55:0] inputData,      // the received data word.
 
                        output wire        clearDR,        // clears the data received flag, thus inherently signals readiness to receive more data.
                        output wire        transmitData,   // signals that the output data is ready to be sent. Inherently requests sending that data.
                        output wire [7:0]  status,         // the status byte to report to the host.
-                       output wire [31:0] outputData,     // the output data to send to the host.
+                       output wire [55:0] outputData,     // the output data to send to the host.
 
                        output wire        rxIndicator);   // indicates reception of data/start of process
 
@@ -39,10 +39,11 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg [2:0]   state;
   reg [2:0]   indicatorState;
   reg [7:0]   statusReg;
-  reg [31:0]  outputReg;
+  reg [55:0]  outputReg;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
+  reg[55:0] ESFAInput = 56'b0;
 
   // --------------------------------------------------------------------------
   // Signals
@@ -196,6 +197,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Sub-modules
   // --------------------------------------------------------------------------
+  
+  block_trial(
+    .clk(masterClock),
+    .data_in(ESFAInput),
+    .data_out(outputData)
+  );
 
 endmodule
 // ----------------------------------------------------------------------------
