@@ -290,7 +290,7 @@ module WideUARTIO
           begin
             if (transmit == 1'b1)
             begin
-              txRegister        <= outputData;                                // copy the output data to the transmit register
+              txRegister        <= {outputData};                                // copy the output data to the transmit register
               transmittingReg   <= 1'b1;
               txState           <= 3'h1;
             end

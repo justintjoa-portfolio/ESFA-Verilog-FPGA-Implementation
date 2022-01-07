@@ -23,11 +23,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                        input  wire        reset,          // module reset
 
                        input  wire        dataReceived,   // 1 indicates that data has arrived for the process.
-                       input  wire [47:0] inputData,      // the received data word.
+                       input  wire [7:0]  control,        // the received control byte.
+                       input  wire [31:0] inputData,      // the received data word.
 
                        output wire        clearDR,        // clears the data received flag, thus inherently signals readiness to receive more data.
                        output wire        transmitData,   // signals that the output data is ready to be sent. Inherently requests sending that data.
-                       output wire [47:0] outputData,     // the output data to send to the host.
+                       output wire [31:0] outputData,     // the output data to send to the host.
 
                        output wire        rxIndicator);   // indicates reception of data/start of process
 
@@ -36,7 +37,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   reg [2:0]   state;
   reg [2:0]   indicatorState;
-  reg [47:0]  inputReg;
+  reg [31:0]  outputReg;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
@@ -48,6 +49,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Combinatorial logic / Wiring
   // --------------------------------------------------------------------------
+  assign  outputData    = outputReg;
   assign  transmitData  = transmitRequest;
   assign  clearDR       = processDone;
   assign  rxIndicator   = indicatorReg;
@@ -129,6 +131,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     if (reset == 1'b0)
     begin
       state                     <= 3'h0;
+      outputReg                 <= 32'h0;
       transmitRequest           <= 1'b0;
       processDone               <= 1'b0;
     end
@@ -140,7 +143,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              inputReg = inputData;
+              outputReg = inputData;
 
               state             <= 3'h1;
             end
@@ -186,12 +189,8 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // Sub-modules
   // --------------------------------------------------------------------------
 
-    block_trial(
-        .clk(masterClock),
-        .data_in(inputReg),
-        .data_out(outputData)
-    );
-
 endmodule
 // ----------------------------------------------------------------------------
+
+
 
