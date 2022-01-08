@@ -179,7 +179,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                 outputReg[15:8] = 8'b0;
             end else begin
                 outputReg[0:0] = resultBool;
-                resultValue[15:8] = resultValue;
+                outputReg[15:8] = resultValue;
             end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
