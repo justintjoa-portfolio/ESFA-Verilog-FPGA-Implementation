@@ -1,4 +1,4 @@
-Project for implementation of Extensible Sparse Functional Array in an FPGA.
+Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. 
 
 The High level API of this simulation design can be found here: https://github.com/justintjoa-portfolio/ESFA_Scala_implementation
 
