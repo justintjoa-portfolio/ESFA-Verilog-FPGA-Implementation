@@ -24,8 +24,6 @@
  * @date    11/26/2021
  */ /*-----------------------------------------------------------------------*/
 
-
-
 module Sandbox (input  wire  masterClock,
                 input  wire  resetButton,
                 input  wire  btn3,
@@ -52,8 +50,9 @@ module Sandbox (input  wire  masterClock,
   wire        txTrigger;
 
   wire [7:0]  control;
-  wire [31:0] rxData;
-  wire [31:0] txData;
+  wire [47:0] rxData;
+  wire [7:0]  status;
+  wire [47:0] txData;
   wire        dataReceived;
   wire        transmitting;
   wire        clearDR;
@@ -97,13 +96,14 @@ module Sandbox (input  wire  masterClock,
   // Data interface
   // --------------------------------------------------------
   WideUARTIO # (.CLOCK_SCALE (26),                     // -> 115200
-                .WIDTH       (4))
+                .WIDTH       (6))
 
     dataInterface (.masterClock   (masterClock),
                    .reset         (masterReset),
                    .rx            (rx),
                    .tx            (tx),
 
+                   .status        (status),
                    .outputData    (txData),
 
                    .control       (control),
@@ -129,9 +129,9 @@ module Sandbox (input  wire  masterClock,
 
              .clearDR       (clearDR),
              .transmitData  (txRequest),
+             .status        (status),
              .outputData    (txData),
              .rxIndicator   (led2));
 
 endmodule
 // ----------------------------------------------------------------------------
-

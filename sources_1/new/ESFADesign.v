@@ -136,7 +136,7 @@ module ESFADesign(
         begin
             if (reset == 1) begin
                 if (resultBool == 0 && resultValue == 0)
-                    reset = 0;
+                    reset <= 0;
             end
         end
 endmodule
