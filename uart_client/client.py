@@ -8,12 +8,11 @@ BAUD = 115200
 s = serial.Serial(PORT, BAUD)
 s.flush()
 
-input = "h"
-output = ""
-s.write(input.encode())
+values = bytearray([0, 0, 0, 0, 0, 0, 0, 0])
+s.write(values.encode())
 print("receive\n")
     
 
 for i in range(n):
-     output += (s.read(1)).decode()
+    (s.read(1)).decode()
 print(output)
