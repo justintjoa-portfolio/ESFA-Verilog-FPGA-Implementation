@@ -196,26 +196,43 @@
 
 
 
-set_property PACKAGE_PIN R12 [get_ports UART_TXD]
+# set_property PACKAGE_PIN R12 [get_ports UART_TXD]
 
-set_property PACKAGE_PIN P14 [get_ports clk]
-set_property PACKAGE_PIN V12 [get_ports UART_RXD]
+# set_property PACKAGE_PIN F14 [get_ports clk]
+# set_property PACKAGE_PIN V12 [get_ports UART_RXD]
 
-create_clock -period 28.000 -name clk -waveform {0.000 14.000} [get_ports clk]
-set_input_delay -clock [get_clocks *] 14.000 [get_ports UART_RXD]
-set_output_delay -clock [get_clocks *] 14.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
+# create_clock -period 28.000 -name clk -waveform {0.000 14.000} -add [get_ports clk]
+# set_input_delay -clock [get_clocks *] 14.000 [get_ports UART_RXD]
+# set_output_delay -clock [get_clocks *] 14.000 [get_ports -filter { NAME =~  "*" && DIRECTION == "OUT" }]
+
+# set_property IOSTANDARD LVCMOS33 [get_ports clk]
+# set_property IOSTANDARD LVCMOS33 [get_ports UART_RXD]
+# set_property IOSTANDARD LVCMOS33 [get_ports UART_TXD]
+# set_property IOSTANDARD LVCMOS33 [get_ports {led[0]}]
+
+# set_property PACKAGE_PIN E13 [get_ports {led[0]}]
+
 
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 
 
-set_property IOSTANDARD LVCMOS33 [get_ports clk]
-set_property IOSTANDARD LVCMOS33 [get_ports UART_RXD]
-set_property IOSTANDARD LVCMOS33 [get_ports UART_TXD]
+set_property PACKAGE_PIN F14 [get_ports masterClock]
+set_property PACKAGE_PIN V12 [get_ports rx]
+set_property PACKAGE_PIN G15 [get_ports resetButton]
+set_property PACKAGE_PIN K16 [get_ports btn3]
+set_property PACKAGE_PIN R12 [get_ports tx]
+set_property PACKAGE_PIN E18 [get_ports led2]
+set_property PACKAGE_PIN F13 [get_ports led3]
+set_property PACKAGE_PIN E13 [get_ports led4]
+set_property PACKAGE_PIN H15 [get_ports led5]
 
-
-
-
-
-
-
+set_property IOSTANDARD LVCMOS33 [get_ports masterClock]
+set_property IOSTANDARD LVCMOS33 [get_ports rx]
+set_property IOSTANDARD LVCMOS33 [get_ports resetButton]
+set_property IOSTANDARD LVCMOS33 [get_ports btn3]
+set_property IOSTANDARD LVCMOS33 [get_ports tx]
+set_property IOSTANDARD LVCMOS33 [get_ports led2]
+set_property IOSTANDARD LVCMOS33 [get_ports led3]
+set_property IOSTANDARD LVCMOS33 [get_ports led4]
+set_property IOSTANDARD LVCMOS33 [get_ports led5]

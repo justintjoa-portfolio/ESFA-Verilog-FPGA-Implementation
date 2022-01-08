@@ -105,75 +105,75 @@ module MemoryCell(
         begin
                 if (selector == 0) begin
                     if (willWrite) begin
-                        new_arrDef = a_arrDef;
-                        new_array_code = a_array_code;
-                        new_eltDef = a_eltDef;
-                        new_rank = a_rank;
-                        new_low = a_low;
-                        new_high = a_high;
-                        new_index = a_index;
-                        new_value = a_value;
+                        new_arrDef <= a_arrDef;
+                        new_array_code <= a_array_code;
+                        new_eltDef <= a_eltDef;
+                        new_rank <= a_rank;
+                        new_low <= a_low;
+                        new_high <= a_high;
+                        new_index <= a_index;
+                        new_value <= a_value;
                     end
                 
-                    new_bool = a_resultBool;
-                    new_result_value = a_resultValue;
-                    new_context = a_resultContext;
+                    new_bool <= a_resultBool;
+                    new_result_value <= a_resultValue;
+                    new_context <= a_resultContext;
                 end
                 if (selector == 1) begin
                 
-                    new_bool = b_resultBool;
-                    new_result_value = b_resultValue;
-                    new_context = b_resultContext;
+                    new_bool <= b_resultBool;
+                    new_result_value <= b_resultValue;
+                    new_context <= b_resultContext;
                 end
                 if (selector == 2) begin
                     
-                    new_bool = c_resultBool;
-                    new_result_value = c_resultValue;
-                    new_context = c_resultContext;
+                    new_bool <= c_resultBool;
+                    new_result_value <= c_resultValue;
+                    new_context <= c_resultContext;
                 end
                 if (selector == 3) begin
                     if (willWrite) begin
-                        new_arrDef = d_arrDef;
-                        new_array_code = d_array_code;
-                        new_eltDef = d_eltDef;
-                        new_rank = d_rank;
-                        new_low = d_low;
-                        new_high = d_high;
-                        new_index = d_index;
-                        new_value = d_value;
+                        new_arrDef <= d_arrDef;
+                        new_array_code <= d_array_code;
+                        new_eltDef <= d_eltDef;
+                        new_rank <= d_rank;
+                        new_low <= d_low;
+                        new_high <= d_high;
+                        new_index <= d_index;
+                        new_value <= d_value;
                     end
                 
-                    new_bool = d_resultBool;
-                    new_result_value = d_resultValue;
-                    new_context = d_resultContext;
+                    new_bool <= d_resultBool;
+                    new_result_value <= d_resultValue;
+                    new_context <= d_resultContext;
                 end
                 if (selector == 4) begin
                     if (willWrite) begin
-                        new_arrDef = e_arrDef;
-                        new_array_code = e_array_code;
-                        new_eltDef = e_eltDef;
-                        new_rank = e_rank;
-                        new_low = e_low;
-                        new_high = e_high;
-                        new_index = e_index;
-                        new_value = e_value;
+                        new_arrDef <= e_arrDef;
+                        new_array_code <= e_array_code;
+                        new_eltDef <= e_eltDef;
+                        new_rank <= e_rank;
+                        new_low <= e_low;
+                        new_high <= e_high;
+                        new_index <= e_index;
+                        new_value <= e_value;
                     end
                 
-                    new_bool = e_resultBool;
-                    new_result_value = e_resultValue;
-                    new_context = e_resultContext;
+                    new_bool <= e_resultBool;
+                    new_result_value <= e_resultValue;
+                    new_context <= e_resultContext;
                 end
                 if (selector == 5) begin
                     
-                    new_bool = f_resultBool;
-                    new_result_value = f_resultValue;
-                    new_context = f_resultContext;
+                    new_bool <= f_resultBool;
+                    new_result_value <= f_resultValue;
+                    new_context <= f_resultContext;
                 end
                 if (selector == 6) begin
                 
-                    new_bool = g_resultBool;
-                    new_result_value = g_resultValue;  
-                    new_context = g_resultContext;
+                    new_bool <= g_resultBool;
+                    new_result_value <= g_resultValue;  
+                    new_context <= g_resultContext;
                 end  
             end
 endmodule

@@ -69,7 +69,7 @@ module esfa_test;
         r_true = (l1.c0.new_rank == 0); #168
         $display("assertions working correctly");
         
-        //ESFAArrayOp().update(emptyArrayState, None, 0, 5)
+        //ESFAArrayOp().update(emptyArrayState, None=, 0, 5)
         new_index = 0;
         new_value = 5;
         isMetadata = 1'b0;
