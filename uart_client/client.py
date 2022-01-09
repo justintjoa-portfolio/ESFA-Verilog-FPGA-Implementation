@@ -10,8 +10,6 @@ BAUD = 115200
 s = serial.Serial(PORT, BAUD)
 s.flush()
 
-# tmp = array.array('B', [0b1, 0b101, 0b0, 0b101, 0b0]).tostring()
-# s.write(tmp.encode())
 values = bytearray([0b1, 0b101, 0b0, 0b101, 0b0])
 s.write(values)
 print("receive\n")

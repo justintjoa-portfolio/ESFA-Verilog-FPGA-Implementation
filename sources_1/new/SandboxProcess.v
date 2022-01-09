@@ -170,8 +170,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                 new_index <= inputData[7:0];
                 new_value <= inputData[15:8];
                 metadata <= inputData[23:16];
-                selector <= inputData[31:24];
+                selector = inputData[31:24];
               end
+              //debugging stuff
+              // statusReg = control;
+              // outputReg[31:24] = inputData[31:24];
+              // end debugging stuff
               state             <= 3'h1;
             end
           end
@@ -180,10 +184,10 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (isMutating) begin
                 statusReg[0:0] = 1'b1;
-                outputReg[7:0] = 8'b0;
+                outputReg[31:24] = 8'b0;
             end else begin
                 statusReg[0:0] = resultBool;
-                outputReg[7:0] = resultValue;
+                outputReg[31:24] = resultValue;
             end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
