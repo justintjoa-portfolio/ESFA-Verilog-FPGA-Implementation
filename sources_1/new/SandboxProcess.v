@@ -160,8 +160,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              statusReg = 'h1e;
-              outputReg = inputData;
               // flag data is stored in control byte
               isMutating = control[0:0]; 
               if (isMutating) begin
