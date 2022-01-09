@@ -161,17 +161,19 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
             if (dataReceived == 1'b1)                       // we have new data
             begin
               
-              // flag data
+              // flag data is stored in control byte
               request = control[0:0]; 
-              isMetadata <= control[1:1];
-              willWrite <= control[2:2];
+              if (request) begin
+                isMetadata <= control[1:1];
+                willWrite <= control[2:2];
               
-              // ESFA specific data 
-              new_index <= inputData[7:0];
-              new_value <= inputData[15:8];
-              metadata <= inputData[23:16];
-              selector <= inputData[31:24];
-              state             <= 3'h1;
+                // ESFA specific data 
+                new_index <= inputData[7:0];
+                new_value <= inputData[15:8];
+                metadata <= inputData[23:16];
+                selector <= inputData[31:24];
+                state             <= 3'h1;
+              end
             end
           end
 
