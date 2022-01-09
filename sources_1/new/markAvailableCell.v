@@ -39,7 +39,7 @@ module markAvailableCell(
         output[7:0] resultContext
     );
     
-    assign resultBool = ! arrDef;
+    assign resultBool = ! eltDef;
     assign resultContext = handle;
     assign resultValue = handle;
 endmodule
