@@ -24,12 +24,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
 
                        input  wire        dataReceived,   // 1 indicates that data has arrived for the process.
                        input  wire [7:0]  control,        // the received control byte.
-                       input  wire [55:0] inputData,      // the received data word.
+                       input  wire [31:0] inputData,      // the received data word.
 
                        output wire        clearDR,        // clears the data received flag, thus inherently signals readiness to receive more data.
                        output wire        transmitData,   // signals that the output data is ready to be sent. Inherently requests sending that data.
                        output wire [7:0]  status,         // the status byte to report to the host.
-                       output wire [55:0] outputData,     // the output data to send to the host.
+                       output wire [31:0] outputData,     // the output data to send to the host.
 
                        output wire        rxIndicator);   // indicates reception of data/start of process
 
@@ -38,12 +38,12 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   reg [2:0]   state;
   reg [2:0]   indicatorState;
-  reg [7:0]   statusReg;
-  reg [55:0]  outputReg = 56'b0;
+  reg [7:0]   statusReg = 8'b0;
+  reg [31:0]  outputReg = 32'b0;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  reg[0:0] request = 1'b1; // if request, is putting data in ESFA
+  reg[0:0] isMutating = 1'b1; // if isMutating, wishes to put data on FPGA
                             // if not, expects to receive data
   
   //ESFA specific registers
@@ -160,26 +160,32 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              statusReg = 8'b0;  
-              willWrite <= inputData[0:0];
-              new_index <= inputData[15:8];
-              new_value <= inputData[23:16];
-              metadata <= inputData[31:24];
-              isMetadata <= inputData[39:32];
-              selector <= inputData[47:40];
-              request = inputData[48:48];
+              statusReg = 'h1e;
+              outputReg = inputData;
+              // flag data is stored in control byte
+              isMutating = control[0:0]; 
+              if (isMutating) begin
+                isMetadata <= control[1:1];
+                willWrite <= control[2:2];
+              
+                // ESFA specific data 
+                new_index <= inputData[7:0];
+                new_value <= inputData[15:8];
+                metadata <= inputData[23:16];
+                selector <= inputData[31:24];
+              end
               state             <= 3'h1;
             end
           end
 
         3'h1 :
           begin
-            if (request) begin
-                outputReg[0:0] = 1'b1;
-                outputReg[15:8] = 8'b0;
+            if (isMutating) begin
+                statusReg[0:0] = 1'b1;
+                outputReg[7:0] = 8'b0;
             end else begin
-                outputReg[0:0] = resultBool;
-                outputReg[15:8] = resultValue;
+                statusReg[0:0] = resultBool;
+                outputReg[7:0] = resultValue;
             end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
@@ -218,6 +224,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Sub-modules
   // --------------------------------------------------------------------------
+    
     
     ESFADesign l1(
     .clk(clk),
