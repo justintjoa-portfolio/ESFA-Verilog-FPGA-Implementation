@@ -48,14 +48,14 @@ module updateDesign(
     );
    
     
-    assign resultBool = (metadata == handle) && isMetadata && !eltDef;
+    assign resultBool = (metadata == handle) && isMetadata;
     assign resultValue = out_array_code;
     assign resultContext = out_array_code;
     assign out_arrDef = resultBool ? 1'b1 : arrDef; 
-    assign out_array_code = array_code;
+    assign out_array_code = resultBool ? handle : array_code;
     assign out_eltDef = resultBool ? 1'b1 : eltDef;
-    assign out_low = low;
-    assign out_high = high;
+    assign out_low = resultBool ? handle: low;
+    assign out_high = resultBool ? handle : high;
     assign out_index = resultBool ? new_index : index;
     assign out_value = resultBool ? new_value : value;
     assign out_rank = resultBool ? 1 : rank;
