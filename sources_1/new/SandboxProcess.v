@@ -163,14 +163,16 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
               // flag data is stored in control byte
               isMutating = control[0:0]; 
               if (isMutating) begin
-                isMetadata <= control[1:1];
-                willWrite <= control[2:2];
+                willWrite = control[2:2];
+                if (! willWrite) begin
+                    isMetadata <= control[1:1];
               
-                // ESFA specific data 
-                new_index <= inputData[7:0];
-                new_value <= inputData[15:8];
-                metadata <= inputData[23:16];
-                selector = inputData[31:24];
+                    // ESFA specific data 
+                    new_index <= inputData[7:0];
+                    new_value <= inputData[15:8];
+                    metadata <= inputData[23:16];
+                    selector <= inputData[31:24];
+                end
               end
               //debugging stuff
               // statusReg = control;
@@ -183,11 +185,11 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
         3'h1 :
           begin
             if (isMutating) begin
-                statusReg[0:0] = 1'b1;
-                outputReg[31:24] = 8'b0;
+                statusReg[0:0] <= 1'b1;
+                outputReg[31:24] <= 8'b0;
             end else begin
-                statusReg[0:0] = resultBool;
-                outputReg[31:24] = resultValue;
+                statusReg[0:0] <= resultBool;
+                outputReg[31:24] <= resultValue;
             end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
