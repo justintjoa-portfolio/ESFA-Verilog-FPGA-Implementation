@@ -50,9 +50,9 @@ module Sandbox (input  wire  masterClock,
   wire        txTrigger;
 
   wire [7:0]  control;
-  wire [39:0] rxData;
+  wire [31:0] rxData;
   wire [7:0]  status;
-  wire [39:0] txData;
+  wire [31:0] txData;
   wire        dataReceived;
   wire        transmitting;
   wire        clearDR;
@@ -96,7 +96,7 @@ module Sandbox (input  wire  masterClock,
   // Data interface
   // --------------------------------------------------------
   WideUARTIO # (.CLOCK_SCALE (26),                     // -> 115200
-                .WIDTH       (5))
+                .WIDTH       (4))
 
     dataInterface (.masterClock   (masterClock),
                    .reset         (masterReset),
