@@ -19,3 +19,11 @@ print("receive\n")
 output = (s.read(5))
 result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
 print(result)
+
+values = bytearray([0b0, 0b101, 0b0, 0b101, 0b0])
+s.write(values)
+print("receive\n")
+    
+output = (s.read(5))
+result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
+print(result)
