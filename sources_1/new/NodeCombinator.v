@@ -49,7 +49,7 @@ module NodeCombinator(
     assign resultBool = resultBool1 || resultBool2;
     
     wire[0:0] isLeft;
-    assign isLeft = ((resultBool1 && resultBool2) && (selector == 1 || selector == 5))? 
+    assign isLeft = ((resultBool1 && resultBool2) && (selector == 8'b1 || selector == 8'b101))? 
                           (selector == 1) ? 
                                 (resultContext1 > resultContext2) ?
                                     1'b1 

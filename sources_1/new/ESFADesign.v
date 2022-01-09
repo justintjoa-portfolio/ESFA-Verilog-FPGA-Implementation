@@ -134,8 +134,8 @@ module ESFADesign(
    
     always @ (posedge clk)
         begin
-            if (reset == 1) begin
-                if (resultBool == 0 && resultValue == 0)
+            if (reset == 1'b1) begin
+                if (resultBool == 1'b0 && resultValue == 8'b0)
                     reset <= 0;
             end
         end
