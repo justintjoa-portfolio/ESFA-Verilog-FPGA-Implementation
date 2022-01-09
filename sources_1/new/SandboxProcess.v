@@ -43,7 +43,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  reg[0:0] request = 1'b1; // if request, is putting data in ESFA
+  reg[0:0] isMutating = 1'b1; // if isMutating, wishes to put data on FPGA
                             // if not, expects to receive data
   
   //ESFA specific registers
@@ -160,10 +160,11 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              
+              statusReg = 'h1e;
+              outputReg = inputData;
               // flag data is stored in control byte
-              request = control[0:0]; 
-              if (request) begin
+              isMutating = control[0:0]; 
+              if (isMutating) begin
                 isMetadata <= control[1:1];
                 willWrite <= control[2:2];
               
@@ -172,14 +173,14 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                 new_value <= inputData[15:8];
                 metadata <= inputData[23:16];
                 selector <= inputData[31:24];
-                state             <= 3'h1;
               end
+              state             <= 3'h1;
             end
           end
 
         3'h1 :
           begin
-            if (request) begin
+            if (isMutating) begin
                 statusReg[0:0] = 1'b1;
                 outputReg[7:0] = 8'b0;
             end else begin
@@ -223,6 +224,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   // Sub-modules
   // --------------------------------------------------------------------------
+    
     
     ESFADesign l1(
     .clk(clk),
