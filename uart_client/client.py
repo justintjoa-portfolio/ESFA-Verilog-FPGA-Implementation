@@ -9,10 +9,8 @@ s = serial.Serial(PORT, BAUD)
 s.flush()
 
 values = bytearray([0, 0, 0, 0, 0, 0, 0, 0])
-s.write(values.encode())
+s.write(values)
 print("receive\n")
     
-
-for i in range(n):
-    (s.read(1)).decode()
+output = (s.read(8)).decode()
 print(output)
