@@ -3,26 +3,32 @@
 import serial  
 import sys  
 import array 
-
+import time;
 
 PORT = 'COM4' 
 BAUD = 115200
-s = serial.Serial(PORT, BAUD)
+s = serial.Serial(port=PORT, baudrate=BAUD, 
+bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, 
+stopbits=serial.STOPBITS_ONE)
 s.flush()
 
 #markAvailableCell
 
 print("Marking available cell\n")
-
+if (s.is_open == False):
+    s.open()
 values = bytearray([0b1, 0b101, 0b0, 0b101, 0b0])
 s.write(values)
 print("receive\n")
-    
 output = (s.read(5))
 result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
 print(result)
 
-values = bytearray([0b0, 0b101, 0b0, 0b101, 0b0])
+s.close()
+s.open()
+#s.reset_input_buffer
+#s.reset_output_buffer
+
 s.write(values)
 print("receive\n")
     
@@ -30,33 +36,7 @@ output = (s.read(5))
 result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
 print(result)
 
-#write Cell (0, 5)
 
-print("Writing cell 0,5\n")
 
-#stabilize results
-values = bytearray([0b11, 0b0, 0b0, 0b101, 0b0])
-s.write(values)
-print("receive\n")
-    
-output = (s.read(5))
-result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
-print(result)
 
-#write!
-values = bytearray([0b101, 0b0, 0b0, 0b0, 0b0])
-s.write(values)
-print("receive\n")
-    
-output = (s.read(5))
-result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
-print(result)
-
-values = bytearray([0b0, 0b0, 0b0, 0b0, 0b0])
-s.write(values)
-print("receive\n")
-    
-output = (s.read(5))
-result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
-print(result)
 

@@ -43,8 +43,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  reg[0:0] isMutating = 1'b1; // if isMutating, wishes to put data on FPGA
-                            // if not, expects to receive data
   
   //ESFA specific registers
   reg[0:0] willWrite = 1'b0;
@@ -161,10 +159,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
             if (dataReceived == 1'b1)                       // we have new data
             begin
               // flag data is stored in control byte
-              isMutating = control[0:0]; 
-              if (isMutating) begin
-                willWrite = control[2:2];
-                if (! willWrite) begin
+              if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta, and 2 is willWrite
+                willWrite <= control[2:2];
+                if (! control[2:2]) begin
                     isMetadata <= control[1:1];
               
                     // ESFA specific data 
@@ -173,24 +170,18 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                     metadata <= inputData[23:16];
                     selector <= inputData[31:24];
                 end
+                statusReg[0:0] = 1'b1;
+                outputReg[31:24] <= 8'b0;
+              end else begin
+                statusReg[0:0] <= resultBool;
+                outputReg[31:24] <= resultValue;
               end
-              //debugging stuff
-              // statusReg = control;
-              // outputReg[31:24] = inputData[31:24];
-              // end debugging stuff
               state             <= 3'h1;
             end
           end
 
         3'h1 :
           begin
-            if (isMutating) begin
-                statusReg[0:0] <= 1'b1;
-                outputReg[31:24] <= 8'b0;
-            end else begin
-                statusReg[0:0] <= resultBool;
-                outputReg[31:24] <= resultValue;
-            end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
           end
