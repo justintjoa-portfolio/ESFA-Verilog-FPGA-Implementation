@@ -94,9 +94,6 @@ module MemoryCell(
    enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
    metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext); 
    
-   enRange enranger(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext); 
-   
     //Map
     // 0 : update  
     // 1 : lookUpScan    
@@ -183,9 +180,9 @@ module MemoryCell(
                 end 
                 if (selector == 8'b111) begin
                 
-                    new_bool <= h_resultBool;
-                    new_result_value <= h_resultValue;  
-                    new_context <= h_resultContext;
+                    new_bool <= (metadata == handle) ? d_resultBool : 1'b0;
+                    new_result_value <= (metadata == handle) ? d_resultValue : 8'b0;  
+                    new_context <= (metadata == handle) ? d_resultContext : 8'b0;
                 end  
             end
 endmodule
