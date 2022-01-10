@@ -2,8 +2,6 @@
 # setup serial port
 import serial  
 import sys  
-import array 
-import time;
 
 PORT = 'COM4' 
 BAUD = 115200
@@ -18,7 +16,6 @@ def send(byteArray):
     s.write(byteArray)
     output = (s.read(5))
     s.close()
-    #result = format(int.from_bytes(output, byteorder=sys.byteorder), '#018b')  # => '0b10001'
     value = int.from_bytes(output, byteorder=sys.byteorder)
     control = value & 1
     value = value >> 8 & 0b11111111
