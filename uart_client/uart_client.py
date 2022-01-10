@@ -18,15 +18,18 @@ def send(byteArray):
     s.write(byteArray)
     output = (s.read(5))
     s.close()
-    result = bin(int.from_bytes(output, byteorder=sys.byteorder))  # => '0b10001'
-    return result
+    #result = format(int.from_bytes(output, byteorder=sys.byteorder), '#018b')  # => '0b10001'
+    value = int.from_bytes(output, byteorder=sys.byteorder)
+    control = value & 1
+    value = value >> 8 & 0b11111111
+    return control, value
 
 def update(handle, index, value):
-    send(bytearray([0b11, 0b0, bin(handle), bin(value), bin(index)]))
+    send(bytearray([0b11, 0b0, handle, value, index]))
     send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    if (control[0:0]):
+    control, new_value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    print(control)
+    if (control):
         return True
     else:
         return False
@@ -75,11 +78,11 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    handle = result[15:8]
-    if (control[0:0]):
-        return handle
+    control, value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    print(control)
+    print(value)
+    if (control):
+        return value
     else:
         return None
 
@@ -96,17 +99,19 @@ def enrank(handle):
 #Macro functions
 
 def m_update(handle, index, value):
-    new_handle = markAvailableCell
+    new_handle = markAvailableCell()
     if (new_handle is None):
         return False 
     if (handle is None):
         update(new_handle, index, value)
+        return True
     else:
         code = encode(handle)
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
             congrueUp(rank, code, new_handle)
+            return True
 
 def m_lookUp(handle, index):
     code = encode(handle)
@@ -123,7 +128,8 @@ def m_delete(handle):
     else:
         return congrueDown(code, handle)
 
-    
+value = m_update(None, 0, 5)
+print(value)
 
 
 
