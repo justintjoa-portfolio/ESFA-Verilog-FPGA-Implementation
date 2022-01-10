@@ -28,50 +28,41 @@ def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
     send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, new_value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print(control)
     if (control):
         return True
     else:
         return False
 
 def lookUp(array_code, index):
-    send(bytearray([0b11, 0b1, bin(array_code), 0b0, bin(index)]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    elementValue = result[15:8]
-    if (control[0:0]):
+    send(bytearray([0b11, 0b1, array_code, 0b0, index]))
+    control, elementValue = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
         return elementValue
     else:
         return None
 
 def encode(handle):
-    send(bytearray([0b11, 0b10, bin(handle), 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    code = result[15:8]
-    if (control[0:0]):
+    send(bytearray([0b11, 0b10, handle, 0b0, 0b0]))
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
         return code
     else:
         return None
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
-    send(bytearray([0b11, 0b11, bin(codeOfUpdatedEntry), bin(rankOfUpdatedEntry), bin(handleOfNewEntry)]))
+    send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
     send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    code = result[15:8]
-    if (control[0:0]):
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
         return True
     else:
         return False
 
 def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
-    send(bytearray([0b11, 0b100, bin(codeOfEntryToBeDeleted), 0b0, bin(handleOfEntryToBeDeleted)]))
+    send(bytearray([0b11, 0b100, codeOfEntryToBeDeleted, 0b0, handleOfEntryToBeDeleted]))
     send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    code = result[15:8]
-    if (control[0:0]):
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
         return True
     else:
         return False
@@ -79,19 +70,15 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
     control, value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print(control)
-    print(value)
     if (control):
         return value
     else:
         return None
 
 def enrank(handle):
-    send(bytearray([0b11, 0b110, bin(handle), 0b0, 0b0]))
-    result = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    control = result[7:0]
-    rank = result[15:8]
-    if (control[0:0]):
+    send(bytearray([0b11, 0b110, handle, 0b0, 0b0]))
+    control, rank = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
         return rank
     else:
         return None
