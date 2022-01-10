@@ -66,9 +66,9 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
-    control, value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    control, handle = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
-        return value
+        return handle
     else:
         return None
 
@@ -80,22 +80,34 @@ def enrank(handle):
     else:
         return None
 
+def enRange(handle, isHigh):
+    if (isHigh):
+        send(bytearray([0b11, 0b111, handle, 0b0, 0b0]))
+    else:
+        send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
+    control, limit = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
+        return limit
+    else:
+        return None
+
 #Macro functions
 
 def m_update(handle, index, value):
     new_handle = markAvailableCell()
     if (new_handle is None):
-        return False 
+        return None
     if (handle is None):
         update(new_handle, index, value)
-        return True
     else:
         code = encode(handle)
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
             congrueUp(rank, code, new_handle)
-            return True
+        else:
+            return None
+    return new_handle
 
 def m_lookUp(handle, index):
     code = encode(handle)
@@ -112,13 +124,38 @@ def m_delete(handle):
     else:
         return congrueDown(code, handle)
 
+def m_enrange(handle, isHigh):
+    return enRange(handle, isHigh)
+
 value = m_update(None, 0, 5)
-print(value)
-
-
-
-
-    
-
-
-
+assert(value == 0)
+value = m_update(0, 2, 10)
+assert(value == 1)
+value = m_update(None, 4, 10)
+assert(value == 2)
+value = m_update(2, 10, 21)
+assert(value == 3)
+value = m_update(1, 9, 5)
+assert(value == 4)
+value = m_update(1, 11, 14)
+assert(value == 5)
+value = m_lookUp(0, 0)
+assert(value == 5)
+value = m_lookUp(1, 0)
+assert(value == 5)
+value = m_lookUp(1, 2)
+assert(value == 10)
+value = m_lookUp(3, 4)
+assert(value == 10)
+value = m_lookUp(5, 2)
+assert(value == 10)
+value = m_lookUp(5, 1)
+assert(value == None)
+value = m_delete(1)
+assert(value == True)
+value = m_delete(4)
+assert(value == True)
+value = m_delete(5)
+assert(value == True)
+value = m_lookUp(0, 0)
+assert(value == 5)
