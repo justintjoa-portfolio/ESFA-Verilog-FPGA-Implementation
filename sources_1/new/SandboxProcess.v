@@ -221,12 +221,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
     
     
-    //Memory Cell stuff
-    // wire[7:0] c0Context;
-    
-    // MemoryCell c0(masterClock, willWrite, 8'b0, new_index, new_value, metadata, isMetadata, selector, resultBool, resultValue, c0Context);
-    
-    // end memory cell stuff
     
     
     ESFADesign l1(
