@@ -66,9 +66,9 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
-    control, value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    control, handle = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
-        return value
+        return handle
     else:
         return None
 
@@ -85,17 +85,18 @@ def enrank(handle):
 def m_update(handle, index, value):
     new_handle = markAvailableCell()
     if (new_handle is None):
-        return False 
+        return None
     if (handle is None):
         update(new_handle, index, value)
-        return True
     else:
         code = encode(handle)
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
             congrueUp(rank, code, new_handle)
-            return True
+        else:
+            return None
+    return new_handle
 
 def m_lookUp(handle, index):
     code = encode(handle)
