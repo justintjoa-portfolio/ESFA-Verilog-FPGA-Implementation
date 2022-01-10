@@ -43,8 +43,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  reg[0:0] isMutating = 1'b1; // if isMutating, wishes to put data on FPGA
-                            // if not, expects to receive data
   
   //ESFA specific registers
   reg[0:0] willWrite = 1'b0;
@@ -160,19 +158,23 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              statusReg = 'h1e;
-              outputReg = inputData;
               // flag data is stored in control byte
-              isMutating = control[0:0]; 
-              if (isMutating) begin
-                isMetadata <= control[1:1];
+              if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta, and 2 is willWrite
                 willWrite <= control[2:2];
+                if (! control[2:2]) begin
+                    isMetadata <= control[1:1];
               
-                // ESFA specific data 
-                new_index <= inputData[7:0];
-                new_value <= inputData[15:8];
-                metadata <= inputData[23:16];
-                selector <= inputData[31:24];
+                    // ESFA specific data 
+                    new_index <= inputData[7:0];
+                    new_value <= inputData[15:8];
+                    metadata <= inputData[23:16];
+                    selector <= inputData[31:24];
+                end
+                statusReg[0:0] = 1'b1;
+                outputReg[31:24] <= 8'b0;
+              end else begin
+                statusReg[0:0] <= resultBool;
+                outputReg[31:24] <= resultValue;
               end
               state             <= 3'h1;
             end
@@ -180,13 +182,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
 
         3'h1 :
           begin
-            if (isMutating) begin
-                statusReg[0:0] = 1'b1;
-                outputReg[7:0] = 8'b0;
-            end else begin
-                statusReg[0:0] = resultBool;
-                outputReg[7:0] = resultValue;
-            end
             transmitRequest     <= 1'b1;                    // request to transmit the result
             state               <= 3'h2;
           end
@@ -226,8 +221,10 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
     
     
+    
+    
     ESFADesign l1(
-    .clk(clk),
+    .clk(masterClock),
     .in_willWrite(willWrite),
     .new_index(new_index),
     .new_value(new_value),
@@ -237,7 +234,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     .resultBool(resultBool),
     .resultValue(resultValue)
     );
-    
+   
   
 
 endmodule

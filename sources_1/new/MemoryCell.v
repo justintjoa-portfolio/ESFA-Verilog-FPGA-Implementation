@@ -103,7 +103,7 @@ module MemoryCell(
     
     always @ (posedge clk)
         begin
-                if (selector == 0) begin
+                if (selector == 8'b0) begin
                     if (willWrite) begin
                         new_arrDef <= a_arrDef;
                         new_array_code <= a_array_code;
@@ -119,19 +119,19 @@ module MemoryCell(
                     new_result_value <= a_resultValue;
                     new_context <= a_resultContext;
                 end
-                if (selector == 1) begin
+                if (selector == 8'b1) begin
                 
                     new_bool <= b_resultBool;
                     new_result_value <= b_resultValue;
                     new_context <= b_resultContext;
                 end
-                if (selector == 2) begin
+                if (selector == 8'b10) begin
                     
                     new_bool <= c_resultBool;
                     new_result_value <= c_resultValue;
                     new_context <= c_resultContext;
                 end
-                if (selector == 3) begin
+                if (selector == 8'b11) begin
                     if (willWrite) begin
                         new_arrDef <= d_arrDef;
                         new_array_code <= d_array_code;
@@ -147,7 +147,7 @@ module MemoryCell(
                     new_result_value <= d_resultValue;
                     new_context <= d_resultContext;
                 end
-                if (selector == 4) begin
+                if (selector == 8'b100) begin
                     if (willWrite) begin
                         new_arrDef <= e_arrDef;
                         new_array_code <= e_array_code;
@@ -163,13 +163,13 @@ module MemoryCell(
                     new_result_value <= e_resultValue;
                     new_context <= e_resultContext;
                 end
-                if (selector == 5) begin
+                if (selector == 8'b101) begin
                     
                     new_bool <= f_resultBool;
                     new_result_value <= f_resultValue;
                     new_context <= f_resultContext;
                 end
-                if (selector == 6) begin
+                if (selector == 8'b110) begin
                 
                     new_bool <= g_resultBool;
                     new_result_value <= g_resultValue;  
