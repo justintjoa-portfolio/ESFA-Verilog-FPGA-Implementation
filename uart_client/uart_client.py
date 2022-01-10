@@ -47,6 +47,10 @@ def encode(handle):
         return None
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
+    print("handle")
+    print(handleOfNewEntry)
+    print(codeOfUpdatedEntry)
+    print(rankOfUpdatedEntry)
     send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
     send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
@@ -77,6 +81,17 @@ def enrank(handle):
     control, rank = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return rank
+    else:
+        return None
+
+def enRange(handle, isHigh):
+    if (isHigh):
+        send(bytearray([0b11, 0b111, handle, 0b0, 0b0]))
+    else:
+        send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
+    control, limit = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    if (control):
+        return limit
     else:
         return None
 
@@ -113,10 +128,16 @@ def m_delete(handle):
     else:
         return congrueDown(code, handle)
 
+def m_enrange(handle, isHigh):
+    return enRange(handle, isHigh)
+
 value = m_update(None, 0, 5)
 assert(value == 0)
 value = m_update(0, 2, 10)
 assert(value == 1)
+value = m_enrange(0, True)
+print("enrange")
+print(value)
 value = m_update(None, 4, 10)
 assert(value == 2)
 value = m_update(2, 10, 21)
@@ -127,6 +148,9 @@ value = m_update(1, 11, 14)
 assert(value == 5)
 value = m_lookUp(0, 0)
 assert(value == 5)
+value = m_enrange(0,True)
+print(value)
+assert(value == 1)
 value = m_lookUp(1, 0)
 assert(value == 5)
 value = m_lookUp(1, 2)

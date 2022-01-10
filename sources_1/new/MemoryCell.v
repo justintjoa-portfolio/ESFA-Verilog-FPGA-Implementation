@@ -68,6 +68,8 @@ module MemoryCell(
     wire[0:0] g_resultBool;
     wire [7:0] g_resultValue, g_resultContext;
     
+    wire[0:0] h_resultBool;
+    wire [7:0] h_resultValue, h_resultContext;
     
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value);
@@ -90,6 +92,9 @@ module MemoryCell(
     
    enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
    metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext); 
+   
+   enRange enranger(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
+   metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext); 
    
     //Map
     // 0 : update  
@@ -175,6 +180,12 @@ module MemoryCell(
                     new_result_value <= g_resultValue;  
                     new_context <= g_resultContext;
                 end  
+                if (selector == 8'b111) begin
+                
+                    new_bool <= h_resultBool;
+                    new_result_value <= h_resultValue;  
+                    new_context <= h_resultContext;
+                end 
             end
 endmodule
 

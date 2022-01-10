@@ -489,6 +489,21 @@ module esfa_test;
         
         r_true = resultBool;
         
+        //enRange(0)
+        isMetadata = 1;
+        metadata = 0;
+        selector = 7;
+        willWrite = 0;
+        #168;
+        r_true = (resultBool); #28;
+        r_true = (resultValue == 3); #28;
+        r_true = 1;
+        isMetadata = 0;
+        #168;
+        r_true = (resultBool); #28;
+        r_true = (resultValue == 0); #28;
+        r_true = 1;
+        
         // ESFAArrayOp().lookUp(state_and_handle._1, 0, 0)
         isMetadata = 1;
         metadata = 0;
