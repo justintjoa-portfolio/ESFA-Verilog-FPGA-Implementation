@@ -173,6 +173,21 @@ module esfa_test;
         r_true = (l1.c1.new_high == 1); #168;
         r_true = 1; 
         
+        //enRange(0)
+        isMetadata = 1;
+        metadata = 0;
+        selector = 7;
+        willWrite = 0;
+        #168;
+        r_true = (resultBool); #28;
+        r_true = (resultValue == 1); #28;
+        r_true = 1;
+        isMetadata = 0;
+        #168;
+        r_true = (resultBool); #28;
+        r_true = (resultValue == 0); #28;
+        r_true = 1;
+        
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
         selector = 5;
         #168;
