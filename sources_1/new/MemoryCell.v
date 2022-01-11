@@ -105,7 +105,7 @@ module MemoryCell(
                 end
                 if (selector == 8'b1) begin
                 
-                    new_bool_next = (index == inserted_index) && (metadata >= new_low_next) && (metadata <= new_high) && (isMetadata);
+                    new_bool_next = (new_index == inserted_index) && (metadata >= new_low) && (metadata <= new_high) && (isMetadata);
                     new_result_value_next = new_value;
                     new_context_next = new_rank;
                 end
