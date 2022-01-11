@@ -23,7 +23,6 @@ def send(byteArray):
 
 def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, new_value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
@@ -48,7 +47,6 @@ def encode(handle):
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
@@ -57,7 +55,6 @@ def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
 
 def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
     send(bytearray([0b11, 0b100, codeOfEntryToBeDeleted, 0b0, handleOfEntryToBeDeleted]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
