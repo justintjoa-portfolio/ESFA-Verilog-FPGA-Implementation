@@ -139,4 +139,5 @@ module ESFADesign(
                     reset <= 0;
             end
         end
+      
 endmodule

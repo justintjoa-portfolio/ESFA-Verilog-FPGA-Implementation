@@ -38,19 +38,19 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   reg [2:0]   state;
   reg [2:0]   indicatorState;
-  reg [7:0]   statusReg = 8'b0;
-  reg [31:0]  outputReg = 32'b0;
+  reg [7:0]   statusReg, statusReg_next = 8'b0;
+  reg [31:0]  outputReg, outputReg_next = 32'b0;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
   
   //ESFA specific registers
-  reg[0:0] willWrite = 1'b0;
-  reg[7:0] new_index = 8'b0;
-  reg[7:0] new_value = 8'b0;
-  reg[7:0] metadata = 8'b0;
-  reg[0:0] isMetadata = 1'b0;
-  reg[7:0] selector = 8'b0;
+  reg[0:0] willWrite, willWrite_next = 1'b0;
+  reg[7:0] new_index, new_index_next = 8'b0;
+  reg[7:0] new_value, new_value_next = 8'b0;
+  reg[7:0] metadata, metadata_next = 8'b0;
+  reg[0:0] isMetadata, isMetadata_next = 1'b0;
+  reg[7:0] selector, selector_next = 8'b0;
     
   wire[0:0] resultBool;
   wire[7:0] resultValue;
@@ -140,6 +140,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------
   // The process
   // --------------------------------------------------------
+  
   always @ (posedge masterClock)
   begin
     if (reset == 1'b0)
@@ -159,24 +160,14 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
             if (dataReceived == 1'b1)                       // we have new data
             begin
               // flag data is stored in control byte
-              if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta, and 2 is willWrite
-                willWrite <= control[2:2];
-                if (! control[2:2]) begin
-                    isMetadata <= control[1:1];
-              
-                    // ESFA specific data 
-                    new_index <= inputData[7:0];
-                    new_value <= inputData[15:8];
-                    metadata <= inputData[23:16];
-                    selector <= inputData[31:24];
-                end
-                statusReg[0:0] = 1'b1;
-                outputReg[31:24] <= 8'b0;
-              end else begin
-                statusReg[0:0] <= resultBool;
-                outputReg[31:24] <= resultValue;
-                willWrite <= 1'b0;
-              end
+              willWrite <= willWrite_next;
+              isMetadata <= isMetadata_next;
+              new_index <= new_index_next;
+              new_value <= new_value_next;
+              metadata <= metadata_next;
+              selector <= selector_next;
+              statusReg <= statusReg_next;
+              outputReg <= outputReg_next;
               state             <= 3'h1;
             end
           end
@@ -216,6 +207,26 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
       endcase
     end
   end
+  
+  always @* begin
+    if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta, and 2 is willWrite
+           willWrite_next = control[2:2];
+           isMetadata_next = control[1:1];
+              
+            // ESFA specific data 
+            new_index_next = inputData[7:0];
+            new_value_next = inputData[15:8];
+            metadata_next = inputData[23:16];
+            selector_next = inputData[31:24];
+
+            statusReg_next[0:0] = 1'b1;
+            outputReg_next[31:24] = 8'b0;
+     end else begin
+           statusReg_next[0:0] = resultBool;
+           outputReg_next[31:24] = resultValue;
+           willWrite_next = 1'b0;
+     end
+end
 
   // --------------------------------------------------------------------------
   // Sub-modules

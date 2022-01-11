@@ -34,14 +34,16 @@ module MemoryCell(
         output reg[7:0] new_context = 0
     );
      
-     reg[0:0] new_arrDef = 0;
-     reg[7:0] new_array_code = 0;
-     reg[0:0] new_eltDef = 0;
-     reg[7:0] new_rank = 0;
-     reg[7:0] new_low = 0;
-     reg[7:0] new_high = 0;
-     reg[7:0] new_index = 0;
-     reg[7:0] new_value = 0;
+     reg[0:0] new_arrDef, new_arrDef_next = 0;
+     reg[7:0] new_array_code, new_array_code_next = 0;
+     reg[0:0] new_eltDef, new_eltDef_next = 0;
+     reg[7:0] new_rank, new_rank_next = 0;
+     reg[7:0] new_low, new_low_next = 0;
+     reg[7:0] new_high, new_high_next = 0;
+     reg[7:0] new_index, new_index_next = 0;
+     reg[7:0] new_value, new_value_next = 0;
+     reg[0:0] new_bool_next = 0;
+     reg[7:0] new_result_value_next, new_context_next = 0;
     
 
    
@@ -108,85 +110,105 @@ module MemoryCell(
     
     always @ (posedge clk)
         begin
-                if (selector == 8'b0) begin
+                if (willWrite) begin
+                    new_arrDef <= new_arrDef_next;
+                    new_array_code <= new_array_code_next;
+                    new_eltDef <= new_eltDef_next;
+                    new_rank <= new_rank_next;
+                    new_low <= new_low_next;
+                    new_high <= new_high_next;
+                    new_index <= new_index_next;
+                    new_value <= new_value_next;
+                end
+                new_bool <= new_bool_next;
+                new_result_value <= new_result_value_next;
+                new_context <= new_context_next;
+     
+    end
+            
+            
+    always @* begin
+               if (selector == 8'b0) begin
                     if (willWrite) begin
-                        new_arrDef <= a_arrDef;
-                        new_array_code <= a_array_code;
-                        new_eltDef <= a_eltDef;
-                        new_rank <= a_rank;
-                        new_low <= a_low;
-                        new_high <= a_high;
-                        new_index <= a_index;
-                        new_value <= a_value;
+                        new_arrDef_next = a_arrDef;
+                        new_array_code_next = a_array_code;
+                        new_eltDef_next = a_eltDef;
+                        new_rank_next = a_rank;
+                        new_low_next = a_low;
+                        new_high_next = a_high;
+                        new_index_next = a_index;
+                        new_value_next = a_value;
                     end
                 
-                    new_bool <= a_resultBool;
-                    new_result_value <= a_resultValue;
-                    new_context <= a_resultContext;
+                    new_bool_next = a_resultBool;
+                    new_result_value_next = a_resultValue;
+                    new_context_next = a_resultContext;
                 end
                 if (selector == 8'b1) begin
                 
-                    new_bool <= b_resultBool;
-                    new_result_value <= b_resultValue;
-                    new_context <= b_resultContext;
+                    new_bool_next = b_resultBool;
+                    new_result_value_next = b_resultValue;
+                    new_context_next = b_resultContext;
                 end
                 if (selector == 8'b10) begin
                     
-                    new_bool <= c_resultBool;
-                    new_result_value <= c_resultValue;
-                    new_context <= c_resultContext;
+                    new_bool_next = c_resultBool;
+                    new_result_value_next = c_resultValue;
+                    new_context_next = c_resultContext;
                 end
                 if (selector == 8'b11) begin
                     if (willWrite) begin
-                        new_arrDef <= d_arrDef;
-                        new_array_code <= d_array_code;
-                        new_eltDef <= d_eltDef;
-                        new_rank <= d_rank;
-                        new_low <= d_low;
-                        new_high <= d_high;
-                        new_index <= d_index;
-                        new_value <= d_value;
+                        new_arrDef_next = d_arrDef;
+                        new_array_code_next = d_array_code;
+                        new_eltDef_next = d_eltDef;
+                        new_rank_next = d_rank;
+                        new_low_next = d_low;
+                        new_high_next = d_high;
+                        new_index_next = d_index;
+                        new_value_next = d_value;
                     end
                 
-                    new_bool <= d_resultBool;
-                    new_result_value <= d_resultValue;
-                    new_context <= d_resultContext;
+                    new_bool_next = d_resultBool;
+                    new_result_value_next = d_resultValue;
+                    new_context_next = d_resultContext;
                 end
                 if (selector == 8'b100) begin
                     if (willWrite) begin
-                        new_arrDef <= e_arrDef;
-                        new_array_code <= e_array_code;
-                        new_eltDef <= e_eltDef;
-                        new_rank <= e_rank;
-                        new_low <= e_low;
-                        new_high <= e_high;
-                        new_index <= e_index;
-                        new_value <= e_value;
+                        new_arrDef_next = e_arrDef;
+                        new_array_code_next = e_array_code;
+                        new_eltDef_next = e_eltDef;
+                        new_rank_next = e_rank;
+                        new_low_next = e_low;
+                        new_high_next = e_high;
+                        new_index_next = e_index;
+                        new_value_next = e_value;
                     end
                 
-                    new_bool <= e_resultBool;
-                    new_result_value <= e_resultValue;
-                    new_context <= e_resultContext;
+                    new_bool_next = e_resultBool;
+                    new_result_value_next = e_resultValue;
+                    new_context_next = e_resultContext;
                 end
                 if (selector == 8'b101) begin
                     
-                    new_bool <= f_resultBool;
-                    new_result_value <= f_resultValue;
-                    new_context <= f_resultContext;
+                    new_bool_next = f_resultBool;
+                    new_result_value_next = f_resultValue;
+                    new_context_next = f_resultContext;
                 end
                 if (selector == 8'b110) begin
                 
-                    new_bool <= g_resultBool;
-                    new_result_value <= g_resultValue;  
-                    new_context <= g_resultContext;
+                    new_bool_next = g_resultBool;
+                    new_result_value_next = g_resultValue;  
+                    new_context_next = g_resultContext;
                 end  
                 if (selector == 8'b111) begin
                 
-                    new_bool <= h_resultBool;
-                    new_result_value <= h_resultValue;  
-                    new_context <= h_resultContext;
+                    new_bool_next = h_resultBool;
+                    new_result_value_next = h_resultValue;  
+                    new_context_next = h_resultContext;
                 end 
-            end
+    end
 endmodule
+
+
 
 
