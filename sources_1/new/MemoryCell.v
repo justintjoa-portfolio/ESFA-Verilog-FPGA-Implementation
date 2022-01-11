@@ -53,7 +53,7 @@ module MemoryCell(
      reg[0:0] new_bool_next = 1'b0;
      reg[7:0] new_result_value_next = 0;
      reg[7:0] new_context_next = 0;
-   
+     reg[7:0] r_selector = 8;
     //Map
     // 0 : update  
     // 1 : lookUpScan    
@@ -63,6 +63,7 @@ module MemoryCell(
     // 5: markAvailableCell
     // 6: enrank
     // 7: emramge    
+     
      
      
     always @ (posedge clk)
@@ -87,102 +88,109 @@ module MemoryCell(
     
     always @(*) begin
                r_willWrite = 1'b0;
-               if (selector == 0) begin
-                    new_bool_next = (metadata == handle) && isMetadata;
+               case (selector)
+                    0: begin
+                        new_bool_next = (metadata == handle) && isMetadata;
                
-                    if (new_bool_next) begin  
-                        new_arrDef_next = 1'b1;
-                        new_array_code_next = handle;
-                        new_eltDef_next = 1'b1;
-                        new_low_next = handle;
-                        new_high_next = handle;
-                        new_value_next = inserted_value;
-                        new_index_next = inserted_index;
-                        new_rank_next = 1;
-                    end   
-                    new_result_value_next = handle;
-                    new_context_next = handle;
-                    r_willWrite = 1'b1;
-                  
-                end
-                if (selector == 1) begin
-                
-                    new_bool_next = (new_index == inserted_index) && (metadata >= new_low) && (metadata <= new_high) && (isMetadata);
-                    new_result_value_next = new_value;
-                    new_context_next = new_rank;
-                end
-                if (selector == 2) begin
+                        if (new_bool_next) begin  
+                            new_arrDef_next = 1'b1;
+                            new_array_code_next = handle;
+                            new_eltDef_next = 1'b1;
+                            new_low_next = handle;
+                            new_high_next = handle;
+                            new_value_next = inserted_value;
+                            new_index_next = inserted_index;
+                            new_rank_next = 1;
+                        end   
+                        new_result_value_next = handle;
+                        new_context_next = handle;
+                        r_willWrite = 1'b1;
+                    end
                     
-                    new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
-                    new_result_value_next = new_array_code;
-                    new_context_next = new_array_code;
-                end
-                if (selector == 3) begin
-                   if (inserted_index == handle) begin   
-                        if (isMetadata) begin    
-                            new_array_code_next = metadata + 1;
-                            new_high_next = metadata + 1;
-                            new_low_next = metadata + 1;
-                            new_rank_next = inserted_value + 1;
-                        end
-                   end else begin     
-                        if (new_array_code > metadata && isMetadata && new_arrDef) begin 
-                            new_array_code_next = new_array_code + 1;
-                        end
-                        if (new_eltDef && isMetadata) begin 
-                            if (new_low > metadata) begin 
-                                new_low_next = new_low + 1;
+                    1: begin
+                        new_bool_next = (new_index == inserted_index) && (metadata >= new_low) && (metadata <= new_high) && (isMetadata);
+                        new_result_value_next = new_value;
+                        new_context_next = new_rank;
+                    
+                    end
+               
+                    2: begin
+                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
+                        new_result_value_next = new_array_code;
+                        new_context_next = new_array_code;
+                    end
+                    
+                    3: begin
+                        if (inserted_index == handle) begin   
+                            if (isMetadata) begin    
+                                new_array_code_next = metadata + 1;
+                                new_high_next = metadata + 1;
+                                new_low_next = metadata + 1;
+                                new_rank_next = inserted_value + 1;
                             end
-                            if (new_high >= metadata) begin 
-                                new_high_next = new_high + 1;
+                        end else begin     
+                            if (new_array_code > metadata && isMetadata && new_arrDef) begin 
+                                new_array_code_next = new_array_code + 1;
+                            end
+                            if (new_eltDef && isMetadata) begin 
+                                if (new_low > metadata) begin 
+                                    new_low_next = new_low + 1;
+                                end
+                                if (new_high >= metadata) begin 
+                                    new_high_next = new_high + 1;
+                                end
                             end
                         end
-                   end
-                    r_willWrite = 1'b1;
-                end
-                if (selector == 4) begin
-                   if (inserted_index == handle) begin   
-                        if (isMetadata) begin    
-                            new_arrDef_next = 1'b0;
-                            new_rank_next = 0;
-                        end
-                    if (new_eltDef && isMetadata && metadata < new_low) begin  
-                        new_high_next = new_high - 1;
-                        new_low_next = new_low - 1;
-                    end else begin   
-                        if (new_eltDef && isMetadata && (new_low <= metadata && metadata <= new_high)) begin 
-                            new_high_next = new_high - 1;
+                        r_willWrite = 1'b1;
+                    end
+                    
+                    4: begin
+                        if (inserted_index == handle) begin   
+                            if (isMetadata) begin    
+                                new_arrDef_next = 1'b0;
+                                new_rank_next = 0;
+                            end
+                            if (new_eltDef && isMetadata && metadata < new_low) begin  
+                                new_high_next = new_high - 1;
+                                new_low_next = new_low - 1;
+                            end else begin   
+                                if (new_eltDef && isMetadata && (new_low <= metadata && metadata <= new_high)) begin 
+                                    new_high_next = new_high - 1;
+                                end
+                            end
+                            if (new_eltDef && new_low_next > new_high_next) begin 
+                                new_eltDef_next = 1'b0;
+                                new_arrDef_next = 1'b0;
+                            end
+                            if (new_arrDef && isMetadata && new_array_code > metadata) begin 
+                                new_array_code_next = new_array_code - 1;
+                            end
+
+                            r_willWrite = 1'b1;
                         end
                     end
-                    if (new_eltDef && new_low_next > new_high_next) begin 
-                        new_eltDef_next = 1'b0;
-                        new_arrDef_next = 1'b0;
-                    end
-                    if (new_arrDef && isMetadata && new_array_code > metadata) begin 
-                        new_array_code_next = new_array_code - 1;
+                
+                    5: begin
+                        new_bool_next = ! new_eltDef;
+                        new_result_value_next = handle;
+                        new_context_next = handle;
                     end
 
-                    r_willWrite = 1'b1;
-                end
-                if (selector == 5) begin
-                    new_bool_next = ! new_eltDef;
-                    new_result_value_next = handle;
-                    new_context_next = handle;
-                end
-                if (selector == 6) begin
-                
-                    new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
-                    new_result_value_next = new_rank;
-                    new_context_next = new_rank;
-                end  
-                if (selector == 7) begin
-                
-                    new_bool_next = (!(metadata > 7)) && (new_eltDef) && (metadata  == handle);
-                    new_result_value_next = isMetadata ? new_high : new_low;
-                    new_context_next = new_result_value_next;
-                end 
-            end
-        end
+                    6: begin   
+                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
+                        new_result_value_next = new_rank;
+                        new_context_next = new_rank;
+                    end
+                    
+                    7: begin
+                        new_bool_next = (!(metadata > 7)) && (new_eltDef) && (metadata  == handle);
+                        new_result_value_next = isMetadata ? new_high : new_low;
+                        new_context_next = new_result_value_next;
+                    end
+                    
+                endcase
+           end
+
             
             
   
