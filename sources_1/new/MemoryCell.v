@@ -53,7 +53,6 @@ module MemoryCell(
      reg[0:0] new_bool_next = 1'b0;
      reg[7:0] new_result_value_next = 0;
      reg[7:0] new_context_next = 0;
-     reg[7:0] r_selector = 8;
     //Map
     // 0 : update  
     // 1 : lookUpScan    
@@ -86,7 +85,7 @@ module MemoryCell(
     
     
     
-    always @(*) begin
+    always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin
                r_willWrite = 1'b0;
                case (selector)
                     0: begin
