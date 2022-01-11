@@ -28,18 +28,18 @@ module MemoryCell(
         input[7:0] metadata,
         input[0:0] isMetadata,
         input[7:0] selector,
-        output reg[0:0] new_bool = 0,
+        output reg[0:0] new_bool = 1'b0,
         output reg[7:0] new_result_value = 0,
         output reg[7:0] new_context = 0
     );
      
      reg[0:0] r_willWrite = 1'b0;
-     reg[0:0] new_arrDef = 0;
-     reg[0:0] new_arrDef_next = 0;
+     reg[0:0] new_arrDef = 1'b0;
+     reg[0:0] new_arrDef_next = 1'b0;
      reg[7:0] new_array_code = 0; 
      reg[7:0] new_array_code_next = 0;
-     reg[0:0] new_eltDef = 0;
-     reg[0:0] new_eltDef_next = 0;
+     reg[0:0] new_eltDef = 1'b0;
+     reg[0:0] new_eltDef_next = 1'b0;
      reg[7:0] new_rank = 0;
      reg[7:0] new_rank_next = 0;
      reg[7:0] new_low = 0;
@@ -50,7 +50,7 @@ module MemoryCell(
      reg[7:0] new_index_next = 0;
      reg[7:0] new_value = 0;
      reg[7:0] new_value_next = 0;
-     reg[0:0] new_bool_next = 0;
+     reg[0:0] new_bool_next = 1'b0;
      reg[7:0] new_result_value_next = 0;
      reg[7:0] new_context_next = 0;
    
@@ -63,8 +63,8 @@ module MemoryCell(
     // 5: markAvailableCell
     // 6: enrank
     // 7: emramge    
-   
-    
+     
+     
     always @ (posedge clk)
         begin
                 if (r_willWrite) begin
@@ -82,9 +82,10 @@ module MemoryCell(
                 new_context <= new_context_next;
      
     end
-            
-            
-    always @* begin
+    
+    
+    
+    always @(*) begin
                r_willWrite = 1'b0;
                if (selector == 0) begin
                     new_bool_next = (metadata == handle) && isMetadata;
@@ -164,7 +165,6 @@ module MemoryCell(
                     r_willWrite = 1'b1;
                 end
                 if (selector == 5) begin
-                    
                     new_bool_next = ! new_eltDef;
                     new_result_value_next = handle;
                     new_context_next = handle;
@@ -183,6 +183,9 @@ module MemoryCell(
                 end 
             end
         end
+            
+            
+  
 endmodule
 
 
