@@ -33,7 +33,7 @@ module esfa_test;
     reg[7:0] handle = 0;
     wire[0:0] resultBool;
     wire[7:0] resultValue;
-    reg[7:0] selector = 0;
+    reg[7:0] selector = 1;
     
     reg[0:0] r_true = 1;
     wire is_true;
@@ -63,7 +63,7 @@ module esfa_test;
     begin
         // update Basic test
         $display("update basic test, begin");
-        #420 //wait for reset to complete
+        #420; //wait for reset to complete
         r_true = (l1.reset == 0); #168
         r_true = (l1.c0.new_rank == 0); #168
         $display("assertions working correctly");
@@ -73,7 +73,11 @@ module esfa_test;
         new_value = 5;
         isMetadata = 1'b0;
         selector = 5;
-        #168;
+        #28;
+        #28;
+        #28;
+        #28;
+        #28;
         r_true = (resultBool == 1); #168;
         r_true = (resultValue == 0); #168;
         r_true = 1;
