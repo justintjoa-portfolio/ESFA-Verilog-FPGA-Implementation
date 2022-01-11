@@ -38,23 +38,18 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------------------------
   reg [2:0]   state;
   reg [2:0]   indicatorState;
-  reg [7:0]   statusReg, statusReg_next = 8'b0;
-  reg [31:0]  outputReg, outputReg_next = 32'b0;
+  reg [7:0]   statusReg  = 8'b0;
+  reg [31:0]  outputReg = 32'b0;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
   
   //ESFA specific registers
   reg[7:0] new_index = 0;
-  reg[7:0] new_index_next = 8'b0;
   reg[7:0] new_value = 0;
-  reg[7:0] new_value_next = 8'b0;
   reg[7:0] metadata = 0;
-  reg[7:0] metadata_next = 8'b0;
   reg[0:0] isMetadata = 0;
-  reg[0:0] isMetadata_next = 1'b0;
   reg[7:0] selector = 0;
-  reg[7:0] selector_next = 8'b0;
     
   wire[0:0] resultBool;
   wire[7:0] resultValue;
