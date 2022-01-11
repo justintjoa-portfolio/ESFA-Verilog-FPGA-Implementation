@@ -45,12 +45,18 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg         indicatorReg;
   
   //ESFA specific registers
-  reg[0:0] willWrite, willWrite_next = 1'b0;
-  reg[7:0] new_index, new_index_next = 8'b0;
-  reg[7:0] new_value, new_value_next = 8'b0;
-  reg[7:0] metadata, metadata_next = 8'b0;
-  reg[0:0] isMetadata, isMetadata_next = 1'b0;
-  reg[7:0] selector, selector_next = 8'b0;
+  reg[0:0] willWrite = 0;
+  reg[0:0] willWrite_next = 1'b0;
+  reg[7:0] new_index = 0;
+  reg[7:0] new_index_next = 8'b0;
+  reg[7:0] new_value = 0;
+  reg[7:0] new_value_next = 8'b0;
+  reg[7:0] metadata = 0;
+  reg[7:0] metadata_next = 8'b0;
+  reg[0:0] isMetadata = 0;
+  reg[0:0] isMetadata_next = 1'b0;
+  reg[7:0] selector = 0;
+  reg[7:0] selector_next = 8'b0;
     
   wire[0:0] resultBool;
   wire[7:0] resultValue;
@@ -237,7 +243,6 @@ end
     
     ESFADesign l1(
     .clk(masterClock),
-    .in_willWrite(willWrite),
     .new_index(new_index),
     .new_value(new_value),
     .metadata(metadata),

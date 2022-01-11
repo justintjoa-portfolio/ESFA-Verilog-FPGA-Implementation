@@ -22,7 +22,6 @@
 
 module MemoryCell(
         input[0:0] clk,
-        input[0:0] willWrite,
         input[7:0] handle, 
         input[7:0] inserted_index,
         input[7:0] inserted_value,
@@ -34,19 +33,29 @@ module MemoryCell(
         output reg[7:0] new_context = 0
     );
      
-     reg[0:0] new_arrDef, new_arrDef_next = 0;
-     reg[7:0] new_array_code, new_array_code_next = 0;
-     reg[0:0] new_eltDef, new_eltDef_next = 0;
-     reg[7:0] new_rank, new_rank_next = 0;
-     reg[7:0] new_low, new_low_next = 0;
-     reg[7:0] new_high, new_high_next = 0;
-     reg[7:0] new_index, new_index_next = 0;
-     reg[7:0] new_value, new_value_next = 0;
+     reg[0:0] r_willWrite = 1'b0;
+     reg[0:0] new_arrDef = 0;
+     reg[0:0] new_arrDef_next = 0;
+     reg[7:0] new_array_code = 0; 
+     reg[7:0] new_array_code_next = 0;
+     reg[0:0] new_eltDef = 0;
+     reg[0:0] new_eltDef_next = 0;
+     reg[7:0] new_rank = 0;
+     reg[7:0] new_rank_next = 0;
+     reg[7:0] new_low = 0;
+     reg[7:0] new_low_next = 0;
+     reg[7:0] new_high = 0;
+     reg[7:0] new_high_next = 0;
+     reg[7:0] new_index = 0;
+     reg[7:0] new_index_next = 0;
+     reg[7:0] new_value = 0;
+     reg[7:0] new_value_next = 0;
      reg[0:0] new_bool_next = 0;
-     reg[7:0] new_result_value_next, new_context_next = 0;
+     reg[7:0] new_result_value_next = 0;
+     reg[7:0] new_context_next = 0;
     
 
-   
+   /*
     
     // output wires for each combinator block
     wire[0:0] a_resultBool, a_arrDef, a_eltDef;
@@ -72,7 +81,8 @@ module MemoryCell(
     
     wire[0:0] h_resultBool;
     wire [7:0] h_resultValue, h_resultContext;
-    
+    */
+    /*
    updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
    metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value);
    
@@ -97,7 +107,7 @@ module MemoryCell(
    
    enRange enranger(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
    metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext); 
-   
+   */
     //Map
     // 0 : update  
     // 1 : lookUpScan    
@@ -110,7 +120,7 @@ module MemoryCell(
     
     always @ (posedge clk)
         begin
-                if (willWrite) begin
+                if (r_willWrite) begin
                     new_arrDef <= new_arrDef_next;
                     new_array_code <= new_array_code_next;
                     new_eltDef <= new_eltDef_next;
@@ -128,85 +138,104 @@ module MemoryCell(
             
             
     always @* begin
+               r_willWrite = 1'b0;
                if (selector == 8'b0) begin
-                    if (willWrite) begin
-                        new_arrDef_next = a_arrDef;
-                        new_array_code_next = a_array_code;
-                        new_eltDef_next = a_eltDef;
-                        new_rank_next = a_rank;
-                        new_low_next = a_low;
-                        new_high_next = a_high;
-                        new_index_next = a_index;
-                        new_value_next = a_value;
-                    end
-                
-                    new_bool_next = a_resultBool;
-                    new_result_value_next = a_resultValue;
-                    new_context_next = a_resultContext;
+                    new_bool_next = (metadata == handle) && isMetadata;
+               
+                    if (new_bool_next) begin  
+                        new_arrDef_next = 1'b1;
+                        new_array_code_next = handle;
+                        new_eltDef_next = 1'b1;
+                        new_low_next = handle;
+                        new_high_next = handle;
+                        new_value_next = inserted_value;
+                        new_index_next = inserted_index;
+                        new_rank_next = 1;
+                    end   
+                    new_result_value_next = handle;
+                    new_context_next = handle;
+                    r_willWrite = 1'b1;
+                  
                 end
                 if (selector == 8'b1) begin
                 
-                    new_bool_next = b_resultBool;
-                    new_result_value_next = b_resultValue;
-                    new_context_next = b_resultContext;
+                    new_bool_next = (index == inserted_index) && (metadata >= new_low_next) && (metadata <= new_high) && (isMetadata);
+                    new_result_value_next = new_value;
+                    new_context_next = new_rank;
                 end
                 if (selector == 8'b10) begin
                     
-                    new_bool_next = c_resultBool;
-                    new_result_value_next = c_resultValue;
-                    new_context_next = c_resultContext;
+                    new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
+                    new_result_value_next = new_array_code;
+                    new_context_next = new_array_code;
                 end
                 if (selector == 8'b11) begin
-                    if (willWrite) begin
-                        new_arrDef_next = d_arrDef;
-                        new_array_code_next = d_array_code;
-                        new_eltDef_next = d_eltDef;
-                        new_rank_next = d_rank;
-                        new_low_next = d_low;
-                        new_high_next = d_high;
-                        new_index_next = d_index;
-                        new_value_next = d_value;
-                    end
-                
-                    new_bool_next = d_resultBool;
-                    new_result_value_next = d_resultValue;
-                    new_context_next = d_resultContext;
+                   if (inserted_index == handle) begin   
+                        if (isMetadata) begin    
+                            new_array_code_next = metadata + 1;
+                            new_high_next = metadata + 1;
+                            new_low_next = metadata + 1;
+                            new_rank_next = inserted_value + 1;
+                        end
+                   end else begin     
+                        if (new_array_code > metadata && isMetadata && new_arrDef) begin 
+                            new_array_code_next = new_array_code + 1;
+                        end
+                        if (new_eltDef && isMetadata) begin 
+                            if (new_low > metadata) begin 
+                                new_low_next = new_low + 1;
+                            end
+                            if (new_high >= metadata) begin 
+                                new_high_next = new_high + 1;
+                            end
+                        end
+                   end
+                    r_willWrite = 1'b1;
                 end
                 if (selector == 8'b100) begin
-                    if (willWrite) begin
-                        new_arrDef_next = e_arrDef;
-                        new_array_code_next = e_array_code;
-                        new_eltDef_next = e_eltDef;
-                        new_rank_next = e_rank;
-                        new_low_next = e_low;
-                        new_high_next = e_high;
-                        new_index_next = e_index;
-                        new_value_next = e_value;
+                   if (inserted_index == handle) begin   
+                        if (isMetadata) begin    
+                            new_arrDef_next = 1'b0;
+                            new_rank_next = 0;
+                        end
+                    if (new_eltDef && isMetadata && metadata < new_low) begin  
+                        new_high_next = new_high - 1;
+                        new_low_next = new_low - 1;
+                    end else begin   
+                        if (new_eltDef && isMetadata && (new_low <= metadata && metadata <= new_high)) begin 
+                            new_high_next = new_high - 1;
+                        end
                     end
-                
-                    new_bool_next = e_resultBool;
-                    new_result_value_next = e_resultValue;
-                    new_context_next = e_resultContext;
+                    if (new_eltDef && new_low_next > new_high_next) begin 
+                        new_eltDef_next = 1'b0;
+                        new_arrDef_next = 1'b0;
+                    end
+                    if (arrDef && isMetadata && new_array_code > metadata) begin 
+                        new_array_code_next = new_array_code - 1;
+                    end
+
+                    r_willWrite = 1'b1;
                 end
                 if (selector == 8'b101) begin
                     
-                    new_bool_next = f_resultBool;
-                    new_result_value_next = f_resultValue;
-                    new_context_next = f_resultContext;
+                    new_bool_next = ! new_eltDef;
+                    new_result_value_next = handle;
+                    new_context_next = handle;
                 end
                 if (selector == 8'b110) begin
                 
-                    new_bool_next = g_resultBool;
-                    new_result_value_next = g_resultValue;  
-                    new_context_next = g_resultContext;
+                    new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
+                    new_result_value_next = new_rank;
+                    new_context_next = new_rank;
                 end  
                 if (selector == 8'b111) begin
                 
-                    new_bool_next = h_resultBool;
-                    new_result_value_next = h_resultValue;  
-                    new_context_next = h_resultContext;
+                    new_bool_next = (!(metadata > 7)) && (new_eltDef) && (metadata  == handle);
+                    new_result_value_next = isMetadata ? new_high : new_low;
+                    new_context_next = result_value_next;
                 end 
-    end
+            end
+        end
 endmodule
 
 

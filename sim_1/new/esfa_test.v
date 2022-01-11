@@ -49,7 +49,6 @@ module esfa_test;
     
     ESFADesign l1(
         .clk(clk),
-        .in_willWrite(willWrite),
         .new_index(new_index),
         .new_value(new_value),
         .metadata(metadata),
@@ -133,6 +132,8 @@ module esfa_test;
         new_value = 8'b1010;
         selector = 0;
         willWrite = 1;
+        #28;
+        #28;
         #168;
         willWrite = 0;
         new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
