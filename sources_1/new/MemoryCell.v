@@ -144,11 +144,11 @@ module MemoryCell(
                     end
                     
                     4: begin
-                        if (inserted_index == handle) begin   
-                            if (isMetadata) begin    
+                            if (inserted_index == handle && isMetadata) begin    
                                 new_arrDef_next = 1'b0;
                                 new_rank_next = 0;
                             end
+                       
                             if (new_eltDef && isMetadata && metadata < new_low) begin  
                                 new_high_next = new_high - 1;
                                 new_low_next = new_low - 1;
@@ -166,7 +166,6 @@ module MemoryCell(
                             end
 
                             r_willWrite = 1'b1;
-                        end
                     end
                 
                     5: begin
