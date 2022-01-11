@@ -64,6 +64,9 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
     control, handle = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    print("handle")
+    print(control)
+    print(handle)
     if (control):
         return handle
     else:
