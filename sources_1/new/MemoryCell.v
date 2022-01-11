@@ -53,70 +53,16 @@ module MemoryCell(
      reg[0:0] new_bool_next = 0;
      reg[7:0] new_result_value_next = 0;
      reg[7:0] new_context_next = 0;
-    
-
-   /*
-    
-    // output wires for each combinator block
-    wire[0:0] a_resultBool, a_arrDef, a_eltDef;
-    wire [7:0] a_resultValue, a_resultContext, a_array_code, a_rank, a_low, a_high, a_index, a_value;
-
-    wire[0:0] b_resultBool;
-    wire [7:0] b_resultValue, b_resultContext;
-    
-    wire[0:0] c_resultBool;
-    wire [7:0] c_resultValue, c_resultContext;
-    
-    wire[0:0] d_resultBool, d_arrDef, d_eltDef;
-    wire [7:0] d_resultValue, d_resultContext, d_array_code, d_rank, d_low, d_high, d_index, d_value;
-    
-    wire[0:0] e_resultBool, e_arrDef, e_eltDef;
-    wire [7:0] e_resultValue, e_resultContext, e_array_code, e_rank, e_low, e_high, e_index, e_value;
-    
-    wire[0:0] f_resultBool;
-    wire [7:0] f_resultValue, f_resultContext;
-    
-    wire[0:0] g_resultBool;
-    wire [7:0] g_resultValue, g_resultContext;
-    
-    wire[0:0] h_resultBool;
-    wire [7:0] h_resultValue, h_resultContext;
-    */
-    /*
-   updateDesign updater(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, a_resultBool, a_resultValue, a_resultContext, a_arrDef, a_array_code, a_eltDef, a_rank, a_low, a_high, a_index, a_value);
    
-   lookUp lookScan(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, b_resultBool, b_resultValue, b_resultContext);
-   
-   encode encoder(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, c_resultBool, c_resultValue, c_resultContext);
-   
-   
-   congrueUpDesign upEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value, 
-   metadata, isMetadata, d_resultBool, d_resultValue, d_resultContext, d_arrDef, d_array_code, d_eltDef, d_rank, d_low, d_high, d_index, d_value);
-   
-   congrueDownDesign downEqualizer(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, e_resultBool, e_resultValue,  e_resultContext, e_arrDef, e_array_code, e_eltDef, e_rank, e_low, e_high, e_index, e_value);
-   
-   markAvailableCell vacantCellMarker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, f_resultBool, f_resultValue, f_resultContext);
-    
-   enrank enranker(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, g_resultBool, g_resultValue,  g_resultContext); 
-   
-   enRange enranger(new_arrDef, handle, new_array_code, new_eltDef, new_rank, new_low, new_high, new_index, new_value, inserted_index, inserted_value,
-   metadata, isMetadata, h_resultBool, h_resultValue,  h_resultContext); 
-   */
     //Map
     // 0 : update  
     // 1 : lookUpScan    
-    // 2 : lookUpFinalizer   
-    // 3: encode      
-    // 4: delete   
-    // 5: congrueUp  
-    // 6: congruedown 
-    // 7: markAvailableCell    
+    // 2: encode     
+    // 3: congrueUp 
+    // 4: congrueDown
+    // 5: markAvailableCell
+    // 6: enrank
+    // 7: emramge    
     
     always @ (posedge clk)
         begin
