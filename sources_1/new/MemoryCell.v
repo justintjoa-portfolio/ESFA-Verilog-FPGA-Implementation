@@ -68,7 +68,7 @@ module MemoryCell(
      
     always @ (posedge clk)
         begin
-                if (reset) begin
+                if (reset == 1'b0) begin
                     new_arrDef <= 1'b0;
                     new_array_code <= 0;
                     new_eltDef <= 1'b0;

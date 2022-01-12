@@ -44,7 +44,7 @@ module esfa_test;
         clk = 0; #14;
     end
     
-    reg[0:0] reset = 1'b1;
+    reg[0:0] reset = 1'b0;
  
     assert a0(.clk(clk), .test(is_true));
     
@@ -69,7 +69,7 @@ module esfa_test;
         r_true = (l1.resultValue == 0); #168;
         r_true = (l1.resultBool == 1'b0); #168;
         r_true = (l1.c0.new_rank == 0); #168
-        reset = 1'b0;
+        reset = 1'b1;
         $display("assertions working correctly");
         
         //ESFAArrayOp().update(emptyArrayState, None=, 0, 5)
