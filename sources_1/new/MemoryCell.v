@@ -61,7 +61,7 @@ module MemoryCell(
     // 4: congrueDown
     // 5: markAvailableCell
     // 6: enrank
-    // 7: emramge    
+    // 7: debug
      
      
      
@@ -87,6 +87,14 @@ module MemoryCell(
     
     always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin
                r_willWrite = 1'b0;
+               new_arrDef_next = new_arrDef;
+               new_array_code_next = new_array_code;
+               new_eltDef_next = new_eltDef;
+               new_low_next = new_low;
+               new_high_next = new_high;
+               new_value_next = new_value;
+               new_index_next = new_index;
+               new_rank_next = new_rank;
                case (selector)
                     0: begin
                         new_bool_next = (metadata == handle) && isMetadata;
@@ -181,8 +189,9 @@ module MemoryCell(
                     end
                     
                     7: begin
-                        new_bool_next = (!(metadata > 7)) && (new_eltDef) && (metadata  == handle);
-                        new_result_value_next = isMetadata ? new_high : new_low;
+                        new_bool_next = (!(metadata > 7)) && (metadata  == handle);
+                        new_result_value_next = 8'b0;
+                        new_result_value_next[0:0] = new_eltDef;
                         new_context_next = new_result_value_next;
                     end
                     
