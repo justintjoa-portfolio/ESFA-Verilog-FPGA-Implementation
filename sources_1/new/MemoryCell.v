@@ -203,7 +203,7 @@ module MemoryCell(
                     
                     7: begin
                         new_bool_next = (!(metadata > 7)) && (metadata  == handle);
-                        new_result_value_next = new_array_code;
+                        new_result_value_next = new_high;
 
 
                     end
