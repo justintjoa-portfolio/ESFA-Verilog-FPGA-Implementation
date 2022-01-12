@@ -23,7 +23,6 @@ def send(byteArray):
 
 def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, new_value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
@@ -48,7 +47,6 @@ def encode(handle):
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
@@ -57,7 +55,6 @@ def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
 
 def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
     send(bytearray([0b11, 0b100, codeOfEntryToBeDeleted, 0b0, handleOfEntryToBeDeleted]))
-    send(bytearray([0b101, 0b0, 0b0, 0b0, 0b0]))
     control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
@@ -80,14 +77,13 @@ def enrank(handle):
     else:
         return None
 
-def enRange(handle, isHigh):
-    if (isHigh):
-        send(bytearray([0b11, 0b111, handle, 0b0, 0b0]))
-    else:
-        send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
-    control, limit = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+def debug(handle):
+    send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
+    control, debug = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    print("debug")
+    print(debug)
     if (control):
-        return limit
+        return debug
     else:
         return None
 
@@ -104,7 +100,11 @@ def m_update(handle, index, value):
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
+            print("before congrue")
+            debug(0)
             congrueUp(rank, code, new_handle)
+            print("after congrue")
+            debug(0)
         else:
             return None
     return new_handle
@@ -124,8 +124,8 @@ def m_delete(handle):
     else:
         return congrueDown(code, handle)
 
-def m_enrange(handle, isHigh):
-    return enRange(handle, isHigh)
+def m_debug(handle):
+    return debug(handle)
 
 value = m_update(None, 0, 5)
 assert(value == 0)

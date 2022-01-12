@@ -22,7 +22,7 @@
 
 module ESFADesign(
     input[0:0] clk, 
-    input[0:0] in_willWrite,
+    input[0:0] reset,
     input[7:0] new_index,
     input[7:0] new_value,
     input[7:0] metadata,
@@ -31,11 +31,7 @@ module ESFADesign(
     output[7:0] resultValue,
     input[7:0] selector
     );
-    
-    reg[0:0] reset = 1;
-    
-    wire[0:0] willWrite;
-    assign willWrite = in_willWrite && !reset;
+   
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
@@ -113,14 +109,14 @@ module ESFADesign(
 
    
     
-    MemoryCell c0(clk, willWrite, c0Handle, new_index, new_value, metadata, isMetadata, selector, c0Bool, c0Result, c0Context);
-    MemoryCell c1(clk, willWrite, c1Handle, new_index, new_value, metadata, isMetadata,  selector, c1Bool, c1Result, c1Context);
-    MemoryCell c2(clk, willWrite, c2Handle, new_index, new_value,  metadata, isMetadata, selector, c2Bool, c2Result, c2Context);
-    MemoryCell c3(clk, willWrite, c3Handle, new_index, new_value, metadata, isMetadata, selector, c3Bool, c3Result, c3Context);
-    MemoryCell c4(clk, willWrite, c4Handle, new_index, new_value, metadata, isMetadata, selector, c4Bool, c4Result, c4Context);
-    MemoryCell c5(clk, willWrite, c5Handle, new_index, new_value, metadata, isMetadata, selector, c5Bool, c5Result, c5Context);
-    MemoryCell c6(clk, willWrite, c6Handle, new_index, new_value, metadata, isMetadata, selector, c6Bool, c6Result, c6Context);
-    MemoryCell c7(clk, willWrite, c7Handle, new_index, new_value, metadata, isMetadata, selector, c7Bool, c7Result, c7Context);
+    MemoryCell c0(clk, reset, c0Handle, new_index, new_value, metadata, isMetadata, selector, c0Bool, c0Result, c0Context);
+    MemoryCell c1(clk, reset, c1Handle, new_index, new_value, metadata, isMetadata,  selector, c1Bool, c1Result, c1Context);
+    MemoryCell c2(clk, reset, c2Handle, new_index, new_value,  metadata, isMetadata, selector, c2Bool, c2Result, c2Context);
+    MemoryCell c3(clk, reset, c3Handle, new_index, new_value, metadata, isMetadata, selector, c3Bool, c3Result, c3Context);
+    MemoryCell c4(clk, reset, c4Handle, new_index, new_value, metadata, isMetadata, selector, c4Bool, c4Result, c4Context);
+    MemoryCell c5(clk, reset, c5Handle, new_index, new_value, metadata, isMetadata, selector, c5Bool, c5Result, c5Context);
+    MemoryCell c6(clk, reset, c6Handle, new_index, new_value, metadata, isMetadata, selector, c6Bool, c6Result, c6Context);
+    MemoryCell c7(clk, reset, c7Handle, new_index, new_value, metadata, isMetadata, selector, c7Bool, c7Result, c7Context);
     
     NodeCombinator combinator1(selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
     NodeCombinator combinator2(selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
@@ -130,13 +126,6 @@ module ESFADesign(
     NodeCombinator combinator6(selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
     NodeCombinator combinator7(selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
     
-    
    
-    always @ (posedge clk)
-        begin
-            if (reset == 1'b1) begin
-                if (resultBool == 1'b0 && resultValue == 8'b0)
-                    reset <= 0;
-            end
-        end
+      
 endmodule
