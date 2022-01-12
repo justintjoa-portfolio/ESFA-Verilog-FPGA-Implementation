@@ -84,6 +84,7 @@ def debug(handle):
     send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
     control, debug = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     print("debug")
+    print(control)
     print(debug)
     if (control):
         return debug
@@ -97,17 +98,15 @@ def m_update(handle, index, value):
     if (new_handle is None):
         return None
     if (handle is None):
+        print("going for it")
+        print(new_handle)
         update(new_handle, index, value)
     else:
         code = encode(handle)
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
-            print("before congrue")
-            debug(0)
             congrueUp(rank, code, new_handle)
-            print("after congrue")
-            debug(0)
         else:
             return None
     return new_handle
@@ -132,6 +131,7 @@ def m_debug(handle):
 
 value = m_update(None, 0, 5)
 assert(value == 0)
+debug(0)
 value = m_update(0, 2, 10)
 assert(value == 1)
 value = m_update(None, 4, 10)
