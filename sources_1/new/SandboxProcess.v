@@ -223,6 +223,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     
     ESFADesign l1(
     .clk(masterClock),
+    .reset(reset),
     .new_index(new_index),
     .new_value(new_value),
     .metadata(metadata),

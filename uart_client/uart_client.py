@@ -100,7 +100,11 @@ def m_update(handle, index, value):
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
+            print("before congrue")
+            debug(0)
             congrueUp(rank, code, new_handle)
+            print("after congrue")
+            debug(0)
         else:
             return None
     return new_handle

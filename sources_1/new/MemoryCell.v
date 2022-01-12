@@ -22,6 +22,7 @@
 
 module MemoryCell(
         input[0:0] clk,
+        input[0:0] reset,
         input[7:0] handle, 
         input[7:0] inserted_index,
         input[7:0] inserted_value,
@@ -67,19 +68,31 @@ module MemoryCell(
      
     always @ (posedge clk)
         begin
-                if (r_willWrite) begin
-                    new_arrDef <= new_arrDef_next;
-                    new_array_code <= new_array_code_next;
-                    new_eltDef <= new_eltDef_next;
-                    new_rank <= new_rank_next;
-                    new_low <= new_low_next;
-                    new_high <= new_high_next;
-                    new_index <= new_index_next;
-                    new_value <= new_value_next;
+                if (reset) begin
+                    new_arrDef <= 1'b0;
+                    new_array_code <= 0;
+                    new_eltDef <= 1'b0;
+                    new_rank <= 0;
+                    new_low <= 0;
+                    new_high <= 0;
+                    new_index <= 0;
+                    new_value <= 0;
+                end else begin 
+                    if (r_willWrite) begin
+                        new_arrDef <= new_arrDef_next;
+                        new_array_code <= new_array_code_next;
+                        new_eltDef <= new_eltDef_next;
+                        new_rank <= new_rank_next;
+                        new_low <= new_low_next;
+                        new_high <= new_high_next;
+                        new_index <= new_index_next;
+                        new_value <= new_value_next;
+                    end
+                    new_bool <= new_bool_next;
+                    new_result_value <= new_result_value_next;
+                    new_context <= new_context_next;
+                
                 end
-                new_bool <= new_bool_next;
-                new_result_value <= new_result_value_next;
-                new_context <= new_context_next;
      
     end
     
@@ -190,9 +203,9 @@ module MemoryCell(
                     
                     7: begin
                         new_bool_next = (!(metadata > 7)) && (metadata  == handle);
-                        new_result_value_next = 8'b0;
-                        new_result_value_next[0:0] = new_eltDef;
-                        new_context_next = new_result_value_next;
+                        new_result_value_next = new_high + 1;
+
+
                     end
                     
                 endcase

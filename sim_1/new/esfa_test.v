@@ -44,11 +44,13 @@ module esfa_test;
         clk = 0; #14;
     end
     
+    reg[0:0] reset = 1'b1;
  
     assert a0(.clk(clk), .test(is_true));
     
     ESFADesign l1(
         .clk(clk),
+        .reset(reset),
         .new_index(new_index),
         .new_value(new_value),
         .metadata(metadata),
@@ -64,8 +66,10 @@ module esfa_test;
         // update Basic test
         $display("update basic test, begin");
         #420; //wait for reset to complete
-        r_true = (l1.reset == 0); #168
+        r_true = (l1.resultValue == 0); #168;
+        r_true = (l1.resultBool == 1'b0); #168;
         r_true = (l1.c0.new_rank == 0); #168
+        reset = 1'b0;
         $display("assertions working correctly");
         
         //ESFAArrayOp().update(emptyArrayState, None=, 0, 5)
