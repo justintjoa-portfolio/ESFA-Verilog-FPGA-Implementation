@@ -94,18 +94,19 @@ def m_update(handle, index, value):
     if (new_handle is None):
         return None
     if (handle is None):
-        update(new_handle, index, value)
+        print("the new handle was ")
+        print(new_handle)
+        didWork = update(new_handle, index, value)
     else:
+        print("got a handle to update!")
         code = encode(handle)
         rank = enrank(handle)
+        old_handle = markAvailableCell()
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
-            print("before congrue")
-            debug(0)
             congrueUp(rank, code, new_handle)
-            print("after congrue")
-            debug(0)
         else:
+            print("there was nothing!")
             return None
     return new_handle
 
@@ -129,6 +130,8 @@ def m_debug(handle):
 
 value = m_update(None, 0, 5)
 assert(value == 0)
+value = markAvailableCell()
+print(value)
 value = m_update(0, 2, 10)
 assert(value == 1)
 value = m_update(None, 4, 10)
