@@ -34,14 +34,14 @@ module MemoryCell(
         output reg[7:0] new_context = 0
     );
      
-     reg[0:0] new_arrDef = 1'b0;
-     reg[7:0] new_array_code = 0; 
-     reg[0:0] new_eltDef = 1'b0;
-     reg[7:0] new_rank = 0;
-     reg[7:0] new_low = 0;
-     reg[7:0] new_high = 0;
-     reg[7:0] new_index = 0;
-     reg[7:0] new_value = 0;
+     reg[0:0] new_arrDef;
+     reg[7:0] new_array_code; 
+     reg[0:0] new_eltDef;
+     reg[7:0] new_rank;
+     reg[7:0] new_low;
+     reg[7:0] new_high;
+     reg[7:0] new_index;
+     reg[7:0] new_value;
      
      reg[0:0] willOutput = 1'b0;
      
@@ -188,7 +188,7 @@ module MemoryCell(
                             
                             
                             5: begin   
-                                new_bool <= f_new_bool; 
+                                new_bool <= f_new_bool;
                                 new_result_value <= f_new_result_value; 
                                 new_context <= f_new_context;
                             end   
@@ -213,6 +213,11 @@ module MemoryCell(
                 end
      
     end
+    
+    always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin
+        willOutput = 1'b1;      
+    end   
+    
     
     always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin   
         a_new_arrDef = new_arrDef;
@@ -338,13 +343,9 @@ module MemoryCell(
     
     always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin   
         h_new_bool = (!(metadata > 7)) && (metadata  == handle);
-        h_new_result_value = new_high;
-        h_new_context = new_high;
+        h_new_result_value = new_eltDef;
+        h_new_context = new_eltDef;
     end
-    
-    always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin
-        willOutput = 1'b1;      
-    end   
   
 endmodule
 
