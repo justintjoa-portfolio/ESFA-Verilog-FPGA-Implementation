@@ -113,21 +113,6 @@ module MemoryCell(
     // 6: enrank
     // 7: debug
      
-     /*
-     
-     if (r_willWrite) begin
-                        new_arrDef <= new_arrDef_next;
-                        new_array_code <= new_array_code_next;
-                        new_eltDef <= new_eltDef_next;
-                        new_rank <= new_rank_next;
-                        new_low <= new_low_next;
-                        new_high <= new_high_next;
-                        new_index <= new_index_next;
-                        new_value <= new_value_next;
-                    end
-                    new_bool <= new_bool_next;
-                    new_result_value <= new_result_value_next;
-                    new_context <= new_context_next;*/
      
     always @ (posedge clk)
         begin
@@ -277,6 +262,10 @@ module MemoryCell(
         d_new_index = new_index;
         d_new_rank = new_rank;
         
+        d_new_bool = 1'b1;
+        d_new_result_value = 0;
+        d_new_context = 0;
+        
         if (inserted_index == handle) begin   
             if (isMetadata) begin    
                 d_new_array_code = metadata + 1;
@@ -285,15 +274,15 @@ module MemoryCell(
                 d_new_rank = inserted_value + 1;
              end
          end else begin     
-             if (new_array_code > metadata && isMetadata && new_arrDef) begin 
-                 d_new_array_code = new_array_code + 1;
+             if (d_new_array_code > metadata && isMetadata && d_new_arrDef) begin 
+                 d_new_array_code = d_new_array_code + 1;
               end
-              if (new_eltDef && isMetadata) begin 
-                  if (new_low > metadata) begin 
-                       d_new_low = new_low + 1;
+              if (d_new_eltDef && isMetadata) begin 
+                  if (d_new_low > metadata) begin 
+                       d_new_low = d_new_low + 1;
                   end
-                  if (new_high >= metadata) begin 
-                       d_new_high = new_high + 1;
+                  if (d_new_high >= metadata) begin 
+                       d_new_high = d_new_high + 1;
                   end
                end
          end
@@ -309,31 +298,35 @@ module MemoryCell(
         e_new_index = new_index;
         e_new_rank = new_rank;
         
+        e_new_bool = 1'b1;
+        e_new_result_value = 0;
+        e_new_context = 0;
+        
         if (inserted_index == handle && isMetadata) begin    
              e_new_arrDef = 1'b0;
              e_new_rank  = 0;
         end
                        
-        if (new_eltDef && isMetadata && metadata < new_low) begin  
-            e_new_high = new_high - 1;
-            e_new_low = new_low - 1;
+        if (e_new_eltDef && isMetadata && metadata < e_new_low) begin  
+            e_new_high = e_new_high - 1;
+            e_new_low = e_new_low - 1;
         end else begin   
-            if (new_eltDef && isMetadata && (new_low <= metadata && metadata <= new_high)) begin 
-                   e_new_high = new_high - 1;
+            if (e_new_eltDef && isMetadata && (e_new_low <= metadata && metadata <= e_new_high)) begin 
+                   e_new_high = e_new_high - 1;
             end
         end
-        if (new_eltDef && new_low_next > new_high_next) begin 
+        if (e_new_eltDef && e_new_low > e_new_high) begin 
               e_new_eltDef = 1'b0;
               e_new_arrDef = 1'b0;
         end
-        if (new_arrDef && isMetadata && new_array_code > metadata) begin 
-              e_new_array_code = new_array_code - 1;
+        if (e_new_arrDef && isMetadata && e_new_array_code > metadata) begin 
+              e_new_array_code = e_new_array_code - 1;
         end
     end
     
     always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin   
         f_new_bool = ! new_eltDef;
-        f_new_result = handle;
+        f_new_result_value = handle;
         f_new_context = handle;
     end
     
