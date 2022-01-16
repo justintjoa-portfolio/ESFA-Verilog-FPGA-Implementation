@@ -202,10 +202,28 @@ module MemoryCell(
                     end
                     
                     7: begin
-                        new_bool_next = (!(metadata > 7)) && (metadata  == handle);
-                        new_result_value_next = new_high;
-
-
+                        new_bool_next = (handle == 0);
+                        if (inserted_index == handle) begin   
+                            if (isMetadata) begin    
+                                new_array_code_next = metadata + 1;
+                                new_high_next = metadata + 1;
+                                new_low_next = metadata + 1;
+                                new_rank_next = inserted_value + 1;
+                            end
+                        end else begin     
+                            if (new_array_code > metadata && isMetadata && new_arrDef) begin 
+                                new_array_code_next = new_array_code + 1;
+                            end
+                            if (new_eltDef && isMetadata) begin 
+                                if (new_low > metadata) begin 
+                                    new_low_next = new_low + 1;
+                                end
+                                if (new_high >= metadata) begin 
+                                    new_high_next = new_high + 1;
+                                end
+                            end
+                        end
+                        new_result_value_next = new_high_next;
                     end
                     
                 endcase

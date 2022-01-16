@@ -77,10 +77,11 @@ def enrank(handle):
     else:
         return None
 
-def debug(handle):
-    send(bytearray([0b1, 0b111, handle, 0b0, 0b0]))
+def debug(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
+    send(bytearray([0b11, 0b111, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
     control, debug = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("debug")
+    print("debugging")
+    print(control)
     print(debug)
     if (control):
         return debug
@@ -91,6 +92,8 @@ def debug(handle):
 
 def m_update(handle, index, value):
     new_handle = markAvailableCell()
+    print("new handle is")
+    print(new_handle)
     if (new_handle is None):
         return None
     if (handle is None):
@@ -101,10 +104,10 @@ def m_update(handle, index, value):
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
             print("before congrue")
-            debug(0)
+            debug(rank, code, new_handle)
             congrueUp(rank, code, new_handle)
             print("after congrue")
-            debug(0)
+            debug(rank, code, new_handle)
         else:
             return None
     return new_handle
@@ -130,6 +133,8 @@ def m_debug(handle):
 value = m_update(None, 0, 5)
 assert(value == 0)
 value = m_update(0, 2, 10)
+print("value")
+print(value)
 assert(value == 1)
 value = m_update(None, 4, 10)
 assert(value == 2)
