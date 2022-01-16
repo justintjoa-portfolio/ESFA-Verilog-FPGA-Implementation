@@ -35,6 +35,7 @@ module MemoryCell(
     );
      
      reg[0:0] r_willWrite = 1'b0;
+     reg[0:0] r_willOutput = 1'b0;
      reg[0:0] new_arrDef = 1'b0;
      reg[0:0] new_arrDef_next = 1'b0;
      reg[7:0] new_array_code = 0; 
@@ -78,19 +79,22 @@ module MemoryCell(
                     new_index <= 0;
                     new_value <= 0;
                 end else begin 
-                    if (r_willWrite) begin
-                        new_arrDef <= new_arrDef_next;
-                        new_array_code <= new_array_code_next;
-                        new_eltDef <= new_eltDef_next;
-                        new_rank <= new_rank_next;
-                        new_low <= new_low_next;
-                        new_high <= new_high_next;
-                        new_index <= new_index_next;
-                        new_value <= new_value_next;
+                    if (r_willOutput) begin      
+                        if (r_willWrite) begin
+                            new_arrDef <= new_arrDef_next;
+                            new_array_code <= new_array_code_next;
+                            new_eltDef <= new_eltDef_next;
+                            new_rank <= new_rank_next;
+                            new_low <= new_low_next;
+                            new_high <= new_high_next;
+                            new_index <= new_index_next;
+                            new_value <= new_value_next;
+                        end
+                        new_bool <= new_bool_next;
+                        new_result_value <= new_result_value_next;
+                        new_context <= new_context_next;
+                    
                     end
-                    new_bool <= new_bool_next;
-                    new_result_value <= new_result_value_next;
-                    new_context <= new_context_next;
                 
                 end
      
@@ -100,6 +104,7 @@ module MemoryCell(
     
     always @(inserted_index, inserted_value, metadata, isMetadata, selector) begin
                r_willWrite = 1'b0;
+               r_willOutput = 1'b0;
                new_arrDef_next = new_arrDef;
                new_array_code_next = new_array_code;
                new_eltDef_next = new_eltDef;
@@ -227,6 +232,7 @@ module MemoryCell(
                     end
                     
                 endcase
+                r_willOutput = 1'b1;
            end
 
             
