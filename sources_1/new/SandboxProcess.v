@@ -49,7 +49,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg[7:0] new_value = 0;
   reg[7:0] metadata = 0;
   reg[0:0] isMetadata = 0;
-  reg[7:0] selector = 1;
+  reg[7:0] selector = 8;
     
   wire[0:0] resultBool;
   wire[7:0] resultValue;
@@ -177,6 +177,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
               end else begin
                 statusReg[0:0] <= resultBool;
                 outputReg[31:24] <= resultValue;
+                selector <= 8;
               end
               state             <= 3'h1;
             end
