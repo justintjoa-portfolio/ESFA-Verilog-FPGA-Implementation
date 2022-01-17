@@ -33,7 +33,7 @@ module esfa_test;
     reg[7:0] handle = 0;
     wire[0:0] resultBool;
     wire[7:0] resultValue;
-    reg[7:0] selector = 1;
+    reg[7:0] selector = 8;
     
     reg[0:0] r_true = 1;
     wire is_true;
@@ -77,25 +77,21 @@ module esfa_test;
         new_value = 5;
         isMetadata = 1'b0;
         selector = 5;
-        #28;
-        #28;
-        #28;
-        #28;
-        #28;
+        #56;
         r_true = (resultBool == 1); #168;
         r_true = (resultValue == 0); #168;
         r_true = 1;
         metadata = resultValue;
         isMetadata = resultBool;
         selector = 0;
-        willWrite = 1;
-        #168;
+        #56;
+        selector = 8; 
+        #28;
         isMetadata = 0;
         new_index = 0; 
         selector = 3;
-        willWrite = 1;
-        #28; // allow a cycle for outputs to stabilize, then write 
-        willWrite = 0;
+        #56;
+        selector = 8;
         #392
         willWrite = 0;
         
@@ -142,17 +138,16 @@ module esfa_test;
         willWrite = 1;
         #28;
         #28;
+        selector = 8;
         #168;
         willWrite = 0;
         new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
         metadata = code;
         new_value = rank;
         selector = 3;
-        willWrite = 1;
-        #28; 
-        willWrite = 0;
         #28;
         #28;
+        selector = 8;
         #28;
         #28;
         willWrite = 0;
@@ -188,15 +183,15 @@ module esfa_test;
         new_value = 8'b1010;
         isMetadata = 1'b1;
         metadata = 2;
-        willWrite = 1;
-        #168;
+        #56; 
+        selector = 8; 
+        #28;
         isMetadata = 0;
         new_index = 2; 
         selector = 3;
-        willWrite = 1;
-        #28; 
-        willWrite = 0;
-        #392;
+        #56; 
+        selector = 8;
+        #56;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -249,18 +244,17 @@ module esfa_test;
         new_index = 8'b1010;
         new_value = 8'b10101;
         selector = 0;
-        willWrite = 1;
-        #168
-        willWrite = 0;
+        #56;
+        selector = 8;
+        #56;
         new_index = 3;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
         selector = 3;
-        willWrite = 1;
-        #28; 
-        willWrite = 0;
-        #392;
+        #56;
+        selector = 8;
+        #56;
 
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -318,19 +312,19 @@ module esfa_test;
         new_index = 8'b1001;
         new_value = 8'b101;
         selector = 0;
-        willWrite = 1;
-        #168
+        #56;
+        selector = 8; 
+        #56;
         willWrite = 0;
         new_index = handle;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
         selector = 3;
-        willWrite = 1;
-        #28; 
-        willWrite = 0;
-        willWrite = 0;
-        #392;
+        #56;
+        selector = 8; 
+        #56;
+ 
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
         r_true = (l1.c0.new_index == 0); #168;
@@ -401,18 +395,17 @@ module esfa_test;
         new_index = 8'b1011;
         new_value = 8'b1110;
         selector = 0;
-        willWrite = 1;
-        #168
-        willWrite = 0;
+        #56;
+        selector = 8; 
+        #56;
         new_index = handle;
         isMetadata = 1;
         metadata = code;
         new_value = rank;
         selector = 3;
-        willWrite = 1;
-        #28; 
-        willWrite = 0;
-        #392;
+        #56;
+        selector = 8; 
+        #56;
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -582,10 +575,9 @@ module esfa_test;
         new_index = 1;
         metadata = code;
         
-        willWrite = 1;
-        #28; // allow a cycle for outputs to stabilize, then write 
-        willWrite = 0;
-        #392;
+        #56; // allow a cycle for outputs to stabilize, then write 
+        selector = 8;
+        #56;
         r_true = resultBool; #168;
         r_true = 1;
         
@@ -662,10 +654,9 @@ module esfa_test;
         new_index = 4;
         metadata = code;
         
-        willWrite = 1;
-        #28; // allow a cycle for outputs to stabilize, then write 
-        willWrite = 0;
-        #392
+        #56; // allow a cycle for outputs to stabilize, then write 
+        selector = 8;
+        #56;
         r_true = resultBool; #168;
         r_true = 1;
         
@@ -680,10 +671,9 @@ module esfa_test;
         new_index = 5;
         metadata = code;
         
-        willWrite = 1;
-        #28; // allow a cycle for outputs to stabilize, then write 
-        willWrite = 0;
-        #392;
+        #56;
+        selector = 8;
+        #56;
         r_true = resultBool; #168;
         r_true = 1;
         
