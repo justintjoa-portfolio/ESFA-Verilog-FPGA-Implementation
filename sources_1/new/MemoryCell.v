@@ -157,7 +157,7 @@ module MemoryCell(
                             if (new_array_code_next > metadata && isMetadata && new_arrDef_next) begin 
                                 new_array_code_next = new_array_code_next + 1;
                             end
-                            if (new_eltDef && isMetadata) begin 
+                            if (new_eltDef_next && isMetadata) begin 
                                 if (new_low_next > metadata) begin 
                                     new_low_next = new_low_next + 1;
                                 end
