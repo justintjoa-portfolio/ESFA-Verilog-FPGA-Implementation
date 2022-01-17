@@ -133,16 +133,16 @@ module MemoryCell(
                     end
                     
                     1: begin
-                        new_bool_next = (new_index == inserted_index) && (metadata >= new_low) && (metadata <= new_high) && (isMetadata);
-                        new_result_value_next = new_value;
-                        new_context_next = new_rank;
+                        new_bool_next = (new_index_next == inserted_index) && (metadata >= new_low_next) && (metadata <= new_high_next) && (isMetadata);
+                        new_result_value_next = new_value_next;
+                        new_context_next = new_rank_next;
                     
                     end
                
                     2: begin
-                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
-                        new_result_value_next = new_array_code;
-                        new_context_next = new_array_code;
+                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef_next) && (isMetadata) && (metadata  == handle);
+                        new_result_value_next = new_array_code_next;
+                        new_context_next = new_array_code_next;
                     end
                     
                     3: begin
@@ -154,15 +154,15 @@ module MemoryCell(
                                 new_rank_next = inserted_value + 1;
                             end
                         end else begin     
-                            if (new_array_code > metadata && isMetadata && new_arrDef) begin 
-                                new_array_code_next = new_array_code + 1;
+                            if (new_array_code_next > metadata && isMetadata && new_arrDef_next) begin 
+                                new_array_code_next = new_array_code_next + 1;
                             end
                             if (new_eltDef && isMetadata) begin 
-                                if (new_low > metadata) begin 
-                                    new_low_next = new_low + 1;
+                                if (new_low_next > metadata) begin 
+                                    new_low_next = new_low_next + 1;
                                 end
-                                if (new_high >= metadata) begin 
-                                    new_high_next = new_high + 1;
+                                if (new_high_next >= metadata) begin 
+                                    new_high_next = new_high_next + 1;
                                 end
                             end
                         end
@@ -175,35 +175,35 @@ module MemoryCell(
                                 new_rank_next = 0;
                             end
                        
-                            if (new_eltDef && isMetadata && metadata < new_low) begin  
-                                new_high_next = new_high - 1;
-                                new_low_next = new_low - 1;
+                            if (new_eltDef_next && isMetadata && metadata < new_low_next) begin  
+                                new_high_next = new_high_next - 1;
+                                new_low_next = new_low_next - 1;
                             end else begin   
-                                if (new_eltDef && isMetadata && (new_low <= metadata && metadata <= new_high)) begin 
-                                    new_high_next = new_high - 1;
+                                if (new_eltDef_next && isMetadata && (new_low_next <= metadata && metadata <= new_high_next)) begin 
+                                    new_high_next = new_high_next - 1;
                                 end
                             end
-                            if (new_eltDef && new_low_next > new_high_next) begin 
+                            if (new_eltDef_next && new_low_next > new_high_next) begin 
                                 new_eltDef_next = 1'b0;
                                 new_arrDef_next = 1'b0;
                             end
-                            if (new_arrDef && isMetadata && new_array_code > metadata) begin 
-                                new_array_code_next = new_array_code - 1;
+                            if (new_arrDef_next && isMetadata && new_array_code_next > metadata) begin 
+                                new_array_code_next = new_array_code_next - 1;
                             end
 
                             r_willWrite = 1'b1;
                     end
                 
                     5: begin
-                        new_bool_next = ! new_eltDef;
+                        new_bool_next = ! new_eltDef_next;
                         new_result_value_next = handle;
                         new_context_next = handle;
                     end
 
                     6: begin   
-                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef) && (isMetadata) && (metadata  == handle);
-                        new_result_value_next = new_rank;
-                        new_context_next = new_rank;
+                        new_bool_next = (!(!isMetadata || metadata > 7)) && (new_arrDef_next) && (isMetadata) && (metadata  == handle);
+                        new_result_value_next = new_rank_next;
+                        new_context_next = new_rank_next;
                     end
                     
                     7: begin
@@ -216,15 +216,15 @@ module MemoryCell(
                                 new_rank_next = inserted_value + 1;
                             end
                         end else begin     
-                            if (new_array_code > metadata && isMetadata && new_arrDef) begin 
-                                new_array_code_next = new_array_code + 1;
+                            if (new_array_code_next > metadata && isMetadata && new_arrDef_next) begin 
+                                new_array_code_next = new_array_code_next + 1;
                             end
-                            if (new_eltDef && isMetadata) begin 
-                                if (new_low > metadata) begin 
-                                    new_low_next = new_low + 1;
+                            if (new_eltDef_next && isMetadata) begin 
+                                if (new_low_next > metadata) begin 
+                                    new_low_next = new_low_next + 1;
                                 end
-                                if (new_high >= metadata) begin 
-                                    new_high_next = new_high + 1;
+                                if (new_high_next >= metadata) begin 
+                                    new_high_next = new_high_next + 1;
                                 end
                             end
                         end
