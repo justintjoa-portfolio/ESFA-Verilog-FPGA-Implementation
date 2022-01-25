@@ -21,8 +21,11 @@ Release Diary: https://docs.google.com/document/d/1Onwxkocl2f0QuUEM0k3As0nP1BEz1
 Release Notes - January 25, 2022 
 
 - This release implements the following: 
+
     + UART communication system to communicate between host PC and FPGA. The word is defined to have a width of 4 bytes, and uses control/receiving byte to control and correctly interpret results from FPGA.  
+
     + Python script that uses the first Scala extensive test to test the correctness of the hardware design (tested to be correct in this case). 
+
     + Aligns the implementation of MemoryCell to better leverage the features of modern Verilog for performance and general readability. 
 
 
