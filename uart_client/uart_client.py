@@ -92,8 +92,6 @@ def debug(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
 
 def m_update(handle, index, value):
     new_handle = markAvailableCell()
-    print("new handle is")
-    print(new_handle)
     if (new_handle is None):
         return None
     if (handle is None):
@@ -103,11 +101,7 @@ def m_update(handle, index, value):
         rank = enrank(handle)
         if ((code is not None) and (rank is not None)):
             update(new_handle, index, value)
-            print("before congrue")
-            debug(rank, code, new_handle)
             congrueUp(rank, code, new_handle)
-            print("after congrue")
-            debug(rank, code, new_handle)
         else:
             return None
     return new_handle
@@ -133,8 +127,6 @@ def m_debug(handle):
 value = m_update(None, 0, 5)
 assert(value == 0)
 value = m_update(0, 2, 10)
-print("value")
-print(value)
 assert(value == 1)
 value = m_update(None, 4, 10)
 assert(value == 2)
