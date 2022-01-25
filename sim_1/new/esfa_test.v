@@ -537,7 +537,60 @@ module esfa_test;
         
         r_true = resultBool; #168;
         r_true = (resultValue == 5); #168;
+        r_true = 1;
         
+        
+        // Updated key test
+        $display("Updated key test");
+        reset = 1'b0;
+        selector = 8;
+        #420; //wait for reset to complete
+        r_true = (l1.resultValue == 0); #168;
+        r_true = (l1.resultBool == 1'b0); #168;
+        r_true = (l1.c0.new_rank == 0); #168
+        reset = 1'b1;    
+        $display("assertions working correctly");
+        
+        write(1'b0, 0, 0, 5);
+        write(1'b1, 0, 0, 8'b1010);
+        lookUp(0, 0); 
+        
+        r_true = resultBool; #168;
+        r_true = (resultValue == 5); #168;
+        r_true = 1;
+        
+        lookUp(1,0);
+        r_true = resultBool; #168;
+        r_true = (resultValue == 8'b1010); #168;
+        r_true = 1;
+        
+        // Duplicate key and value test
+        $display("Duplicate key and value test");
+        reset = 1'b0;
+        #420; //wait for reset to complete
+        r_true = (l1.resultValue == 0); #168;
+        r_true = (l1.resultBool == 1'b0); #168;
+        r_true = (l1.c0.new_rank == 0); #168
+        reset = 1'b1;    
+        $display("assertions working correctly");
+        
+        write(1'b0, 0, 0, 5);
+        write(1'b1, 0, 0, 5);
+        lookUp(0, 0); 
+        
+        r_true = resultBool; #168;
+        r_true = (resultValue == 5); #168;
+        r_true = 1;
+        
+        lookUp(1, 0); 
+        
+        r_true = resultBool; #168;
+        r_true = (resultValue == 5); #168;
+        r_true = 1;
+        
+        lookUp(1, 10); #168;
+        r_true = (resultBool == 1'b0); #168;
+        r_true = 1;
         
     end
    

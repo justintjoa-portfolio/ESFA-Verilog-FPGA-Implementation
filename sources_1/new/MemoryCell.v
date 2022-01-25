@@ -80,6 +80,9 @@ module MemoryCell(
                     new_index <= 0;
                     new_value <= 0;
                     
+                    new_result_value <= 8'b0;
+                    new_bool <= 1'b0;  
+                    new_context <= 8'b0;
                     didMutate <= 1'b0;
                 end else begin  
                       if (r_willWrite) begin
