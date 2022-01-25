@@ -60,6 +60,83 @@ module esfa_test;
         .selector(selector)  
     );
     
+    task write;
+    input[0:0] in_targetedHandle;
+    input[7:0] in_handle;
+    input[7:0] in_index;
+    input[7:0] in_value; 
+    begin  
+        if (in_targetedHandle) begin   
+            isMetadata = 1'b1;
+            metadata = in_handle;
+            selector = 2;
+            #168;
+            code = resultValue;
+            selector = 6;
+            #168;
+            rank = resultValue;
+        end
+        selector = 5;
+        #168;
+        metadata = resultValue;
+        isMetadata = 1'b1;
+        new_index = in_index;
+        new_value = in_value;
+        selector = 0;
+        #28;
+        #28;
+        selector = 8;
+        #168;
+        if (in_targetedHandle) begin  
+            new_index = metadata;
+            metadata = code;
+            new_value = rank;
+            selector = 3;
+            #28;
+            #28;
+            selector = 8;
+            #28;
+            #28;
+            end
+    end
+    endtask
+    
+    task delete;
+    input[7:0] in_handle;
+    begin  
+        isMetadata = 1;
+        metadata = in_handle;
+        selector = 2;
+        #168;
+        
+        code = resultValue;
+        selector = 4;
+        new_index = in_handle;
+        metadata = code;
+        
+        #56; // allow a cycle for outputs to stabilize, then write 
+        selector = 8;
+        #56;
+    end
+    endtask
+    
+    task lookUp;
+    input[7:0] in_handle;
+    input[7:0] in_index;
+    begin  
+        isMetadata = 1;
+        metadata = in_handle;
+        selector = 2;
+        #168;
+        code = resultValue;
+        metadata = code;
+        isMetadata = 1;
+        new_index = in_index;
+        selector = 1;
+        #168;
+    end
+    endtask
+    
     
     initial
     begin
@@ -73,29 +150,7 @@ module esfa_test;
         $display("assertions working correctly");
         
         //ESFAArrayOp().update(emptyArrayState, None=, 0, 5)
-        new_index = 0;
-        new_value = 5;
-        isMetadata = 1'b0;
-        selector = 5;
-        #56;
-        r_true = (resultBool == 1); #168;
-        r_true = (resultValue == 0); #168;
-        r_true = 1;
-        metadata = resultValue;
-        isMetadata = resultBool;
-        selector = 0;
-        #56;
-        selector = 8; 
-        #28;
-        isMetadata = 0;
-        new_index = 0; 
-        selector = 3;
-        #56;
-        selector = 8;
-        #392
-        willWrite = 0;
-        
-        
+        write(1'b0, 0, 0, 5);
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168
         r_true = (l1.c0.new_eltDef == 1'b1); #168
@@ -108,51 +163,7 @@ module esfa_test;
         r_true = 1;
        
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
-        isMetadata = 1'b1;
-        metadata = 0;
-        selector = 2;
-        #168;
-        r_true = (resultBool); #168;
-        r_true = 1;
-        code = resultValue;
-        r_true = (code == 0); #168;
-        r_true = 1;
-        selector = 6;
-        #168;
-        r_true = (resultBool); #168;
-        r_true = (resultValue == 1); #168;
-        r_true = 1;
-        rank = resultValue;
-        r_true = (rank == 1); #168;
-        r_true = 1;
-        selector = 5;
-        #168;
-        r_true = (resultBool); #168;
-        r_true = (resultValue == 1); #168;
-        r_true = 1;
-        metadata = resultValue;
-        isMetadata = 1'b1;
-        new_index = 2;
-        new_value = 8'b1010;
-        selector = 0;
-        willWrite = 1;
-        #28;
-        #28;
-        selector = 8;
-        #168;
-        willWrite = 0;
-        new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it
-        metadata = code;
-        new_value = rank;
-        selector = 3;
-        #28;
-        #28;
-        selector = 8;
-        #28;
-        #28;
-        willWrite = 0;
-        r_true = (resultBool); #168;
-        r_true = 1;
+        write(1'b1, 0, 2, 8'b1010);
       
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -172,26 +183,7 @@ module esfa_test;
         r_true = 1; 
         
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
-        selector = 5;
-        #168;
-        r_true = (resultBool == 1); #168
-        r_true = (resultValue == 2); #168
-        r_true = 1;
-        
-        selector = 0;
-        new_index = 4;
-        new_value = 8'b1010;
-        isMetadata = 1'b1;
-        metadata = 2;
-        #56; 
-        selector = 8; 
-        #28;
-        isMetadata = 0;
-        new_index = 2; 
-        selector = 3;
-        #56; 
-        selector = 8;
-        #56;
+        write(1'b0, 0, 4, 8'b1010);
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -223,38 +215,7 @@ module esfa_test;
  
         
         //state_and_handle = ESFAArrayOp().update(state_and_handle._1, Some(2), 10, 21)
-        isMetadata = 1;
-        metadata = 2;
-        selector = 2;
-        #168;
-        code = resultValue;
-        r_true = (code == 2); #168;
-        r_true = 1;
-        selector = 6;
-        #168;
-        rank = resultValue;
-        r_true = (rank == 1); #168;
-        r_true = 1;
-        selector = 5;
-        #168;
-        r_true = (resultValue == 3); #168;
-        r_true = 1;
-        isMetadata = 1;
-        metadata = 3;
-        new_index = 8'b1010;
-        new_value = 8'b10101;
-        selector = 0;
-        #56;
-        selector = 8;
-        #56;
-        new_index = 3;
-        isMetadata = 1;
-        metadata = code;
-        new_value = rank;
-        selector = 3;
-        #56;
-        selector = 8;
-        #56;
+        write(1'b1, 2, 8'b1010, 8'b10101);
 
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -296,34 +257,7 @@ module esfa_test;
         r_true = 1;
         
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 9, 5)
-        isMetadata = 1;
-        metadata = 1;
-        selector = 2;
-        #168;
-        code = resultValue;
-        selector = 6;
-        #168;
-        rank = resultValue;
-        selector = 5;
-        #168;
-        isMetadata = 1;
-        handle = resultValue;
-        metadata = resultValue;
-        new_index = 8'b1001;
-        new_value = 8'b101;
-        selector = 0;
-        #56;
-        selector = 8; 
-        #56;
-        willWrite = 0;
-        new_index = handle;
-        isMetadata = 1;
-        metadata = code;
-        new_value = rank;
-        selector = 3;
-        #56;
-        selector = 8; 
-        #56;
+        write(1'b1, 1, 8'b1001, 8'b101);
  
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -379,33 +313,7 @@ module esfa_test;
         r_true = 1;
         
         //ESFAArrayOp().update(state_and_handle._1, Some(1), 11, 14)
-        isMetadata = 1;
-        metadata = 1;
-        selector = 2;
-        #168;
-        code = resultValue;
-        selector = 6;
-        #168;
-        rank = resultValue;
-        selector = 5;
-        #168;
-        isMetadata = 1;
-        handle = resultValue;
-        metadata = resultValue;
-        new_index = 8'b1011;
-        new_value = 8'b1110;
-        selector = 0;
-        #56;
-        selector = 8; 
-        #56;
-        new_index = handle;
-        isMetadata = 1;
-        metadata = code;
-        new_value = rank;
-        selector = 3;
-        #56;
-        selector = 8; 
-        #56;
+        write(1'b1, 1, 8'b1011, 8'b1110);
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
         r_true = (l1.c0.new_eltDef == 1'b1); #168;
@@ -471,115 +379,47 @@ module esfa_test;
        
         
         // ESFAArrayOp().lookUp(state_and_handle._1, 0, 0)
-        isMetadata = 1;
-        metadata = 0;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 0;
-        selector = 1;
-        #168
+        lookUp(0, 0);
         
         r_true = resultBool; #168;
         r_true = (resultValue == 5); #168;
         r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 1, 0)
-        isMetadata = 1;
-        metadata = 1;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 0;
-        selector = 1;
-        #168
+        lookUp(1,0);
         
         r_true = resultBool; #168
         r_true = (resultValue == 5); #168
         r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 1, 2) 
-        isMetadata = 1;
-        metadata = 1;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 2;
-        selector = 1;
-        #168
+        lookUp(1, 2);
         
         r_true = resultBool; #168;
         r_true = (resultValue == 10); #168;
         r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 3, 4)
-        isMetadata = 1;
-        metadata = 3;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 4;
-        selector = 1;
-        #168
+        lookUp(3,4);
         
         r_true = resultBool; #168;
         r_true = (resultValue == 10); #168;
         r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 5, 2)
-        isMetadata = 1;
-        metadata = 5;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 2;
-        selector = 1;
-        #168
+        lookUp(5, 2);
         
         r_true = resultBool; #168;
         r_true = (resultValue == 10); #168;
         r_true = 1;
         
         //ESFAArrayOp().lookUp(state_and_handle._1, 5, 1)
-        isMetadata = 1;
-        metadata = 5;
-        selector = 2;
-        #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 1;
-        selector = 1;
-        #168
+        lookUp(5, 1);
 
         r_true = (resultBool == 0); #168; //there is no value with index 1 in sixth array 
         
         //ESFAArrayOp().delete(state_and_handle._1, 1)
-        isMetadata = 1;
-        metadata = 1;
-        selector = 2;
-        #168;
-        
-        code = resultValue;
-        selector = 4;
-        new_index = 1;
-        metadata = code;
-        
-        #56; // allow a cycle for outputs to stabilize, then write 
-        selector = 8;
-        #56;
-        r_true = resultBool; #168;
-        r_true = 1;
+        delete(1);
         
         
         r_true = (l1.c0.new_arrDef == 1'b1); #168;
@@ -644,36 +484,12 @@ module esfa_test;
         r_true = 1;
         
         //ESFAArrayOp().delete(post_deletion_state, 4)
-        isMetadata = 1;
-        metadata = 4;
-        selector = 2;
-        #168;
-        
-        code = resultValue;
-        selector = 4;
-        new_index = 4;
-        metadata = code;
-        
-        #56; // allow a cycle for outputs to stabilize, then write 
-        selector = 8;
-        #56;
+        delete(4);
         r_true = resultBool; #168;
         r_true = 1;
         
         //ESFAArrayOp().delete(post_deletion_state, 5)
-        isMetadata = 1;
-        metadata = 5;
-        selector = 2;
-        #168;
-        
-        code = resultValue;
-        selector = 4;
-        new_index = 5;
-        metadata = code;
-        
-        #56;
-        selector = 8;
-        #56;
+        delete(5);
         r_true = resultBool; #168;
         r_true = 1;
         
@@ -717,18 +533,7 @@ module esfa_test;
         r_true = (l1.c5.new_eltDef == 1'b0); #168
 
         //ESFAArrayOp().lookUp(post_deletion_state, 0, 0) 
-        isMetadata = 1;
-        metadata = 0;
-        selector = 2;
-        #168;
-        code = resultValue;
-        r_true = resultBool; #168;
-        r_true = 1;
-        metadata = code;
-        isMetadata = 1;
-        new_index = 0;
-        selector = 1;
-        #168
+        lookUp(0,0);
         
         r_true = resultBool; #168;
         r_true = (resultValue == 5); #168;
