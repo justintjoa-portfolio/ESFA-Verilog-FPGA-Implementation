@@ -159,7 +159,7 @@ module esfa_test;
         r_true = (l1.c0.new_rank == 1); #168
         r_true = (l1.c0.new_low == 0); #168
         r_true = (l1.c0.new_high == 0); #168
-        r_true = (resultValue == 0); #168
+        r_true = (resultBool == 1'b1); #168;
         r_true = 1;
        
         //ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
@@ -180,6 +180,7 @@ module esfa_test;
         r_true = (l1.c1.new_rank == 2); #168;
         r_true = (l1.c1.new_low == 1); #168;
         r_true = (l1.c1.new_high == 1); #168;
+        r_true = (resultBool == 1'b1); #168;
         r_true = 1; 
         
         //ESFAArrayOp().update(state_and_handle._1, None, 4, 10)
@@ -211,6 +212,7 @@ module esfa_test;
         r_true = (l1.c2.new_low == 2); #168;
         r_true = (l1.c2.new_high == 2); #168;
         r_true = (l1.c2.handle == 2); #168;
+        r_true = (resultBool == 1'b1); #168;
         r_true = 1;
  
         
@@ -374,8 +376,6 @@ module esfa_test;
         r_true = (l1.c5.new_high == 2); #168;
         r_true = (l1.c5.handle == 5); #168;
         r_true = (l1.c5.new_array_code == 2); #168;
-        
-        r_true = resultBool;
        
         
         // ESFAArrayOp().lookUp(state_and_handle._1, 0, 0)
