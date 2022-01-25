@@ -1,4 +1,4 @@
-Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. 
+Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. As of January 17, 2022, this hardware design has passed the first extended suite of the Scala implementation. 
 
 The High level API of this simulation design can be found here: https://github.com/justintjoa-portfolio/ESFA_Scala_implementation
 
@@ -18,17 +18,14 @@ Technical Documentation - Deep Dive (Includes Contextual Information and Upcomin
 
 Release Diary: https://docs.google.com/document/d/1Onwxkocl2f0QuUEM0k3As0nP1BEz1VMA278FjJfo7kY
 
-Release Notes - November 29, 2021
+Release Notes - January 25, 2022 
 
-- This first release has a testbench for the ESFADesign module. Included within the testbench is the first long test-case from my Scala implementation (https://github.com/justintjoa-portfolio/ESFA_Scala_implementation) simulated.
+- This release implements the following: 
+    + UART communication system to communicate between host PC and FPGA. The word is defined to have a width of 4 bytes, and uses control/receiving byte to control and correctly interpret results from FPGA.  
+    + Python script that uses the first Scala extensive test to test the correctness of the hardware design (tested to be correct in this case). 
+    + Aligns the implementation of MemoryCell to better leverage the features of modern Verilog for performance and general readability. 
 
-    + The testbench validates reg/output values via an assert module tied to the same clock to verify that r_true, a reg representing whether the last test case was correct, was in fact true.
 
-- With the testbench comes the ESFADesign, which has been validated in the testbench.
-
-    + The algorithm had to be changed slightly - timing delay was not taken into account in the Scala implementation (which was written exceptionally imperatively), so refactors to the algorithm had to be made to handle synchronous writes in a way that corresponded to the algorithm well.
-
-- A basic implementation of ESFATop (the module that does the heavy lifting of communicating over UART of FPGA with PC's Serial Port) was implemented and tested functionally, however after discussions with Dr. Balkind, I have decided to scope the trials on imperative instructions fed via a Block RAM IP. Down the road, I may consider adding UART functionality to make an open API, however I believe that testing over it introduces more points of failure in benchmarking performance/correctness. 
 
 Instructions on Using ESFADesign in your simulations (view Scala implementation test cases for the compared functions):
 
@@ -39,8 +36,6 @@ ESFADesign l1(
         .clk(clk),
 
         // inputs
-
-        .in_willWrite(willWrite),
 
         .new_index(new_index),
 
@@ -60,9 +55,11 @@ ESFADesign l1(
 
     );
 
+The following examples assume a 28 ns clock. 
+
 1) Update Op
 
-In this example, we attempt an update on arary with handle 0, and in the new array insert the pair (2, 10)
+In this example, we attempt an update on array with handle 0, and in the new array insert the pair (2, 10)
 
 // Analogous to ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
 
@@ -108,17 +105,13 @@ new_value = 8'b1010; // value of inserted element
 
 selector = 0; // 0 is selector value for update
 
-willWrite = 0; // Set willWrite to 0 to prevent mutations as outputs settle
-
-#28 // allow a clock cycle for outputs to settle
-
-willWrite = 1;
-
 #28 // write the new array!
 
-willWrite = 0; // we are done writing! Set willWrite to 0 to prevent further mutations
+// If the operation is correct, you should get resultBool as 1'b1
 
-#28
+selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
+
+#28;
 
 We will also need to update the codes/low/high of all cells. We will need to run congrueUp.
 
@@ -130,23 +123,15 @@ new_value = rank; // rank of the entry we updated
 
 selector = 3; // selector for congrueUp
 
-willWrite = 0; // this is very critical - set willWrite to 0 initially
+#28; // execute congrueUp
 
-#28; // allow a cycle for outputs to stabilize, then write
-
-willWrite = 1; // do the op!
+selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
 
 #28;
-
-willWrite = 0;
-
-// We are done! Set willWrite to 0 to prevent further mutations
 
 2) LookUp Op
 
 // Example is analogous to ESFAArrayOp().lookUp(state_and_handle._1, 0, 0), which searches array of handle 0 for element defined at index == 0
-
-// We should never have willWrite set to 1 here, because there's no mutation in a lookup!
 
 isMetadata = 1;
 
@@ -198,17 +183,13 @@ new_index = 1; // the handle of the array we want to delete
 
 metadata = code; // said array's code
 
-willWrite = 0;
-
-#28; // Critical - allow a cycle with willWrite = 0 for combinator outputs to settle, or unexpected inputs may be written to regs
-
-willWrite = 1;
-
 #28; // Remove our old array, and changes code/high/low of other cells accordingly to take into account the cell's change. 
 
-willWrite = 0;
-
 // Demolition complete!
+
+selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
+
+#28;
 
 If there are concerns, contact me at justintjoa@ucsb.edu
 
