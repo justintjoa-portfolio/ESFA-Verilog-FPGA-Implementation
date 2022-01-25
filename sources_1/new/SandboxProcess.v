@@ -153,7 +153,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
       new_value <= 0;
       metadata <= 0;
       isMetadata <= 0;
-      selector <= 1;
+      selector <= 8;
     end
 
     else
