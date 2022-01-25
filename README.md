@@ -24,6 +24,8 @@ Release Notes - January 25, 2022
 
     + UART communication system to communicate between host PC and FPGA. The word is defined to have a width of 4 bytes, and uses control/receiving byte to control and correctly interpret results from FPGA.  
 
+    + I am leaning toward not using BRAM at all and instead keeping the UART design, instead reporting the time the instruction took in cycles in the remaining three bytes of the output (resultValue is stored in least significant byte).
+
     + Python script that uses the first Scala extensive test to test the correctness of the hardware design (tested to be correct in this case). 
 
     + Aligns the implementation of MemoryCell to better leverage the features of modern Verilog for performance and general readability. 
