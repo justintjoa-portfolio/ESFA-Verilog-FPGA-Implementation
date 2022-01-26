@@ -18,9 +18,9 @@ def send(byteArray):
     s.close()
     value = int.from_bytes(output, byteorder=sys.byteorder)
     control = value & 1
-    time = value >> 8
-    value = value >> 8 & 0b11111111
-    return control, value, time
+    time = value >> 16
+    resultValue = value >> 8 & 0b11111111
+    return control, resultValue, time
 
 def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
