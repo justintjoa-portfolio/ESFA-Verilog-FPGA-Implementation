@@ -64,8 +64,9 @@ module ESFADesignBenchmark(
             isRunning = 1'b0;
             wasSuccessful = 1'b1;
             selector <= 8;
+            address <= 0;
         end else begin  
-            if (doRun) begin  
+            if (doRun && !isRunning) begin  
                 isRunning <= 1;
             end else begin    
                 if (endOfProgram) begin   

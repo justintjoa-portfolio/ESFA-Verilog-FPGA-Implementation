@@ -46,7 +46,9 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
 
     
   wire[0:0] wasSuccessful;
-  wire[23:0] numberClockCycles;
+  reg[0:0] doRun;
+  wire[0:0] isRunning;
+  wire[0:0] isSuccessful;
 
   // --------------------------------------------------------------------------
   // Signals
@@ -143,6 +145,8 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
       outputReg                 <= 32'h0;
       transmitRequest           <= 1'b0;
       processDone               <= 1'b0;
+      
+      doRun = 1'b0;
     end
 
     else
@@ -154,9 +158,9 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
             begin
               // flag data is stored in control byte
               if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta
-
+                  doRun <= 1'b1;
               end else begin
-                
+                  doRun <= 1'b0;
               end
               state             <= 3'h1;
             end
@@ -206,7 +210,13 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
     
     
     
-    ESFADesignBenchmark();
+    ESFADesignBenchmark(
+        .clk(masterClock),
+        .reset(reset), 
+        .doRun(doRun),
+        .isRunning(isRunning),
+        .wasSuccessful(wasSuccessful)
+      );
    
   
 
