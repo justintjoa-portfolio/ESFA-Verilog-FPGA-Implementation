@@ -146,7 +146,7 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
       transmitRequest           <= 1'b0;
       processDone               <= 1'b0;
       
-      doRun = 1'b0;
+      doRun <= 1'b0;
     end
 
     else
@@ -161,6 +161,10 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
                   doRun <= 1'b1;
               end else begin
                   doRun <= 1'b0;
+                  statusReg[0:0] <= isRunning;
+                  if (! isRunning) begin   
+                       statusReg[1:1] <= isSuccessful;
+                  end
               end
               state             <= 3'h1;
             end

@@ -44,6 +44,10 @@ module ESFADesignBenchmark(
   wire[0:0] isMutating = romVal[0:0];
   wire[0:0] expectedResultBool = romVal[1:1];
   wire[0:0] endOfProgram = romVal[2:2];
+  
+  //controls
+  reg[0:0] didRun;
+  
   ESFADesign l1(
     .clk(clk),
     .reset(reset),
@@ -65,17 +69,21 @@ module ESFADesignBenchmark(
             wasSuccessful = 1'b1;
             selector <= 8;
             address <= 0;
+            didRun <= 0;
         end else begin  
-            if (doRun && !isRunning) begin  
+            if (doRun && ! didRun) begin  
                 isRunning <= 1;
-            end else begin    
-                if (endOfProgram) begin   
+            end 
+            if (isRunning) begin  
+                 if (endOfProgram) begin   
                     isRunning <= 0;
+                    didRun <= 1'b1;
                 end else begin     
                     if (isRunning) begin     
                         if (!isMutating) begin   
                             if (resultBool != expectedResultBool) begin     
                                 isRunning <= 0;  
+                                didRun <= 1'b1;
                                 wasSuccessful <= 0;
                             end
                         end 
