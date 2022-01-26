@@ -25,72 +25,58 @@ def send(byteArray):
 def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
     control, new_value, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return True
+        return time, True
     else:
-        return False
+        return time, False
 
 def lookUp(array_code, index):
     send(bytearray([0b11, 0b1, array_code, 0b0, index]))
     control, elementValue, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return elementValue
+        return time, elementValue
     else:
-        return None
+        return time, None
 
 def encode(handle):
     send(bytearray([0b11, 0b10, handle, 0b0, 0b0]))
     control, code, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return code
+        return time, code
     else:
-        return None
+        return time, None
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
     control, code, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return True
+        return time, True
     else:
-        return False
+        return time, False
 
 def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
     send(bytearray([0b11, 0b100, codeOfEntryToBeDeleted, 0b0, handleOfEntryToBeDeleted]))
     control, code, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return True
+        return time, True
     else:
-        return False
+        return time, False
 
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
     control, handle, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return handle
+        return time, handle
     else:
-        return None
+        return time, None
 
 def enrank(handle):
     send(bytearray([0b11, 0b110, handle, 0b0, 0b0]))
     control, rank, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return rank
+        return time, rank
     else:
-        return None
+        return time, None
 
 def debug(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b111, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
@@ -98,45 +84,77 @@ def debug(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     print("debugging")
     print(control)
     print(debug)
-    print("Operation duration : ")
-    print(time)
     if (control):
-        return debug
+        return time, debug
     else:
-        return None
+        return time, None
 
 #Macro functions
 
 def m_update(handle, index, value):
-    new_handle = markAvailableCell()
+    print("Update Operation")
+    runningTime = 0
+    time, new_handle = markAvailableCell()
+    runningTime = runningTime + time
     if (new_handle is None):
+        print("Update operation duration : ")
+        print(runningTime)
         return None
     if (handle is None):
-        update(new_handle, index, value)
+        time, _ = update(new_handle, index, value)
+        runningTime = runningTime + time
     else:
-        code = encode(handle)
-        rank = enrank(handle)
+        time, code = encode(handle)
+        runningTime = runningTime + time
+        time, rank = enrank(handle)
+        runningTime = runningTime + time
         if ((code is not None) and (rank is not None)):
-            update(new_handle, index, value)
-            congrueUp(rank, code, new_handle)
+            time, _ = update(new_handle, index, value)
+            runningTime = runningTime + time
+            time, _ = congrueUp(rank, code, new_handle)
+            runningTime = runningTime + time
         else:
+            print("Update operation duration : ")
+            print(runningTime)
             return None
+    print("Update operation duration : ")
+    print(runningTime)
     return new_handle
 
 def m_lookUp(handle, index):
-    code = encode(handle)
+    runningTime = 0
+    print("Lookup Operation")
+    time, code = encode(handle)
+    runningTime = runningTime + time
     if (code is None):
+        print("Lookup operation duration : ")
+        print(runningTime)
         return None
     else:
-        value = lookUp(code, index)
+        time, value = lookUp(code, index)
+        runningTime = runningTime + time
+        print("Lookup operation duration : ")
+        print(runningTime)
         return value
 
 def m_delete(handle):
-    code = encode(handle)
+    runningTime = 0
+    print("Delete Operation")
+    time, code = encode(handle)
+    runningTime = runningTime + time
     if (code is None):
+        print("Delete operation duration : ")
+        print(runningTime)
         return False  
     else:
-        return congrueDown(code, handle)
+        time, value = congrueDown(code, handle)
+        runningTime = runningTime + time  
+        print("Delete operation duration : ")
+        print(runningTime)
+        return value
 
 def m_debug(handle):
-    return debug(handle)
+    time, value = debug(handle)
+    print("Debug operation duration : ")
+    print(time)
+    return value
