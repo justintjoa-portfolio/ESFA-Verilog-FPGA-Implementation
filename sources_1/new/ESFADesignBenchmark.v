@@ -28,14 +28,35 @@ module ESFADesignBenchmark(
         output reg[0:0] wasSuccessful
     );
     
+  wire[63:0] romVal;
+  reg[31:0] address;
+  wire[0:0] isMutating;
+  assign isMutating = romVal[0:0];
+  wire[0:0] expectedResultBool;
+  assign expectedResultBool = romVal[1:1];
+  wire[0:0] endOfProgram;
+  assign endOfProgram = romVal[2:2];
+  wire[7:0] expectedResultValue;
+  assign expectedResultValue = romVal[47:40];  
+    
+    
   //ESFA specific wires
-  wire[7:0] new_index = romVal[15:8];
-  wire[7:0] new_value = romVal[23:16];
-  wire[7:0] metadata = romVal[31:24];
-  wire[0:0] isMetadata = romVal[3:3];
-  wire[7:0] selector = romVal[39:32];
+  wire[7:0] new_index;
+  assign new_index = romVal[15:8];
+  wire[7:0] new_value;
+  assign new_value = romVal[23:16];
+  wire[7:0] metadata;
+  assign metadata = romVal[31:24];
+  wire[0:0] isMetadata;
+  assign isMetadata = romVal[3:3];
+  wire[7:0] selector;
+  assign selector = romVal[39:32];
   wire[0:0] resultBool;
   wire[7:0] resultValue;
+  
+  //controls
+  reg[0:0] didRun;
+  
   
   //BROM interface
   blk_mem_gen_0 blockROM(
@@ -43,14 +64,6 @@ module ESFADesignBenchmark(
     .clka(clk),
     .douta(romVal)
   );
-  wire[39:0] romVal;
-  reg[31:0] address;
-  wire[0:0] isMutating = romVal[0:0];
-  wire[0:0] expectedResultBool = romVal[1:1];
-  wire[0:0] endOfProgram = romVal[2:2];
-  
-  //controls
-  reg[0:0] didRun;
   
   ESFADesign l1(
     .clk(clk),
@@ -83,7 +96,7 @@ module ESFADesignBenchmark(
                 end else begin     
                     if (isRunning) begin     
                         if (!isMutating) begin   
-                            if (resultBool != expectedResultBool) begin     
+                            if (resultBool != expectedResultBool && resultValue != expectedResultValue) begin     
                                 isRunning <= 0;  
                                 didRun <= 1'b1;
                                 wasSuccessful <= 0;
