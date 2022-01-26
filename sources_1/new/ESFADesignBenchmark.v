@@ -38,7 +38,11 @@ module ESFADesignBenchmark(
   wire[7:0] resultValue;
   
   //BROM interface
-  blk_mem_gen_0 blockROM();
+  blk_mem_gen_0 blockROM(
+    .addra(address), 
+    .clka(clk),
+    .douta(romVal)
+  );
   wire[39:0] romVal;
   reg[31:0] address;
   wire[0:0] isMutating = romVal[0:0];
@@ -64,10 +68,8 @@ module ESFADesignBenchmark(
   always @ (posedge clk)
   begin
         if (reset == 0) begin   
-            numberClockCycles = 0;
             isRunning = 1'b0;
             wasSuccessful = 1'b1;
-            selector <= 8;
             address <= 0;
             didRun <= 0;
         end else begin  
