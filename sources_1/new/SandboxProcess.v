@@ -175,11 +175,11 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
                   selector <= inputData[31:24];
                   statusReg[0:0] = 1'b1;
                   outputReg[31:24] <= 8'b0;
-                  outputReg[23:0] <= 24'b0;
+                  // outputReg[23:0] <= 24'b0;
               end else begin
                 statusReg[0:0] <= resultBool;
                 outputReg[31:24] <= resultValue;
-                outputReg[23:0] <= countingCycles;
+                // outputReg[23:0] <= countingCycles;
                 selector <= 8;
               end
               state             <= 3'h1;
