@@ -25,12 +25,15 @@ module NodeCombinator(
         input[7:0] resultValue1,
         input[7:0] resultContext1,
         input[0:0] resultBool1,
+        input[0:0] opDone1, 
         input[7:0] resultValue2,
         input[7:0] resultContext2,
         input[0:0] resultBool2,
+        input[0:0] opDone2, 
         output[7:0] resultValue,
         output[7:0] resultContext,
-        output[0:0] resultBool 
+        output[0:0] resultBool, 
+        output[0:0] resultOpDone
     );
 
     
@@ -66,5 +69,7 @@ module NodeCombinator(
     assign resultContext = isLeft ? resultContext1 : resultContext2;
     
     assign resultValue = isLeft ? resultValue1 : resultValue2;
+    
+    assign resultOpDone = opDone1 && opDone2;
                              
 endmodule                  
