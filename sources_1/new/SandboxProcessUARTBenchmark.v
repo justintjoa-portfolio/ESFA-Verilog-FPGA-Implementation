@@ -18,7 +18,7 @@
  */ /*-----------------------------------------------------------------------*/
 
 
-module SandboxProcess (input  wire        masterClock,    // operating clock for this process
+module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operating clock for this process
                        input  wire        slowClock,      // cock to operate user observable indicators (LEDs)
                        input  wire        reset,          // module reset
 
@@ -43,16 +43,10 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
-  
-  //ESFA specific registers
-  reg[7:0] new_index = 0;
-  reg[7:0] new_value = 0;
-  reg[7:0] metadata = 0;
-  reg[0:0] isMetadata = 0;
-  reg[7:0] selector = 8;
+
     
-  wire[0:0] resultBool;
-  wire[7:0] resultValue;
+  wire[0:0] wasSuccessful;
+  wire[23:0] numberClockCycles;
 
   // --------------------------------------------------------------------------
   // Signals
@@ -149,11 +143,6 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
       outputReg                 <= 32'h0;
       transmitRequest           <= 1'b0;
       processDone               <= 1'b0;
-      new_index <= 0;
-      new_value <= 0;
-      metadata <= 0;
-      isMetadata <= 0;
-      selector <= 8;
     end
 
     else
@@ -165,19 +154,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
             begin
               // flag data is stored in control byte
               if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta
-                 isMetadata <= control[1:1];
-              
-                  // ESFA specific data 
-                  new_index <= inputData[7:0];
-                  new_value <= inputData[15:8];
-                  metadata <= inputData[23:16];
-                  selector <= inputData[31:24];
-                  statusReg[0:0] = 1'b1;
-                  outputReg[31:24] <= 8'b0;
+
               end else begin
-                statusReg[0:0] <= resultBool;
-                outputReg[31:24] <= resultValue;
-                selector <= 8;
+                
               end
               state             <= 3'h1;
             end
@@ -227,20 +206,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     
     
     
-    ESFADesign l1(
-    .clk(masterClock),
-    .reset(reset),
-    .new_index(new_index),
-    .new_value(new_value),
-    .metadata(metadata),
-    .isMetadata(isMetadata),
-    .selector(selector),
-    .resultBool(resultBool),
-    .resultValue(resultValue)
-    );
+    ESFADesignBenchmark();
    
   
 
 endmodule
 // ----------------------------------------------------------------------------
-
