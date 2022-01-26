@@ -147,7 +147,7 @@ module ESFADesign(
                 if (reset == 1'b0) begin
                     timingValue <= 0;
                 end else begin  
-                      if (! operationDone) begin   
+                      if (! combinator7opdone) begin   
                             timingValue <= timingValue + 1; 
                       end
                 end
