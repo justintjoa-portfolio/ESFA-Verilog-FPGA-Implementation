@@ -31,8 +31,7 @@ module MemoryCell(
         input[7:0] selector,
         output reg[0:0] new_bool = 1'b0,
         output reg[7:0] new_result_value = 0,
-        output reg[7:0] new_context = 0,
-        output reg[0:0] operationDone
+        output reg[7:0] new_context = 0
     );
      
      reg[0:0] r_willWrite = 1'b0;
@@ -58,7 +57,6 @@ module MemoryCell(
      reg[7:0] new_result_value_next = 0;
      reg[7:0] new_context_next = 0;
      
-     reg[0:0] operationDone_next = 1'b0;
     //Map
     // 0 : update  
     // 1 : lookUpScan    
@@ -86,7 +84,6 @@ module MemoryCell(
                     new_result_value <= 8'b0;
                     new_bool <= 1'b0;  
                     new_context <= 8'b0;
-                    operationDone <= 0;
                     didMutate <= 1'b0;
                 end else begin  
                       if (r_willWrite) begin
@@ -107,7 +104,6 @@ module MemoryCell(
                       new_bool <= new_bool_next;
                       new_result_value <= new_result_value_next;
                       new_context <= new_context_next;
-                      operationDone <= operationDone_next;
                     end
                 
      
@@ -125,7 +121,6 @@ module MemoryCell(
                new_value_next = new_value;
                new_index_next = new_index;
                new_rank_next = new_rank;
-               operationDone_next = 1'b1;
                case (selector)
                     0: begin
                         new_bool_next = (metadata == handle) && isMetadata;
@@ -248,7 +243,6 @@ module MemoryCell(
                            new_bool_next = 1'b1;
                            new_result_value_next = 0;
                            new_context_next = 0;
-                           operationDone_next <= 1'b0;
                     end
                     
                     

@@ -18,15 +18,12 @@ def send(byteArray):
     s.close()
     value = int.from_bytes(output, byteorder=sys.byteorder)
     control = value & 1
-    time = value >> 16
     resultValue = value >> 8 & 0b11111111
-    return control, resultValue, time
+    return control, resultValue
 
 def update(handle, index, value):
     send(bytearray([0b11, 0b0, handle, value, index]))
-    control, new_value, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Update operation duration : ")
-    print(time)
+    control, new_value = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
     else:
@@ -34,9 +31,7 @@ def update(handle, index, value):
 
 def lookUp(array_code, index):
     send(bytearray([0b11, 0b1, array_code, 0b0, index]))
-    control, elementValue, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Lookup operation duration : ")
-    print(time)
+    control, elementValue = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return elementValue
     else:
@@ -44,9 +39,7 @@ def lookUp(array_code, index):
 
 def encode(handle):
     send(bytearray([0b11, 0b10, handle, 0b0, 0b0]))
-    control, code, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Encode operation duration : ")
-    print(time)
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return code
     else:
@@ -54,9 +47,7 @@ def encode(handle):
 
 def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b11, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
-    control, code, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("CongrueUp operation duration : ")
-    print(time)
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
     else:
@@ -64,9 +55,7 @@ def congrueUp(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
 
 def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
     send(bytearray([0b11, 0b100, codeOfEntryToBeDeleted, 0b0, handleOfEntryToBeDeleted]))
-    control, code, time  = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Update operation duration : ")
-    print(time)
+    control, code = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return True
     else:
@@ -74,9 +63,7 @@ def congrueDown(codeOfEntryToBeDeleted, handleOfEntryToBeDeleted):
 
 def markAvailableCell():
     send(bytearray([0b1, 0b101, 0b0, 0b0, 0b0]))
-    control, handle, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Markavailable operation duration : ")
-    print(time)
+    control, handle = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return handle
     else:
@@ -84,9 +71,7 @@ def markAvailableCell():
 
 def enrank(handle):
     send(bytearray([0b11, 0b110, handle, 0b0, 0b0]))
-    control, rank, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
-    print("Enrank operation duration : ")
-    print(time)
+    control, rank  = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     if (control):
         return rank
     else:
@@ -94,12 +79,10 @@ def enrank(handle):
 
 def debug(rankOfUpdatedEntry, codeOfUpdatedEntry, handleOfNewEntry):
     send(bytearray([0b11, 0b111, codeOfUpdatedEntry, rankOfUpdatedEntry, handleOfNewEntry]))
-    control, debug, time = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+    control, debug = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
     print("debugging")
     print(control)
     print(debug)
-    print("Debug operation duration : ")
-    print(time)
     if (control):
         return debug
     else:
