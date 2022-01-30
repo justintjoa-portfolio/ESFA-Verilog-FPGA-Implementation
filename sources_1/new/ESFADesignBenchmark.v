@@ -60,9 +60,11 @@ module ESFADesignBenchmark(
   
   //BROM interface
   blk_mem_gen_0 blockROM(
-    .addra(address), 
     .clka(clk),
-    .douta(romVal)
+    .rsta(reset), 
+    .addra(address), 
+    .douta(romVal),
+    .rsta_busy()
   );
   
   ESFADesign l1(
