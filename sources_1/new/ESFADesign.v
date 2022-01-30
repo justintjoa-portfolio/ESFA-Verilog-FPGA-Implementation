@@ -34,6 +34,9 @@ module ESFADesign(
     reg[7:0] given_code;
     reg[7:0] given_rank;
     reg[7:0] available_handle;
+    reg[0:0] is_given_code;
+    reg[0:0] is_given_rank;
+    reg[0:0] is_available_handle;
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
@@ -109,14 +112,14 @@ module ESFADesign(
     
     wire[7:0] combinator7Context;
     
-    MemoryCell c0(clk, reset, c0Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c0Bool, c0Result, c0Context);
-    MemoryCell c1(clk, reset, c1Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c1Bool, c1Result, c1Context);
-    MemoryCell c2(clk, reset, c2Handle, queried_handle, available_handle, new_index, new_value,  given_code, given_rank, selector, c2Bool, c2Result, c2Context);
-    MemoryCell c3(clk, reset, c3Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c3Bool, c3Result, c3Context);
-    MemoryCell c4(clk, reset, c4Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c4Bool, c4Result, c4Context);
-    MemoryCell c5(clk, reset, c5Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c5Bool, c5Result, c5Context);
-    MemoryCell c6(clk, reset, c6Handle, queried_handle, available_handle, new_index, new_value, given_code, given_rank, selector, c6Bool, c6Result, c6Context);
-    MemoryCell c7(clk, reset, c7Handle,queried_handle,  available_handle, new_index, new_value, given_code, given_rank, selector, c7Bool, c7Result, c7Context);
+    MemoryCell c0(clk, reset, c0Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c0Bool, c0Result, c0Context);
+    MemoryCell c1(clk, reset, c1Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c1Bool, c1Result, c1Context);
+    MemoryCell c2(clk, reset, c2Handle, queried_handle, is_available_handle, available_handle, new_index, new_value,  is_given_code, given_code, is_given_rank, given_rank, selector, c2Bool, c2Result, c2Context);
+    MemoryCell c3(clk, reset, c3Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c3Bool, c3Result, c3Context);
+    MemoryCell c4(clk, reset, c4Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c4Bool, c4Result, c4Context);
+    MemoryCell c5(clk, reset, c5Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c5Bool, c5Result, c5Context);
+    MemoryCell c6(clk, reset, c6Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c6Bool, c6Result, c6Context);
+    MemoryCell c7(clk, reset, c7Handle,queried_handle,  is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c7Bool, c7Result, c7Context);
     
     NodeCombinator combinator1(selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
     NodeCombinator combinator2(selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
@@ -132,16 +135,22 @@ module ESFADesign(
                     given_code <= 0;
                     given_rank <= 0;
                     available_handle <= 0;
+                    is_given_code <= 0;
+                    is_available_handle <= 0;
+                    is_given_rank <= 0;
              end else begin   
                 case (selector)
                     2: begin  
                         given_code <= resultValue;
+                        is_given_code <= resultBool;
                     end
                     5: begin 
                         available_handle <= resultValue;
+                        is_available_handle <= resultBool;
                     end
                     6:begin 
                         given_rank <= resultValue;
+                        is_given_rank <= resultBool;
                     end  
                 endcase
              end
