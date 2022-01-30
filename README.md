@@ -1,4 +1,8 @@
-Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. As of January 17, 2022, this hardware design has passed the first extended suite of the Scala implementation. 
+Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. As of January 19, 2022, this hardware design has passed all extended suites of the Scala implementation. 
+
+If you intend on running that version, please check the git tag esfa_uart_api. That tags uses UART to send instructions to the FPGA.
+
+The current build aims to run the trials previously communicated via UART over BROM instead, and only using UART to communicate results of the trial. Again, if you intend to run the UART version, do not look at the repo's current code and instead take a look at the tag. 
 
 The High level API of this simulation design can be found here: https://github.com/justintjoa-portfolio/ESFA_Scala_implementation
 
@@ -23,8 +27,6 @@ Release Notes - January 25, 2022
 - This release implements the following: 
 
     + UART communication system to communicate between host PC and FPGA. The word is defined to have a width of 4 bytes, and uses control/receiving byte to control and correctly interpret results from FPGA.  
-
-    + I am leaning toward not using BRAM at all and instead keeping the UART design, instead reporting the time the instruction took in cycles in the remaining three bytes of the output (resultValue is stored in least significant byte).
 
     + Python script that uses the first Scala extensive test to test the correctness of the hardware design (tested to be correct in this case). 
 

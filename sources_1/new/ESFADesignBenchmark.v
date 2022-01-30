@@ -54,12 +54,13 @@ module ESFADesignBenchmark(
   
   //controls
   reg[0:0] didRun;
+  reg[0:0] doIncrement;
   
   
   //BROM interface
   blk_mem_gen_0 blockROM(
     .clka(clk),
-    .rsta(reset), 
+    .rsta(! reset), //reset acts on 1 
     .addra(address), 
     .douta(romVal),
     .rsta_busy()
@@ -84,6 +85,7 @@ module ESFADesignBenchmark(
             wasSuccessful = 1'b1;
             address <= 0;
             didRun <= 0;
+            doIncrement <= 0;
         end else begin  
             if (doRun && ! didRun) begin  
                 isRunning <= 1;
@@ -101,7 +103,13 @@ module ESFADesignBenchmark(
                                 wasSuccessful <= 0;
                             end
                         end 
-                        address <= address + 1;
+                        if (doIncrement == 0) begin 
+                            doIncrement <= 1;
+                        end else begin 
+                            address <= address + 8; // indexed by width of word in bytes
+                            //latency of data is 2 cycles
+                            doIncrement <= 0;
+                        end
                     end
                 end
             end
