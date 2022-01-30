@@ -118,7 +118,7 @@ module Sandbox (input  wire  masterClock,
   // --------------------------------------------------------
   // The process to be managed
   // --------------------------------------------------------
-  SandboxProcess
+  SandboxProcessUARTBenchmark
 
     process (.masterClock   (masterClock),
              .slowClock     (_25Hz),
