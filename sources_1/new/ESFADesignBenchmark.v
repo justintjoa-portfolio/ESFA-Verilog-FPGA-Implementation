@@ -41,14 +41,12 @@ module ESFADesignBenchmark(
     
     
   //ESFA specific wires
+  wire[7:0] queried_handle;
+  assign queried_handle = romVal[15:8];
   wire[7:0] new_index;
-  assign new_index = romVal[15:8];
+  assign new_index = romVal[23:16];
   wire[7:0] new_value;
-  assign new_value = romVal[23:16];
-  wire[7:0] metadata;
-  assign metadata = romVal[31:24];
-  wire[0:0] isMetadata;
-  assign isMetadata = romVal[3:3];
+  assign new_value = romVal[31:24];
   wire[7:0] selector;
   assign selector = romVal[39:32];
   wire[0:0] resultBool;
@@ -70,10 +68,9 @@ module ESFADesignBenchmark(
   ESFADesign l1(
     .clk(clk),
     .reset(reset),
+    .queried_handle(queried_handle),
     .new_index(new_index),
     .new_value(new_value),
-    .metadata(metadata),
-    .isMetadata(isMetadata),
     .selector(selector),
     .resultBool(resultBool),
     .resultValue(resultValue)

@@ -26,14 +26,13 @@ module esfa_test;
     reg[0:0] willWrite = 0;
     reg[7:0] new_index = 0;
     reg[7:0] new_value = 0;
-    reg[7:0] metadata = 0;
-    reg[0:0] isMetadata = 0;
     reg[7:0] rank = 0;
     reg[7:0] code = 0;
     reg[7:0] handle = 0;
     wire[0:0] resultBool;
     wire[7:0] resultValue;
     reg[7:0] selector = 8;
+    reg[7:0] queried_handle = 0;
     
     reg[0:0] r_true = 1;
     wire is_true;
@@ -51,10 +50,9 @@ module esfa_test;
     ESFADesign l1(
         .clk(clk),
         .reset(reset),
+        .queried_handle(queried_handle),
         .new_index(new_index),
         .new_value(new_value),
-        .metadata(metadata),
-        .isMetadata(isMetadata),
         .resultBool(resultBool),
         .resultValue(resultValue),
         .selector(selector)  
@@ -67,19 +65,14 @@ module esfa_test;
     input[7:0] in_value; 
     begin  
         if (in_targetedHandle) begin   
-            isMetadata = 1'b1;
-            metadata = in_handle;
+            queried_handle = in_handle;
             selector = 2;
             #168;
-            code = resultValue;
             selector = 6;
             #168;
-            rank = resultValue;
         end
         selector = 5;
         #168;
-        metadata = resultValue;
-        isMetadata = 1'b1;
         new_index = in_index;
         new_value = in_value;
         selector = 0;
@@ -88,9 +81,6 @@ module esfa_test;
         selector = 8;
         #168;
         if (in_targetedHandle) begin  
-            new_index = metadata;
-            metadata = code;
-            new_value = rank;
             selector = 3;
             #28;
             #28;
@@ -104,15 +94,11 @@ module esfa_test;
     task delete;
     input[7:0] in_handle;
     begin  
-        isMetadata = 1;
-        metadata = in_handle;
+        queried_handle = in_handle;
         selector = 2;
         #168;
         
-        code = resultValue;
         selector = 4;
-        new_index = in_handle;
-        metadata = code;
         
         #56; // allow a cycle for outputs to stabilize, then write 
         selector = 8;
@@ -124,13 +110,9 @@ module esfa_test;
     input[7:0] in_handle;
     input[7:0] in_index;
     begin  
-        isMetadata = 1;
-        metadata = in_handle;
+        queried_handle = in_handle;
         selector = 2;
         #168;
-        code = resultValue;
-        metadata = code;
-        isMetadata = 1;
         new_index = in_index;
         selector = 1;
         #168;
