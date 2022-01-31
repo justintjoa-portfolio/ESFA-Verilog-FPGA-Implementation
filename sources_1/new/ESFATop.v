@@ -85,8 +85,8 @@ module ESFATop(
   always @ (posedge clk)
   begin
         if (reset == 0) begin   
-            isRunning = 1'b0;
-            wasSuccessful = 1'b1;
+            isRunning <= 1'b0;
+            wasSuccessful <= 1'b1;
             address <= 0;
             didRun <= 0;
             doIncrement <= 0;
