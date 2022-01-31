@@ -18,7 +18,7 @@
  */ /*-----------------------------------------------------------------------*/
 
 
-module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operating clock for this process
+module SandboxProcess (input  wire        masterClock,    // operating clock for this process
                        input  wire        slowClock,      // cock to operate user observable indicators (LEDs)
                        input  wire        reset,          // module reset
 
@@ -214,7 +214,7 @@ module SandboxProcessUARTBenchmark (input  wire        masterClock,    // operat
     
     
     
-    ESFADesignBenchmark(
+    ESFATop top(
         .clk(masterClock),
         .reset(reset), 
         .doRun(doRun),

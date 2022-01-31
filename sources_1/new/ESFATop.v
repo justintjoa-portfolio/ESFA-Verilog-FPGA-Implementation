@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ESFADesignBenchmark(
+module ESFATop(
         input[0:0] clk,
         input[0:0] reset, 
         input[0:0] doRun,
