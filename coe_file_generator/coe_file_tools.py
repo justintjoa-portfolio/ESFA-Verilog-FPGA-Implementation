@@ -13,19 +13,17 @@ def add_to_output_string(expectedValue, selector, new_value, new_index, queried_
     addition = int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value) + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
     outputString = outputString + addition
 
-def getOutput():
-    global outputString   
-    return outputString
+def writeCOE():
+    global outputString  
+    if (outputString[-2:] == ",\n"):
+        outputString = outputString[:-2] + ";" 
+    f.write(outputString)
+    f.close()
 
 def init_header(title):
     global outputString
     outputString = outputString + "memory_initialization_radix=2;" + " " + title + "\n"
     outputString = outputString + "memory_initialization_vector=\n\n"
-
-def concludeOutput():
-    global outputString 
-    if (outputString[-2:] == ",\n"):
-        outputString = outputString[:-2] + ";"
 
 def clearMutation():
     add_to_output_string(0, 8, 0, 0, 0, 1)
