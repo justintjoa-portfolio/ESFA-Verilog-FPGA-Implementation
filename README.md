@@ -4,6 +4,8 @@ If you intend on running that version, please check the git tag esfa_uart_api. T
 
 The current build aims to run the trials previously communicated via UART over BROM instead, and only using UART to communicate results of the trial. Again, if you intend to run the UART version, do not look at the repo's current code and instead take a look at the tag. 
 
+Keynote - please remember to add a value for the blockROM IP for what should fill remaining places!
+
 The High level API of this simulation design can be found here: https://github.com/justintjoa-portfolio/ESFA_Scala_implementation
 
 Original Paper: https://www.sciencedirect.com/science/article/pii/S0167642314005747
