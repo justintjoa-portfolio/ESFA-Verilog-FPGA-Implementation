@@ -28,8 +28,15 @@ module ESFATop(
         output reg[0:0] wasSuccessful
     );
     
-  wire[63:0] romVal;
+  reg[0:0] isRunning_next;
+  reg[0:0] wasSuccessful_next;  
+  reg[0:0] didRun;
+  reg[0:0] didRun_next;
+  
   reg[31:0] address;
+  reg[0:0] doIncrement;
+    
+  wire[63:0] romVal;
   wire[0:0] isMutating;
   assign isMutating = romVal[0:0];
   wire[0:0] expectedResultBool;
@@ -51,10 +58,7 @@ module ESFATop(
   assign selector = romVal[39:32];
   wire[0:0] resultBool;
   wire[7:0] resultValue;
-  
-  //controls
-  reg[0:0] didRun;
-  reg[0:0] doIncrement;
+
   
   
   //BROM interface
@@ -87,33 +91,41 @@ module ESFATop(
             didRun <= 0;
             doIncrement <= 0;
         end else begin  
-            if (doRun && ! didRun) begin  
-                isRunning <= 1;
-            end 
-            if (isRunning) begin  
-                 if (endOfProgram) begin   
-                    isRunning <= 0;
-                    didRun <= 1'b1;
-                end else begin     
-                    if (isRunning) begin     
-                        if (!isMutating) begin   
-                            if (resultBool != expectedResultBool && resultValue != expectedResultValue) begin     
-                                isRunning <= 0;  
-                                didRun <= 1'b1;
-                                wasSuccessful <= 0;
-                            end
-                        end 
-                        if (doIncrement == 0) begin 
-                            doIncrement <= 1;
-                        end else begin 
-                            address <= address + 8; // indexed by width of word in bytes
-                            //latency of data is 2 cycles
-                            doIncrement <= 0;
-                        end
-                    end
+            isRunning <= isRunning_next;
+            wasSuccessful <= wasSuccessful_next;
+            didRun <= didRun_next;
+            if (isRunning_next) begin 
+                if (doIncrement) begin 
+                    address <= address + 8;
+                    doIncrement <= 0;
+                end else begin 
+                    doIncrement <= 1;
                 end
             end
         end
+  end
+  
+  always @(*) begin 
+        isRunning_next = isRunning;
+        wasSuccessful_next = wasSuccessful;
+        didRun_next = didRun;
+        if (doRun && ! didRun) begin  
+            isRunning_next = 1;
+        end 
+        if (isRunning_next) begin  
+            if (endOfProgram) begin   
+               isRunning_next = 0;
+               didRun_next = 1'b1;
+            end else begin       
+               if (!isMutating) begin   
+                   if (resultBool != expectedResultBool && resultValue != expectedResultValue) begin     
+                         isRunning_next = 0;  
+                         didRun_next = 1'b1;
+                         wasSuccessful_next = 0;
+                    end
+               end 
+            end
+         end
   end
     
     
