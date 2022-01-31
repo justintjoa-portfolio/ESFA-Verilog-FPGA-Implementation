@@ -1,6 +1,6 @@
 from coe_file_tools import *
 
-init_header()
+init_header("update suite")
 m_update(None, 0, 5)
 m_assert(True, 0)
 m_update(0, 2, 10)
@@ -34,5 +34,5 @@ m_assert(True, 0)
 m_lookUp(0, 0)
 m_assert(True, 5)
 concludeOutput()
-f.write(outputString)
+f.write(getOutput())
 f.close()

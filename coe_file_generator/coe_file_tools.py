@@ -1,9 +1,8 @@
 
 # setup serial port
-import serial  
-import sys  
 
-f = open("update_trial.coe", "w")
+f = open("trial.coe", "w")
+
 outputString = ""
 
 def int_to_string(value):
@@ -11,9 +10,12 @@ def int_to_string(value):
 
 def add_to_output_string(expectedValue, selector, new_value, new_index, queried_handle, control_byte):
     global outputString
-    addition = int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value)
-    + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
+    addition = int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value) + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
     outputString = outputString + addition
+
+def getOutput():
+    global outputString   
+    return outputString
 
 def init_header(title):
     global outputString
@@ -22,8 +24,8 @@ def init_header(title):
 
 def concludeOutput():
     global outputString 
-    if (outputString[-1:] == ","):
-        outputString[-1:] = ";"
+    if (outputString[-2:] == ",\n"):
+        outputString = outputString[:-2] + ";"
 
 def clearMutation():
     add_to_output_string(0, 8, 0, 0, 0, 1)
