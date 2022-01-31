@@ -34,34 +34,34 @@ module MemoryCell(
         input[0:0] is_given_rank,
         input[7:0] given_rank,
         input[7:0] selector,
-        output reg[0:0] new_bool = 1'b0,
-        output reg[7:0] new_result_value = 0,
-        output reg[7:0] new_context = 0
+        output reg[0:0] new_bool,
+        output reg[7:0] new_result_value,
+        output reg[7:0] new_context
     );
     
      
-     reg[0:0] r_willWrite = 1'b0;
-     reg[0:0] didMutate = 1'b0;
+     reg[0:0] r_willWrite;
+     reg[0:0] didMutate;
      
-     reg[0:0] new_arrDef = 1'b0;
-     reg[0:0] new_arrDef_next = 1'b0;
-     reg[7:0] new_array_code = 0; 
-     reg[7:0] new_array_code_next = 0;
-     reg[0:0] new_eltDef = 1'b0;
-     reg[0:0] new_eltDef_next = 1'b0;
-     reg[7:0] new_rank = 0;
-     reg[7:0] new_rank_next = 0;
-     reg[7:0] new_low = 0;
-     reg[7:0] new_low_next = 0;
-     reg[7:0] new_high = 0;
-     reg[7:0] new_high_next = 0;
-     reg[7:0] new_index = 0;
-     reg[7:0] new_index_next = 0;
-     reg[7:0] new_value = 0;
-     reg[7:0] new_value_next = 0;
-     reg[0:0] new_bool_next = 1'b0;
-     reg[7:0] new_result_value_next = 0;
-     reg[7:0] new_context_next = 0;
+     reg[0:0] new_arrDef;
+     reg[0:0] new_arrDef_next;
+     reg[7:0] new_array_code; 
+     reg[7:0] new_array_code_next;
+     reg[0:0] new_eltDef;
+     reg[0:0] new_eltDef_next;
+     reg[7:0] new_rank;
+     reg[7:0] new_rank_next;
+     reg[7:0] new_low;
+     reg[7:0] new_low_next;
+     reg[7:0] new_high;
+     reg[7:0] new_high_next;
+     reg[7:0] new_index;
+     reg[7:0] new_index_next;
+     reg[7:0] new_value;
+     reg[7:0] new_value_next;
+     reg[0:0] new_bool_next;
+     reg[7:0] new_result_value_next;
+     reg[7:0] new_context_next;
      
     //Map
     // 0 : update  
@@ -106,14 +106,13 @@ module MemoryCell(
                            end
                       end else begin   
                           didMutate <= 1'b0;
-                      end
+                      end     
                       new_bool <= new_bool_next;
                       new_result_value <= new_result_value_next;
                       new_context <= new_context_next;
-                    end
-                
-     
+               end
     end
+                
     
     
     
@@ -127,9 +126,9 @@ module MemoryCell(
                new_value_next = new_value;
                new_index_next = new_index;
                new_rank_next = new_rank;
-               new_bool_next = 1'b0;
-               new_result_value_next = 0;
-               new_context_next = 0;
+               new_bool_next = new_bool;
+               new_result_value_next = new_result_value;
+               new_context_next = new_context;
                case (selector)
                     0: begin
                         new_bool_next = (available_handle == handle && is_available_handle);
@@ -164,8 +163,8 @@ module MemoryCell(
                     
                     3: begin
                         if (is_given_code && is_given_rank) begin 
-                            new_bool_next = 1'b1;
-                            if (available_handle == handle && is_available_handle) begin   
+                            if (available_handle == handle && is_available_handle) begin  
+                                new_bool_next = 1'b1; // allows so that output of this is equivalent to preceding op, update 
                                 new_array_code_next = given_code + 1;
                                 new_high_next = given_code + 1;
                                 new_low_next = given_code + 1;
@@ -254,7 +253,7 @@ module MemoryCell(
                     end
                    
                     8: begin   
-                        new_bool_next = 1'b1;
+
                     end
                     
                     
