@@ -40,7 +40,8 @@ module MemoryCell(
     );
     
      
-     reg[0:0] r_willWrite = 1'b0;
+     reg[0:0] r_willWrite;
+     reg[0:0] r_willOutput;
      reg[0:0] didMutate = 1'b0;
      
      reg[0:0] new_arrDef = 1'b0;
@@ -107,9 +108,11 @@ module MemoryCell(
                       end else begin   
                           didMutate <= 1'b0;
                       end
-                      new_bool <= new_bool_next;
-                      new_result_value <= new_result_value_next;
-                      new_context <= new_context_next;
+                      if (r_willOutput) begin         
+                            new_bool <= new_bool_next;
+                            new_result_value <= new_result_value_next;
+                            new_context <= new_context_next;
+                      end
                     end
                 
      
@@ -119,6 +122,7 @@ module MemoryCell(
     
     always @(*) begin
                r_willWrite = 1'b0;
+               r_willOutput = 1'b1;
                new_arrDef_next = new_arrDef;
                new_array_code_next = new_array_code;
                new_eltDef_next = new_eltDef;
@@ -255,6 +259,7 @@ module MemoryCell(
                    
                     8: begin   
                         new_bool_next = 1'b1;
+                        r_willOutput = 1'b0;
                     end
                     
                     

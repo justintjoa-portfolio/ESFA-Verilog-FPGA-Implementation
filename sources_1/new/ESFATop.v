@@ -109,7 +109,7 @@ module ESFATop(
         isRunning_next = isRunning;
         wasSuccessful_next = wasSuccessful;
         didRun_next = didRun;
-        if (doRun && ! didRun) begin  
+        if (doRun && ! didRun_next) begin  
             isRunning_next = 1;
         end 
         if (isRunning_next) begin  
@@ -118,7 +118,7 @@ module ESFATop(
                didRun_next = 1'b1;
             end else begin       
                if (!isMutating) begin   
-                   if (resultBool != expectedResultBool && resultValue != expectedResultValue) begin     
+                   if (resultBool != expectedResultBool || resultValue != expectedResultValue) begin     
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
