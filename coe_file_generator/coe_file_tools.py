@@ -13,7 +13,11 @@ def add_to_output_string(expectedValue, selector, new_value, new_index, queried_
     addition = int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value) + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
     outputString = outputString + addition
 
+def endProgram():
+    add_to_output_string(0, 0, 0, 0, 0, 4)
+
 def writeCOE():
+    endProgram()
     global outputString  
     if (outputString[-2:] == ",\n"):
         outputString = outputString[:-2] + ";" 

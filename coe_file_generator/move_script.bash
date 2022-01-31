@@ -1,1 +1,1 @@
-cp trial.coe ../sources_1/ip?
+cp trial.coe ../sources_1/ip/
