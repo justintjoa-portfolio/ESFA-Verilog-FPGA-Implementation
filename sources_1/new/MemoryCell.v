@@ -228,23 +228,25 @@ module MemoryCell(
                     end
                     
                     7: begin
-                        if (is_given_code && is_given_rank) begin 
-                            new_bool_next = 1'b1;
-                            if (available_handle == handle && is_available_handle) begin   
-                                new_array_code_next = given_code + 1;
-                                new_high_next = given_code + 1;
-                                new_low_next = given_code + 1;
-                                new_rank_next = given_rank + 1;
-                            end else begin     
-                                if (new_array_code_next > given_code && new_arrDef_next) begin 
-                                    new_array_code_next = new_array_code_next + 1;
-                                end
-                                if (new_eltDef_next) begin 
-                                    if (new_low_next > given_code) begin 
-                                        new_low_next = new_low_next + 1;
+                        if (queried_handle == handle) begin    
+                            if (is_given_code && is_given_rank) begin 
+                                new_bool_next = 1'b1;
+                                if (available_handle == handle && is_available_handle) begin   
+                                    new_array_code_next = given_code + 1;
+                                    new_high_next = given_code + 1;
+                                    new_low_next = given_code + 1;
+                                    new_rank_next = given_rank + 1;
+                                end else begin     
+                                    if (new_array_code_next > given_code && new_arrDef_next) begin 
+                                        new_array_code_next = new_array_code_next + 1;
                                     end
-                                    if (new_high_next >= given_code) begin 
-                                        new_high_next = new_high_next + 1;
+                                    if (new_eltDef_next) begin 
+                                        if (new_low_next > given_code) begin 
+                                            new_low_next = new_low_next + 1;
+                                        end
+                                        if (new_high_next >= given_code) begin 
+                                            new_high_next = new_high_next + 1;
+                                        end
                                     end
                                 end
                             end

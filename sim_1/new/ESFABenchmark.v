@@ -44,7 +44,7 @@ module ESFABenchmark(
     wire[0:0] isRunning;
     wire[0:0] isSuccessful;
     
-    ESFADesignBenchmark bm(
+    ESFATop top(
         .clk(clk),
         .reset(reset), 
         .doRun(doRun),
@@ -59,6 +59,7 @@ module ESFABenchmark(
             reset = 1'b1;
             $display("assertions working correctly");
             doRun = 1'b1;
+            #4144;
             #28;
             #28;
             #28;
@@ -67,17 +68,7 @@ module ESFABenchmark(
             #28;
             #28;
             #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #48000; 
+            #560000;
             doRun = 1'b0;
             
         end
