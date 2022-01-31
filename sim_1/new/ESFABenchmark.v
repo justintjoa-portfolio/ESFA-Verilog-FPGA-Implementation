@@ -44,7 +44,7 @@ module ESFABenchmark(
     wire[0:0] isRunning;
     wire[0:0] isSuccessful;
     
-    ESFADesignBenchmark bm(
+    ESFATop top(
         .clk(clk),
         .reset(reset), 
         .doRun(doRun),
