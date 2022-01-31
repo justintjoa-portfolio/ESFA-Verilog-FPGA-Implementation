@@ -62,13 +62,12 @@ def debug(handleOfNewEntry):
 #Macro functions
 
 def m_update(handle, index, value):
-    markAvailableCell()
-    if (handle is None):
-        update(index, value)
-    else:
+    if (handle is not None):
         encode(handle)
         enrank(handle)
-        update(index, value)
+    markAvailableCell()
+    update(index, value)
+    if (handle is not None):
         congrueUp()
 
 def m_lookUp(handle, index):
