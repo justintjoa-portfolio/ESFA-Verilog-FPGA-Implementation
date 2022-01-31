@@ -14,7 +14,7 @@ def add_to_output_string(expectedValue, selector, new_value, new_index, queried_
     outputString = outputString + addition
 
 def endProgram():
-    add_to_output_string(0, 0, 0, 0, 0, 4)
+    add_to_output_string(0, 8, 0, 0, 0, 4)
 
 def writeCOE():
     endProgram()
