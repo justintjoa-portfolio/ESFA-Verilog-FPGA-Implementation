@@ -157,13 +157,30 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
             if (dataReceived == 1'b1)                       // we have new data
             begin
               // flag data is stored in control byte
-              if (control[0:0]) begin //control bit 0 is isMutating flag, 1 is isMeta
-                  doRun <= 1'b1;
+              if (control[0:0]) begin //control bit 0 is to start trial
+                  if (isRunning) begin   
+                        statusReg[0:0] <= 1'b0;
+                        statusReg[1:1] <= 1'b0;
+                        doRun <= 1'b0; 
+                  end else begin    
+                    if (top.didRun) begin    
+                        statusReg[0:0] <= 1'b0;
+                        statusReg[1:1] <= 1'b1;
+                        doRun <= 1'b0; 
+                    end else begin    
+                        statusReg[0:0] <= 1'b1;
+                        statusReg[1:1] <= 1'b0;
+                        doRun <= 1'b1;
+                    end
+                  end
               end else begin
                   doRun <= 1'b0;
-                  statusReg[0:0] <= isRunning;
-                  if (! isRunning) begin   
+                  statusReg[0:0] <= top.didRun;
+                  if (top.didRun) begin   
                        statusReg[1:1] <= isSuccessful;
+                       if (!isSuccessful) begin    
+                            outputReg[31:0] = (top.address)/8;
+                       end
                   end
               end
               state             <= 3'h1;
