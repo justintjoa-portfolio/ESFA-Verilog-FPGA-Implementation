@@ -49,6 +49,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg[0:0] doRun;
   wire[0:0] isRunning;
   wire[31:0] currentAddr;
+  wire[0:0] didRun;
 
   // --------------------------------------------------------------------------
   // Signals
@@ -160,10 +161,10 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
               if (control[0:0]) begin //control bit 0 is to start trial
                   outputReg <= 0;
                   statusReg[0:0] <= !isRunning; 
-                  statusReg[1:1] <= top.didRun;
+                  statusReg[1:1] <= didRun;
                   doRun <= 1'b1;
               end else begin
-                  statusReg[0:0] <= top.didRun;
+                  statusReg[0:0] <= didRun;
                   statusReg[1:1] <= wasSuccessful;
                   outputReg <= currentAddr;
               end
@@ -221,7 +222,8 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
         .doRun(doRun),
         .isRunning(isRunning),
         .wasSuccessful(wasSuccessful),
-        .currentAddr(currentAddr)
+        .address(currentAddr),
+        .didRun(didRun)
       );
    
   

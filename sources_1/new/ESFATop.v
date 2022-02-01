@@ -26,20 +26,18 @@ module ESFATop(
         input[0:0] doRun,
         output reg[0:0] isRunning,
         output reg[0:0] wasSuccessful,
-        output wire[31:0] currentAddr
+        output reg[31:0] address,
+        output reg[0:0] didRun
     );
     
   reg[0:0] isRunning_next;
   reg[0:0] wasSuccessful_next;  
-  reg[0:0] didRun;
   reg[0:0] didRun_next;
   
-  reg[31:0] address;
   reg[31:0] address_next;
   reg[0:0] doIncrement;
   reg[0:0] doIncrement_next;
-   
-  assign currentAddr = address; 
+
     
   wire[63:0] romVal;
   wire[0:0] isMutating;
@@ -64,7 +62,7 @@ module ESFATop(
   wire[0:0] resultBool;
   wire[7:0] resultValue;
 
-  
+  wire[0:0] resetBusy;
   
   //BROM interface
   blk_mem_gen_0 blockROM(
@@ -72,7 +70,7 @@ module ESFATop(
     .rsta(! reset), //reset acts on 1 
     .addra(address), 
     .douta(romVal),
-    .rsta_busy()
+    .rsta_busy(resetBusy)
   );
   
   ESFADesign l1(
@@ -110,7 +108,7 @@ module ESFATop(
         didRun_next = didRun;
         address_next = address;
         doIncrement_next = doIncrement;
-        if (doRun && ! didRun_next) begin  
+        if (doRun && ! didRun_next && ! resetBusy) begin  
             isRunning_next = 1;
         end 
         if (isRunning_next) begin  
