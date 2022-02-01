@@ -34,7 +34,9 @@ module ESFATop(
   reg[0:0] didRun_next;
   
   reg[31:0] address;
+  reg[31:0] address_next;
   reg[0:0] doIncrement;
+  reg[0:0] doIncrement_next;
     
   wire[63:0] romVal;
   wire[0:0] isMutating;
@@ -94,13 +96,9 @@ module ESFATop(
             isRunning <= isRunning_next;
             wasSuccessful <= wasSuccessful_next;
             didRun <= didRun_next;
-            if (isRunning_next) begin 
-                if (doIncrement) begin 
-                    address <= address + 8;
-                    doIncrement <= 0;
-                end else begin 
-                    doIncrement <= 1;
-                end
+            if (isRunning_next) begin  
+                address <= address_next; 
+                doIncrement <= doIncrement_next;
             end
         end
   end
@@ -109,6 +107,8 @@ module ESFATop(
         isRunning_next = isRunning;
         wasSuccessful_next = wasSuccessful;
         didRun_next = didRun;
+        address_next = address;
+        doIncrement_next = doIncrement;
         if (doRun && ! didRun_next) begin  
             isRunning_next = 1;
         end 
@@ -125,6 +125,12 @@ module ESFATop(
                     end
                end 
             end
+         end
+         if (doIncrement_next) begin 
+             address_next = address_next + 8;
+             doIncrement_next = 0;
+         end else begin 
+             doIncrement_next = 1;
          end
   end
     
