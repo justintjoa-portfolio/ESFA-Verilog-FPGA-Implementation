@@ -17,8 +17,10 @@ def send(byteArray):
     output = (s.read(5))
     s.close()
     value = int.from_bytes(output, byteorder=sys.byteorder)
-    print(value)
     control = value & 0b11111111
     resultValue = value >> 8 
+    print("sent")
+    print(control)
+    print(resultValue)
     return control, resultValue
 
