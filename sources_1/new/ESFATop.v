@@ -96,10 +96,8 @@ module ESFATop(
             isRunning <= isRunning_next;
             wasSuccessful <= wasSuccessful_next;
             didRun <= didRun_next;
-            if (isRunning_next) begin  
-                address <= address_next; 
-                doIncrement <= doIncrement_next;
-            end
+            address <= address_next; 
+            doIncrement <= doIncrement_next;
         end
   end
   
@@ -126,11 +124,13 @@ module ESFATop(
                end 
             end
          end
-         if (doIncrement_next) begin 
-             address_next = address_next + 8;
-             doIncrement_next = 0;
-         end else begin 
-             doIncrement_next = 1;
+         if (isRunning_next) begin    
+            if (doIncrement_next) begin 
+                address_next = address_next + 8;
+                doIncrement_next = 0;
+            end else begin 
+                doIncrement_next = 1;
+            end
          end
   end
     
