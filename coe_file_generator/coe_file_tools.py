@@ -4,14 +4,17 @@
 f = open("trial.coe", "w")
 
 outputString = ""
+counter = 0
 
 def int_to_string(value):
     return bin(value)[2:].zfill(8)
 
 def add_to_output_string(expectedValue, selector, new_value, new_index, queried_handle, control_byte):
     global outputString
-    addition = int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value) + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
+    global counter
+    addition = int_to_string(counter) + int_to_string(expectedValue) + int_to_string(selector) + int_to_string(new_value) + int_to_string(new_index) + int_to_string(queried_handle) + int_to_string(control_byte) + ",\n"
     outputString = outputString + addition
+    counter = counter + 1
 
 def endProgram():
     add_to_output_string(0, 8, 0, 0, 0, 4)

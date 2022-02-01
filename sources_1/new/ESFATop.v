@@ -26,7 +26,7 @@ module ESFATop(
         input[0:0] doRun,
         output reg[0:0] isRunning,
         output reg[0:0] wasSuccessful,
-        output reg[31:0] address,
+        output reg[7:0] instructionOfError,
         output reg[0:0] didRun
     );
     
@@ -34,6 +34,9 @@ module ESFATop(
   reg[0:0] wasSuccessful_next;  
   reg[0:0] didRun_next;
   
+  reg[7:0] instructionOfError_next;
+  
+  reg[31:0] address;
   reg[31:0] address_next;
   reg[0:0] doIncrement;
   reg[0:0] doIncrement_next;
@@ -48,6 +51,8 @@ module ESFATop(
   assign endOfProgram = romVal[2:2];
   wire[7:0] expectedResultValue;
   assign expectedResultValue = romVal[47:40];  
+  wire[7:0] instructionID;
+  assign instructionID = romVal[55:48];
     
     
   //ESFA specific wires
@@ -93,12 +98,14 @@ module ESFATop(
             address <= 0;
             didRun <= 0;
             doIncrement <= 0;
+            instructionOfError <= 0;
         end else begin  
             isRunning <= isRunning_next;
             wasSuccessful <= wasSuccessful_next;
             didRun <= didRun_next;
             address <= address_next; 
             doIncrement <= doIncrement_next;
+            instructionOfError <= instructionOfError_next;
         end
   end
   
@@ -108,6 +115,7 @@ module ESFATop(
         didRun_next = didRun;
         address_next = address;
         doIncrement_next = doIncrement;
+        instructionOfError_next = instructionOfError;
         if (doRun && ! didRun_next && ! resetBusy) begin  
             isRunning_next = 1;
         end 
@@ -121,6 +129,7 @@ module ESFATop(
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
+                         instructionOfError_next = instructionID;
                     end
                end 
             end

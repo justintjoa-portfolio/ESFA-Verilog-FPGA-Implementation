@@ -48,7 +48,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   wire[0:0] wasSuccessful;
   reg[0:0] doRun;
   wire[0:0] isRunning;
-  wire[31:0] currentAddr;
+  wire[31:0] instructionOfError;
   wire[0:0] didRun;
 
   // --------------------------------------------------------------------------
@@ -166,7 +166,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
               end else begin
                   statusReg[0:0] <= didRun;
                   statusReg[1:1] <= wasSuccessful;
-                  outputReg <= currentAddr;
+                  outputReg[7:0] <= instructionOfError;
               end
               state             <= 3'h1;
             end
@@ -222,7 +222,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
         .doRun(doRun),
         .isRunning(isRunning),
         .wasSuccessful(wasSuccessful),
-        .address(currentAddr),
+        .instructionOfError(instructionOfError),
         .didRun(didRun)
       );
    
