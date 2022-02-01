@@ -25,7 +25,8 @@ module ESFATop(
         input[0:0] reset, 
         input[0:0] doRun,
         output reg[0:0] isRunning,
-        output reg[0:0] wasSuccessful
+        output reg[0:0] wasSuccessful,
+        output wire[31:0] currentAddr
     );
     
   reg[0:0] isRunning_next;
@@ -37,6 +38,8 @@ module ESFATop(
   reg[31:0] address_next;
   reg[0:0] doIncrement;
   reg[0:0] doIncrement_next;
+   
+  assign currentAddr = address; 
     
   wire[63:0] romVal;
   wire[0:0] isMutating;
