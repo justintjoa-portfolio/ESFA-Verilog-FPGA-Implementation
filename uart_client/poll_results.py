@@ -1,9 +1,10 @@
 from uart_tools import *
 
-control, returnValue = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
+control, instructionOfError = send(bytearray([0b0, 0b0, 0b0, 0b0, 0b0]))
 isDone = control & 1
 isSuccessful = (control >> 1) & 1
-instructionOfError = returnValue/8
+print("last instruction was")
+print(instructionOfError)
 if (isDone):
     if (isSuccessful):
         print("Trial was successful!")

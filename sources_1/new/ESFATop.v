@@ -25,16 +25,22 @@ module ESFATop(
         input[0:0] reset, 
         input[0:0] doRun,
         output reg[0:0] isRunning,
-        output reg[0:0] wasSuccessful
+        output reg[0:0] wasSuccessful,
+        output reg[7:0] instructionOfError,
+        output reg[0:0] didRun
     );
     
   reg[0:0] isRunning_next;
   reg[0:0] wasSuccessful_next;  
-  reg[0:0] didRun;
   reg[0:0] didRun_next;
   
+  reg[7:0] instructionOfError_next;
+  
   reg[31:0] address;
+  reg[31:0] address_next;
   reg[0:0] doIncrement;
+  reg[0:0] doIncrement_next;
+
     
   wire[63:0] romVal;
   wire[0:0] isMutating;
@@ -45,6 +51,8 @@ module ESFATop(
   assign endOfProgram = romVal[2:2];
   wire[7:0] expectedResultValue;
   assign expectedResultValue = romVal[47:40];  
+  wire[7:0] instructionID;
+  assign instructionID = romVal[55:48];
     
     
   //ESFA specific wires
@@ -59,7 +67,7 @@ module ESFATop(
   wire[0:0] resultBool;
   wire[7:0] resultValue;
 
-  
+  wire[0:0] resetBusy;
   
   //BROM interface
   blk_mem_gen_0 blockROM(
@@ -67,7 +75,7 @@ module ESFATop(
     .rsta(! reset), //reset acts on 1 
     .addra(address), 
     .douta(romVal),
-    .rsta_busy()
+    .rsta_busy(resetBusy)
   );
   
   ESFADesign l1(
@@ -90,18 +98,14 @@ module ESFATop(
             address <= 0;
             didRun <= 0;
             doIncrement <= 0;
+            instructionOfError <= 0;
         end else begin  
             isRunning <= isRunning_next;
             wasSuccessful <= wasSuccessful_next;
             didRun <= didRun_next;
-            if (isRunning_next) begin 
-                if (doIncrement) begin 
-                    address <= address + 8;
-                    doIncrement <= 0;
-                end else begin 
-                    doIncrement <= 1;
-                end
-            end
+            address <= address_next; 
+            doIncrement <= doIncrement_next;
+            instructionOfError <= instructionOfError_next;
         end
   end
   
@@ -109,7 +113,10 @@ module ESFATop(
         isRunning_next = isRunning;
         wasSuccessful_next = wasSuccessful;
         didRun_next = didRun;
-        if (doRun && ! didRun_next) begin  
+        address_next = address;
+        doIncrement_next = doIncrement;
+        instructionOfError_next = instructionOfError;
+        if (doRun && ! didRun_next && ! resetBusy) begin  
             isRunning_next = 1;
         end 
         if (isRunning_next) begin  
@@ -122,8 +129,17 @@ module ESFATop(
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
+                         instructionOfError_next = instructionID;
                     end
                end 
+            end
+         end
+         if (isRunning_next) begin    
+            if (doIncrement_next) begin 
+                address_next = address_next + 8;
+                doIncrement_next = 0;
+            end else begin 
+                doIncrement_next = 1;
             end
          end
   end
