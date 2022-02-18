@@ -1,5 +1,6 @@
 from coe_file_tools import *
 
+init_header("update suite")
 m_update(None, 0, 5)
 m_update(0, 0, 5)
 m_lookUp(0, 0)
@@ -8,3 +9,4 @@ m_lookUp(1,0)
 m_assert(True, 5)
 m_lookUp(1, 10)
 m_assert(False, 0)
+writeCOE()
