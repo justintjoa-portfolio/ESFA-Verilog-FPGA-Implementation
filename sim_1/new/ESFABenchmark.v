@@ -58,14 +58,9 @@ module ESFABenchmark(
             reset = 1'b1;
             $display("assertions working correctly");
             doRun = 1'b1;
-            #4200;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
-            #28;
+            #392;
+            #392;
+            #196;
             #28;
             #28;
             #28;
