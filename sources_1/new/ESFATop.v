@@ -116,30 +116,30 @@ module ESFATop(
         address_next = address;
         doIncrement_next = doIncrement;
         instructionOfError_next = instructionOfError;
-        if (doRun && ! didRun_next && ! resetBusy) begin  
-            isRunning_next = 1;
-        end 
-        if (isRunning_next) begin  
-            if (endOfProgram) begin   
-               isRunning_next = 0;
-               didRun_next = 1'b1;
-            end else begin       
-               if (!isMutating) begin   
+        if (endOfProgram) begin   
+            isRunning_next = 0;
+            didRun_next = 1'b1;
+        end else begin   
+            if (doRun && ! didRun_next && ! resetBusy) begin  
+                isRunning_next = 1;
+            end 
+            if (isRunning_next) begin  
+                if (!isMutating) begin   
                    if (resultBool != expectedResultBool || resultValue != expectedResultValue) begin     
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
                          instructionOfError_next = instructionID;
                     end
-               end 
-            end
-         end
-         if (isRunning_next) begin    
-            if (doIncrement_next) begin 
-                address_next = address_next + 8;
-                doIncrement_next = 0;
-            end else begin 
-                doIncrement_next = 1;
+                end 
+             end
+             if (isRunning_next) begin    
+                if (doIncrement_next) begin 
+                    address_next = address_next + 8;
+                    doIncrement_next = 0;
+                end else begin 
+                    doIncrement_next = 1;
+                end
             end
          end
   end

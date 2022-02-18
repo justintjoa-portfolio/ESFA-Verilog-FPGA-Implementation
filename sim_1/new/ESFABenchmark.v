@@ -42,7 +42,6 @@ module ESFABenchmark(
     wire[0:0] wasSuccessful;
     reg[0:0] doRun = 1'b0;
     wire[0:0] isRunning;
-    wire[0:0] isSuccessful;
     
     ESFATop top(
         .clk(clk),
