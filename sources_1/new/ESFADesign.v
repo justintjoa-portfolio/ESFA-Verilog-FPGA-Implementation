@@ -37,6 +37,15 @@ module ESFADesign(
     reg[0:0] is_given_code;
     reg[0:0] is_given_rank;
     reg[0:0] is_available_handle;
+    reg[7:0] combinator_selector;
+    
+    reg[7:0] given_code_next;
+    reg[7:0] given_rank_next;
+    reg[7:0] available_handle_next;
+    reg[0:0] is_given_code_next;
+    reg[0:0] is_given_rank_next;
+    reg[0:0] is_available_handle_next;
+    reg[7:0] combinator_selector_next;
     
     wire[7:0] c0Handle;
     assign c0Handle = 0;
@@ -121,13 +130,13 @@ module ESFADesign(
     MemoryCell c6(clk, reset, c6Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c6Bool, c6Result, c6Context);
     MemoryCell c7(clk, reset, c7Handle,queried_handle,  is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c7Bool, c7Result, c7Context);
     
-    NodeCombinator combinator1(selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
-    NodeCombinator combinator2(selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
-    NodeCombinator combinator3(selector, c4Result, c4Context, c4Bool, c5Result, c5Context, c5Bool, combinator3Result, combinator3Context, combinator3Bool);
-    NodeCombinator combinator4(selector, c6Result, c6Context, c6Bool, c7Result, c7Context, c7Bool, combinator4Result, combinator4Context, combinator4Bool);
-    NodeCombinator combinator5(selector, combinator1Result, combinator1Context, combinator1Bool, combinator2Result, combinator2Context, combinator2Bool, combinator5Result, combinator5Context, combinator5Bool);
-    NodeCombinator combinator6(selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
-    NodeCombinator combinator7(selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
+    NodeCombinator combinator1(combinator_selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
+    NodeCombinator combinator2(combinator_selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
+    NodeCombinator combinator3(combinator_selector, c4Result, c4Context, c4Bool, c5Result, c5Context, c5Bool, combinator3Result, combinator3Context, combinator3Bool);
+    NodeCombinator combinator4(combinator_selector, c6Result, c6Context, c6Bool, c7Result, c7Context, c7Bool, combinator4Result, combinator4Context, combinator4Bool);
+    NodeCombinator combinator5(combinator_selector, combinator1Result, combinator1Context, combinator1Bool, combinator2Result, combinator2Context, combinator2Bool, combinator5Result, combinator5Context, combinator5Bool);
+    NodeCombinator combinator6(combinator_selector, combinator3Result, combinator3Context, combinator3Bool, combinator4Result, combinator4Context, combinator4Bool, combinator6Result, combinator6Context, combinator6Bool);
+    NodeCombinator combinator7(combinator_selector, combinator5Result, combinator5Context, combinator5Bool, combinator6Result, combinator6Context, combinator6Bool, resultValue, combinator7Context, resultBool);
     
     always @ (posedge clk)
         begin
@@ -138,24 +147,45 @@ module ESFADesign(
                     is_given_code <= 0;
                     is_available_handle <= 0;
                     is_given_rank <= 0;
+                    combinator_selector <= 8;
              end else begin   
-                case (selector)
-                    2: begin  
-                        given_code <= resultValue;
-                        is_given_code <= resultBool;
-                    end
-                    5: begin 
-                        available_handle <= resultValue;
-                        is_available_handle <= resultBool;
-                    end
-                    6:begin 
-                        given_rank <= resultValue;
-                        is_given_rank <= resultBool;
-                    end  
-                endcase
+                    given_code <= given_code_next; 
+                    given_rank <= given_rank_next;  
+                    available_handle <= available_handle_next;
+                    is_given_code <= is_given_code_next; 
+                    is_given_rank <= is_given_rank_next; 
+                    is_available_handle <= is_available_handle_next;
+                    combinator_selector <= combinator_selector_next;
              end
               
         end
+        
+   always @ (*) begin   
+        given_code_next = given_code;
+        given_rank_next = given_rank;
+        available_handle_next = available_handle;
+        is_given_code_next = is_given_code;
+        is_given_rank_next = is_given_rank;
+        is_available_handle_next = is_available_handle;
+        combinator_selector_next = selector;
+        case (selector)
+             2: begin  
+                  given_code_next = resultValue;
+                  is_given_code_next = resultBool;
+             end
+             5: begin 
+                 available_handle_next = resultValue;
+                 is_available_handle_next = resultBool;
+              end
+              6:begin 
+                  given_rank_next = resultValue;
+                  is_given_rank_next = resultBool;
+              end
+              8: begin  
+                  combinator_selector_next = combinator_selector;
+              end
+        endcase
+   end
    
       
 endmodule
