@@ -167,7 +167,7 @@ module ESFADesign(
         is_given_code_next = is_given_code;
         is_given_rank_next = is_given_rank;
         is_available_handle_next = is_available_handle;
-        combinator_selector_next = selector;
+        combinator_selector_next = combinator_selector;
         case (selector)
              2: begin  
                   given_code_next = resultValue;
@@ -181,10 +181,10 @@ module ESFADesign(
                   given_rank_next = resultValue;
                   is_given_rank_next = resultBool;
               end
-              8: begin  
-                  combinator_selector_next = combinator_selector;
-              end
         endcase
+        if (!(selector == 8)) begin   
+            combinator_selector_next = selector;
+        end
    end
    
       
