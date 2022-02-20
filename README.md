@@ -1,8 +1,8 @@
-Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. As of January 19, 2022, this hardware design has passed all extended suites of the Scala implementation. 
+Project for implementation of Extensible Sparse Functional Array in an FPGA, under the mentorship of Dr. Balkind of UCSB. I am also being advised and assisted by Elmar Grom, a colleague of mine who is an Electrical Engineer. As of January 19, 2022, the hardware design using live UART data has passed all extended suites of the Scala implementation. 
 
-If you intend on running that version, please check the git tag esfa_uart_api. That tags uses UART to send instructions to the FPGA.
+As of February 20, 2022, this design using an optimized Block ROM/UART hybrid design has passed all extended suites originally from the Scala implementation. This version (recommended version to run) belongs under git tag esfa_block_rom. It uses coe files/Block ROM for instruction feeding, and UART for requesting starts of trials and polling results from trials. These coe files are made via python/bash scripts found in coe_file_generator directory. 
 
-The current build aims to run the trials previously communicated via UART over BROM instead, and only using UART to communicate results of the trial. Again, if you intend to run the UART version, do not look at the repo's current code and instead take a look at the tag. 
+If you intend on running the purely live UART data version (which I no longer support), please check the git tag esfa_uart_api.
 
 Keynote - please remember to add a value for the blockROM IP for what should fill remaining places!
 
