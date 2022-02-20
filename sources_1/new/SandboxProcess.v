@@ -40,6 +40,8 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   reg [2:0]   indicatorState;
   reg [7:0]   statusReg  = 8'b0;
   reg [31:0]  outputReg = 32'b0;
+  reg [7:0] statusReg_next;
+  reg [31:0] outputReg_next;
   reg         transmitRequest;
   reg         processDone;
   reg         indicatorReg;
@@ -47,8 +49,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     
   wire[0:0] wasSuccessful;
   reg[0:0] doRun;
+  reg[0:0] doRun_next;
   wire[0:0] isRunning;
-  wire[31:0] instructionOfError;
+  wire[7:0] instructionOfError;
   wire[0:0] didRun;
 
   // --------------------------------------------------------------------------
@@ -137,6 +140,23 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // The process
   // --------------------------------------------------------
   
+  always @(*) begin  
+    outputReg_next = outputReg;
+    statusReg_next = statusReg;
+    doRun_next = doRun;
+    // flag data is stored in control byte
+    if (control[0:0]) begin //control bit 0 is to start trial
+         outputReg_next = 0;
+         statusReg_next[0:0] = !isRunning; 
+         statusReg_next[1:1] = didRun;
+         doRun_next = 1'b1;
+     end else begin
+         statusReg_next[0:0] = didRun;
+         statusReg_next[1:1] = wasSuccessful;
+         outputReg_next[31:24] = instructionOfError;
+     end
+  end
+  
   always @ (posedge masterClock)
   begin
     if (reset == 1'b0)
@@ -157,17 +177,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
           begin
             if (dataReceived == 1'b1)                       // we have new data
             begin
-              // flag data is stored in control byte
-              if (control[0:0]) begin //control bit 0 is to start trial
-                  outputReg <= 0;
-                  statusReg[0:0] <= !isRunning; 
-                  statusReg[1:1] <= didRun;
-                  doRun <= 1'b1;
-              end else begin
-                  statusReg[0:0] <= didRun;
-                  statusReg[1:1] <= wasSuccessful;
-                  outputReg[7:0] <= instructionOfError;
-              end
+              outputReg <= outputReg_next;
+              statusReg <= statusReg_next;
+              doRun <= doRun_next;
               state             <= 3'h1;
             end
           end
