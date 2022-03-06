@@ -125,7 +125,7 @@ module ESFATop(
             end 
             if (isRunning_next) begin  
                 if (!isMutating) begin   
-                   if (resultBool != expectedResultBool || resultValue != expectedResultValue) begin     
+                   if ((expectedResultBool && (! resultBool || resultValue != expectedResultValue)) || (! expectedResultBool && resultBool)) begin     
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
