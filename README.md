@@ -4,6 +4,8 @@ As of February 20, 2022, this design using an optimized Block ROM/UART hybrid de
 
 Link to presentation and demo: https://www.youtube.com/watch?v=LlO6cbbh-jw
 
+Slides from presentation: https://docs.google.com/presentation/d/1jR87Q2DpsxXWf343KrH_nuamsPu-g76T5hq_UZVlayg/edit#slide=id.p
+
 If you intend on running the purely live UART data version (which I no longer support), please check the git tag esfa_uart_api.
 
 Keynote - please remember to add a value for the blockROM IP for what should fill remaining places!
@@ -26,181 +28,49 @@ Technical Documentation - Deep Dive (Includes Contextual Information and Upcomin
 
 Release Diary: https://docs.google.com/document/d/1Onwxkocl2f0QuUEM0k3As0nP1BEz1VMA278FjJfo7kY
 
-Release Notes - January 25, 2022 
+Notes on Running:
 
-- This release implements the following: 
+### Generating COE Files ###
 
-    + UART communication system to communicate between host PC and FPGA. The word is defined to have a width of 4 bytes, and uses control/receiving byte to control and correctly interpret results from FPGA.  
+The coe_file_generator folder holds scripts for generating a sample COE file to test the ESFA. At the time of this writing these scripts include:
 
-    + Python script that uses the first Scala extensive test to test the correctness of the hardware design (tested to be correct in this case). 
+- dup_key_value_suite.py (tests that creating duplicate keys and values does not interfere with the immutable array logic)
+- faulty_suite.py (a sample of a test that fails and reports an instructionOfError)
+- update_suite_rapid.py (tests rapid updates to an array)
+- update_suite.py 
+- updated_key_suite.py 
 
-    + Aligns the implementation of MemoryCell to better leverage the features of modern Verilog for performance and general readability. 
+You may choose to write your own tests as well. Init the script with init_header function and end it with writeCOE().
 
+The ESFATop module iterates through the values in the BROM and feeds the values into the ESFADesign. These values
+contain data to mutate the ESFA Arrays as well as assert that certain test conditions are true. 
 
+### Setting up the BROM IP ####
 
-Instructions on Using ESFADesign in your simulations (view Scala implementation test cases for the compared functions):
+After running a script you will generate a COE file. Move it via 'bash move_script.bash'
 
-Our ESFADesign is hooked as follows:
+Open the project in Vivado,rightclick the BROM and set the following settings:
 
-ESFADesign l1(
+Port A Width - 64 bits
+Port A Depth - 256 bits
+Check yes to Primitives Output Register 
+Check yes to RSTA Pin
+Set Output Reset Value to 800000001 (Hex)
 
-        .clk(clk),
+Pick ESFA.srcs/sources_1/ip/trial.coe for coe file for init file.
+Fill remaining locations of BROM with 800000004 (Hex)
 
-        // inputs
+Check yes to Enable Safety Circuit
 
-        .new_index(new_index),
+### Running the Test ### 
 
-        .new_value(new_value),
+Generate the bitstream and program the device. Go into the uart_client folder.
 
-        .metadata(metadata),
-
-        .isMetadata(isMetadata),
-
-        // outputs
-
-        .resultBool(resultBool),
-
-        .resultValue(resultValue),
-
-        .selector(selector)  
-
-    );
-
-The following examples assume a 28 ns clock. 
-
-1) Update Op
-
-In this example, we attempt an update on array with handle 0, and in the new array insert the pair (2, 10)
-
-// Analogous to ESFAArrayOp().update(state_and_handle._1, Some(0), 2, 10)
-
-// first, encode the array we're interested in updating. If we are updating None, we can skip this step
-
-// we will also need to enrank it (to get its rank)
-
-isMetadata = 1'b1;
-
-metadata = 0; // handle of array we wish to encode
-
-selector = 2; // Encode's corresponding selector code
-
-#28; // wait for a cycle for output to settle
-
-code = resultValue;
-
-// Let's run enrank. Set selector == 6. Save the value of rank.
-
-selector = 6;
-
-#28;
-
-rank = resultValue;
-
-// Next, assuming encode/enrank is successful, we need to find if there is an available cell for our new array, and if so, what is it's handle.
-
-selector = 5;
-
-#28;
-
-// ResultBool will tell us if there does in fact exist a cell, and if so the handle will be in resultValue;
-
-// We do in fact have a cell available, so let's go write a new array!
-
-metadata = resultValue; // set metadata to the resultValue which is handle of cell we wish to write new array to. In this case, this equals 1.
-
-isMetadata = 1'b1; // we are not updating None, so set isMetadata to 1
-
-new_index = 2; // index of inserted element
-
-new_value = 8'b1010; // value of inserted element
-
-selector = 0; // 0 is selector value for update
-
-#28 // write the new array!
-
-// If the operation is correct, you should get resultBool as 1'b1
-
-selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
-
-#28;
-
-We will also need to update the codes/low/high of all cells. We will need to run congrueUp.
-
-new_index = 1; //we know from previous markAvailable that handle 1 was open, and we wrote to it. Set new_index to handle of array we wrote, which is 1.
-
-metadata = code; // code of the entry we updated
-
-new_value = rank; // rank of the entry we updated
-
-selector = 3; // selector for congrueUp
-
-#28; // execute congrueUp
-
-selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
-
-#28;
-
-2) LookUp Op
-
-// Example is analogous to ESFAArrayOp().lookUp(state_and_handle._1, 0, 0), which searches array of handle 0 for element defined at index == 0
-
-isMetadata = 1;
-
-metadata = 0; // handle of array we are searching, in this case 0
-
-selector = 2; // Encode's selector value
-
-#28
-
-// now that we have the code of the array, feed it into lookUpScan
-
-code = resultValue;
-
-metadata = code;
-
-isMetadata = 1;
-
-new_index = 0; // index we are searching for
-
-selector = 1; // selector for lookUp
-
-#28
-
-If element exists, resultBool == 1, and value will be in ResultValue
-
-3) Delete Op
-
-// Let's get destructive!
-
-// Example: ESFAArrayOp().delete(state_and_handle._1, 1)
-
-// In other words, delete the array with handle 1
-
-// first, encode the array at handle 1.
-
-isMetadata = 1;
-
-metadata = 1;
-
-selector = 2;
-
-#28;
-
-code = resultValue;
-
-selector = 4; // selector code for congrueDown
-
-new_index = 1; // the handle of the array we want to delete
-
-metadata = code; // said array's code
-
-#28; // Remove our old array, and changes code/high/low of other cells accordingly to take into account the cell's change. 
-
-// Demolition complete!
-
-selector = 8; // 8 is selector value for getting ready for a next set of inputs after a write
-
-#28;
+The request_trial_start.py script requests the start of the running of the test. Running that
+sends the command over UART to start the test. Running the poll_results.py script gets the output
+from the ESFA to see if the test passed and if it failed, what instructionID failed. When you do
+need to reset, as you can see in the constraints file (esfa_constraint.xdc) that button 0 (BTN0)
+is the reset button for this design. 
 
 If there are concerns, contact me at justintjoa@ucsb.edu
 

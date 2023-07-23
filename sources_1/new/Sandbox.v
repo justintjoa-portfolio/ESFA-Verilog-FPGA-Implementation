@@ -57,6 +57,9 @@ module Sandbox (input  wire  masterClock,
   wire        transmitting;
   wire        clearDR;
   wire        txRequest;
+  wire        button_pulse;
+
+  ButtonDebouncer debouncer(resetButton, _12MHz, _25Hz, button_pulse);
 
   // --------------------------------------------------------------------------
   // Combinatorial logic / Wiring
@@ -76,7 +79,7 @@ module Sandbox (input  wire  masterClock,
   // Generate master reset
   // --------------------------------------------------------
   Resetter resetter (.clock       (_25Hz),
-                     .resetButton (resetButton),
+                     .resetButton (button_pulse),
                      .reset       (masterReset));
 
   // --------------------------------------------------------

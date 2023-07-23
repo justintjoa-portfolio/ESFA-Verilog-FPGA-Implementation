@@ -149,7 +149,9 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
          outputReg_next = 0;
          statusReg_next[0:0] = !isRunning; 
          statusReg_next[1:1] = didRun;
-         doRun_next = 1'b1;
+         if (!isRunning && !didRun) begin  
+            doRun_next = 1'b1;
+         end
      end else begin
          statusReg_next[0:0] = didRun;
          statusReg_next[1:1] = wasSuccessful;
