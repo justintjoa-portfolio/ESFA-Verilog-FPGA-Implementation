@@ -90,6 +90,8 @@ module ESFATop(
     );
    
   
+  reg[0:0] doRun_synced;
+  
   always @ (posedge clk)
   begin
         if (reset == 0) begin   
@@ -99,6 +101,7 @@ module ESFATop(
             didRun <= 0;
             doIncrement <= 0;
             instructionOfError <= 0;
+            doRun_synced <= 1'b0;
         end else begin  
             isRunning <= isRunning_next;
             wasSuccessful <= wasSuccessful_next;
@@ -106,6 +109,7 @@ module ESFATop(
             address <= address_next; 
             doIncrement <= doIncrement_next;
             instructionOfError <= instructionOfError_next;
+            doRun_synced <= doRun;
         end
   end
   
@@ -120,7 +124,7 @@ module ESFATop(
             isRunning_next = 0;
             didRun_next = 1'b1;
         end else begin   
-            if (doRun && ! didRun_next && ! resetBusy) begin  
+            if (! isRunning_next && doRun_synced && ! didRun_next && ! resetBusy && address == 0 && instructionID == 0) begin  
                 isRunning_next = 1;
             end 
             if (isRunning_next) begin  
