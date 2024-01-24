@@ -147,7 +147,7 @@ module ESFADesign(
                     is_given_code <= 0;
                     is_available_handle <= 0;
                     is_given_rank <= 0;
-                    combinator_selector <= 8;
+                    combinator_selector <= 8'b1000;
              end else begin   
                     given_code <= given_code_next; 
                     given_rank <= given_rank_next;  

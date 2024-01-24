@@ -32,12 +32,8 @@ def init_header(title):
     outputString = outputString + "memory_initialization_radix=2;" + " " + title + "\n"
     outputString = outputString + "memory_initialization_vector=\n\n"
 
-def clearMutation():
-    add_to_output_string(0, 8, 0, 0, 0, 1)
-
 def update(index, value):
     add_to_output_string(0, 0, value, index, 0, 1)
-    clearMutation()
 
 def lookUp(index):
     add_to_output_string(0, 1, 0, index, 0, 1)
@@ -47,11 +43,9 @@ def encode(handle):
 
 def congrueUp():
     add_to_output_string(0, 3, 0, 0, 0, 1)
-    clearMutation()
 
 def congrueDown(handleOfEntryToBeDeleted):
     add_to_output_string(0, 4, 0, 0, handleOfEntryToBeDeleted, 1)
-    clearMutation()
 
 def markAvailableCell():
     add_to_output_string(0, 5, 0, 0, 0, 1)
@@ -62,7 +56,7 @@ def enrank(handle):
 def debug(handleOfNewEntry):
     add_to_output_string(0, 7, 0, 0, handleOfNewEntry, 1)
     
-#Macro functions
+# Macro functions
 
 def m_update(handle, index, value):
     if (handle is not None):
