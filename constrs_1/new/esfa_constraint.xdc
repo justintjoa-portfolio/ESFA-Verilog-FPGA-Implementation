@@ -213,6 +213,8 @@
 # set_property PACKAGE_PIN E13 [get_ports {led[0]}]
 
 
+create_clock -period 83.333 [get_ports masterClock]
+
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 
