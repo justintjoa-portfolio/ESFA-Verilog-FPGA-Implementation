@@ -40,10 +40,7 @@ module ClockDivider #(parameter RATIO = 100)                // the clock divisio
   // Combinatorial logic
   // --------------------------------------------------------------------------
   assign increment  = countRegister + {{BITS-1 {1'b0}}, 1'b1};
-  wire slowClock_raw;
-  assign slowClock_raw  = out;
-  wire enable;
-  assign enable = 1'b1;
+  assign slowClock  = out;
 
   // --------------------------------------------------------
   // counter
@@ -87,12 +84,6 @@ module ClockDivider #(parameter RATIO = 100)                // the clock divisio
       out             <= 1'b0;
     end
   end
-  
-  BUFGCE BUFGCE_inst (
-    .I(slowClock_raw),
-    .CE(enable),
-    .O(slowClock)
-  );
 
 endmodule
 
