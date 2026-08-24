@@ -21,8 +21,9 @@
 
 
 module ESFADesign(
-    input[0:0] clk, 
-    input[0:0] reset,
+    input wire clk, 
+    // Note - synchronous reset is active low. 
+    input wire reset_n,
     input[7:0] queried_handle,
     input[7:0] new_index,
     input[7:0] new_value,
@@ -121,14 +122,14 @@ module ESFADesign(
     
     wire[7:0] combinator7Context;
     
-    MemoryCell c0(clk, reset, c0Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c0Bool, c0Result, c0Context);
-    MemoryCell c1(clk, reset, c1Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c1Bool, c1Result, c1Context);
-    MemoryCell c2(clk, reset, c2Handle, queried_handle, is_available_handle, available_handle, new_index, new_value,  is_given_code, given_code, is_given_rank, given_rank, selector, c2Bool, c2Result, c2Context);
-    MemoryCell c3(clk, reset, c3Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c3Bool, c3Result, c3Context);
-    MemoryCell c4(clk, reset, c4Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c4Bool, c4Result, c4Context);
-    MemoryCell c5(clk, reset, c5Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c5Bool, c5Result, c5Context);
-    MemoryCell c6(clk, reset, c6Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c6Bool, c6Result, c6Context);
-    MemoryCell c7(clk, reset, c7Handle,queried_handle,  is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c7Bool, c7Result, c7Context);
+    MemoryCell c0(clk, reset_n, c0Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c0Bool, c0Result, c0Context);
+    MemoryCell c1(clk, reset_n, c1Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c1Bool, c1Result, c1Context);
+    MemoryCell c2(clk, reset_n, c2Handle, queried_handle, is_available_handle, available_handle, new_index, new_value,  is_given_code, given_code, is_given_rank, given_rank, selector, c2Bool, c2Result, c2Context);
+    MemoryCell c3(clk, reset_n, c3Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c3Bool, c3Result, c3Context);
+    MemoryCell c4(clk, reset_n, c4Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c4Bool, c4Result, c4Context);
+    MemoryCell c5(clk, reset_n, c5Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c5Bool, c5Result, c5Context);
+    MemoryCell c6(clk, reset_n, c6Handle, queried_handle, is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c6Bool, c6Result, c6Context);
+    MemoryCell c7(clk, reset_n, c7Handle,queried_handle,  is_available_handle, available_handle, new_index, new_value, is_given_code, given_code, is_given_rank, given_rank, selector, c7Bool, c7Result, c7Context);
     
     NodeCombinator combinator1(combinator_selector, c0Result, c0Context, c0Bool, c1Result, c1Context, c1Bool, combinator1Result, combinator1Context, combinator1Bool);
     NodeCombinator combinator2(combinator_selector, c2Result, c2Context, c2Bool, c3Result, c3Context, c3Bool, combinator2Result, combinator2Context, combinator2Bool);
@@ -140,7 +141,7 @@ module ESFADesign(
     
     always @ (posedge clk)
         begin
-            if (reset == 1'b0) begin
+            if (reset_n == 1'b0) begin
                     given_code <= 0;
                     given_rank <= 0;
                     available_handle <= 0;

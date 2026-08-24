@@ -1,2 +1,9 @@
 uart_client/__pycache__
 coe_file_generator/__pycache__
+build
+obj_dir/
+
+# Quartus generated files
+**/db/
+**/incremental_db/
+**/output_files/
