@@ -21,9 +21,9 @@
 
 
 module ESFATop(
-        input[0:0] clk,
-        input[0:0] reset, 
-        input[0:0] doRun,
+        input wire clk,
+        input wire reset, 
+        input wire doRun,
         output reg[0:0] isRunning,
         output reg[0:0] wasSuccessful,
         output reg[7:0] instructionOfError,
