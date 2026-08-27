@@ -1,4 +1,4 @@
-module EP4CE6E22C8_Top (
+module EPT4CE6Top (
     input  wire clk,
     output wire led
 );
