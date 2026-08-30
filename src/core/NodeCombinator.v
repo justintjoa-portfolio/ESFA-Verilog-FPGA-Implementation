@@ -22,50 +22,105 @@
 
 module NodeCombinator(
         input[7:0] selector,
-        input[7:0] resultValue1,
-        input[7:0] resultContext1,
-        input[0:0] resultBool1, 
-        input[7:0] resultValue2,
-        input[7:0] resultContext2,
-        input[0:0] resultBool2,
+
+        // Candidate from the left Subtree.
+        input[7:0] leftSubtreeValue,
+        input[7:0] leftSubtreeMetadata,
+        input[0:0] leftSubtreeValid, 
+
+        // Candidate from the right Subtree. 
+        input[7:0] rightSubtreeValue,
+        input[7:0] rightSubtreeMetadata,
+        input[0:0] rightSubtreeValid,
+
+        // Candidate propagated upward in the reduction tree
         output[7:0] resultValue,
-        output[7:0] resultContext,
+        output[7:0] resultMetadata,
         output[0:0] resultBool
     );
 
     
-    //Map
-    // 0 : update  
-    // 1 : lookUpScan    
-    // 2 : lookUpFinalizer   
-    // 3: encode      
-    // 4: delete   
-    // 5: congrueUp  
-    // 6: congruedown 
-    // 7: markAvailableCell
+    // Operations whose tree reduction requires comparing metadata
+    // from two valid candidates.
+    localparam [7:0] LOOKUP_SCAN = 8'd1;
+    localparam [7:0] CONGRUE_UP  = 8'd5;
+
+    // True when the left candidate should be the one to propagate down the tree.
+    reg chooseLeft;
+
+
+    always @ (*) begin   
+        // Initialize chooseLeft to whether or not we even have a feasible
+        // left Subtree. If it's not feasible don't pick it. 
+        chooseLeft = leftSubtreeValid
+
+        // Both subtrees are viable - we have to break the tie when 
+        // applicable.
+        if (leftSubtreeValid && rightSubtreeValid) begin
+            case (selector)
+
+                LOOKUP_SCAN: begin
+                    // Higher-ranked element is the most recent version.
+                    chooseLeft = (resultMetadata1 > resultMetadata2);
+                end
+
+                CONGRUE_UP: begin
+                    // Congruence reduction selects the lower Metadata.
+                    chooseLeft = (resultMetadata1 < resultMetadata2);
+                end
+
+                default: begin
+                    // No override; keep default selection.
+                end
+
+            endcase
+        end
+
+        
+    end
+
+    // ESFA operation map
+    // 0 : update
+    // 1 : lookupScan
+    // 2 : encode
+    // 3 : congrueUp
+    // 4 : congrueDown
+    // 5 : findAvailableCell
+    // 6 : enrank
+    // 7 : debug
+    // 8 : no-op
+    //
+    // NodeCombinator special reductions:
+    //   lookupScan (1):
+    //     metadata = element rank
+    //     selects MAX rank to resolve shadowed elements.
+    //
+    //   findAvailableCell (5):
+    //     metadata = physical MemoryCell handle
+    //     selects MIN handle to choose an available cell.
+    //
+    // All other operations use normal valid-candidate propagation.
     
-    // selector 5 and 6 act as a void
-    
-    assign resultBool = resultBool1 || resultBool2;
+    assign resultBool = leftSubtreeValid || rightSubtreeValid;
     
     wire[0:0] isLeft;
-    assign isLeft = ((resultBool1 && resultBool2) && (selector == 8'b1 || selector == 8'b101))? 
+    assign isLeft = ((leftSubtreeValid && rightSubtreeValid) && (selector == 8'b1 || selector == 8'b101))? 
                           (selector == 1) ? 
-                                (resultContext1 > resultContext2) ?
+                                (leftSubtreeMetadata > rightSubtreeMetadata) ?
                                     1'b1 
                                     : 1'b0
-                                 : (resultContext1 < resultContext2) ?
+                                 : (leftSubtreeMetadata < rightSubtreeMetadata) ?
                                     1'b1  
                                     : 1'b0          
-                          : resultBool1? 
+                          : leftSubtreeValid? 
                             1'b1 
                             : 1'b0;
 
     
     
-    assign resultContext = isLeft ? resultContext1 : resultContext2;
+    assign resultMetadata = chooseleft ? leftSubtreeMetadata : rightSubtreeMetadata;
     
-    assign resultValue = isLeft ? resultValue1 : resultValue2;
+    assign resultValue = chooseleft ? leftSubtreeValue : rightSubtreeValue;
     
                              
 endmodule                  
