@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "ESFAOperations.vh"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -61,12 +62,6 @@ module NodeCombinator(
     //
     // All other operations use normal valid-candidate propagation.
 
-
-    // Operations whose tree reduction requires comparing metadata
-    // from two valid candidates.
-    localparam [7:0] LOOKUP_SCAN         = 8'd1;
-    localparam [7:0] FIND_AVAILABLE_CELL = 8'd5;
-
     // True when the left candidate should propagate upward toward the root.
     reg chooseLeft;
 
@@ -81,16 +76,18 @@ module NodeCombinator(
         if (leftSubtreeValid && rightSubtreeValid) begin
             case (selector)
 
-                LOOKUP_SCAN: begin
-                    // During lookup, metadata carries the element rank.
-                    // Multiple physical elements may match because newer values
-                    // can shadow older versions. Select the highest-rank candidate.
-                    chooseLeft = (leftSubtreeMetadata > rightSubtreeMetadata);
+                `ESFA_LOOKUP_SCAN: begin
+                    // During lookup, metadata carries rank.
+                    // Higher-ranked matching elements shadow older versions.
+                    chooseLeft =
+                        (leftSubtreeMetadata > rightSubtreeMetadata);
                 end
 
-                FIND_AVAILABLE_CELL: begin
-                    // Find available cell selects the minimum handle.
-                    chooseLeft = (leftSubtreeMetadata < rightSubtreeMetadata);
+                `ESFA_FIND_AVAILABLE_CELL: begin
+                    // During allocation, metadata carries the physical cell handle.
+                    // Choose the lowest-numbered available cell.
+                    chooseLeft =
+                        (leftSubtreeMetadata < rightSubtreeMetadata);
                 end
 
                 default: begin
