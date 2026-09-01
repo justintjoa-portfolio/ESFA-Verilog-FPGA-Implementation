@@ -23,20 +23,20 @@
 module NodeCombinator(
         input[7:0] selector,
 
-        // Candidate from the left Subtree.
+        // Candidate from the left subtree.
         input[7:0] leftSubtreeValue,
         input[7:0] leftSubtreeMetadata,
-        input[0:0] leftSubtreeValid, 
+        input wire leftSubtreeValid, 
 
-        // Candidate from the right Subtree. 
+        // Candidate from the right subtree. 
         input[7:0] rightSubtreeValue,
         input[7:0] rightSubtreeMetadata,
-        input[0:0] rightSubtreeValid,
+        input wire rightSubtreeValid,
 
         // Candidate propagated upward in the reduction tree
         output[7:0] resultValue,
         output[7:0] resultMetadata,
-        output[0:0] resultBool
+        output[0:0] resultValid
     );
 
     // ESFA operation map
@@ -64,30 +64,32 @@ module NodeCombinator(
 
     // Operations whose tree reduction requires comparing metadata
     // from two valid candidates.
-    localparam [7:0] LOOKUP_SCAN = 8'd1;
-    localparam [7:0] CONGRUE_UP  = 8'd5;
+    localparam [7:0] LOOKUP_SCAN         = 8'd1;
+    localparam [7:0] FIND_AVAILABLE_CELL = 8'd5;
 
-    // True when the left candidate should be the one to propagate down the tree.
+    // True when the left candidate should propagate upward toward the root.
     reg chooseLeft;
 
 
     always @ (*) begin   
-        // Initialize chooseLeft to whether or not we even have a feasible
-        // left Subtree. If it's not feasible don't pick it. 
-        chooseLeft = leftSubtreeValid
+        // By default, select the left subtree if it has a valid candidate.
+        // If it is invalid, the right subtree is selected instead.
+        chooseLeft = leftSubtreeValid;
 
-        // Both subtrees are viable - we have to break the tie when 
-        // applicable.
+        // If both subtrees contain valid candidates, some operations
+        // require metadata comparison to determine which candidate wins.
         if (leftSubtreeValid && rightSubtreeValid) begin
             case (selector)
 
                 LOOKUP_SCAN: begin
-                    // Higher-ranked element is the most recent version.
+                    // During lookup, metadata carries the element rank.
+                    // Multiple physical elements may match because newer values
+                    // can shadow older versions. Select the highest-rank candidate.
                     chooseLeft = (leftSubtreeMetadata > rightSubtreeMetadata);
                 end
 
-                CONGRUE_UP: begin
-                    // Congruence reduction selects the lower Metadata.
+                FIND_AVAILABLE_CELL: begin
+                    // Find available cell selects the minimum handle.
                     chooseLeft = (leftSubtreeMetadata < rightSubtreeMetadata);
                 end
 
@@ -102,11 +104,11 @@ module NodeCombinator(
     end
 
     
-    assign resultBool = leftSubtreeValid || rightSubtreeValid;    
+    assign resultValid = leftSubtreeValid || rightSubtreeValid;    
     
-    assign resultMetadata = chooseleft ? leftSubtreeMetadata : rightSubtreeMetadata;
+    assign resultMetadata = chooseLeft ? leftSubtreeMetadata : rightSubtreeMetadata;
     
-    assign resultValue = chooseleft ? leftSubtreeValue : rightSubtreeValue;
+    assign resultValue = chooseLeft ? leftSubtreeValue : rightSubtreeValue;
     
                              
 endmodule                  
