@@ -39,46 +39,6 @@ module NodeCombinator(
         output[0:0] resultBool
     );
 
-    
-    // Operations whose tree reduction requires comparing metadata
-    // from two valid candidates.
-    localparam [7:0] LOOKUP_SCAN = 8'd1;
-    localparam [7:0] CONGRUE_UP  = 8'd5;
-
-    // True when the left candidate should be the one to propagate down the tree.
-    reg chooseLeft;
-
-
-    always @ (*) begin   
-        // Initialize chooseLeft to whether or not we even have a feasible
-        // left Subtree. If it's not feasible don't pick it. 
-        chooseLeft = leftSubtreeValid
-
-        // Both subtrees are viable - we have to break the tie when 
-        // applicable.
-        if (leftSubtreeValid && rightSubtreeValid) begin
-            case (selector)
-
-                LOOKUP_SCAN: begin
-                    // Higher-ranked element is the most recent version.
-                    chooseLeft = (resultMetadata1 > resultMetadata2);
-                end
-
-                CONGRUE_UP: begin
-                    // Congruence reduction selects the lower Metadata.
-                    chooseLeft = (resultMetadata1 < resultMetadata2);
-                end
-
-                default: begin
-                    // No override; keep default selection.
-                end
-
-            endcase
-        end
-
-        
-    end
-
     // ESFA operation map
     // 0 : update
     // 1 : lookupScan
@@ -100,23 +60,49 @@ module NodeCombinator(
     //     selects MIN handle to choose an available cell.
     //
     // All other operations use normal valid-candidate propagation.
-    
-    assign resultBool = leftSubtreeValid || rightSubtreeValid;
-    
-    wire[0:0] isLeft;
-    assign isLeft = ((leftSubtreeValid && rightSubtreeValid) && (selector == 8'b1 || selector == 8'b101))? 
-                          (selector == 1) ? 
-                                (leftSubtreeMetadata > rightSubtreeMetadata) ?
-                                    1'b1 
-                                    : 1'b0
-                                 : (leftSubtreeMetadata < rightSubtreeMetadata) ?
-                                    1'b1  
-                                    : 1'b0          
-                          : leftSubtreeValid? 
-                            1'b1 
-                            : 1'b0;
+
+
+    // Operations whose tree reduction requires comparing metadata
+    // from two valid candidates.
+    localparam [7:0] LOOKUP_SCAN = 8'd1;
+    localparam [7:0] CONGRUE_UP  = 8'd5;
+
+    // True when the left candidate should be the one to propagate down the tree.
+    reg chooseLeft;
+
+
+    always @ (*) begin   
+        // Initialize chooseLeft to whether or not we even have a feasible
+        // left Subtree. If it's not feasible don't pick it. 
+        chooseLeft = leftSubtreeValid
+
+        // Both subtrees are viable - we have to break the tie when 
+        // applicable.
+        if (leftSubtreeValid && rightSubtreeValid) begin
+            case (selector)
+
+                LOOKUP_SCAN: begin
+                    // Higher-ranked element is the most recent version.
+                    chooseLeft = (leftSubtreeMetadata > rightSubtreeMetadata);
+                end
+
+                CONGRUE_UP: begin
+                    // Congruence reduction selects the lower Metadata.
+                    chooseLeft = (leftSubtreeMetadata < rightSubtreeMetadata);
+                end
+
+                default: begin
+                    // No override; keep default selection.
+                end
+
+            endcase
+        end
+
+        
+    end
 
     
+    assign resultBool = leftSubtreeValid || rightSubtreeValid;    
     
     assign resultMetadata = chooseleft ? leftSubtreeMetadata : rightSubtreeMetadata;
     
