@@ -62,17 +62,6 @@ module MemoryCell(
      reg[7:0] prev_selector;
      reg[7:0] prev_selector_next;
      
-    //Map
-    // 0 : update  
-    // 1 : lookUpScan    
-    // 2: encode     
-    // 3: congrueUp 
-    // 4: congrueDown
-    // 5: markAvailableCell
-    // 6: enrank
-    // 7: debug
-     
-     
      
     always @ (posedge clk)
         begin
@@ -124,7 +113,7 @@ module MemoryCell(
                prev_selector_next = selector; 
                if (selector != prev_selector) begin  
                     case (selector)
-                        0: begin
+                        `ESFA_UPDATE: begin
                             new_bool_next = (available_handle == handle && is_available_handle);
                    
                             if (new_bool_next) begin  
@@ -141,20 +130,20 @@ module MemoryCell(
                             new_context_next = handle;
                         end
                         
-                        1: begin
+                        `ESFA_LOOKUP_SCAN: begin
                             new_bool_next = (new_index_next == inserted_index) && is_given_code && (given_code >= new_low_next) && (given_code <= new_high_next);
                             new_result_value_next = new_value_next;
                             new_context_next = new_rank_next;
                         
                         end
                    
-                        2: begin
+                        `ESFA_ENCODE: begin
                             new_bool_next = (!(queried_handle > 7)) && (new_arrDef_next) && (queried_handle  == handle);
                             new_result_value_next = new_array_code_next;
                             new_context_next = new_array_code_next;
                         end
                         
-                        3: begin
+                        `ESFA_CONGRUE_UP: begin
                             if (is_given_code && is_given_rank) begin 
                                 if (available_handle == handle && is_available_handle) begin  
                                     new_bool_next = 1'b1; // allows so that output of this is equivalent to preceding op, update 
@@ -178,7 +167,7 @@ module MemoryCell(
                             end
                         end
                         
-                        4: begin
+                        `ESFA_CONGRUE_DOWN: begin
                             if (is_given_code) begin  
                                 new_bool_next = 1'b1;
                                 if (queried_handle == handle) begin    
@@ -205,19 +194,19 @@ module MemoryCell(
                             end
                         end
                     
-                        5: begin
+                        `ESFA_FIND_AVAILABLE_CELL: begin
                             new_bool_next = ! new_eltDef_next;
                             new_result_value_next = handle;
                             new_context_next = handle;
                         end
     
-                        6: begin   
+                        `ESFA_ENRANK: begin   
                             new_bool_next = (!(queried_handle > 7)) && (new_arrDef_next) && (queried_handle == handle);
                             new_result_value_next = new_rank_next;
                             new_context_next = new_rank_next;
                         end
                         
-                        7: begin
+                        `ESFA_DEBUG_SINGLE_CELL_CONGRUE_UP: begin
                             if (queried_handle == handle) begin    
                                 if (is_given_code && is_given_rank) begin 
                                     new_bool_next = 1'b1;
@@ -243,7 +232,7 @@ module MemoryCell(
                             end
                         end           
                         
-                        8: begin 
+                        `ESFA_NO_OP: begin 
                             // no op selector 
                         end         
                 endcase

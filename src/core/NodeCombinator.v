@@ -39,18 +39,7 @@ module NodeCombinator(
         output[7:0] resultMetadata,
         output[0:0] resultValid
     );
-
-    // ESFA operation map
-    // 0 : update
-    // 1 : lookupScan
-    // 2 : encode
-    // 3 : congrueUp
-    // 4 : congrueDown
-    // 5 : findAvailableCell
-    // 6 : enrank
-    // 7 : debug
-    // 8 : no-op
-    //
+    
     // NodeCombinator special reductions:
     //   lookupScan (1):
     //     metadata = element rank
