@@ -22,17 +22,17 @@
 
 
 module MemoryCell(
-        input[0:0] clk,
-        input[0:0] reset,
+        input wire clk,
+        input wire reset,
         input[7:0] handle,
         input[7:0] queried_handle,
-        input[0:0] is_available_handle,
+        input wire is_available_handle,
         input[7:0] available_handle,
         input[7:0] inserted_index,
         input[7:0] inserted_value,
-        input[0:0] is_given_code,
+        input wire is_given_code,
         input[7:0] given_code,
-        input[0:0] is_given_rank,
+        input wire is_given_rank,
         input[7:0] given_rank,
         input[7:0] selector,
         output reg[0:0] new_bool,
