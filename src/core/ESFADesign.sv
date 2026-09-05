@@ -21,9 +21,10 @@
 
 
 module ESFADesign(
-    input wire clk, 
+    parameter int CELL_POWER = 3,
+    input logic clk, 
     // Note - synchronous reset is active low. 
-    input wire reset_n,
+    input logic reset_n,
     input[7:0] queried_handle,
     input[7:0] new_index,
     input[7:0] new_value,
@@ -32,6 +33,9 @@ module ESFADesign(
     input[7:0] selector
     );
     
+    localparam int NUM_CELLS = 1 << CELL_POWER;
+
+
     reg[7:0] given_code;
     reg[7:0] given_rank;
     reg[7:0] available_handle;
