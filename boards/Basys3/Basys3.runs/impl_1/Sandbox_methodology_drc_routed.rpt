@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Sep  7 11:48:23 2026
+| Date         : Mon Sep  7 11:52:04 2026
 | Host         : Justin running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Sandbox_methodology_drc_routed.rpt -pb Sandbox_methodology_drc_routed.pb -rpx Sandbox_methodology_drc_routed.rpx
 | Design       : Sandbox
@@ -23,17 +23,27 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 49
-+-----------+------------------+--------------------------------------------------------+------------+
-| Rule      | Severity         | Description                                            | Violations |
-+-----------+------------------+--------------------------------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                            | 47         |
-| XDCC-1    | Warning          | Scoped Clock constraint overwritten with the same name | 1          |
-| XDCC-7    | Warning          | Scoped Clock constraint overwritten on the same source | 1          |
-+-----------+------------------+--------------------------------------------------------+------------+
+             Violations found: 51
++-----------+------------------+------------------------------------------------------------------+------------+
+| Rule      | Severity         | Description                                                      | Violations |
++-----------+------------------+------------------------------------------------------------------+------------+
+| TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 2          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 47         |
+| TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 2          |
++-----------+------------------+------------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-6#1 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_out1_system_clock and clk_out1_system_clock_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_system_clock] -to [get_clocks clk_out1_system_clock_1]
+Related violations: <none>
+
+TIMING-6#2 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_out1_system_clock_1 and clk_out1_system_clock are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_system_clock_1] -to [get_clocks clk_out1_system_clock]
+Related violations: <none>
+
 TIMING-17#1 Critical Warning
 Non-clocked sequential cell  
 The clock pin dataInterface/uart/moduleResetReg_reg[0]/C is not reached by a timing clock
@@ -269,18 +279,14 @@ Non-clocked sequential cell
 The clock pin resetter/startReset_reg/C is not reached by a timing clock
 Related violations: <none>
 
-XDCC-1#1 Warning
-Scoped Clock constraint overwritten with the same name  
-A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
-New: create_clock -period 10.000 [get_ports masterClock] (Source: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc (Line: 4))
-Previous: create_clock -period 10.000 [get_ports masterClock] (Source: c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock.xdc (Line: 53))
+TIMING-56#1 Warning
+Missing logically or physically excluded clock groups constraint  
+Multiple clocks are user generated or auto-derived on the source pin system_clock_inst/inst/mmcm_adv_inst/CLKFBOUT but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: clkfbout_system_clock, clkfbout_system_clock_1
 Related violations: <none>
 
-XDCC-7#1 Warning
-Scoped Clock constraint overwritten on the same source  
-A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
-New: create_clock -period 10.000 [get_ports masterClock] (Source: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc (Line: 4))
-Previous: create_clock -period 10.000 [get_ports masterClock] (Source: c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock.xdc (Line: 53))
+TIMING-56#2 Warning
+Missing logically or physically excluded clock groups constraint  
+Multiple clocks are user generated or auto-derived on the source pin system_clock_inst/inst/mmcm_adv_inst/CLKOUT0 but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: clk_out1_system_clock, clk_out1_system_clock_1
 Related violations: <none>
 
 

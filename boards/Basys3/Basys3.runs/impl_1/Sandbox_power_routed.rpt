@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Mon Sep  7 11:48:24 2026
+| Date             : Mon Sep  7 11:52:04 2026
 | Host             : Justin running 64-bit major release  (build 9200)
 | Command          : report_power -file Sandbox_power_routed.rpt -pb Sandbox_power_summary_routed.pb -rpx Sandbox_power_routed.rpx
 | Design           : Sandbox
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.182        |
+| Total On-Chip Power (W)  | 0.185        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.112        |
-| Device Static (W)        | 0.070        |
+| Dynamic (W)              | 0.113        |
+| Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.1         |
 | Junction Temperature (C) | 25.9         |
@@ -52,20 +52,20 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.002 |        5 |       --- |             --- |
+| Clocks                  |     0.002 |        8 |       --- |             --- |
 | Slice Logic             |     0.002 |     2778 |       --- |             --- |
-|   LUT as Logic          |     0.001 |     1382 |     20800 |            6.64 |
+|   LUT as Logic          |     0.001 |     1383 |     20800 |            6.65 |
 |   CARRY4                |    <0.001 |       99 |      8150 |            1.21 |
 |   Register              |    <0.001 |      764 |     41600 |            1.84 |
 |   F7/F8 Muxes           |    <0.001 |       24 |     32600 |            0.07 |
 |   LUT as Shift Register |    <0.001 |        4 |      9600 |            0.04 |
 |   Others                |     0.000 |       55 |       --- |             --- |
-| Signals                 |     0.002 |     1707 |       --- |             --- |
+| Signals                 |     0.002 |     1706 |       --- |             --- |
 | Block RAM               |    <0.001 |        1 |        50 |            2.00 |
 | MMCM                    |     0.106 |        1 |         5 |           20.00 |
-| I/O                     |    <0.001 |        8 |       106 |            7.55 |
-| Static Power            |     0.070 |          |           |                 |
-| Total                   |     0.182 |          |           |                 |
+| I/O                     |     0.001 |        8 |       106 |            7.55 |
+| Static Power            |     0.072 |          |           |                 |
+| Total                   |     0.185 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -77,9 +77,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.016 |       0.006 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.071 |       0.059 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18    |       1.800 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -128,13 +128,16 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-----------------------+----------------------------------------------+-----------------+
-| Clock                 | Domain                                       | Constraint (ns) |
-+-----------------------+----------------------------------------------+-----------------+
-| clk_out1_system_clock | system_clock_inst/inst/clk_out1_system_clock |            20.0 |
-| clkfbout_system_clock | system_clock_inst/inst/clkfbout_system_clock |            10.0 |
-| masterClock           | masterClock                                  |            10.0 |
-+-----------------------+----------------------------------------------+-----------------+
++-------------------------+----------------------------------------------+-----------------+
+| Clock                   | Domain                                       | Constraint (ns) |
++-------------------------+----------------------------------------------+-----------------+
+| clk_out1_system_clock   | system_clock_inst/inst/clk_out1_system_clock |            20.0 |
+| clk_out1_system_clock_1 | system_clock_inst/inst/clk_out1_system_clock |            20.0 |
+| clkfbout_system_clock   | system_clock_inst/inst/clkfbout_system_clock |            10.0 |
+| clkfbout_system_clock_1 | system_clock_inst/inst/clkfbout_system_clock |            10.0 |
+| masterClock             | masterClock                                  |            10.0 |
+| sys_clk_pin             | masterClock                                  |            10.0 |
++-------------------------+----------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -146,7 +149,7 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| Sandbox             |     0.112 |
+| Sandbox             |     0.113 |
 |   process           |     0.005 |
 |     top             |     0.004 |
 |       blockROM      |     0.001 |
