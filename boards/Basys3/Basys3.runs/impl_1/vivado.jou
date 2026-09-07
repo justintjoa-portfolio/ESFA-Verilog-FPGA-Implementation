@@ -11,3 +11,4 @@
 # Journal file: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/impl_1\vivado.jou
 # Running On: Justin, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 16, Host memory: 16474 MB
 #-----------------------------------------------------------
+source Sandbox.tcl -notrace
