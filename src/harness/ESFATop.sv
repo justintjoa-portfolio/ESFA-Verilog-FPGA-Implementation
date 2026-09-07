@@ -44,6 +44,7 @@ module ESFATop(
         logic       is_mutating;             // romVal[0]
     } EsfaRomInstruction;
 
+  // Word addressed, not byte addressed.
   logic[7:0] address;
   logic doIncrement;
 
