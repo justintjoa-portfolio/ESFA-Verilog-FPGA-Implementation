@@ -71,6 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -109,13 +110,13 @@ read_verilog -library xil_defaultlib {
   C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v
   C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/Sandbox.v
 }
-read_ip -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
-
 read_ip -quiet c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/system_clock/system_clock.xci
 set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock_ooc.xdc]
+
+read_ip -quiet c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

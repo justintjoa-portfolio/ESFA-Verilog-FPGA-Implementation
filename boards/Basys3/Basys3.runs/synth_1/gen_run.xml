@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1788817810" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Sandbox.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1788820262" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Sandbox.dcp">
   <File Type="PA-TCL" Name="Sandbox.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Sandbox_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Sandbox_reports.tcl"/>
@@ -182,6 +182,6 @@
     </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_clock"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
 </GenRun>

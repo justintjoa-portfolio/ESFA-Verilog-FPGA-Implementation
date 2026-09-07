@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "blk_mem_gen_0_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -81,15 +83,15 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.cache/wt [current_project]
 set_property parent.project_path C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.xpr [current_project]
-set_property XPM_LIBRARIES XPM_MEMORY [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -190,15 +192,15 @@ if { [catch {
 close [open .end.used_ip_cache.rst w]
 }; # end if cacheID 
 
-add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.v -of_objects [get_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci]
+add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.v -of_objects [get_files c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
 
-add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.vhdl -of_objects [get_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci]
+add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.vhdl -of_objects [get_files c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
 
-add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_sim_netlist.v -of_objects [get_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci]
+add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_sim_netlist.v -of_objects [get_files c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
 
-add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_sim_netlist.vhdl -of_objects [get_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci]
+add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_sim_netlist.vhdl -of_objects [get_files c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
 
-add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp -of_objects [get_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci]
+add_files C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp -of_objects [get_files c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
 
 if {[file isdir C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.ip_user_files/ip/blk_mem_gen_0]} {
   catch { 
