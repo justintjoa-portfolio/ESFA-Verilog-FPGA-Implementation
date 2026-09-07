@@ -44,14 +44,14 @@ module ESFATop(
         logic       is_mutating;             // romVal[0]
     } EsfaRomInstruction;
 
-  logic[31:0] address;
+  logic[7:0] address;
   logic doIncrement;
 
   logic isRunning_next;
   logic wasSuccessful_next;  
   logic didRun_next;
   logic[7:0] instructionOfError_next;
-  logic[31:0] address_next;
+  logic[7:0] address_next;
   logic doIncrement_next;
 
     
@@ -135,7 +135,7 @@ module ESFATop(
              end
              if (isRunning_next) begin    
                 if (doIncrement_next) begin 
-                    address_next = address_next + 8;
+                    address_next = address_next + 1;
                     doIncrement_next = 0;
                 end else begin 
                     doIncrement_next = 1;
