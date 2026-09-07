@@ -21,55 +21,67 @@
 
 
 module ESFATop(
-        input wire clk,
-        input wire reset, 
-        EsfaTopIO.io io
+        input logic clk,
+        input logic[0:0] reset_n, 
+        input logic[0:0] doRun,
+        output logic isRunning,
+        output logic wasSuccessful,
+        output logic[7:0] instructionOfError,
+        output logic didRun
     );
-    
-  logic [31:0] address;
+
+    typedef struct packed {
+        logic [7:0] reserved_byte;           // romVal[63:56]
+        logic [7:0] instruction_id;          // romVal[55:48]
+        logic [7:0] expected_result_value;   // romVal[47:40]
+        logic [7:0] selector;                // romVal[39:32]
+        logic [7:0] new_value;               // romVal[31:24]
+        logic [7:0] new_index;               // romVal[23:16]
+        logic [7:0] queried_handle;          // romVal[15:8]
+        logic [4:0] reserved_flags;          // romVal[7:3]
+        logic       end_of_program;          // romVal[2]
+        logic       expected_result_bool;    // romVal[1]
+        logic       is_mutating;             // romVal[0]
+    } EsfaRomInstruction;
+
+  logic[31:0] address;
   logic doIncrement;
 
   logic isRunning_next;
   logic wasSuccessful_next;  
   logic didRun_next;
-  logic [7:0] instructionOfError_next;
-  logic [31:0] address_next;
+  logic[7:0] instructionOfError_next;
+  logic[31:0] address_next;
   logic doIncrement_next;
 
-  wire[63:0] romVal;
-  wire[0:0] isMutating;
-  assign isMutating = romVal[0:0];
-  wire[0:0] expectedResultBool;
-  assign expectedResultBool = romVal[1:1];
-  wire[0:0] endOfProgram;
-  assign endOfProgram = romVal[2:2];
-  wire[7:0] expectedResultValue;
-  assign expectedResultValue = romVal[47:40];  
-  wire[7:0] instructionID;
-  assign instructionID = romVal[55:48];
     
+  logic [63:0] romVal;
+  EsfaRomInstruction instruction;
 
+  assign instruction = romVal;
+    
+    
   //ESFA specific wires
   EsfaDesignIO esfa_design_io();
-  assign esfa_design_io.queried_handle = romVal[15:8];
-  assign esfa_design_io.new_index = romVal[23:16];
-  assign esfa_design_io.new_value = romVal[31:24];
-  assign esfa_design_io.selector = romVal[39:32];
+  assign esfa_design_io.queried_handle = instruction.queried_handle;
+  assign esfa_design_io.new_index = instruction.new_index;
+  assign esfa_design_io.new_value = instruction.new_value;
+  assign esfa_design_io.selector = instruction.selector;
 
-  wire[0:0] resetBusy;
+  logic [0:0] resetBusy;
   
   //BROM interface
   blk_mem_gen_0 blockROM(
     .clka(clk),
-    .rsta(! reset), //reset acts on 1 
+    .rsta(! reset_n), //reset acts on 1 
     .addra(address), 
     .douta(romVal),
     .rsta_busy(resetBusy)
   );
-
+  
   ESFADesign l1(
     .clk(clk),
-    .reset(reset),
+    .reset_n(reset_n),
     .esfa_design_io(esfa_design_io)
   );
    
@@ -78,7 +90,7 @@ module ESFATop(
   
   always @ (posedge clk)
   begin
-        if (reset == 0) begin   
+        if (reset_n == 0) begin   
             isRunning <= 1'b0;
             wasSuccessful <= 1'b1;
             address <= 0;
@@ -104,20 +116,20 @@ module ESFATop(
         address_next = address;
         doIncrement_next = doIncrement;
         instructionOfError_next = instructionOfError;
-        if (endOfProgram) begin   
+        if (instruction.end_of_program) begin   
             isRunning_next = 0;
             didRun_next = 1'b1;
         end else begin   
-            if (! isRunning_next && doRun_synced && ! didRun_next && ! resetBusy && address == 0 && instructionID == 0) begin  
+            if (! isRunning_next && doRun_synced && ! didRun_next && ! resetBusy && address == 0 && instruction.instruction_id == 0) begin  
                 isRunning_next = 1;
             end 
             if (isRunning_next) begin  
-                if (!isMutating) begin   
-                   if ((expectedResultBool && (! esfa_design_io.resultBool || resultValue != expectedResultValue)) || (! expectedResultBool && resultBool)) begin     
+                if (!instruction.is_mutating) begin   
+                   if ((instruction.expected_result_bool && (! esfa_design_io.resultBool || esfa_design_io.resultValue != instruction.expected_result_value)) || (! instruction.expected_result_bool && esfa_design_io.resultBool)) begin     
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
-                         instructionOfError_next = instructionID;
+                         instructionOfError_next = instruction.instruction_id;
                     end
                 end 
              end
