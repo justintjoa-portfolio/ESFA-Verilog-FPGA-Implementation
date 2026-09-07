@@ -20,7 +20,7 @@
 
 module SandboxProcess (input  wire        masterClock,    // operating clock for this process
                        input  wire        slowClock,      // cock to operate user observable indicators (LEDs)
-                       input  wire        reset,          // module reset
+                       input  wire        reset_n,          // module reset
 
                        input  wire        dataReceived,   // 1 indicates that data has arrived for the process.
                        input  wire [7:0]  control,        // the received control byte.
@@ -76,7 +76,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   // --------------------------------------------------------
   always @ (posedge masterClock)
   begin
-    if (reset == 1'b0)
+    if (reset_n == 1'b0)
     begin
       indicatorState  <= 3'h0;
       indicatorReg    <= 1'b0;
@@ -161,7 +161,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
   
   always @ (posedge masterClock)
   begin
-    if (reset == 1'b0)
+    if (reset_n == 1'b0)
     begin
       state                     <= 3'h0;
       statusReg                 <= 8'h0;
@@ -232,7 +232,7 @@ module SandboxProcess (input  wire        masterClock,    // operating clock for
     
     ESFATop top(
         .clk(masterClock),
-        .reset(reset), 
+        .reset_n(reset_n), 
         .doRun(doRun),
         .isRunning(isRunning),
         .wasSuccessful(wasSuccessful),

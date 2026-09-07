@@ -125,7 +125,7 @@ module Sandbox (input  wire  masterClock,
 
     process (.masterClock   (masterClock),
              .slowClock     (_25Hz),
-             .reset         (masterReset),
+             .reset_n         (masterReset),
              .dataReceived  (dataReceived),
              .control       (control),
              .inputData     (rxData),

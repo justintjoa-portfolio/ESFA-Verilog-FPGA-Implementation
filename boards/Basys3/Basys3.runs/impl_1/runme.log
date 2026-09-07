@@ -1,0 +1,7 @@
+
+*** Running vivado
+    with args -log Sandbox.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Sandbox.tcl -notrace
+
+
+ECHO is off.
+ECHO is off.
