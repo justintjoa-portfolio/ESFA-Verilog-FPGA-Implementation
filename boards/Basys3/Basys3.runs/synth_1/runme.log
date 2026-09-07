@@ -1,0 +1,144 @@
+
+*** Running vivado
+    with args -log Sandbox.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Sandbox.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source Sandbox.tcl -notrace
+Command: synth_design -top Sandbox -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 4664
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1327.207 ; gain = 439.281
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-10643] design contains a SystemVerilog implicit generate region [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:95]
+WARNING: [Synth 8-10744] generate block is only allowed inside a loop or conditional generate in SystemVerilog mode [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:95]
+WARNING: [Synth 8-10643] design contains a SystemVerilog implicit generate region [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:149]
+WARNING: [Synth 8-10744] generate block is only allowed inside a loop or conditional generate in SystemVerilog mode [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:149]
+WARNING: [Synth 8-9661] initial value of parameter 'MAX_HANDLE' is omitted [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/MemoryCell.sv:24]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'button' is not allowed [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:49]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'q' is not allowed [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:96]
+WARNING: [Synth 8-11065] parameter 'BITS' becomes localparam in 'ClockDivider' with formal parameter declaration list [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:28]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'out' is not allowed [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:103]
+WARNING: [Synth 8-11065] parameter 'COUNTER_BITS' becomes localparam in 'WideUARTIO' with formal parameter declaration list [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v:122]
+INFO: [Synth 8-6157] synthesizing module 'Sandbox' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/Sandbox.v:27]
+INFO: [Synth 8-6157] synthesizing module 'ButtonDebouncer' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:34]
+INFO: [Synth 8-6157] synthesizing module 'bdb_DFF' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:91]
+INFO: [Synth 8-6155] done synthesizing module 'bdb_DFF' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:91]
+INFO: [Synth 8-6155] done synthesizing module 'ButtonDebouncer' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/ButtonDebouncer.v:34]
+INFO: [Synth 8-6157] synthesizing module 'Resetter' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:28]
+INFO: [Synth 8-6157] synthesizing module 'res_DFF' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:98]
+INFO: [Synth 8-6155] done synthesizing module 'res_DFF' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:98]
+INFO: [Synth 8-6155] done synthesizing module 'Resetter' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:28]
+INFO: [Synth 8-6157] synthesizing module 'ClockDivider' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+	Parameter RATIO bound to: 480000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDivider' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+INFO: [Synth 8-6157] synthesizing module 'WideUARTIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v:82]
+	Parameter WIDTH bound to: 4 - type: integer 
+	Parameter CLOCK_SCALE bound to: 26 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'UART' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UART.v:53]
+	Parameter CLOCK_SCALE bound to: 26 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ClockDivider__parameterized0' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+	Parameter RATIO bound to: 26 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDivider__parameterized0' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+INFO: [Synth 8-6157] synthesizing module 'ClockDivider__parameterized1' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+	Parameter RATIO bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDivider__parameterized1' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
+INFO: [Synth 8-6157] synthesizing module 'UARTTransmitter' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UARTTransmitter.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'UARTTransmitter' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UARTTransmitter.v:30]
+INFO: [Synth 8-6157] synthesizing module 'UARTReceiver' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UARTReceiver.v:54]
+INFO: [Synth 8-6155] done synthesizing module 'UARTReceiver' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UARTReceiver.v:54]
+INFO: [Synth 8-6155] done synthesizing module 'UART' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/UART.v:53]
+WARNING: [Synth 8-7071] port 'dataOverrun' of module 'UART' is unconnected for instance 'uart' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v:360]
+WARNING: [Synth 8-7023] instance 'uart' of module 'UART' has 11 connections declared, but only 10 given [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v:360]
+INFO: [Synth 8-6155] done synthesizing module 'WideUARTIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/phys_io/uart/WideUARTIO.v:82]
+INFO: [Synth 8-6157] synthesizing module 'SandboxProcess' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/SandboxProcess.v:21]
+INFO: [Synth 8-6157] synthesizing module 'ESFATop' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/ESFATop.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'EsfaDesignIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/EsfaDesignIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'EsfaDesignIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/EsfaDesignIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-16348-Justin/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-16348-Justin/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'ESFADesign' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:24]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'MemoryCell' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/MemoryCell.sv:24]
+	Parameter MAX_HANDLE bound to: 32'sb00000000000000000000000000000111 
+INFO: [Synth 8-6157] synthesizing module 'CombinatorIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'CombinatorIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/CombinatorIO.sv:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/MemoryCell.sv:107]
+INFO: [Synth 8-6155] done synthesizing module 'MemoryCell' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/MemoryCell.sv:24]
+INFO: [Synth 8-6157] synthesizing module 'NodeCombinator' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/NodeCombinator.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'NodeCombinator' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/NodeCombinator.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:183]
+INFO: [Synth 8-6155] done synthesizing module 'ESFADesign' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:24]
+INFO: [Synth 8-6155] done synthesizing module 'ESFATop' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/ESFATop.sv:23]
+ERROR: [Synth 8-11365] for the instance 'top' of module 'ESFATop' declared at 'C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/ESFATop.sv:23', named port connection 'reset' does not exist [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/SandboxProcess.v:235]
+ERROR: [Synth 8-6156] failed synthesizing module 'SandboxProcess' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/SandboxProcess.v:21]
+ERROR: [Synth 8-6156] failed synthesizing module 'Sandbox' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/Sandbox.v:27]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1439.684 ; gain = 551.758
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+92 Infos, 12 Warnings, 0 Critical Warnings and 4 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Mon Sep  7 10:46:08 2026...
