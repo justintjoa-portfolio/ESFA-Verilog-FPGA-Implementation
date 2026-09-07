@@ -1,0 +1,53 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Mon Sep  7 12:32:56 2026
+| Host         : Justin running 64-bit major release  (build 9200)
+| Command      : report_drc -file Sandbox_drc_routed.rpt -pb Sandbox_drc_routed.pb -rpx Sandbox_drc_routed.rpx
+| Design       : Sandbox
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 2
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PDRC-153    | Warning  | Gated clock check                                           | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net dataInterface/uart/receiver/smapleClock is a gated clock net sourced by a combinational pin dataInterface/uart/receiver/dataCounter[3]_i_3/O, cell dataInterface/uart/receiver/dataCounter[3]_i_3. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT dataInterface/uart/receiver/dataCounter[3]_i_3 is driving clock pin of 6 cells. This could lead to large hold time violations. Involved cells are:
+dataInterface/uart/receiver/dataCounter_reg[0],
+dataInterface/uart/receiver/dataCounter_reg[1],
+dataInterface/uart/receiver/dataCounter_reg[2],
+dataInterface/uart/receiver/dataCounter_reg[3],
+dataInterface/uart/receiver/register_reg[0]
+dataInterface/uart/receiver/register_reg[1]_srl7
+Related violations: <none>
+
+
