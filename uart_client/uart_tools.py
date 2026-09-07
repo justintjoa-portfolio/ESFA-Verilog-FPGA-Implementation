@@ -3,11 +3,11 @@
 import serial  
 import sys  
 
-PORT = 'COM4' 
+PORT = 'COM9' 
 BAUD = 115200
 s = serial.Serial(port=PORT, baudrate=BAUD, 
 bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, 
-stopbits=serial.STOPBITS_ONE)
+stopbits=serial.STOPBITS_ONE, timeout=2)
 s.flush()
 
 def send(byteArray):
