@@ -849,3 +849,304 @@ INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 
 
 Phase 1 Build RT Design
 Checksum: PlaceDB: 37f7b5ee ConstDB: 0 ShapeSum: 1bcda2da RouteDB: 0
+Post Restoration Checksum: NetGraph: d9af63bc | NumContArr: 6b33ea88 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2ca35437e
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2161.797 ; gain = 81.504
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2ca35437e
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2161.797 ; gain = 81.504
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2ca35437e
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2161.797 ; gain = 81.504
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 2b87f28cb
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 2176.293 ; gain = 96.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.282 | TNS=-46.999| WHS=-0.144 | THS=-10.749|
+
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.00255122 %
+  Global Horizontal Routing Utilization  = 0.00130141 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 1738
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 1735
+  Number of Partially Routed Nets     = 3
+  Number of Node Overlaps             = 1
+
+Phase 2 Router Initialization | Checksum: 3019f79ec
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: 3019f79ec
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 3.2 Initial Net Routing
+Phase 3.2 Initial Net Routing | Checksum: 30231d105
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 2181.582 ; gain = 101.289
+Phase 3 Initial Routing | Checksum: 30231d105
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 2181.582 ; gain = 101.289
+INFO: [Route 35-580] Design has 3 pins with tight setup and hold constraints.
+
+The top 5 pins with tight setup and hold constraints:
+
++====================+===================+=================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                             |
++====================+===================+=================================+
+| masterClock        | masterClock       | process/top/didRun_reg/D        |
+| masterClock        | masterClock       | process/top/doIncrement_reg/D   |
+| masterClock        | masterClock       | process/top/wasSuccessful_reg/D |
++--------------------+-------------------+---------------------------------+
+
+File with complete list of pins: tight_setup_hold_pins.txt
+
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 748
+ Number of Nodes with overlaps = 307
+ Number of Nodes with overlaps = 126
+ Number of Nodes with overlaps = 47
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-3.350 | TNS=-169.634| WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 2772d367c
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:18 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 213
+ Number of Nodes with overlaps = 74
+ Number of Nodes with overlaps = 33
+ Number of Nodes with overlaps = 21
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-3.267 | TNS=-173.777| WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 1cdf23455
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:19 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 195
+ Number of Nodes with overlaps = 110
+ Number of Nodes with overlaps = 47
+ Number of Nodes with overlaps = 18
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-3.087 | TNS=-160.860| WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: 254fe6ae3
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:21 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 4.4 Global Iteration 3
+ Number of Nodes with overlaps = 184
+ Number of Nodes with overlaps = 93
+ Number of Nodes with overlaps = 16
+ Number of Nodes with overlaps = 11
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-3.079 | TNS=-159.601| WHS=N/A    | THS=N/A    |
+
+Phase 4.4 Global Iteration 3 | Checksum: 35db8a565
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+Phase 4 Rip-up And Reroute | Checksum: 35db8a565
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 277fe4e14
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-3.000 | TNS=-153.721| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 5.1 Delay CleanUp | Checksum: 27d1ed88f
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 27d1ed88f
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+Phase 5 Delay and Skew Optimization | Checksum: 27d1ed88f
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 23fca7c1c
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.950 | TNS=-150.145| WHS=0.115  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 23fca7c1c
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+Phase 6 Post Hold Fix | Checksum: 23fca7c1c
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.808897 %
+  Global Horizontal Routing Utilization  = 0.922046 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 53.1532%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 54.0541%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 58.8235%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 55.8824%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 7 Route finalize | Checksum: 23fca7c1c
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 23fca7c1c
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 25ab375dc
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-2.950 | TNS=-150.145| WHS=0.115  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 10 Post Router Timing | Checksum: 25ab375dc
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+INFO: [Route 35-16] Router Completed Successfully
+
+Phase 11 Post-Route Event Processing
+Phase 11 Post-Route Event Processing | Checksum: f1f202ae
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+Ending Routing Task | Checksum: f1f202ae
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2181.582 ; gain = 101.289
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+365 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:24 . Memory (MB): peak = 2181.582 ; gain = 105.461
+INFO: [runtcl-4] Executing : report_drc -file Sandbox_drc_routed.rpt -pb Sandbox_drc_routed.pb -rpx Sandbox_drc_routed.rpx
+Command: report_drc -file Sandbox_drc_routed.rpt -pb Sandbox_drc_routed.pb -rpx Sandbox_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/impl_1/Sandbox_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file Sandbox_methodology_drc_routed.rpt -pb Sandbox_methodology_drc_routed.pb -rpx Sandbox_methodology_drc_routed.rpx
+Command: report_methodology -file Sandbox_methodology_drc_routed.rpt -pb Sandbox_methodology_drc_routed.pb -rpx Sandbox_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/impl_1/Sandbox_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file Sandbox_power_routed.rpt -pb Sandbox_power_summary_routed.pb -rpx Sandbox_power_routed.rpx
+Command: report_power -file Sandbox_power_routed.rpt -pb Sandbox_power_summary_routed.pb -rpx Sandbox_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+375 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file Sandbox_route_status.rpt -pb Sandbox_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file Sandbox_timing_summary_routed.rpt -pb Sandbox_timing_summary_routed.pb -rpx Sandbox_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [runtcl-4] Executing : report_incremental_reuse -file Sandbox_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file Sandbox_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file Sandbox_bus_skew_routed.rpt -pb Sandbox_bus_skew_routed.pb -rpx Sandbox_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.101 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.032 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2181.582 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.148 . Memory (MB): peak = 2181.582 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/impl_1/Sandbox_routed.dcp' has been generated.
+INFO: [Common 17-206] Exiting Vivado at Mon Sep  7 11:21:02 2026...
