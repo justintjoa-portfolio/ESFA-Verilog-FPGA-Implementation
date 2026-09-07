@@ -23,25 +23,19 @@
 module ESFATop(
         input wire clk,
         input wire reset, 
-        input wire doRun,
-        output reg[0:0] isRunning,
-        output reg[0:0] wasSuccessful,
-        output reg[7:0] instructionOfError,
-        output reg[0:0] didRun
+        EsfaTopIO.io io
     );
     
-  reg[0:0] isRunning_next;
-  reg[0:0] wasSuccessful_next;  
-  reg[0:0] didRun_next;
-  
-  reg[7:0] instructionOfError_next;
-  
-  reg[31:0] address;
-  reg[31:0] address_next;
-  reg[0:0] doIncrement;
-  reg[0:0] doIncrement_next;
+  logic [31:0] address;
+  logic doIncrement;
 
-    
+  logic isRunning_next;
+  logic wasSuccessful_next;  
+  logic didRun_next;
+  logic [7:0] instructionOfError_next;
+  logic [31:0] address_next;
+  logic doIncrement_next;
+
   wire[63:0] romVal;
   wire[0:0] isMutating;
   assign isMutating = romVal[0:0];
@@ -54,18 +48,13 @@ module ESFATop(
   wire[7:0] instructionID;
   assign instructionID = romVal[55:48];
     
-    
+
   //ESFA specific wires
-  wire[7:0] queried_handle;
-  assign queried_handle = romVal[15:8];
-  wire[7:0] new_index;
-  assign new_index = romVal[23:16];
-  wire[7:0] new_value;
-  assign new_value = romVal[31:24];
-  wire[7:0] selector;
-  assign selector = romVal[39:32];
-  wire[0:0] resultBool;
-  wire[7:0] resultValue;
+  EsfaDesignIO esfa_design_io();
+  assign esfa_design_io.queried_handle = romVal[15:8];
+  assign esfa_design_io.new_index = romVal[23:16];
+  assign esfa_design_io.new_value = romVal[31:24];
+  assign esfa_design_io.selector = romVal[39:32];
 
   wire[0:0] resetBusy;
   
@@ -77,20 +66,15 @@ module ESFATop(
     .douta(romVal),
     .rsta_busy(resetBusy)
   );
-  
+
   ESFADesign l1(
     .clk(clk),
     .reset(reset),
-    .queried_handle(queried_handle),
-    .new_index(new_index),
-    .new_value(new_value),
-    .selector(selector),
-    .resultBool(resultBool),
-    .resultValue(resultValue)
-    );
+    .esfa_design_io(esfa_design_io)
+  );
    
   
-  reg[0:0] doRun_synced;
+  logic doRun_synced;
   
   always @ (posedge clk)
   begin
@@ -129,7 +113,7 @@ module ESFATop(
             end 
             if (isRunning_next) begin  
                 if (!isMutating) begin   
-                   if ((expectedResultBool && (! resultBool || resultValue != expectedResultValue)) || (! expectedResultBool && resultBool)) begin     
+                   if ((expectedResultBool && (! esfa_design_io.resultBool || resultValue != expectedResultValue)) || (! expectedResultBool && resultBool)) begin     
                          isRunning_next = 0;  
                          didRun_next = 1'b1;
                          wasSuccessful_next = 0;
