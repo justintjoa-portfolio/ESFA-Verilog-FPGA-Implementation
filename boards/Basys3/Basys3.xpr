@@ -294,7 +294,6 @@
     <FileSet Name="system_clock" Type="BlockSrcs" RelSrcDir="$PSRCDIR/system_clock" RelGenDir="$PGENDIR/system_clock">
       <File Path="$PSRCDIR/sources_1/ip/system_clock/system_clock.xci">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

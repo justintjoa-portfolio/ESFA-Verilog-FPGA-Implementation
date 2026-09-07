@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1788815981">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1788817595">
   <File Type="ROUTE-PWR" Name="Sandbox_power_routed.rpt"/>
   <File Type="PA-TCL" Name="Sandbox.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="Sandbox_power_summary_routed.pb"/>
@@ -266,4 +266,5 @@
     <Step Id="write_bitstream"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="system_clock"/>
 </GenRun>

@@ -80,7 +80,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.cache/wt [current_project]
 set_property parent.project_path C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.xpr [current_project]
-set_property XPM_LIBRARIES XPM_MEMORY [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.cache/ip [current_project]
@@ -111,6 +111,11 @@ read_verilog -library xil_defaultlib {
 }
 read_ip -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+
+read_ip -quiet c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/system_clock/system_clock.xci
+set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

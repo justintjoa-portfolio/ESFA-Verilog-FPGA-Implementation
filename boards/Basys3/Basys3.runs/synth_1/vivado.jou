@@ -3,12 +3,11 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Sep  7 11:18:54 2026
-# Process ID: 15428
+# Start of session at: Mon Sep  7 11:46:38 2026
+# Process ID: 20156
 # Current directory: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1
 # Command line: vivado.exe -log Sandbox.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Sandbox.tcl
 # Log file: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/Sandbox.vds
 # Journal file: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1\vivado.jou
 # Running On: Justin, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 16, Host memory: 16474 MB
 #-----------------------------------------------------------
-source Sandbox.tcl -notrace

@@ -134,11 +134,12 @@ OPTRACE "set parameters" START { }
   set_property parent.project_path C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.xpr [current_project]
   set_property ip_output_repo C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_MEMORY [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/Sandbox.dcp
   read_ip -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci
+  read_ip -quiet c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/sources_1/ip/system_clock/system_clock.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc
 OPTRACE "read constraints: implementation" END { }

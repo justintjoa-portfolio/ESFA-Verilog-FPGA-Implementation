@@ -1,7 +1,0 @@
-+====================+===================+=================================+
-| Launch Setup Clock | Launch Hold Clock | Pin                             |
-+====================+===================+=================================+
-| masterClock        | masterClock       | process/top/didRun_reg/D        |
-| masterClock        | masterClock       | process/top/doIncrement_reg/D   |
-| masterClock        | masterClock       | process/top/wasSuccessful_reg/D |
-+--------------------+-------------------+---------------------------------+

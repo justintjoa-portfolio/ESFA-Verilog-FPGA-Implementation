@@ -58,7 +58,7 @@ module Sandbox (input  wire  masterClock,
   wire        txRequest;
   wire        button_pulse;
 
-  ButtonDebouncer debouncer(resetButton, masterClock, _25Hz, button_pulse);
+  ButtonDebouncer debouncer(resetButton, systemClock, _25Hz, button_pulse);
 
   // --------------------------------------------------------------------------
   // Combinatorial logic / Wiring
@@ -80,6 +80,18 @@ module Sandbox (input  wire  masterClock,
                      .resetButton (button_pulse),
                      .reset       (masterReset));
 
+
+  wire systemClock;
+  wire clockLocked;
+
+  system_clock system_clock_inst (
+    .clk_out1(systemClock),
+    .reset(1'b0),
+    .locked(clockLocked),
+    .clk_in1(masterClock)
+  );
+  
+  
   // --------------------------------------------------------
   // The clock divider takes in the 100 MHz master clock
   // provided by the Basys 3 board. The clock is connected
@@ -91,10 +103,10 @@ module Sandbox (input  wire  masterClock,
   // 100 MHz / 4,000,000 = 25 Hz
   // --------------------------------------------------------
   ClockDivider #(
-      .RATIO(4_000_000)
+      .RATIO(2_000_000)
   )
   divider1 (
-      .sourceClock(masterClock),
+      .sourceClock(systemClock),
       .reset      (1'b1),
       .slowClock  (_25Hz)
   );
@@ -102,10 +114,10 @@ module Sandbox (input  wire  masterClock,
   // --------------------------------------------------------
   // Data interface
   // --------------------------------------------------------
-  WideUARTIO # (.CLOCK_SCALE (26),                     // -> 115200
+  WideUARTIO # (.CLOCK_SCALE (109),                     // -> 115200
                 .WIDTH       (4))
 
-    dataInterface (.masterClock   (masterClock),
+    dataInterface (.masterClock   (systemClock),
                    .reset         (masterReset),
                    .rx            (rx),
                    .tx            (tx),
@@ -127,7 +139,7 @@ module Sandbox (input  wire  masterClock,
   // --------------------------------------------------------
   SandboxProcess
 
-    process (.masterClock   (masterClock),
+    process (.masterClock   (systemClock),
              .slowClock     (_25Hz),
              .reset_n         (masterReset),
              .dataReceived  (dataReceived),
