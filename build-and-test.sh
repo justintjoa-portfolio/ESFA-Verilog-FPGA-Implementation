@@ -17,6 +17,7 @@ echo "RTL core compile check passed."
 TESTS=(
     NodeCombinator_tb
     MemoryCell_tb
+    ESFADesign_tb
 )
 
 FAILED_TESTS=()

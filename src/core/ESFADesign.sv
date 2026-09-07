@@ -26,7 +26,7 @@ module ESFADesign #(parameter int CELL_POWER = 3)
     input logic clk, 
     // Note - synchronous reset is active low. 
     input logic reset_n,
-    ESFADesignIO.io io 
+    EsfaDesignIO.io esfa_design_io 
 );
     
     localparam int NUM_CELLS = 1 << CELL_POWER;
@@ -38,8 +38,8 @@ module ESFADesign #(parameter int CELL_POWER = 3)
     localparam int NUM_COMBINATOR_IO = 2 * NUM_CELLS - 1;
     CombinatorIO tree_io [NUM_COMBINATOR_IO]();
     // Assigin the output of ESFADesign to that of the last combinator. 
-    assign io.resultBool = tree_io[NUM_COMBINATOR_IO - 1].valid;
-    assign io.resultValue = tree_io[NUM_COMBINATOR_IO - 1].value;
+    assign esfa_design_io.resultBool = tree_io[NUM_COMBINATOR_IO - 1].valid;
+    assign esfa_design_io.resultValue = tree_io[NUM_COMBINATOR_IO - 1].value;
 
     reg[7:0] given_code;
     reg[7:0] given_rank;
@@ -62,7 +62,7 @@ module ESFADesign #(parameter int CELL_POWER = 3)
             assign cell_inputs[i].handle = i;
 
             assign cell_inputs[i].queried_handle =
-                io.queried_handle;
+                esfa_design_io.queried_handle;
 
             assign cell_inputs[i].is_available_handle =
                 is_available_handle;
@@ -71,10 +71,10 @@ module ESFADesign #(parameter int CELL_POWER = 3)
                 available_handle;
 
             assign cell_inputs[i].inserted_index =
-                io.new_index;
+                esfa_design_io.new_index;
 
             assign cell_inputs[i].inserted_value =
-                io.new_value;
+                esfa_design_io.new_value;
 
             assign cell_inputs[i].is_given_code =
                 is_given_code;
@@ -89,7 +89,7 @@ module ESFADesign #(parameter int CELL_POWER = 3)
                 given_rank;
 
             assign cell_inputs[i].selector =
-                io.selector;
+                esfa_design_io.selector;
 
         end
     end
@@ -180,22 +180,22 @@ module ESFADesign #(parameter int CELL_POWER = 3)
         is_given_rank_next = is_given_rank;
         is_available_handle_next = is_available_handle;
         combinator_selector_next = combinator_selector;
-        case (io.selector)
+        case (esfa_design_io.selector)
              `ESFA_ENCODE: begin  
-                  given_code_next = io.resultValue;
-                  is_given_code_next = io.resultBool;
+                  given_code_next = esfa_design_io.resultValue;
+                  is_given_code_next = esfa_design_io.resultBool;
              end
              `ESFA_FIND_AVAILABLE_CELL: begin 
-                 available_handle_next = io.resultValue;
-                 is_available_handle_next = io.resultBool;
+                 available_handle_next = esfa_design_io.resultValue;
+                 is_available_handle_next = esfa_design_io.resultBool;
               end
               `ESFA_ENRANK:begin 
-                  given_rank_next = io.resultValue;
-                  is_given_rank_next = io.resultBool;
+                  given_rank_next = esfa_design_io.resultValue;
+                  is_given_rank_next = esfa_design_io.resultBool;
               end
         endcase
-        if (!(io.selector == `ESFA_NO_OP)) begin   
-            combinator_selector_next = io.selector;
+        if (!(esfa_design_io.selector == `ESFA_NO_OP)) begin   
+            combinator_selector_next = esfa_design_io.selector;
         end
    end
    

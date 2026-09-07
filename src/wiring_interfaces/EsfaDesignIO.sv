@@ -1,4 +1,4 @@
-interface ESFADesignIO;
+interface EsfaDesignIO;
 
     logic [7:0] queried_handle;
     logic [7:0] new_index;
@@ -18,4 +18,4 @@ interface ESFADesignIO;
 
 
 
-endinterface 
+endinterface
