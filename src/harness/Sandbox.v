@@ -80,7 +80,7 @@ module Sandbox (input  wire  masterClock,
                      .resetButton (button_pulse),
                      .reset       (masterReset));
 
-
+  // System clock instantiation.
   wire systemClock;
   wire clockLocked;
 
@@ -93,9 +93,9 @@ module Sandbox (input  wire  masterClock,
   
   
   // --------------------------------------------------------
-  // The clock divider takes in the 100 MHz master clock
-  // provided by the Basys 3 board. The clock is connected
-  // to FPGA package pin W5.
+  // The clock divider takes in the 50 MHz system clock
+  // provided by the Basys 3 board (derived off the 100 MHz master clock). 
+  // The clock is connected to FPGA package pin W5.
   //
   // The divider generates a ~25 Hz slow clock used for
   // human-timescale logic such as button debouncing/reset.
