@@ -140,6 +140,7 @@ OPTRACE "add files" START { }
   add_files -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/Sandbox.dcp
   read_ip -quiet C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/platform/xilinx/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0.xci
 OPTRACE "read constraints: implementation" START { }
+  read_xdc C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

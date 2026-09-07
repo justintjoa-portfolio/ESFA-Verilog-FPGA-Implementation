@@ -43,7 +43,6 @@ module Sandbox (input  wire  masterClock,
   // --------------------------------------------------------------------------
   // Signals
   // --------------------------------------------------------------------------
-  wire        _12MHz;
   wire        _25Hz;
 
   wire        masterReset;
@@ -59,12 +58,11 @@ module Sandbox (input  wire  masterClock,
   wire        txRequest;
   wire        button_pulse;
 
-  ButtonDebouncer debouncer(resetButton, _12MHz, _25Hz, button_pulse);
+  ButtonDebouncer debouncer(resetButton, masterClock, _25Hz, button_pulse);
 
   // --------------------------------------------------------------------------
   // Combinatorial logic / Wiring
   // --------------------------------------------------------------------------
-  assign  _12MHz  = masterClock;
   assign  led5    = !masterReset;
 
   // --------------------------------------------------------------------------
@@ -83,17 +81,23 @@ module Sandbox (input  wire  masterClock,
                      .reset       (masterReset));
 
   // --------------------------------------------------------
-  // The Clock divider takes in the master clock produced by a
-  // 12MHz crystal oscillator on the board. This is connected
-  // to ball F14 of the FPGA. From this it generates various
-  // clocks required by the design, by division from the master
-  // clock.
+  // The clock divider takes in the 100 MHz master clock
+  // provided by the Basys 3 board. The clock is connected
+  // to FPGA package pin W5.
+  //
+  // The divider generates a ~25 Hz slow clock used for
+  // human-timescale logic such as button debouncing/reset.
+  //
+  // 100 MHz / 4,000,000 = 25 Hz
   // --------------------------------------------------------
-  ClockDivider #(.RATIO     (480000))
-
-    divider1 (.sourceClock  (_12MHz),
-              .reset        (1'b1),
-              .slowClock    (_25Hz));
+  ClockDivider #(
+      .RATIO(4_000_000)
+  )
+  divider1 (
+      .sourceClock(masterClock),
+      .reset      (1'b1),
+      .slowClock  (_25Hz)
+  );
 
   // --------------------------------------------------------
   // Data interface
