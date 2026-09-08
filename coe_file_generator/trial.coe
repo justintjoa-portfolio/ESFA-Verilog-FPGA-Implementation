@@ -1,4 +1,5 @@
-memory_initialization_radix=2; update suite
+; update suite
+memory_initialization_radix=2;
 memory_initialization_vector=
 
 00000000000000000000010100000000000000000000000000000001,
