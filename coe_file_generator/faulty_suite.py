@@ -1,6 +1,6 @@
 # this test will fail on instruction 0f
 # check that the instructionOfError is in fact
-# 15
+# 12
 
 from coe_file_tools import *
 
