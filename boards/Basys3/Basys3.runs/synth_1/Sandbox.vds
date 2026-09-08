@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Sep  7 12:46:48 2026
-# Process ID: 19624
+# Start of session at: Mon Sep  7 19:56:08 2026
+# Process ID: 25884
 # Current directory: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1
 # Command line: vivado.exe -log Sandbox.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Sandbox.tcl
 # Log file: C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/Sandbox.vds
@@ -12,7 +12,6 @@
 # Running On: Justin, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 16, Host memory: 16474 MB
 #-----------------------------------------------------------
 source Sandbox.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 484.672 ; gain = 182.551
 Command: read_checkpoint -auto_incremental -incremental C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/utils_1/imports/synth_1/Sandbox.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.srcs/utils_1/imports/synth_1/Sandbox.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,9 +24,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 10072
+INFO: [Synth 8-7075] Helper process launched with PID 12400
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1331.586 ; gain = 440.738
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1331.012 ; gain = 440.066
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-10643] design contains a SystemVerilog implicit generate region [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:95]
 WARNING: [Synth 8-10744] generate block is only allowed inside a loop or conditional generate in SystemVerilog mode [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:95]
@@ -50,8 +49,8 @@ INFO: [Synth 8-6157] synthesizing module 'Resetter' [C:/Users/justi/Documents/ES
 INFO: [Synth 8-6157] synthesizing module 'res_DFF' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:98]
 INFO: [Synth 8-6155] done synthesizing module 'res_DFF' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:98]
 INFO: [Synth 8-6155] done synthesizing module 'Resetter' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/Resetter.v:28]
-INFO: [Synth 8-6157] synthesizing module 'system_clock' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/realtime/system_clock_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_clock' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/realtime/system_clock_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_clock' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/realtime/system_clock_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_clock' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/realtime/system_clock_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'ClockDivider' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
 	Parameter RATIO bound to: 2000000 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'ClockDivider' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/utils/ClockDivider.v:18]
@@ -78,8 +77,8 @@ INFO: [Synth 8-6157] synthesizing module 'SandboxProcess' [C:/Users/justi/Docume
 INFO: [Synth 8-6157] synthesizing module 'ESFATop' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/harness/ESFATop.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'EsfaDesignIO' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/EsfaDesignIO.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'EsfaDesignIO' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/EsfaDesignIO.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/realtime/blk_mem_gen_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'ESFADesign' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/core/ESFADesign.sv:24]
 INFO: [Synth 8-6157] synthesizing module 'MemoryCellInput' [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'MemoryCellInput' (0#1) [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/src/wiring_interfaces/MemoryCellInput.sv:1]
@@ -185,48 +184,48 @@ WARNING: [Synth 8-7129] Port led3 in module Sandbox is either unconnected or has
 WARNING: [Synth 8-7129] Port led4 in module Sandbox is either unconnected or has no load
 WARNING: [Synth 8-7129] Port btn3 in module Sandbox is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1454.773 ; gain = 563.926
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1455.105 ; gain = 564.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1454.773 ; gain = 563.926
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1455.105 ; gain = 564.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1454.773 ; gain = 563.926
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1455.105 ; gain = 564.160
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1454.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1455.105 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock/system_clock_in_context.xdc] for cell 'system_clock_inst'
 Finished Parsing XDC File [c:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.gen/sources_1/ip/system_clock/system_clock/system_clock_in_context.xdc] for cell 'system_clock_inst'
-Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'process/top/blockROM'
-Finished Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-19624-Justin/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'process/top/blockROM'
+Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'process/top/blockROM'
+Finished Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/.Xil/Vivado-25884-Justin/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'process/top/blockROM'
 Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc]
 Finished Parsing XDC File [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/constraints/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Sandbox_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Sandbox_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1557.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1564.875 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1557.328 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1564.875 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -236,7 +235,7 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for masterClock. (constraint file 
 Applied set_property KEEP_HIERARCHY = SOFT for system_clock_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for process/top/blockROM. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'divider_reg' in module 'UARTReceiver'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UARTReceiver'
@@ -303,7 +302,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'txState_reg' using encodin
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'SandboxProcess'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -376,25 +375,25 @@ WARNING: [Synth 8-7129] Port led3 in module Sandbox is either unconnected or has
 WARNING: [Synth 8-7129] Port led4 in module Sandbox is either unconnected or has no load
 WARNING: [Synth 8-7129] Port btn3 in module Sandbox is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -412,37 +411,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -494,18 +493,18 @@ Report Cell Usage:
 |16    |OBUFT        |     2|
 +------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1564.875 ; gain = 673.930
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:29 . Memory (MB): peak = 1557.328 ; gain = 563.926
-Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1557.328 ; gain = 666.480
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:28 . Memory (MB): peak = 1564.875 ; gain = 564.160
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1564.875 ; gain = 673.930
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1557.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1564.875 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 115 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1557.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1564.875 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -513,8 +512,8 @@ Synth Design complete | Checksum: 390937f
 INFO: [Common 17-83] Releasing license: Synthesis
 122 Infos, 61 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1557.328 ; gain = 1059.922
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1557.328 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1564.875 ; gain = 1066.613
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1564.875 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/justi/Documents/ESFA-Verilog-FPGA-Implementation/boards/Basys3/Basys3.runs/synth_1/Sandbox.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Sandbox_utilization_synth.rpt -pb Sandbox_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Sep  7 12:47:31 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon Sep  7 19:56:50 2026...
