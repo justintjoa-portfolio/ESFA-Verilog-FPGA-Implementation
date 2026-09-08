@@ -1,0 +1,19 @@
+ID   PRIMITIVE              SOURCE OPERATION
+------------------------------------------------------------
+00   FIND_AVAILABLE_CELL    m_update(handle=None, index=0, value=5)
+01   UPDATE                 m_update(handle=None, index=0, value=5)
+02   ENCODE                 m_update(handle=0, index=0, value=5)
+03   ENRANK                 m_update(handle=0, index=0, value=5)
+04   FIND_AVAILABLE_CELL    m_update(handle=0, index=0, value=5)
+05   UPDATE                 m_update(handle=0, index=0, value=5)
+06   CONGRUE_UP             m_update(handle=0, index=0, value=5)
+07   ENCODE                 m_lookUp(handle=0, index=0)
+08   LOOKUP_SCAN            m_lookUp(handle=0, index=0)
+09   ASSERT                 m_assert(expected_bool=True, expected_value=5)
+10   ENCODE                 m_lookUp(handle=1, index=0)
+11   LOOKUP_SCAN            m_lookUp(handle=1, index=0)
+12   ASSERT                 m_assert(expected_bool=True, expected_value=5)
+13   ENCODE                 m_lookUp(handle=1, index=10)
+14   LOOKUP_SCAN            m_lookUp(handle=1, index=10)
+15   ASSERT                 m_assert(expected_bool=False, expected_value=0)
+16   END_PROGRAM            END_PROGRAM

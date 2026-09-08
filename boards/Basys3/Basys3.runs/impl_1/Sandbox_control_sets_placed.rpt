@@ -1,0 +1,143 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Mon Sep  7 20:18:00 2026
+| Host         : Justin running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Sandbox_control_sets_placed.rpt
+| Design       : Sandbox
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    65 |
+|    Minimum number of control sets                        |    65 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   100 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    65 |
+| >= 0 to < 4        |     4 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |    42 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    12 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              40 |           15 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              92 |           40 |
+| Yes          | No                    | No                     |              11 |            4 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             597 |          249 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------------------------+----------------------------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
+|               Clock Signal               |                                   Enable Signal                                  |                       Set/Reset Signal                       | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------------------------+----------------------------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
+|  system_clock_inst/inst/clk_out1         | process/indicatorReg_i_1_n_0                                                     | resetter/SR[0]                                               |                1 |              1 |         1.00 |
+| ~dataInterface/uart/rxDivider/rxClock    |                                                                                  |                                                              |                1 |              1 |         1.00 |
+|  dataInterface/uart/receiver/smapleClock | dataInterface/uart/receiver/register                                             |                                                              |                1 |              2 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | dataInterface/rxRegister_reg[24]_srl3_i_1_n_0                                    |                                                              |                1 |              2 |         2.00 |
+|  dataInterface/uart/rxDivider/rxClock    | dataInterface/uart/receiver/FSM_onehot_divider[3]_i_2_n_0                        | dataInterface/uart/transmitter/SR[0]                         |                1 |              4 |         4.00 |
+|  dataInterface/uart/txDivider/CLK        |                                                                                  |                                                              |                1 |              4 |         4.00 |
+|  dataInterface/uart/receiver/smapleClock |                                                                                  | dataInterface/uart/receiver/dataCounter                      |                1 |              4 |         4.00 |
+|  dataInterface/uart/txDivider/CLK        | dataInterface/uart/transmitter/bitCounter_0                                      | dataInterface/uart/transmitter/SR[0]                         |                2 |              5 |         2.50 |
+|  system_clock_inst/inst/clk_out1         | dataInterface/uart/transmitter/shifting_reg_0                                    | dataInterface/uart/transmitter/FSM_sequential_txState_reg[1] |                1 |              6 |         6.00 |
+|  system_clock_inst/inst/clk_out1         |                                                                                  | dataInterface/uart/rxDivider/countRegister[6]_i_1_n_0        |                2 |              7 |         3.50 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_5[0] | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_2[0] | resetter/SR[0]                                               |                3 |              8 |         2.67 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_4[0]              | resetter/SR[0]                                               |                7 |              8 |         1.14 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[3].mem_cell/array_code[7]_i_1__3_n_0        | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[4].mem_cell/array_code[7]_i_1__2_n_0        | resetter/SR[0]                                               |                6 |              8 |         1.33 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[1].mem_cell/array_code[7]_i_1__5_n_0        | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[5].mem_cell/array_code[7]_i_1__1_n_0        | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[6].mem_cell/array_code[7]_i_1__0_n_0        | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[1].mem_cell/E[0]                            | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[2].mem_cell/array_code[7]_i_1__4_n_0        | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/array_code[7]_i_1__6_n_0        | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/high[7]_i_1__6_n_0              | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | dataInterface/uart/transmitter/shifting_reg_0                                    | dataInterface/uart/transmitter/FSM_sequential_txState_reg[2] |                1 |              8 |         8.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/rank_next                       | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[7].mem_cell/array_code[7]_i_1_n_0           | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/p_1_in                                                            | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/low[7]_i_1__6_n_0               | resetter/SR[0]                                               |                6 |              8 |         1.33 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/available_handle_reg[2]_1[0]    | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/available_handle_reg[2][0]      | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/available_handle_reg[0][0]      | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_15[0]             | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_3[0]              | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_0[0] | resetter/SR[0]                                               |                3 |              8 |         2.67 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_5[0]              | resetter/SR[0]                                               |                3 |              8 |         2.67 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_11[0]             | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_2[0]              | resetter/SR[0]                                               |                6 |              8 |         1.33 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_6[0]              | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_7[0]              | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_8[0]              | resetter/SR[0]                                               |                6 |              8 |         1.33 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/doIncrement_reg[0]              | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_12[0]             | resetter/SR[0]                                               |                7 |              8 |         1.14 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_14[0]             | resetter/SR[0]                                               |                7 |              8 |         1.14 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_10[0]             | resetter/SR[0]                                               |                6 |              8 |         1.33 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_13[0]             | resetter/SR[0]                                               |                4 |              8 |         2.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/eltDef_reg[0]_9[0]              | resetter/SR[0]                                               |                5 |              8 |         1.60 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_given_code_reg[0]_6[0]       | resetter/SR[0]                                               |                2 |              8 |         4.00 |
+|  dataInterface/uart/rxDivider/rxClock    |                                                                                  |                                                              |                3 |              9 |         3.00 |
+|  dataInterface/uart/txDivider/CLK        | dataInterface/uart/transmitter/register[8]_i_1_n_0                               |                                                              |                2 |              9 |         4.50 |
+|  divider1/_25Hz                          |                                                                                  |                                                              |                3 |              9 |         3.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/is_given_rank[0]_i_1_n_0                                          | resetter/SR[0]                                               |                2 |              9 |         4.50 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/is_given_code[0]_i_1_n_0                                          | resetter/SR[0]                                               |                2 |              9 |         4.50 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/p_1_out                                                           | resetter/SR[0]                                               |                2 |              9 |         4.50 |
+|  system_clock_inst/inst/clk_out1         | process/statusReg[0]                                                             | resetter/SR[0]                                               |                2 |             10 |         5.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/available_handle_reg[0]_0       | resetter/SR[0]                                               |                4 |             16 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/available_handle_reg[2]_0       | resetter/SR[0]                                               |                9 |             16 |         1.78 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/index_next                      | resetter/SR[0]                                               |                6 |             16 |         2.67 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_1    | resetter/SR[0]                                               |                4 |             16 |         4.00 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]      | resetter/SR[0]                                               |                5 |             16 |         3.20 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_4    | resetter/SR[0]                                               |                5 |             16 |         3.20 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/E[0]                            | resetter/SR[0]                                               |                6 |             16 |         2.67 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/is_available_handle_reg[0]_3    | resetter/SR[0]                                               |                7 |             16 |         2.29 |
+|  system_clock_inst/inst/clk_out1         |                                                                                  |                                                              |                7 |             19 |         2.71 |
+|  system_clock_inst/inst/clk_out1         |                                                                                  | divider1/countRegister[20]_i_1_n_0                           |                6 |             21 |         3.50 |
+|  system_clock_inst/inst/clk_out1         |                                                                                  | resetter/SR[0]                                               |               31 |             60 |         1.94 |
+|  system_clock_inst/inst/clk_out1         | process/top/l1/memory_cell_instances[0].mem_cell/bbstub_douta[34][0]             | resetter/SR[0]                                               |               43 |            128 |         2.98 |
++------------------------------------------+----------------------------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
+
+

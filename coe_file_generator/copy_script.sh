@@ -1,0 +1,1 @@
+cp trial.coe ../src/platform/xilinx/ip/blk_mem_gen_0/

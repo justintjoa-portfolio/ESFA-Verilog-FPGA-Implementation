@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1788848164">
+  <File Type="ROUTE-PWR" Name="Sandbox_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Sandbox.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="Sandbox_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Sandbox_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="Sandbox_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="Sandbox.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Sandbox_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="Sandbox_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="Sandbox_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Sandbox_opt.dcp"/>
+  <File Type="OPT-DRC" Name="Sandbox_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Sandbox.hwdef"/>
+  <File Type="PWROPT-DCP" Name="Sandbox_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Sandbox_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Sandbox_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Sandbox_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Sandbox_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Sandbox_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Sandbox_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Sandbox_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Sandbox_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Sandbox_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Sandbox_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="Sandbox.bin"/>
+  <File Type="PLACE-TIMING" Name="Sandbox_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="Sandbox_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="Sandbox_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Sandbox_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="Sandbox.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Sandbox_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Sandbox_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Sandbox_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="Sandbox.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="Sandbox_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Sandbox_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Sandbox_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Sandbox_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="Sandbox_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Sandbox_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Sandbox_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Sandbox_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Sandbox_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Sandbox_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="Sandbox_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="Sandbox_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Sandbox_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Sandbox_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Sandbox_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Sandbox_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Sandbox_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Sandbox_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Sandbox_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Sandbox_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Sandbox_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Sandbox_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Sandbox_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Sandbox_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Sandbox_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Sandbox_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Sandbox_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="Sandbox.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Sandbox_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Sandbox_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="Sandbox.nky"/>
+  <File Type="BITSTR-BMM" Name="Sandbox_bd.bmm"/>
+  <File Type="PDI-FILE" Name="Sandbox.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="Sandbox_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="Sandbox_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="Sandbox.rcfi"/>
+  <File Type="CFI_FILE" Name="Sandbox.cfi"/>
+  <File Type="RNPI_FILE" Name="Sandbox.rnpi"/>
+  <File Type="NPI_FILE" Name="Sandbox.npi"/>
+  <File Type="RBD_FILE" Name="Sandbox.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Sandbox.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Sandbox.sysdef"/>
+  <File Type="BG-BGN" Name="Sandbox.bgn"/>
+  <File Type="BG-DRC" Name="Sandbox.drc"/>
+  <File Type="RDI-RDI" Name="Sandbox.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="Sandbox_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Sandbox_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../src/phys_io/ButtonDebouncer.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/utils/ClockDivider.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/utils/Resetter.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/harness/SandboxProcess.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/phys_io/uart/UART.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/phys_io/uart/UARTReceiver.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/phys_io/uart/UARTTransmitter.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/phys_io/uart/WideUARTIO.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/wiring_interfaces/CombinatorIO.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/include/ESFAOperations.vh">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="IsVisible" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/ESFADesign.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/harness/ESFATop.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/wiring_interfaces/EsfaDesignIO.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/MemoryCell.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/wiring_interfaces/MemoryCellInput.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/core/NodeCombinator.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/harness/Sandbox.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/wiring_interfaces/EsfaTopIO.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/platform/xilinx/ip/blk_mem_gen_0/trial.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Sandbox"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/constraints/constraints.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/Sandbox.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="system_clock"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
+</GenRun>
